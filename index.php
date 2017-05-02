@@ -3,7 +3,6 @@
 
 $page = $_GET['page'];
 
-echo("test");
 
 
 if (empty($page)){
