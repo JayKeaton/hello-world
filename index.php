@@ -17,6 +17,8 @@ elseif ($page == "dascapital"){
 elseif ($page == "sign_up"){
     include("templates/sign_up.html");
 }
+elseif ($page == "test_navigation")
+	include("templates/test_navigation.html");
 else{
 	header("Location: /?page=accueil");
 }

@@ -1,0 +1,49 @@
+html, body{
+  	margin: 0;
+  	padding: 0;
+  	font-family: Georgia;
+   	color: black;
+}
+
+header {
+	opacity: 0.9;
+  	background-color: black;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 5%;
+    padding-right: 5%;
+    color: white; 
+}
+
+li {
+	list-style-type: none;
+}
+
+header ul {
+	display: inline-block;
+	padding-top: 15px;
+}
+
+.menu {
+	display: inline-block;
+	margin-right: 20px;
+	margin-left: 20px;
+}
+
+.menu a{
+	text-decoration: none;
+	color: white;
+}
+
+.menu a:hover {
+	color: orange;
+}
+
+
+#bloc_ecriture
+{
+	display: flex;
+	margin: auto;
+	width: 80%;
+	min-height: 90vh;  /*TAILLE DU NAVIGATEUR*/
+}
