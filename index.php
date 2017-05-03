@@ -5,7 +5,6 @@ $page = $_GET['page'];
 
 
 
-
 if (empty($page)){
 	header("Location: /?page=accueil");
 }
