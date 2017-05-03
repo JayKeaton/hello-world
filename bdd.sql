@@ -4,8 +4,8 @@
 --
 -- Base de données: `APP-MVC`
 --
-CREATE DATABASE `APP-MVC` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
-USE `APP-MVC`;
+CREATE DATABASE `error404` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+USE `error404`;
 
 
 -- --------------------------------------------------------
