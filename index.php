@@ -8,7 +8,7 @@ include("models/utilisateur.php");
 if (!empty($_GET['page']))
     $page = $_GET['page'];
 
-
+//Ceci est un test -> ne pas prendre en compte
 
 
 if (empty($page)){
