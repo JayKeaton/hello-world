@@ -1,24 +1,5 @@
-<?php
+<?php 
 
-
-$page = $_GET['page'];
-
-
-
-if (empty($page)){
-	header("Location: /?page=accueil");
-}
-elseif ($page == "accueil"){
-	include("templates/accueil.html");
-}
-elseif ($page == "dascapital"){
-	include("templates/dascapital.html");
-}
-elseif ($page == "sign_up"){
-    include("templates/sign_up.html");
-}
-elseif ($page == "test_navigation")
-	include("templates/test_navigation.html");
-else{
-	header("Location: /?page=accueil");
-}
+include("models/SQLCo.php");
+include("models/utilisateur.php");
+include("controllers/signup.php");
