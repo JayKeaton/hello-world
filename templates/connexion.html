@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 	<html>
 		<head>
-			<link href="connection.css" rel="stylesheet" type="text/css">
+			<link href="static/connection.css" rel="stylesheet" type="text/css">
 		</head>
 		<form action="/connection.php" method="post" id="conn">
-			<div>
+			<div><!--la petite case pour le login-->
 				<label for="nom">Nom :</label>
 				<input type="text" id="nom" />
 			</div>
-			<div>
+			<div><!--la petite case pour le MDP-->
       		  <label for="mdp">Mot de passe :</label>
       		  <input type="text" id="mdp" />
    			</div>
+   			<input type="submit" value="valider"> 
    			<p>
 				Nouveau contributeur? inscrivez-vous <br/>
-				<a href="adresse ou fichiers dans le dossier" style="font-family: Verdana,'Arial', 'Arial Black','Times New Roman';font-size: 12px">Mot de passe oublier?</a>
+				<a href="adresse ou fichiers dans le dossier" style="font-family: Verdana,'Arial', 'Arial Black','Times New Roman';font-size: 12px">Mot de passe oublié?</a><!--code css pour afficher la phrase en plus petit-->
 			</p>
 		</form>
 	</html>
