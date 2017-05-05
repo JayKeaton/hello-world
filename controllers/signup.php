@@ -10,10 +10,12 @@
 		 $mdp=sha1($_POST["mdp"]);
 		 ajouterUtilisateur($bdd, $nom, $prenom, $email, $mdp, $adresse, $sexe);
 		 include("templates/mailto.php");
-		 envoyerMail($email);
+		 $randint=rand(1,10000);
+		 $hash = date("Ymdhis".$randint);
+		 echo $hash;
+		 envoyerMail($email, $hash, $nom, $prenom);
 		 
 	 }
 	 
  	include("templates/Signup.html");
-	
  ?>
