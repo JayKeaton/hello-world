@@ -4,7 +4,6 @@ include("models/SQLCo.php");
 include("models/utilisateur.php");
 
 
-
 if (!empty($_GET['page']))
     $page = $_GET['page'];
 
@@ -15,6 +14,9 @@ if (empty($page)){
 }
 elseif ($page == "signup"){
     include("controllers/signup.php");
+}
+elseif ($page == "activation"){
+	include("controllers/activation.php");
 }
 else{
     include("templates/".$page.".html");
