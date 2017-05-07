@@ -1,6 +1,8 @@
 <?php
-function envoyerMail($email, $hash, $nom, $prenom){
 
+
+function envoyerMail($email, $hash, $nom, $prenom, $idu){
+$root = (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . '/';
 $mail = $email; // Déclaration de l'adresse de destination.
 if (!preg_match("#^[a-z0-9._-]+@(hotmail|live|msn).[a-z]{2,4}$#", $mail)) // On filtre les serveurs qui rencontrent des bogues.
 {
@@ -13,7 +15,7 @@ else
 //=====Déclaration des messages au format texte et au format HTML.
 $message_txt = "Bonjour ".$nom ." ".$prenom.". Pour activer votre compte, veuillez cliquer sur le lien ci dessous ou copier/coller dans votre navigateur internet.
  
-http://error404.com/activation.php?log=".urlencode($nom.$prenom)."&cle=".urlencode($hash)."
+".$root."?page=activation&log=".urlencode($idu)."&cle=".urlencode($hash)."
  
  
 ---------------
@@ -23,7 +25,7 @@ L'équipe ERROR 404";
 
 $message_html = "<html><head></head><body><p>Bonjour ".$nom ." ".$prenom.".</p><p> Pour activer votre compte, veuillez cliquer sur le lien ci dessous ou copier/coller dans votre navigateur internet.</p>
  
-<p>http://error404.com/activation.php?log=".urlencode($nom.$prenom)."&cle=".urlencode($hash)."</p>
+<p>".$root."?page=activation&log=".urlencode($idu)."&cle=".urlencode($hash)."</p>
  
  
 <p>---------------</p>
@@ -67,5 +69,6 @@ $message.= $passage_ligne."--".$boundary."--".$passage_ligne;
 //=====Envoi de l'e-mail.
 mail($mail,$sujet,$message,$header);
 //==========
+
 }
 ?>

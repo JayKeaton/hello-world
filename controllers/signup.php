@@ -2,20 +2,35 @@
 
      
 	 if (!empty($_POST["nom"])){
+		 if($_POST["mdp"] == $_POST["mdpv"] && verifMail($bdd, $_POST["email"]==false)){
 		 $nom=$_POST["nom"];
 		 $prenom=$_POST["prenom"];
 		 $email=$_POST["email"];
 		 $sexe=$_POST["sexe"];
 		 $adresse=$_POST["adresse"];
 		 $mdp=sha1($_POST["mdp"]);
-		 ajouterUtilisateur($bdd, $nom, $prenom, $email, $mdp, $adresse, $sexe);
+		 $phone=($_POST["phone"]);
+		 $idu = ajouterUtilisateur($bdd, $nom, $prenom, $email, $mdp, $adresse, $sexe, $phone);
 		 include("templates/mailto.php");
 		 $randint=rand(1,10000);
 		 $hash = date("Ymdhis".$randint);
-		 echo $hash;
-		 envoyerMail($email, $hash, $nom, $prenom);
-		 
+		 envoyerMail($email, $hash, $nom, $prenom, $idu);
+		 ajouterCle($bdd, $idu, $hash);
+		 include("templates/validation.html");
+	 }
+	 elseif(verifMail($bdd,$_POST["email"])==true){
+		 $root = (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . '/';
+		 echo "Erreur, vous êtes déjà inscrit. Connectez vous : " .$root."?page=login";
+		 }
+	else{
+		echo "Mot de passe différent de la confirmation";
+		include("templates/Signup.php");
+		
+		}
 	 }
 	 
- 	include("templates/Signup.html");
+ 	else {
+		include("templates/Signup.php");
+	}
+		
  ?>
