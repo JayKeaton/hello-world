@@ -1,0 +1,109 @@
+header
+{
+background-color:white;
+display: flex;
+text-align: center;
+}
+
+main
+{
+display: flex;
+background-image:linear-gradient(white 40%, silver);
+}
+
+main aside
+{
+  display: flex;
+  justify-content: center;
+  width:30%;
+}
+
+footer
+{
+background-color: #808080;
+}
+
+#ribbon{
+  display: flex;
+}
+
+#ribbon ul
+{
+  background-color:red;
+  flex:1;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+#ribbon ul li
+{
+  list-style: none;
+  padding:15px;
+  height:100%;
+  color: white;
+}
+
+a{
+  text-decoration: none;
+  color: white;
+}
+
+#ribbon ul li:hover{
+  background-image: linear-gradient(red 57% , #ff8080);
+}
+
+#ribbon #imageBanniere{
+  border:2px solid red ;
+}
+#rouge{
+  padding-left: 100px;
+  height:100%;
+  margin-top: 16px;
+  padding-top: 53px;
+  background-color: red;
+}
+
+aside
+{
+  align-items: center;
+  display: flex;
+}
+
+section
+{
+  display: flex;
+  flex-direction: column;
+}
+
+.annonce
+{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border:1px solid black ;
+}
+
+#h
+{
+  width: 100%;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+footer ul{
+  margin-top: 0px;
+  display: flex;
+}
+
+footer ul li{
+  list-style: none;
+  margin-right: 20px;
+}
+
+#copyright{
+  justify-content: right;
+  color:white;
+}
