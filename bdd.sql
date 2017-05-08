@@ -51,6 +51,7 @@ CREATE TABLE Utilisateurs (
   prenom VARCHAR(100),
   mail VARCHAR(255),
   verification BOOLEAN DEFAULT false,
+  cle VARCHAR(255),
   droits VARCHAR(20),
   telephone VARCHAR(20)
 );

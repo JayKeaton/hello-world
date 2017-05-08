@@ -1,7 +1,6 @@
 <?php
 
 	function ajouterCle($bdd, $idu, $cle){
-	
 		$req = $bdd->prepare("UPDATE utilisateurs SET cle = :cle WHERE idUtilisateur = :idu ");
 		$req->bindParam(':idu', $idu);
 		$req->bindParam(':cle', $cle);
@@ -16,35 +15,30 @@
 
 	function mdpUtilisateur($identifiant){
 	    global $bdd;
-	    $req = $bdd->prepare("SELECT id,mdp FROM utilisateurs WHERE identifiant=:identifiant");
+	    $req = $bdd->prepare("SELECT idUtilisateur,mdp FROM utilisateurs WHERE identifiant=:identifiant");
 	    $req->execute(array('identifiant' => $identifiant));
 	    $data = $req->fetch();
-	    if (empty($data))
+	    if ($data == false)
 	        return false;
 	    else{
-	        return $data;
+	        return array($data['idUtilisateur'],$data['mdp']);
         }
 
     }
 	
-	function recupCle($bdd, $idu){
-		
-		$req = $bdd->prepare("SELECT cle FROM utilisateurs WHERE idUtilisateur = :idu ");
-			if($req->execute(array('idu' => $idu)) && $row = $req->fetch())
-  {
-    			$clebdd = $row['cle'];	// Récupération de la clé
-				
-				return $clebdd;
-  }
-  
-  	return false;
-	}
+    function recupCle($bdd, $idu){
+        $req = $bdd->prepare("SELECT cle FROM utilisateurs WHERE idUtilisateur = :idu ");
+        if($req->execute(array('idu' => $idu)) && $row = $req->fetch()){
+            $clebdd = $row['cle'];	// Récupération de la clé
+            return $clebdd;
+        }
+        return false;
+    }
 	
 	
 	function active($bdd, $idu){
-		
-		$req = $bdd->prepare("UPDATE utilisateurs SET verification = 1 WHERE idUtilisateur = :idu ");
-		$req->bindParam(':idu', $idu);
+        $req = $bdd->prepare("UPDATE utilisateurs SET verification = 1 WHERE idUtilisateur = :idu ");
+        $req->bindParam(':idu', $idu);
         $req->execute();
 	}
 	
@@ -53,11 +47,11 @@
 		$req = $bdd->prepare("SELECT id FROM utilisateurs WHERE email=:email");
 		$req->execute(array('email' => $email));
 		$donnee = $req->fetch();
-			if(!empty($donnee['id'])){
-     			return true;
-				}
-			else{
-			return false;
-			}
-		}
+        if(!empty($donnee['id'])){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 	

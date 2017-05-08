@@ -6,9 +6,11 @@ if (!empty($_POST['identifiant'])){
     list($idUtilisateur,$mdpBdd) = mdpUtilisateur($identifiant);
     if ($mdpBdd == false){
         $erreur = "Identifiant inconnu.";
+        echo $erreur;
     }
     elseif ($mdp !== $mdpBdd){
         $erreur = "Mot de passe incorrect.";
+        echo $erreur;
     }
     else {
         $_SESSION['idUtilisateur'] = $idUtilisateur;
