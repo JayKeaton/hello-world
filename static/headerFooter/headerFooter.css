@@ -61,17 +61,28 @@ align-items: center;
 
 footer
 {
-background-color: #808080;
+  background-color: #808080;
+  display: flex;
+  flex-direction: row;
 }
 footer ul{
-  margin-top: 0px;
+  margin: 0;
   display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 50%
 }
 footer ul li{
   list-style: none;
   margin-right: 20px;
 }
 #copyright{
-  align-self: flex-end;
+  display: flex;
+  justify-content: flex-end;
+}
+#copyright li{
   color:white;
 }
+
+
