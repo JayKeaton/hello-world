@@ -13,15 +13,15 @@
 		return $bdd->lastInsertId();
 	}
 
-	function mdpUtilisateur($identifiant){
+	function connexionUtilisateur($identifiant){
 	    global $bdd;
-	    $req = $bdd->prepare("SELECT idUtilisateur,mdp FROM utilisateurs WHERE identifiant=:identifiant");
+	    $req = $bdd->prepare("SELECT idUtilisateur,mdp,verification FROM utilisateurs WHERE identifiant=:identifiant");
 	    $req->execute(array('identifiant' => $identifiant));
 	    $data = $req->fetch();
 	    if ($data == false)
 	        return false;
 	    else{
-	        return array($data['idUtilisateur'],$data['mdp']);
+	        return array($data['idUtilisateur'],$data['mdp'],$data['verification']);
         }
 
     }
