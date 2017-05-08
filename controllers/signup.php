@@ -22,6 +22,16 @@
 		 $root = (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . '/';
 		 echo "Erreur, vous êtes déjà inscrit. Connectez vous : " .$root."?page=login";
 		 }
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
+		 
 	elseif($_POST["mdp"] != $_POST["mdpv"]){
 		echo "Mot de passe différent de la confirmation";
 		include("templates/Signup.php");
