@@ -13,6 +13,19 @@
 		$result = $req->execute(array("nom"=>$nom, "prenom"=>$prenom, "email"=>$email, "mdp"=>$mdp, "phone"=>$phone));
 		return $bdd->lastInsertId();
 	}
+
+	function mdpUtilisateur($identifiant){
+	    global $bdd;
+	    $req = $bdd->prepare("SELECT id,mdp FROM utilisateurs WHERE identifiant=:identifiant");
+	    $req->execute(array('identifiant' => $identifiant));
+	    $data = $req->fetch();
+	    if (empty($data))
+	        return false;
+	    else{
+	        return $data;
+        }
+
+    }
 	
 	function recupCle($bdd, $idu){
 		
