@@ -43,6 +43,9 @@ elseif ($page == "activation"){
 elseif ($page == "connexion"){
     include("controllers/connexion.php");
 }
+elseif ($page == "locate"){
+    include("templates/locate.html");
+}
 else{
     include("templates/".$page.".html");
 }
