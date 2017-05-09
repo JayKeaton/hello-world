@@ -5,3 +5,9 @@
 	text-align:center;
 	color:red;
 }
+
+#flexto{
+	
+	display: flex;
+	flex-direction: row;
+}

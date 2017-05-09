@@ -11,7 +11,7 @@
 			$mdp=sha1($_POST["mdp"]);
 			$phone=($_POST["phone"]);
 			$idu = ajouterUtilisateur($bdd, $nom, $prenom, $email, $mdp, $adresse, $sexe, $phone);
-			include("templates/mailto.php");
+			include("controllers/mailto.php");
 			$randint=rand(1,10000);
 			$hash = date("Ymdhis".$randint);
 			envoyerMail($email, $hash, $nom, $prenom, $idu);
@@ -20,7 +20,7 @@
 		}
 		elseif(verifMail($bdd,$_POST["email"])==true){
 			$root = (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . '/';
-			echo "Erreur, vous êtes déjà inscrit. Connectez vous : " .$root."?page=login";
+			echo "Erreur, vous êtes déjà inscrit. <br/><a href='/?page=connexion'>Connectez vous :</a>";
 		}
 		elseif($_POST["mdp"] != $_POST["mdpv"]){
 			echo "Mot de passe différent de la confirmation";

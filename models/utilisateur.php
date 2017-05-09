@@ -44,10 +44,10 @@
 	
 	
 	function verifMail($bdd, $email){
-		$req = $bdd->prepare("SELECT id FROM utilisateurs WHERE email=:email");
+		$req = $bdd->prepare("SELECT idUtilisateur FROM utilisateurs WHERE mail=:email");
 		$req->execute(array('email' => $email));
 		$donnee = $req->fetch();
-        if(!empty($donnee['id'])){
+        if(!empty($donnee['idUtilisateur'])){
             return true;
         }
         else{
