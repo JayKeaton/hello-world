@@ -13,24 +13,23 @@
     
     <form method="post" action="">
 
-    <div>
+    <div id="flexto">
 
         <h4>Informations personnelles</h4> 
+        	<label for="name">Nom: <span class="required">*</span>
 
-        <label for="name">Nom: <span class="required">*</span>
+        	</label>
+		
 
-        </label>
+        	<input type="text" id="name1" name="nom" value="<?php echo((empty($_POST['nom'])) ? "" : $_POST['nom']); ?>" placeholder="Votre nom" required="required" autofocus />
+		
+			<label for="name">Prenom: <span class="required">*</span>
 
-        <input type="text" id="name1" name="nom" value="<?php echo((empty($_POST['nom'])) ? "" : $_POST['nom']); ?>" placeholder="Votre nom" required="required" autofocus />
+        	</label>
 
-<label for="name">Prenom: <span class="required">*</span>
-
-        </label>
-
-        <input type="text" id="name2" name="prenom" placeholder="Votre prénom" required="required" autofocus value="<?php echo((empty($_POST['prenom'])) ? "" : $_POST['prenom']); ?>"  />
+        	<input type="text" id="name2" name="prenom" placeholder="Votre prénom" required="required" autofocus value="<?php echo((empty($_POST['prenom'])) ? "" : $_POST['prenom']); ?>"  />
+		
     </div>
-
-
 
     <div>
 
