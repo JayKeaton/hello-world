@@ -28,6 +28,8 @@ CREATE TABLE Services (
     REFERENCES Utilisateurs(idUtilisateur) ON DELETE SET NULL
 );
 
+--CREATE TABLE Seances
+
 
 
 
@@ -47,11 +49,13 @@ CREATE TABLE Utilisateurs (
   idUtilisateur INTEGER PRIMARY KEY AUTO_INCREMENT,
   identifiant VARCHAR(50) NOT NULL UNIQUE,
   mdp VARCHAR(255) NOT NULL,
+  avatar VARCHAR(255),
   nom VARCHAR(100),
   prenom VARCHAR(100),
   mail VARCHAR(255),
   verification BOOLEAN DEFAULT false,
   cle VARCHAR(255),
+  adresse VARCHAR(255),
   droits VARCHAR(20),
   telephone VARCHAR(20)
 );
