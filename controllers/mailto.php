@@ -13,7 +13,7 @@ else
 	$passage_ligne = "\n";
 }
 //=====Déclaration des messages au format texte et au format HTML.
-$message_txt = "Bonjour ".$nom ." ".$prenom.". Pour activer votre compte, veuillez cliquer sur le lien ci dessous ou copier/coller dans votre navigateur internet.
+$message_txt = "Bonjour ".$nom ." ".$prenom.". Pour activer votre compte, veuillez cliquer sur le lien ci dessous ou le copier/coller dans votre navigateur internet.
  
 ".$root."?page=activation&log=".urlencode($idu)."&cle=".urlencode($hash)."
  
@@ -23,7 +23,7 @@ Ceci est un mail automatique, Merci de ne pas y répondre.
 
 L'équipe ERROR 404";
 
-$message_html = "<html><head></head><body><p>Bonjour ".$nom ." ".$prenom.".</p><p> Pour activer votre compte, veuillez cliquer sur le lien ci dessous ou copier/coller dans votre navigateur internet.</p>
+$message_html = "<html><head></head><body><p>Bonjour ".$nom ." ".$prenom.".</p><p> Pour activer votre compte, veuillez cliquer sur le lien ci dessous ou le copier/coller dans votre navigateur internet.</p>
  
 <p>".$root."?page=activation&log=".urlencode($idu)."&cle=".urlencode($hash)."</p>
  
