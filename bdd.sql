@@ -10,7 +10,7 @@ USE `error404`;
 
 
 
-CREATE TABLE Categories(
+CREATE TABLE categories(
   idCategorie INTEGER PRIMARY KEY AUTO_INCREMENT,
   code VARCHAR(255),
   langue VARCHAR(255),
@@ -19,7 +19,7 @@ CREATE TABLE Categories(
 
 
 
-CREATE TABLE Services (
+CREATE TABLE services (
   idService INTEGER PRIMARY KEY AUTO_INCREMENT,
   validation BOOLEAN DEFAULT false,
   codePostal INTEGER,
@@ -31,40 +31,40 @@ CREATE TABLE Services (
   mail VARCHAR(255),
   lien_site VARCHAR(255),
   idContributeur INTEGER
-    REFERENCES Utilisateurs(idUtilisateur) ON DELETE SET NULL
+    REFERENCES utilisateurs(idUtilisateur) ON DELETE SET NULL
 );
 
-CREATE TABLE Seances(
+CREATE TABLE seances(
   idSeance INTEGER PRIMARY KEY AUTO_INCREMENT,
   date DATE,
   idService INTEGER
-    REFERENCES Services(idService)
+    REFERENCES services(idService)
 );
 
 
 
 
-CREATE TABLE Descriptions(
+CREATE TABLE descriptions(
   idDescription INTEGER PRIMARY KEY AUTO_INCREMENT,
   nom VARCHAR(255),
   texte TEXT,
   langue VARCHAR(255),
   idService INTEGER
-    REFERENCES Services(idService) ON DELETE CASCADE
+    REFERENCES services(idService) ON DELETE CASCADE
 );
 
 
 
 
-CREATE TABLE Utilisateurs (
+CREATE TABLE utilisateurs (
   idUtilisateur INTEGER PRIMARY KEY AUTO_INCREMENT,
-  identifiant VARCHAR(50) NOT NULL UNIQUE,
+  pseudo VARCHAR(50) NOT NULL UNIQUE,
+  mail VARCHAR(255),
   mdp VARCHAR(255) NOT NULL,
   avatar VARCHAR(255),
   nom VARCHAR(100),
   prenom VARCHAR(100),
   dateNaissance DATE,
-  mail VARCHAR(255),
   verification BOOLEAN DEFAULT false,
   cle VARCHAR(255),
   adresse VARCHAR(255),
@@ -75,18 +75,18 @@ CREATE TABLE Utilisateurs (
 
 
 
-CREATE TABLE Favoris(
+CREATE TABLE favoris(
   idFavoris INTEGER PRIMARY KEY AUTO_INCREMENT,
   idService INTEGER NOT NULL
-    REFERENCES Services(idService) ON DELETE CASCADE,
+    REFERENCES services(idService) ON DELETE CASCADE,
   idUtilisateur INTEGER NOT NULL
-    REFERENCES Utilisateurs(idUtilisateur) ON DELETE CASCADE
+    REFERENCES utilisateurs(idUtilisateur) ON DELETE CASCADE
 );
 
 
 
 
-CREATE TABLE Commentaires(
+CREATE TABLE commentaires(
   idCommentaire INTEGER PRIMARY KEY AUTO_INCREMENT,
   note INTEGER check(note >= 0 AND note <= 20),
   texte TEXT,
@@ -94,10 +94,9 @@ CREATE TABLE Commentaires(
   heure TIME,
   censure BOOLEAN DEFAULT false,
   idUtilisateur INTEGER
-    REFERENCES Utilisateurs(idUtilisateur) ON DELETE CASCADE,
+    REFERENCES utilisateurs(idUtilisateur) ON DELETE CASCADE,
   idService INTEGER NOT NULL
-    REFERENCES Services(idService) ON DELETE CASCADE,
+    REFERENCES services(idService) ON DELETE CASCADE,
   idSeance INTEGER NOT NULL
-    REFERENCES Seance(idSeance) ON DELETE CASCADE,
-
+    REFERENCES seances(idSeance) ON DELETE CASCADE
 );
