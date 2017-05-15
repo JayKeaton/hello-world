@@ -55,5 +55,4 @@ elseif ($page == "ajoutServices"){
     include("controllers/ajoutServices.php");
 }
 else{
-    include("templates/".$page.".html");
-}
+    include("templates/".$page.".html");}
