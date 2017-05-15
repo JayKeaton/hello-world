@@ -56,5 +56,4 @@ elseif ($page == "ajoutServices"){
 }
 else{
     include("templates/".$page.".html");
-	
 }
