@@ -61,6 +61,9 @@ elseif ($page == "signout"){
 elseif ($page == "tests"){
     include("controllers/tests.php");
 }
+elseif ($page == "accueil_admin"){
+    include("controllers/accueil_admin.php");
+}
 else{
     include("templates/".$page.".html");
 }
