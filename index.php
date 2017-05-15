@@ -54,5 +54,5 @@ elseif ($page == "servicesMaps"){
 elseif ($page == "ajoutServices"){
     include("controllers/ajoutServices.php");
 }
-else{
-    include("templates/".$page.".html");}
+else
+    include("templates/".$page.".html");
