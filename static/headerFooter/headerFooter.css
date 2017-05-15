@@ -9,17 +9,30 @@ header ul
   justify-content: center;
   align-items: center;
   height: 100%;
+
 }
 header ul li
 {
+  display:flex;
+  flex-direction: row;  
   list-style: none;
-  padding:15px;
+  padding:5px;
   height:100%;
   color: white;
+  width: 200px;
+  justify-content: center;
+  alignt-text:center;
+  justify-content: center;
 }
-a{
-  text-decoration: none;
-  color: white;
+
+header ul li div{
+  display:flex;
+  flex-direction: column; 
+}
+header img{
+  display:flex;
+  alignt-text:center;
+  justify-content: center;
 }
 header ul li:hover{
   background-image: linear-gradient(red 57% , #ff8080);
@@ -31,18 +44,11 @@ header #imageBanniere{
   padding-left: 100px;
   height:100%;
   margin-top: 16px;
-  padding-top: 53px;
+  padding-top: 54px;
   background-color: red;
 }
 
 
-
-
-main
-{
-display: flex;
-background-image:linear-gradient(white 40%, silver);
-}
 #EnTete
 {
 display: flex;
@@ -55,10 +61,26 @@ align-items: center;
   display: flex;
   text-align: center;
 }
+header a {
+color: black;
+font-family:"Arial Black";
+text-decoration:none;
+}
 
+header a:hover{
+color: rgb(180,0,0);
+font-weight: bold;  
+}
+footer a {
+color: black;
+font-family:"Arial Black";
+text-decoration:none;
+}
 
-
-
+footer a:hover{
+color: rgb(180,0,0);
+font-weight: bold;  
+}
 footer
 {
   background-color: #808080;

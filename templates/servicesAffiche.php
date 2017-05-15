@@ -1,8 +1,15 @@
-<!DOCTYPE html> 
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>servicesAffiche</title>
+</head>
+
+<body><!DOCTYPE html> 
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Calcul d'itinéraire</title>
+    <title>Services de la BDD</title>
     <link rel="stylesheet" href="static/servicesMaps/jquery-ui-1.8.12.custom.css" type="text/css" /> 
   </head>
   <style type="text/css">
@@ -14,18 +21,9 @@
     #container #destinationForm input[type=text]{border:solid 1px #C0C0C0;}
   </style>
   <body>
+   <input type="hidden" id="passvar" name="passvar"  value= <?php echo $adresses ?> />
     <div id="container">
-        <h1>Calcul d'itinéraire Google Maps</h1>
-        <div id="destinationForm">
-            <form action="" method="get" name="direction" id="direction">
-                <label>Point de départ :</label>
-                <input type="text" name="origin" id="origin">
-                <label>Point de départ :</label>
-                <input type="text" name="destination" id="destination" value="<?php echo $localisation; ?>">
-          
-                <input type="button" value="Calculer l'itinéraire" onclick="javascript:calculate()">
-            </form>
-        </div>
+        <h1>Affichage des points d'intérets</h1>
         <div id="panel"></div>
         <div id="map">
             <p>Veuillez patienter pendant le chargement de la carte...</p>
@@ -33,9 +31,11 @@
     </div>
     
     <!-- Include Javascript -->
-    <script type="text/javascript" src="static/servicesMaps/jquery.min.js"></script>
-    <script type="text/javascript" src="static/servicesMaps/jquery-ui-1.8.12.custom.min.js"></script>
+    <script type="text/javascript" src="static/servicesAffiche/jquery.min.js"></script>
+    <script type="text/javascript" src="static/servicesAffiche/jquery-ui-1.8.12.custom.min.js"></script>
     <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&language=fr"></script>
-    <script type="text/javascript" src="static/servicesMaps/functions.js"></script>
+    <script type="text/javascript" src="static/servicesAffiche/functions.js"></script>
   </body>
+</html>
+</body>
 </html>
