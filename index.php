@@ -29,7 +29,7 @@ require_once("models/services.php");
 
 
 if (!empty($_GET['page']))
-	$page = $_GET['page'];
+    $page = $_GET['page'];
     
 
 
@@ -56,4 +56,5 @@ elseif ($page == "ajoutServices"){
 }
 else{
     include("templates/".$page.".html");
+	
 }
