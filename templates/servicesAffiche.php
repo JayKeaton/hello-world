@@ -10,7 +10,6 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Services de la BDD</title>
-    <link rel="stylesheet" href="static/servicesMaps/jquery-ui-1.8.12.custom.css" type="text/css" /> 
   </head>
   <style type="text/css">
     #container{position:relative;width:990px;margin:auto;background:#FFFFFF;padding:20px 0px 20px 0px;}
@@ -21,20 +20,30 @@
     #container #destinationForm input[type=text]{border:solid 1px #C0C0C0;}
   </style>
   <body>
-   <input type="hidden" id="passvar" name="passvar"  value= <?php echo $adresses ?> />
-    <div id="container">
+<div id="container">
         <h1>Affichage des points d'intérets</h1>
-        <div id="panel"></div>
-        <div id="map">
-            <p>Veuillez patienter pendant le chargement de la carte...</p>
-        </div>
+<script>
+    var liste = [];
+    <?php
+    foreach($adresses as $e){
+        echo("liste.push('".$e."');");
+		//echo '<script>TrouverAdresse();</script>';
+		
+    }
+    ?>
+	
+</script>
+ 
+  <form>
+  <input type="button"  value="Localiser sur Google Map" onclick="TrouverAdresse();"/>
+			</form>
+<span id="text_latlng"></span>
+<div id="map-canvas" style="float:center;height:420px;width:75%"></div>
     </div>
-    
     <!-- Include Javascript -->
-    <script type="text/javascript" src="static/servicesAffiche/jquery.min.js"></script>
-    <script type="text/javascript" src="static/servicesAffiche/jquery-ui-1.8.12.custom.min.js"></script>
     <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&language=fr"></script>
-    <script type="text/javascript" src="static/servicesAffiche/functions.js"></script>
+    <script type="text/javascript" src="static/servicesAffiche/functions.js"></script> 
+	
   </body>
 </html>
 </body>
