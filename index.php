@@ -28,9 +28,8 @@ include("models/utilisateur.php");
 require_once("models/services.php");
 
 
-if (!empty($_GET['page'])){
+if (!empty($_GET['page']))
 	$page = $_GET['page'];
-}
     
 
 
