@@ -44,7 +44,7 @@ elseif ($page == "connexion"){
     include("controllers/connexion.php");
 }
 elseif ($page == "locate"){
-    include("controllers/locate.html");
+    include("controllers/locate.php");
 }
 elseif ($page == "servicesMaps"){
     include("controllers/servicesMaps.php");
