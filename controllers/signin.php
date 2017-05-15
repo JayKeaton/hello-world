@@ -18,9 +18,12 @@ if (!empty($_POST['identifiant'])){
     }
     else {
         $_SESSION['idUtilisateur'] = $idUtilisateur;
-        header("Location: ".SOUS_DOMAINE);
+        if (empty($_GET['nextPage']))
+            header("Location: ".SOUS_DOMAINE);
+        else
+            header("Location: ".SOUS_DOMAINE."?page=".$_GET['nextPage']);
     }
 }
 else{
-    include("templates/connexion.html");
+    include("templates/signin.html");
 }
