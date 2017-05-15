@@ -8,9 +8,11 @@ var adresses;
 initialize = function(){
 	for(var i=0; var i< var adresses.length; var i=+2){
 		
-		var adresses=document.getElementById("passvar").value;
+		var adresses = document.getElementById("passvar").value;
+		var sousLoc = adresses.split(",");
+		var latLng = new google.maps.LatLng(var sousLoc[0], var sousLoc[1]);
 	}
-  var latLng = new google.maps.LatLng(50.6371834, 3.063017400000035); // Correspond au coordonnées de Lille
+  
   var myOptions = {
     zoom      : 14, // Zoom par défaut
     center    : latLng, // Coordonnées de départ de la carte de type latLng 

@@ -1,7 +1,7 @@
 <?php
 
 
-	include("models/services.php");
+
 	$adresses=recupLocalisation($bdd);
 	
 	for($i=0; $i<count(adresses); $i++){
