@@ -1,7 +1,10 @@
 <?php
 session_start();
 
-
+/*
+if (!empty($_SESSION['idUtilisateur']))
+    echo $_SESSION['idUtilisateur'];
+*/
 
 $sous_domaine = $_SERVER['PHP_SELF'];    // Emplacement de ce fichier sur le serveur
 $liste = explode("/", $sous_domaine);
@@ -9,7 +12,7 @@ $sous_domaine = "";
 for ($k = 0; $k < sizeof($liste)-1; $k++){
     $sous_domaine .= $liste[$k]."/";
 }
-$url = $_SERVER['HTTP_HOST'];
+$url = "http://".$_SERVER['HTTP_HOST'];
 
 define('URL_SITE', $url);
 define('SOUS_DOMAINE', $sous_domaine);
@@ -21,10 +24,9 @@ echo(URL_SITE);
 */
 
 
-
-
-include("models/SQLCo.php");
-include("models/utilisateur.php");
+require_once("models/SQLCo.php");
+require_once("models/utilisateur.php");
+require_once("controllers/functions.php");
 
 
 if (!empty($_GET['page']))
@@ -40,14 +42,27 @@ elseif ($page == "signup"){
 elseif ($page == "activation"){
 	include("controllers/activation.php");
 }
-elseif ($page == "connexion"){
-    include("controllers/connexion.php");
+elseif ($page == "signin"){
+    include("controllers/signin.php");
+}
+elseif($page == "profil"){
+    loginRequired($page);
+    include("controllers/profil.php");
 }
 elseif ($page == "locate"){
-    include("controllers/locate.html");
+    include("controllers/locate.php");
 }
 elseif ($page == "servicesMaps"){
     include("controllers/servicesMaps.php");
+}
+elseif ($page == "signout"){
+    $_SESSION = array();
+}
+elseif ($page == "tests"){
+    include("controllers/tests.php");
+}
+elseif ($page == "accueil_admin"){
+    include("controllers/accueil_admin.php");
 }
 else{
     include("templates/".$page.".html");
