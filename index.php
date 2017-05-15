@@ -26,7 +26,7 @@ echo(URL_SITE);
 
 require_once("models/SQLCo.php");
 require_once("models/utilisateur.php");
-require_once("controllers/functions.php");
+/*require_once("controllers/functions.php");*/
 
 
 if (!empty($_GET['page']))
