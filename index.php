@@ -24,13 +24,16 @@ echo(URL_SITE);
 */
 
 
+
 require_once("models/SQLCo.php");
 require_once("models/utilisateur.php");
+require_once("models/services.php");
 /*require_once("controllers/functions.php");*/
 
 
 if (!empty($_GET['page']))
     $page = $_GET['page'];
+    
 
 
 if (empty($page)){
@@ -54,6 +57,9 @@ elseif ($page == "locate"){
 }
 elseif ($page == "servicesMaps"){
     include("controllers/servicesMaps.php");
+}
+elseif ($page == "ajoutServices"){
+    include("controllers/ajoutServices.php");
 }
 elseif ($page == "signout"){
     $_SESSION = array();
