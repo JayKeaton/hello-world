@@ -2,8 +2,15 @@
 
 
 	include("models/services.php");
-	$adresse="18 rue du bellay, 49770";/*recupAdresse($bdd, $idService);*/
-	include("templates/servicesMaps.php");
+	$adresses=recupLocalisation($bdd);
+	
+	for($i=0; $i<count(adresses); $i++){
+		
+		$adresses[$i]=getCoordonnees($adresses[$i]);
+	}
+	
+	include("templates/servicesAffiche.php");
+
 
 
 

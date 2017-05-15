@@ -28,4 +28,18 @@
 		return $bdd->lastInsertId();
 	}
 
+	function recupLocalisation($bdd){
+		
+		$req = $bdd->prepare("SELECT localisation FROM description");
+	    $req->execute(array('idService' => $idService));
+	    $data = $req->fetch();
+		
+		if ($data == null)
+	        return null;
+	    else{
+	        return array($data['localisation']);
+        }
+		
+	}
+
 ?>

@@ -61,6 +61,9 @@ elseif ($page == "servicesMaps"){
 elseif ($page == "ajoutServices"){
     include("controllers/ajoutServices.php");
 }
+elseif ($page == "servicesAffiche"){
+    include("controllers/servicesAffiche.php");
+}
 elseif ($page == "signout"){
     $_SESSION = array();
 }
