@@ -25,10 +25,13 @@ echo(URL_SITE);
 
 include("models/SQLCo.php");
 include("models/utilisateur.php");
+require_once("models/services.php");
 
 
-if (!empty($_GET['page']))
-    $page = $_GET['page'];
+if (!empty($_GET['page'])){
+	$page = $_GET['page'];
+}
+    
 
 
 if (empty($page)){
@@ -48,6 +51,9 @@ elseif ($page == "locate"){
 }
 elseif ($page == "servicesMaps"){
     include("controllers/servicesMaps.php");
+}
+elseif ($page == "ajoutServices"){
+    include("controllers/ajoutServices.php");
 }
 else{
     include("templates/".$page.".html");
