@@ -1,0 +1,111 @@
+header{
+  display: flex;
+}
+header ul
+{
+  background-color:red;
+  flex:1;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+header ul li
+{
+  list-style: none;
+  padding:15px;
+  height:100%;
+  color: white;
+}
+a{
+  text-decoration: none;
+  color: white;
+}
+header ul li:hover{
+  background-image: linear-gradient(red 57% , #ff8080);
+}
+header #imageBanniere{
+  border:2px solid red ;
+}
+#rouge{
+  padding-left: 100px;
+  height:100%;
+  margin-top: 16px;
+  padding-top: 53px;
+  background-color: red;
+}
+
+
+
+
+main
+{
+background-image:linear-gradient(white 40%, silver);
+}
+#EnTete
+{
+display: flex;
+align-items: center;
+}
+#h
+{
+  width: 100%;
+  font-size: 20px;
+  display: flex;
+  text-align: center;
+}
+
+
+
+
+footer
+{
+background-color: #808080;
+}
+footer ul{
+  margin-top: 0px;
+  display: flex;
+}
+footer ul li{
+  list-style: none;
+  margin-right: 20px;
+}
+#copyright{
+  align-self: flex-end;
+  color:white;
+}
+
+
+
+
+
+#t1{
+  text-align: center;
+}
+#Service{
+  border:2px solid red ;
+  display: flex;
+}
+#Commentaires{
+  border:2px solid red ;
+}
+#Commentaire{
+  border:2px solid red ;
+  display: flex;
+  align-items: center;
+}
+#Note{
+  align-items: center;
+}
+table{
+  border-collapse: collapse;
+}
+td {
+  border: 1px solid black;
+  padding: 7px;
+  text-align: center;
+  vertical-align: middle;
+}
+#Jauge{
+  background: linear-gradient(to right, yellow 50%, white 50%);
+}
