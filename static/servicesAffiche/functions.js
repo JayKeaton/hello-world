@@ -1,6 +1,20 @@
 var geocoder;
 var map;
 // initialisation de la carte Google Map de départ
+
+function afficheServices(){
+	for (var e in listeb){
+    	var ligne = listeb[e];
+	
+		
+		document.getElementById('servicesA').innerHTML+='<p>Localisation : '+ligne.localisation+'</p>';
+		document.getElementById('servicesA').innerHTML+='<p>Categorie : '+ligne.categorie+'</p>';
+		document.getElementById('servicesA').innerHTML+='<p>Phone : '+ligne.telephone+'</p>';
+	}
+}
+
+
+
 function initialiserCarte() {
   geocoder = new google.maps.Geocoder();
   // Ici j'ai mis la latitude et longitude du vieux Port de Marseille pour centrer la carte de départ
@@ -12,6 +26,7 @@ function initialiserCarte() {
   }
   // map-canvas est le conteneur HTML de la carte Google Map
   map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+	
 }
  
 function TrouverAdresse() {
@@ -19,10 +34,6 @@ function TrouverAdresse() {
 
 	for (var e in liste){
     	var adresse = liste[e];
-		console.log(adresse);
-
-	
-	
 	
 	  geocoder.geocode( { 'address': adresse}, function(results, status) {
 		if (status == google.maps.GeocoderStatus.OK) {
@@ -31,20 +42,19 @@ function TrouverAdresse() {
 		  var strposition = results[0].geometry.location+"";
 		  strposition=strposition.replace('(', '');
 		  strposition=strposition.replace(')', '');
-		  // Affichage des coordonnées dans le <span>
-		  document.getElementById('text_latlng').innerHTML='Coordonnées : '+strposition;
 		  // Création du marqueur du lieu (épingle)
 		  var marker = new google.maps.Marker({
 			  map: map,
-			  position: results[0].geometry.location
-			  //title: 'Home'
-			  //marker.setMap(map);
+			  position: results[0].geometry.location,
+			  title: "Test"
+			  
 		  });
 		} else {
 		  	alert('Adresse introuvable: ' + status);
 		}
 	  });
 	}
+	
 }
 // Lancement de la construction de la carte google map
 google.maps.event.addDomListener(window, 'load', initialiserCarte);
