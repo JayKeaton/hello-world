@@ -41,9 +41,20 @@
 <span id="text_latlng"></span>
 <div id="map-canvas" style="float:center;height:420px;width:75%"></div>
     </div>
-	  <h3>Liste des services: </h3>
-	<div id="servicesA">  
-	  </div>
+	  
+	  <table>
+	<caption>Liste des services:</caption>
+	<thead><!-- en-tête -->
+		<tr><!-- première ligne -->
+			<th> Localisation </th>
+			<th>| Categorie </th>
+			<th>| Telephone </th>
+		</tr>
+	</thead>
+	<tbody id="servicesA">
+	
+	</tbody>
+</table>
 	 <input type="submit" value="afficher liste des services" onclick="afficheServices();"/>
     <!-- Include Javascript -->
     <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&language=fr"></script>
