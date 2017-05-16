@@ -26,7 +26,7 @@
     var liste = [];
     <?php
     foreach($adresses as $e){
-        echo("liste.push('".$e."');");
+        echo("liste.push('".$e["localisation"]."');");
 		//echo '<script>TrouverAdresse();</script>';
 		
     }

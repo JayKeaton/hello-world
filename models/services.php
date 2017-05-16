@@ -26,12 +26,12 @@
 		
 		$req = $bdd->prepare("SELECT localisation FROM services");
 	    $req->execute();
-	    $data = $req->fetch();
+	    $data = $req->fetchAll();
 		
-		if ($data == null)
-	        return null;
+		if ($data == array())
+	        return false;
 	    else{
-	        return array($data['localisation']);
+	        return $data;
         }
 		
 	}
