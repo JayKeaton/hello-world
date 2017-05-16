@@ -66,15 +66,23 @@
                 <article id="Commentaire">
                   <aside id="Avatar">
                     <img src="static/pageServiceAdmin/msf2.jpeg" width="50" height="50"> <?php /* echo <img src="???"+$commentaires[?] width="50" height="50"> */ ?>
-                  </br>Nom de l'utilisateur <?php /* echo $commentaires[?] */ ?>
+                  </br> <?php echo $commentaires[$index][6]  ?>
                   </aside>
                   <div id="b2">
                     <article id="TexteComment">
-                      <p>Commentaire:</p> <?php /* echo $commentaires[?] */ ?>
+                      <p>Commentaire:</p> <?php echo $commentaires[$index][2] ?>
                     </article>
                     <div id="Note">
                       <p>Note:</p>
-                        <img id="Jauge" src="static/pageServiceAdmin/jauge5Stars.png" width="250" height="50"> <!-- style=" background: linear-gradient(to right, yellow, white 50%)" -->
+                        <?php $note=$commentaires[$index][1];
+                          $index2=0;
+                          while ($index2<$note){ ?>
+                            <img src="static/pageServiceAdmin/etoileRouge.png" width="50" height="50">
+                            <?php $index2++;
+                          }
+                        if ($note!=(int)$note){ ?>
+                          <img src="static/pageServiceAdmin/demiEtoileRouge.png" width="50" height="50">
+                        <?php } ?>
                     </div>
                   </div>
                 </article>
