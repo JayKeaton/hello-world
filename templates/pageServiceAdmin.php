@@ -52,10 +52,10 @@
               <tbody>
                 <?php for ($index=0;$index<$longueur;$index ++){ ?>
                   <tr>
-                    <td> <?php echo $seances[$index][0] ?> </td>
                     <td> <?php echo $seances[$index][1] ?> </td>
                     <td> <?php echo $seances[$index][2] ?> </td>
                     <td> <?php echo $seances[$index][3] ?> </td>
+                    <td> <?php echo $seances[$index][4] ?> </td>
                   </tr>
                 <?php } ?>
               </tbody>
@@ -74,7 +74,7 @@
                     </article>
                     <div id="Note">
                       <p>Note:</p>
-                        <img id="Jauge" style=" background: linear-gradient(to right, yellow <?php echo $commentaires[?] ?>, white 50%)" src="static/pageServiceAdmin/jauge5Stars.png" width="250" height="50">
+                        <img id="Jauge" src="static/pageServiceAdmin/jauge5Stars.png" width="250" height="50"> <!-- style=" background: linear-gradient(to right, yellow, white 50%)" -->
                     </div>
                   </div>
                 </article>

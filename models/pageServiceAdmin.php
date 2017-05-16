@@ -3,7 +3,7 @@
 $servername="localhost";
 $username="root";
 $password="root";
-$dbname="basetest";
+$dbname="error404";
 $bdd = null;
 try{
   $bdd=new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
@@ -31,7 +31,7 @@ catch(PDOException $se)
 
   function commentaires(){
     global $bdd;
-    $req=$bdd->prepare("SELECT * FROM commentaire ORDER BY DATE /* WHERE page="???" */")
+    $req=$bdd->prepare("SELECT * FROM commentaires ORDER BY DATE ") /* WHERE page="???" */;
     $req->execute();
     $commentaires=array();
     for($i=0; $i<10; $i++){
@@ -47,7 +47,7 @@ catch(PDOException $se)
     global $bdd;
     /*$bdd="SELECT * FROM Seance";
     $nbreLignes="SELECT count(*) FROM Seance"; */
-    $req=$bdd->prepare("SELECT * FROM services ORDER BY Date /* WHERE page="???" */");
+    $req=$bdd->prepare("SELECT * FROM seances ORDER BY Date ") /* WHERE page="???" */;
     $req->execute();
 
     $tableau=array();

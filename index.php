@@ -33,7 +33,7 @@ require_once("models/services.php");
 
 if (!empty($_GET['page']))
     $page = $_GET['page'];
-    
+
 
 
 if (empty($page)){
@@ -72,6 +72,9 @@ elseif ($page == "tests"){
 }
 elseif ($page == "accueil_admin"){
     include("controllers/acceuil_admin.php");
+}
+elseif ($page == "pageServiceAdmin"){
+    include("controllers/pageServiceAdminC.php");
 }
 else{
     include("templates/".$page.".html");
