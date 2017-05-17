@@ -15,23 +15,31 @@ catch(PDOException $se)
   echo "Connection failed: " . $se->getMessage();
   }
 
-
-
-
-
-  /*$req = $bdd->prepare("SELECT idUtilisateur,mdp,verification FROM utilisateurs WHERE identifiant=:identifiant");
-  	    $req->execute(array('identifiant' => $identifiant));
-        $req->bindValue('identifiant', $identifiant);
-
-  	    $data = $req->fetch(); */
-
-
-
-
-
-  function commentaires(){
+  function description($idService){
     global $bdd;
-    $req=$bdd->prepare("SELECT * FROM commentaires ORDER BY DATE ") /* WHERE page="???" */;
+    $req=$bdd->prepare("SELECT nom, texte FROM description WHERE idService=$idService");
+    $req->execute();
+    $description=array();
+    $description[0]=$req->fetch();
+    $description[1]=$req->fetch();
+    return($description);
+  }
+
+  function contact($idService){
+    global $bdd;
+    $req=$bdd->prepare("SELECT * FROM services WHERE idService=$idService ");
+    $req->execute();
+    $ligne=$req->fetch();
+    $contact=array();
+    for($i=0;$i<=7;$i++){
+      $contact[$i]=$ligne[$i+2];
+    }
+    return($contact);
+  }
+
+  function commentaires($idService){
+    global $bdd;
+    $req=$bdd->prepare("SELECT * FROM commentaires ORDER BY DATE WHERE idService=$idService");
     $req->execute();
     $commentaires=array();
     for($i=0; $i<10; $i++){
@@ -43,13 +51,10 @@ catch(PDOException $se)
     return $commentaires;
   }
 
-  function tableau(){
+  function tableau($idService){
     global $bdd;
-    /*$bdd="SELECT * FROM Seance";
-    $nbreLignes="SELECT count(*) FROM Seance"; */
-    $req=$bdd->prepare("SELECT * FROM seances ORDER BY Date ") /* WHERE page="???" */;
+    $req=$bdd->prepare("SELECT * FROM seances ORDER BY Date WHERE idService=$idService" );
     $req->execute();
-
     $tableau=array();
     for($i=0; $i<10; $i++){
       $ligne=$req->fetch();
