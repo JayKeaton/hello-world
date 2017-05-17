@@ -33,11 +33,11 @@
           <article>
             <h1> Description du Service:</h1>
             <div id="Description">
-              <?php /* echo $description */ ?>
+              <div id="alinea"> <?php /* echo $description */ ?> </div>
             </div>
             <h1>Nous Joindre:</h1>
             <div id="Contact">
-              <?php /* echo $contact */ ?>
+              <div id="alinea"> <?php /* echo $contact */ ?> </div>
             </div>
             <h1>Historique des services proposés:</h1>
             <table>
@@ -66,11 +66,11 @@
                 <article id="Commentaire">
                   <aside id="Avatar">
                     <img src="static/pageServiceAdmin/msf2.jpeg" width="50" height="50"> <?php /* echo <img src="???"+$commentaires[?] width="50" height="50"> */ ?>
-                  </br> <?php echo $commentaires[$index][6]  ?>
+                  </br> <div id="center"> <?php echo $commentaires[$index][6]  ?> </div> <!-- Nom de l'utilisateur !-->
                   </aside>
                   <div id="b2">
                     <article id="TexteComment">
-                      <p>Commentaire:</p> <?php echo $commentaires[$index][2] ?>
+                      <p>Commentaire:</p> <div id="alinea"> <?php echo $commentaires[$index][2] ?> </div>
                     </article>
                     <div id="Note">
                       <p>Note:</p>
@@ -93,6 +93,7 @@
             </article>
           </article>
         </div>
+        <div id="vide">  </div>
       </section>
 
     </main>
