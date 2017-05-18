@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 session_start();
 
 /*
@@ -37,7 +37,10 @@ if (!empty($_GET['page']))
 
 
 if (empty($page)){
-    include("templates/accueil.html");
+    include("controllers/accueil.php");
+}
+elseif ($page == "Accueil"){
+    include("controllers/accueil.php");
 }
 elseif ($page == "signup"){
     include("controllers/signup.php");
@@ -75,4 +78,4 @@ elseif ($page == "accueil_admin"){
 }
 else{
     include("templates/".$page.".html");
-}
+} 
