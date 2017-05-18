@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+	    <meta charset="utf-8" />
+	    <title>Médecin sans frontière</title>
+
+
+	    <link rel="stylesheet" href="MSF/static/Services/pageService.css" />
+    </head>
+    <table>
+    	<tr>
+    		<th>mon compte</th>
+    		<th>recherche de service</th>
+    		<th>connexion</th>
+    	</tr>
+    </table>
+    <nav>
+
+    	<ul>
+    		<li>page d'acceuil</li>
+    		<li>mon compte</li>
+    		<li>recherche de service</li>
+    		<li>se déconnecter</li>
+    		<li>Retour au résultat de la recherche</li>
+    	</ul>
+
+
+    </nav>
+    <!--4 gros blocs a créer +1 barre en haut-->
+    <!--faire de barres de recherches aussi-->
+
+    <body>
+    <?php
+
+phpinfo(); ?>
+
+    	<p>veuilles entrer les informations relatives à votre service <? php echo date('d/m/Y h:i:s'); ?> </p>
+    	<? php echo date('d/m/Y h:i:s'); ?>
+   		<form method="post" action="C:\Users\Baudouin\Documents\MSF\controllers\traitement.php">
+   			<p>Le nom de votre service</p>
+    		<p>les catégories de services que vous proposez</p>
+    		<select>
+    			<option value="..." selected>...</option>
+    			<option value="nourriture">Nourriture</option>
+    			<option value="logement">Logement</option>
+    			<option value="Formalités administrative">Formalités administrative</option>
+    			<
+    			<option value="accompagnement médical">Accompagnment médical</option>
+
+    		</select>
+    		<p>les moyens de vous contacter</p>
+    		<p>Conditions pour accéder aux services</p>
+    		<p>la localistaion de votre service</p>
+
+   			<p>
+   			<label>Charactéristiques de votre service:</label><input type="text" name="charactéristiqueservice" id="pseudo" size="100" placeholder="Entrer une description de votre service"/>
+   			</p>
+   			<p>
+   			<textarea name="ameliorer" id="ameliorer" placeholder="Entrer une description de votre service"></textarea>
+   			</p>
+   			<input type ="submit" value="Envoyer"/>
+
+
+    	</form>
+    
+
+    </body>
+
+    <footer>
+
+    </footer>
+
+
+</html>

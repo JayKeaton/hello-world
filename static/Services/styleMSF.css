@@ -1,0 +1,60 @@
+
+body{
+	color:black;
+	
+    background: url("images/hitler.jpg") no-repeat top right;
+
+	
+
+
+}
+
+
+#conteneur
+{
+	display: flex;
+	flex-direction: column;
+    justify-content: space-around;
+
+}
+.element:nth-child(3)
+{
+	background-color: red;
+    
+}
+.element:nth-child(1)
+{
+	background-color: blue;
+}
+
+.element:nth-child(2)
+{
+	background-color: white;    
+}
+h1
+{
+	text align center;
+}
+p
+{
+	color:purple;
+}
+p:hover
+{
+	color:black;
+}
+img
+{
+	width: 200px;height: auto;
+	border:2px black inset;
+	border-radius: 1px;
+}
+h2
+{
+	text-decoration: blink;color: red;font-size:3.0em; 
+}
+li
+{
+	font-family: Comic Sans MS;font-style: italic;
+	text-decoration: blink;
+}

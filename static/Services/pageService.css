@@ -1,0 +1,16 @@
+td,th
+{
+
+border: 1px solid black;
+}
+table{
+	align-items: right;
+	border-collapse: collapse;
+}
+textarea{
+	width:200px;
+	height:200px;
+}
+form{
+	border: 1px solid black;
+}
