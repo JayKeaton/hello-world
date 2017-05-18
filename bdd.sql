@@ -90,7 +90,7 @@ CREATE TABLE favoris(
 
 CREATE TABLE commentaires(
   idCommentaire INTEGER PRIMARY KEY AUTO_INCREMENT,
-  note INTEGER check(note >= 0 AND note <= 20),
+  note FLOAT check(note >= 0 AND note <= 5),
   texte TEXT,
   date DATE,
   heure TIME,
