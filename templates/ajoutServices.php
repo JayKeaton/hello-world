@@ -16,12 +16,11 @@
 
         <h4>Contact</h4> 
 
-        
+       
 
         <label for="email">Email ou courriel: <span class="required">*</span>
 
         </label>
-       
 
         <input type="email" id="email" name="email" value="<?php echo((empty($_POST['email'])) ? "" : $_POST['email']); ?>" placeholder="example@email.fr" required="required" />
         
@@ -36,7 +35,6 @@
         </label>
 
         <input type="" id="website" name="website" value="<?php echo((empty($_POST['website'])) ? "" : $_POST['website']); ?>" required="required" />
-
 
     </div>
 
@@ -60,7 +58,6 @@
 
         <h4>Catégorie</h4>
 
-
         <label for="message">Catégorie :
 
         </label>
@@ -78,7 +75,7 @@
             <option>Arabe</option>
             <option>Klingon</option>
         </select>
-        </Label></br>
+      </Label></br>
 
     <label>Nom
 

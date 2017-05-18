@@ -12,12 +12,11 @@
 			$langue=($_POST["langue"]);
 			$ids = ajouterService($bdd, $email, $adresse, $phone, $website, $categorie);
 			$id2 = ajouterDescriptionService($bdd, $nom, $texte, $langue, $ids );
-
+		
 			include("templates/validation.html");
 		}
 		
 	else {
-
 		include("templates/ajoutServices.php");
 	}
 
