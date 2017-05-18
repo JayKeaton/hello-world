@@ -1,27 +1,37 @@
 <!DOCTYPE html>
 	<html>
 		<head>
-			<link rel="stylesheet" href="static/accueil/fichier.css" />
+			<link rel="stylesheet" href="static/accueil/accueil.css" />
+			<link rel="stylesheet" href="static/headerFooter/headerFooter.css" />
 			<meta charset="utf-8"/>
-			<title>Notre appli dynamique</title>
+			<title>Notre appli php</title>
 			<link rel="icon" type="image/png" href="static/accueil/msf_logo _fichiers/hamster_1.jpeg" />
 		</head>
 		<body>
-			<nav id="menu">
-				
-				<ul>
-					<li><a href="http://www.partage.org/">
-						<figure><img src="static/accueil/msf_logo _fichiers/Partage.png" width =32/><figcaption>Partage</figcaption></figure>
-					</a></li>
-					<li><a href="https://www.google.fr/advanced_search">
-						<figure><img src="static/accueil/msf_logo _fichiers/loupe.png" width =32/><figcaption>Recherche</figcaption></figure>
-					</a></li>
-					<li><figure><a href="https://www.profilplus.fr"><img src="static/accueil/msf_logo _fichiers/profil.png" width=32><figcaption>Mon Profil</figcaption></a></figure></li>
-					<li><figure><a href="https://fr.wikipedia.org/wiki/Param%C3%A8tre"><img src="static/accueil/msf_logo _fichiers/paramètres.png"width=32><figcaption>Paramètres</figcaption></a></figure></li>			
-					<li><figure><a href="http://www.msf.fr/"><img src="static/accueil/msf_logo _fichiers/logo_msf.png" width=42  /><figcaption>Home</figcaption></a></figure></li>
-					<!-- width=42 car pas aligné sinon??-->
-				</ul>
-			</nav>
+			
+			<header>
+			    <div id="rouge">  </div> <!-- Sert à créer la bande rouge à gauche de l'image -->
+			    <div id="imageBanniere"> <a href="http://hugobriet.000webhostapp.com/?page=accueil">
+			    	<img src="static/accueil/msf_logo _fichiers/msf2.jpeg" width="120" height="80"/>
+			    	</a> </div>
+			    <ul>
+			    	<a href="http://www.msf.fr/"><li><div><img src="static/accueil/msf_logo _fichiers/home.png" width=21  /><br/>Accueil</div></li></a>
+			    	<a href="https://www.google.fr/advanced_search"><li><div>
+						<img src="static/accueil/msf_logo _fichiers/loupe.png" width =21/><br/>Recherche
+					</div></li></a>
+			    	<a href="http://www.partage.org/"><li><div>
+						<img src="static/accueil/msf_logo _fichiers/share.png" width=20/>
+						<br/>Partage</div></li>
+					</a>
+					<a href="https://www.profilplus.fr"><li><div><img src="static/accueil/msf_logo _fichiers/Profil.png" width=21/>
+						<br/>Mon Profil</div></li></a>
+					<a href="https://fr.wikipedia.org/wiki/Param%C3%A8tre">
+						<li><div><img src="static/accueil/msf_logo _fichiers/engrenages_1.png"width=20><br/>Paramètres</div></li></a>			
+					
+
+			    </ul>
+   			</header>
+
 			<h1 id="myTitle">Pour <strong>VOUS</strong></h1>
 			<h3 id="LittleTitle">Par le groupe Error 404</h3>
 			<p id="description">MSF a été créé pour contribuer à la protection de la vie et à l'allégement des souffrances en respect de la dignité humaine. MSF apporte des soins à des personnes en situation précaire et travaille à leur permettre de reprendre le contrôle sur leur futur.<br/></p>
@@ -64,24 +74,31 @@
 			    			<input type="submit" value="Go!"/>
 			    		</div>
 			    	</form>
-					<div id="contenu">
-						<p><a href="https://soutenir.msf.fr/b/mon-don?esv_source=Google&esv_medium=sea_brand&esv_campaign=W%2A%2AW00001&esv_term=msf&gclid=COKwx8uJvdMCFccp0wodkDMP4Q">
+			    </div>
+				<div id="contenu">
+					<p><a href="https://soutenir.msf.fr/b/mon-don?esv_source=Google&esv_medium=sea_brand&esv_campaign=W%2A%2AW00001&esv_term=msf&gclid=COKwx8uJvdMCFccp0wodkDMP4Q">
+							<div id="article 2" class="article">
+								Nom random 1 - 643m<br/>
+								<img src="static/accueil/msf_logo _fichiers/maison.jpeg" width=240 class="floatl" title="photo non contractuelle"/>
+									Peut-être votre futur logement?<br/>.........................<br/>
+					...<br/>...............................
+					..............................................<br/><br/><br/>
+						DESCRIPTION
+							</div>
+						</a>
+					</p>
+					<p><a href="http://www.lecrystalparis.com/menu.html#mix">
+							<div id="article 1" class="article">
 								<figure>
-									<img src="static/accueil/maison.jpeg" width=240 title="photo non contractuelle"/>
-										<figcaption>Peut-être votre futur logement?<br/>.........................<br/>
-						...<br/>...............................
-						..............................................<br/><br/><br/></figcaption>
+									<img src="static/accueil/msf_logo _fichiers/Worlds-Largest-Pizza.jpg" width=240 class=floatl title="photo non contractuelle" />
+									<figcaption>Repas à partager en famille<br/>.........................<br/>
+										...<br/>...............................
+										...........................................<br/><br/><br/></figcaption>
 								</figure>
-							</a>
-						</p>
-						<p><a href="http://www.lecrystalparis.com/menu.html#mix">
-								<figure>
-									<img src="static/accueil/msf_logo _fichiers/Worlds-Largest-Pizza.jpg" width=240 title="photo non contractuelle" />
-									<figcaption>Repas à partager en famille</figcaption>
-								</figure>
-							</a>
-						</p>
-					</div>
+							</div>
+						</a>
+					</p>
+					<br/><br/><br/><br/><br/>
 				</div>
 				<div id="fil_actu">
 					<h3>Actu 1</h3><p>Blablabla<br/>BlablablaBlablablaBlablabla<br/>BlablablaBlablabla<br/></p>
@@ -94,24 +111,29 @@
 			<nav id="partage">
 				
 				<ul>
-					<li><a href="https://www.facebook.com/"> <img src="static/accueil/msf_logo _fichiers/fb_32x32.png" title="Poke-nous sur Facebook!"/></a>
+					<li><a href="https://www.facebook.com/"><img src="static/accueil/msf_logo _fichiers/fb_32x32.png" title="Poke-nous sur Facebook!"/></a>
 					</li>
-					<li><a href="https://twitter.com/?lang=fr"> <img src="static/accueil/msf_logo _fichiers/twitter_32x32.png" title="RT si t'es content!"/></a></li>
+					<li><a href="https://twitter.com/?lang=fr"> <img src="static/accueil/msf_logo _fichiers/twitter_32x32.png" title="RT si t'es src!"/></a></li>
 					<li><a href="https://plus.google.com/?hl=fr"><img src="static/accueil/msf_logo _fichiers/gplus_32x32.png" title="Nous aussi, on croyait que ça avait disparu"> </a></li>
 					
 					<li><a href="https://www.instagram.com/?hl=fr"> <img src="static/accueil/msf_logo _fichiers/instagram.png" title="Envoie-nous ce que tu manges, ça nous intéresse!"/></a></li>
 					<li><a href="https://www.snapchat.com/l/fr-fr/"> <img src="static/accueil/msf_logo _fichiers/snapchat-40x40.png" title="404SkillNotFound sur Snap! ;)"/></a></li>
-					<li><a href="https://www.tumblr.com/"> <img src="static/accueil/msf_logo _fichiers/tumblr.png" title="Si t'es un vrai, retrouve-nous sur Tumblr!"/></a></li>
+					<li><a href="https://www.tumblr.com/"> <img src="static/accueil/msf_logo _fichiers/tumblr.jpeg" title="Si t'es un vrai, retrouve-nous sur Tumblr!"/></a></li>
 					<li><a href="https://fr.pinterest.com/"> <img src="static/accueil/msf_logo _fichiers/pinterest.png" title="Si tu n'as rien de mieux à faire, tu peux nous piner sur Pinterest..."/></a></li>
 					<li><a href="https://www.reddit.com/"> <img src="static/accueil/msf_logo _fichiers/reddit-up.png" title="Une suggestion concernant le développement de l'application? C'est par ici!"/></a></li>
 					<li><a href="https://www.youtube.com/watch?v=_wzGjMw6N-E"> <img src="static/accueil/msf_logo _fichiers/You_Tube_moche.png" title="Viens voir la sextape de ta maman!"/></a></li>
 					<!--<li><a href=""> <img src="msf_logo _fichiers/" title="un truc utile"/></a></li>" </form-->
-
-					<li><a href="http://www.partage.org/"><figure><img src="static/accueil/msf_logo _fichiers/Partage.png" width =32/></figure></a></li>
 				</ul>
 			</nav>
-			<div id="Copyrights"> <p>By<a href="https://www.linkedin.com/in/vincent-idrissov-a42054129/">Vincent</a>with Error_404_Isep_Not_Found <br/><br/></p>
-			</div>
-
+			<footer>
+        		<ul>
+	            	<li> <a href="http://hugobriet.000webhostapp.com/?page=accueil"> Plan du Site </a> </li>
+	           		<li> <a href="http://hugobriet.000webhostapp.com/?page=accueil"> Contact </a> </li>
+	            	<li> <a href="http://hugobriet.000webhostapp.com/?page=accueil"> En savoir plus </a> </li>
+        		</ul>
+        		<ul id="copyright">
+            		<li> ©Error404 </li>
+        		</ul>
+    		</footer>
 		</body>
 	</html>
