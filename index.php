@@ -31,8 +31,10 @@ require_once("models/services.php");
 /*require_once("controllers/functions.php");*/
 
 
-if (!empty($_GET['page']))
-    $page = $_GET['page'];
+if (!empty($_GET['page'])){
+	$page = $_GET['page'];
+}
+    
 
 
 
@@ -60,6 +62,9 @@ elseif ($page == "servicesMaps"){
 }
 elseif ($page == "ajoutServices"){
     include("controllers/ajoutServices.php");
+}
+elseif ($page == "modifierServices"){
+    include("controllers/modifierServices.php");
 }
 elseif ($page == "servicesAffiche"){
     include("controllers/servicesAffiche.php");
