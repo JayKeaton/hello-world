@@ -38,7 +38,7 @@
             <h1>Nous Joindre:</h1>
             <div id="Contact">
               <div id="alinea">
-                Adresse: <?php echo $contact["numéro"].' '.$contact["rue"] ?> </br> <?php echo $contact["codePostal"].' '.$contact["ville"] ?> </br> <!-- n°rue Rue CodePostal Ville -->
+                Adresse: <?php echo $contact["numero"].' '.$contact["rue"] ?> </br> <?php echo $contact["codePostal"].' '.$contact["ville"] ?> </br> <!-- n°rue Rue CodePostal Ville -->
                 Numéro de téléphone: <?php echo $contact["telephone"] ?> </br>
                 <a href="<?php echo $contact["lien_site"]; ?>"> Notre Site </a>
                 Mail: <?php echo $contact["mail"]; ?>
