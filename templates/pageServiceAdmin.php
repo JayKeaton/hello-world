@@ -29,19 +29,19 @@
       <section id="Service">
         <div id="IconeCategorie"> <img src="static/pageServiceAdmin/msf2.jpeg" width="50" height="50"> </div> <!-- Icone du service -->
         <div id="b1">
-          <div id="t1"> <?php echo $description[0] ?> </div> <!-- Nom du service !-->
+          <div id="t1"> <?php echo $description["nom"] ?> </div> <!-- Nom du service !-->
           <article>
             <h1> Description du Service:</h1>
             <div id="Description">
-              <div id="alinea"> <?php $description[1] ?> </div>
+              <div id="alinea"> <?php $description["texte"] ?> </div>
             </div>
             <h1>Nous Joindre:</h1>
             <div id="Contact">
               <div id="alinea">
-                Adresse: <?php echo $contact[3].' '.$contact[2] ?> </br> <?php echo $contact[0].' '.$contact[1] ?> </br> <!-- n°rue Rue CodePostal Ville -->
-                Numéro de téléphone: <?php echo $contact[6] ?> </br>
-                <a href="<?php echo $contact[8] ?>"> Notre Site </a>
-                Mail: <?php echo $contact[7] ?>
+                Adresse: <?php echo $contact["numéro"].' '.$contact["rue"] ?> </br> <?php echo $contact["codePostal"].' '.$contact["ville"] ?> </br> <!-- n°rue Rue CodePostal Ville -->
+                Numéro de téléphone: <?php echo $contact["telephone"] ?> </br>
+                <a href="<?php echo $contact["lien_site"]; ?>"> Notre Site </a>
+                Mail: <?php echo $contact["mail"]; ?>
               </div>
             </div>
             <h1>Historique des services proposés:</h1>

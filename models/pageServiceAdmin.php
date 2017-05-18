@@ -17,29 +17,27 @@ catch(PDOException $se)
 
   function description($idService){
     global $bdd;
-    $req=$bdd->prepare("SELECT nom, texte FROM description WHERE idService=$idService");
+    $req=$bdd->prepare("SELECT nom, texte FROM descriptions WHERE idService=:idService");
+    $req->bindParam("idService",$idService);
     $req->execute();
     $description=array();
-    $description[0]=$req->fetch();
-    $description[1]=$req->fetch();
+    $description=$req->fetch();
     return($description);
   }
 
   function contact($idService){
     global $bdd;
-    $req=$bdd->prepare("SELECT * FROM services WHERE idService=$idService ");
+    $req=$bdd->prepare("SELECT * FROM services WHERE idService=:idService ");
+    $req->bindParam("idService",$idService);
     $req->execute();
-    $ligne=$req->fetch();
-    $contact=array();
-    for($i=0;$i<=7;$i++){
-      $contact[$i]=$ligne[$i+2];
-    }
+    $contact=$req->fetch();
     return($contact);
   }
 
   function commentaires($idService){
     global $bdd;
-    $req=$bdd->prepare("SELECT * FROM commentaires ORDER BY DATE WHERE idService=$idService");
+    $req=$bdd->prepare("SELECT * FROM commentaires WHERE idService=:idService ORDER BY DATE");
+    $req->bindParam("idService",$idService);
     $req->execute();
     $commentaires=array();
     for($i=0; $i<10; $i++){
@@ -53,7 +51,8 @@ catch(PDOException $se)
 
   function tableau($idService){
     global $bdd;
-    $req=$bdd->prepare("SELECT * FROM seances ORDER BY Date WHERE idService=$idService" );
+    $req=$bdd->prepare("SELECT * FROM seances WHERE idService=:idService ORDER BY DATE");
+    $req->bindParam("idService",$idService);
     $req->execute();
     $tableau=array();
     for($i=0; $i<10; $i++){
