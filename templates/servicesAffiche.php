@@ -19,7 +19,8 @@
     var liste = [];
     <?php
     foreach($adresses as $e){
-        echo("liste.push('".$e["localisation"]."');");	
+		echo("var l={'localisation': '".$e["localisation"]."','categorie': '".$e['categorie']."'};");
+        echo("liste.push(l);");	
     	}
     ?>
 	console.log("test");
@@ -46,7 +47,8 @@
 	<caption>Liste des services:</caption>
 	<thead><!-- en-tête -->
 		<tr><!-- première ligne -->
-			<th> Localisation </th>
+			<th> Label </th>
+			<th>| Localisation </th>
 			<th>| Categorie </th>
 			<th>| Telephone </th>
 		</tr>

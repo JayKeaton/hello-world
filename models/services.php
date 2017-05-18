@@ -24,7 +24,7 @@
 
 	function recupLocalisation($bdd){
 		
-		$req = $bdd->prepare("SELECT localisation FROM services");
+		$req = $bdd->prepare("SELECT localisation, categorie FROM services");
 	    $req->execute();
 	    $data = $req->fetchAll();
 		
@@ -35,6 +35,8 @@
         }
 		
 	}
+
+
 
 	
 	function recupAll($bdd){
