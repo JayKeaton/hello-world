@@ -5,7 +5,7 @@
 {
 	$hostname="localhost";
 	$username="root";
-	$password="";
+	$password="root";
 	$bddname="error404";
 	// On se connecte à MySQL
 	$bdd = new PDO("mysql:host=".$hostname.";dbname=".$bddname.";charset=utf8",$username,$password);
