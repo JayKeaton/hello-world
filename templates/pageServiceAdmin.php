@@ -49,7 +49,7 @@
               <thead>
                 <tr>
                   <td>Date</td>
-                  <td>Type de Service</td>
+                  <!-- <td>Type de Service</td> -->
                   <td>Nombre d inscrits</td>
                   <td>Satisfaction</td>
                 </tr>
@@ -57,10 +57,10 @@
               <tbody>
                 <?php for ($index=0;$index<$longueur;$index ++){ ?>
                   <tr>
-                    <td> <?php echo $seances[$index][1] ?> </td>
-                    <td> <?php echo $seances[$index][2] ?> </td>
-                    <td> <?php echo $seances[$index][3] ?> </td>
-                    <td> <?php echo $seances[$index][4] ?> </td>
+                    <td> <?php echo $seances[$index]["date"] ?> </td>
+                    <!-- <td> <?php /* echo $seances[$index][2] */ ?> </td> -->
+                    <td> <?php echo $seances[$index]["Nombre d inscrits"] ?> </td>
+                    <td> <?php echo $seances[$index]["Satisfaction"] ?> </td>
                   </tr>
                 <?php } ?>
               </tbody>
@@ -80,13 +80,13 @@
                     <div id="Note">
                       <p>Note:</p>
                         <?php $note=$commentaires[$index][1];
-                          $index2=0;
+                          $index2=1;
                           while ($index2<$note){ ?>
                             <img src="static/pageServiceAdmin/etoileRouge.png" width="50" height="50">
                             <?php $index2++;
                           }
-                        if ($note!=(int)$note){ ?>
-                          <img src="static/pageServiceAdmin/demiEtoileRouge.png" width="50" height="50">
+                        if ($note>=((int)$note+0.5)){ ?>
+                          <img src="static/pageServiceAdmin/demiEtoileRouge.png" width="25" height="50">
                         <?php } ?>
                     </div>
                   </div>
