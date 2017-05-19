@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title>servicesAffiche</title>
+<link rel="stylesheet" href="static/servicesAffiche/style.css" />
 </head>
 
 <body><!DOCTYPE html> 
@@ -35,16 +36,14 @@
 	?>
 	//console.log(listeb);
 </script>
- 
-  <form>
-  <input type="button"  value="Localiser sur Google Map" onclick="TrouverAdresse();"/>
-  </form>
+
+  </br>
 <span id="text_latlng"></span>
 <div id="map-canvas" style="float:center;height:420px;width:75%"></div>
     </div>
 	  
 	  <table>
-	<caption>Liste des services:</caption>
+		  <caption><h2>Liste des services:</h2></caption>
 	<thead><!-- en-tête -->
 		<tr><!-- première ligne -->
 			<th>Label</th>
@@ -58,7 +57,9 @@
 	
 	</tbody>
 </table>
-	 <input type="submit" value="afficher liste des services" onclick="afficheServices();"/>
+	</br>
+  	<input type="button"  value="Localiser sur Google Map" onclick="TrouverAdresse();"/>
+	 <input type="submit" value="Afficher la liste des services" onclick="afficheServices();"/>
     <!-- Include Javascript -->
     <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&language=fr"></script>
     <script type="text/javascript" src="static/servicesAffiche/functions.js"></script> 
