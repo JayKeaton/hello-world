@@ -23,6 +23,7 @@
 		return $donnees[2].",".$donnees[3];
 	}
 
+
 	function ajouterService($bdd, $email, $adresse, $phone, $website, $categorie){
 		$req = $bdd->prepare("insert into services (localisation, categorie, telephone, mail, lien_site) values(:adresse, :categorie, :phone, :email, :website)");
 		$result = $req->execute(array("adresse"=>$adresse, "categorie"=>$categorie, "phone"=>$phone, "email"=>$email, "website"=>$website));
@@ -40,15 +41,32 @@
 
 	function recupLocalisation($bdd){
 		
-		$req = $bdd->prepare("SELECT localisation FROM description");
-	    $req->execute(array('idService' => $idService));
-	    $data = $req->fetch();
+		$req = $bdd->prepare("SELECT localisation, categorie, nom FROM services");
+	    $req->execute();
+	    $data = $req->fetchAll();
 		
-		if ($data == null)
-	        return null;
+		if ($data == array())
+	        return false;
 	    else{
-	        return array($data['localisation']);
+	        return $data;
         }
+	}
+
+
+
+	
+	function recupAll($bdd){
+		
+		$req = $bdd->prepare("SELECT localisation, categorie, telephone, nom FROM services");
+	    $req->execute();
+	    $data = $req->fetchAll();
+		if ($data == array())
+	        return false;
+	    else{
+	        return $data;
+        }
+		
+		
 	}
 
 ?>
