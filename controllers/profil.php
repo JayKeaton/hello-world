@@ -10,11 +10,13 @@ if (!empty($data['dateNaissance'])) {
     list($annee, $mois, $jour) = explode("-", $data['dateNaissance']);
 }
 
+/*
 $form_info = new Formulaire('form_info', 'POST');
 $form_info->add('text', 'prenom');
 $form_info->add('text', 'nom');
 $form_info->add('text', 'pseudo');
 $form_info->add('text', 'prenom');
+*/
 
 
 

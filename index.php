@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 session_start();
 
 
@@ -30,16 +30,21 @@ echo(URL_SITE);
 require_once("models/SQLCo.php");
 require_once("models/utilisateur.php");
 require_once("models/services.php");
-/*require_once("controllers/functions.php");*/
+require_once("controllers/functions.php");
 
 
-if (!empty($_GET['page']))
-    $page = $_GET['page'];
+if (!empty($_GET['page'])){
+	$page = $_GET['page'];
+}
     
 
 
+
 if (empty($page)){
-    include("templates/accueil.html");
+    include("controllers/accueil.php");
+}
+elseif ($page == "Accueil"){
+    include("controllers/accueil.php");
 }
 elseif ($page == "signup"){
     include("controllers/signup.php");
@@ -63,6 +68,9 @@ elseif ($page == "servicesMaps"){
 elseif ($page == "ajoutServices"){
     include("controllers/ajoutServices.php");
 }
+elseif ($page == "modifierServices"){
+    include("controllers/modifierServices.php");
+}
 elseif ($page == "servicesAffiche"){
     include("controllers/servicesAffiche.php");
 }
@@ -75,6 +83,9 @@ elseif ($page == "tests"){
 elseif ($page == "accueil_admin"){
     include("controllers/acceuil_admin.php");
 }
+elseif ($page == "pageServiceAdmin"){
+    include("controllers/pageServiceAdminC.php");
+}
 else{
     include("templates/".$page.".html");
-}
+} 

@@ -125,7 +125,6 @@ class input_password extends Input{
 
     public function __toString()
     {
-        public function __toString(){
         $name = $this->name;
         $string = "";
         $string .= "<label for='".$name."'>".$this->label." : </label>";

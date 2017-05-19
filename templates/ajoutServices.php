@@ -16,6 +16,8 @@
 
         <h4>Contact</h4> 
 
+       
+
         <label for="email">Email ou courriel: <span class="required">*</span>
 
         </label>
@@ -63,6 +65,28 @@
         <textarea id="categorie" name="categorie" value="<?php echo((empty($_POST['categorie'])) ? "" : $_POST['categorie']); ?>" placeholder="Entrez votre categorie ici"></textarea>
 
     </div>
+    <div>
+    <h4>Description</h4>
+
+    <Label>Selectionnez la langue de votre description
+        <select id="langue" name="langue">
+            <option>Francais</option>
+            <option>Anglais</option>
+            <option>Arabe</option>
+            <option>Klingon</option>
+        </select>
+      </Label></br>
+
+    <label>Nom
+
+        <input type="nom" id="nom" name="nom" value="<?php echo((empty($_POST['nom'])) ? "" : $_POST['nom']); ?>" required="required"/>
+    </label></br>
+
+        
+
+        
+        <label> Description
+        <textarea id="texte" name="texte" value="<?php echo((empty($_POST['categorie'])) ? "" : $_POST['categorie']); ?>" placeholder="Decrivez ici votre service"></textarea></label>
 
 
 
