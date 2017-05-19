@@ -59,8 +59,8 @@
                   <tr>
                     <td> <?php echo $seances[$index]["date"] ?> </td>
                     <!-- <td> <?php /* echo $seances[$index][2] */ ?> </td> -->
-                    <td> <?php echo $seances[$index]["Nombre d inscrits"] ?> </td>
-                    <td> <?php echo $seances[$index]["Satisfaction"] ?> </td>
+                    <td> <?php echo $lesInscrits[$index+$seances[0][0]][0] ?> </td>
+                    <!--<td> <?php echo $seances[$index]["Satisfaction"] ?> </td> -->
                   </tr>
                 <?php } ?>
               </tbody>
