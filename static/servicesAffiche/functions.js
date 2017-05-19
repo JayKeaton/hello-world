@@ -24,7 +24,7 @@ function initialiserCarte() {
   var latlng = new google.maps.LatLng(48.855013, 2.372018);
   
 	var mapOptions = {
-    	zoom      : 14,
+    	zoom      : 12,
     	center    : latlng,
 		snippet: 'test',
     	mapTypeId : google.maps.MapTypeId.ROADMAP
@@ -39,26 +39,25 @@ function initialiserCarte() {
  
 function TrouverAdresse() {
  
-	var iconBase = 'http://maps.google.com/mapfiles/ms/icons/';
-	var icons = {
-  		soins: {
-    		icon: iconBase + 'red-dot.png'
-  	},
-  		vetements: {
-    		icon: iconBase + 'green-dot.png'
-  	},
-  		restauration: {
-    		icon: iconBase + 'blue-dot.png'
-  	}
-};
+	//var iconBase = 'http://maps.google.com/mapfiles/ms/icons/';
+	var url;
 	
 	for (var e in liste){
-    	var adresse = liste[e].localisation;
-		var categorie = liste[e].categorie;
-		console.log(icons[categorie].icon);
-	
-	  	geocoder.geocode( { 'address': adresse}, function(results, status) {
+		
+		
+	/*	if(categorie=="soins")
+			url= iconBase + 'red-dot.png';
+		
+		else if(categorie=="vetements")
+			url= iconBase + 'green-dot.png';
+		
+		else
+			url = iconBase + 'blue-dot.png';
+		
+		*/
+	  	geocoder.geocode( { 'address': liste[e].localisation}, function(results, status) {
 			
+
 			if (status == google.maps.GeocoderStatus.OK) {
 		  		map.setCenter(results[0].geometry.location);
 		  		// Récupération des coordonnées GPS du lieu tapé dans le formulaire
@@ -70,9 +69,28 @@ function TrouverAdresse() {
 			  		position: results[0].geometry.location,
 			  		label:labels[labelIndex],
 			  		map: map,
-					icon: icons[categorie].icon
+					animation:google.maps.Animation.DROP,
+					title:liste[labelIndex].categorie
+
+					//icon: url
 		  });
-				labelIndex++;
+				console.log(marker);
+				var contentString = liste[labelIndex].nom +"</br>"+liste[labelIndex].localisation ;
+				var infowindow = new google.maps.InfoWindow({
+          content: contentString
+        });
+				
+				
+				
+			marker.addListener('click', function() {
+          		map.setZoom(15);
+          		map.setCenter(marker.getPosition());
+		  		map.texte;
+		  		infowindow.open(map, marker);
+        });
+			labelIndex++;
+				
+				//google.maps.event.trigger(polygon, "click", {});
 				/*google.maps.event.addListener(marker, 'click', function(){
     marker.open(map,marker);
 });*/
@@ -84,5 +102,6 @@ function TrouverAdresse() {
 	}
 	
 }
+
 // Lancement de la construction de la carte google map
 google.maps.event.addDomListener(window, 'load', initialiserCarte);

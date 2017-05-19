@@ -15,15 +15,15 @@
 <div id="container">
         <h1>Affichage des points d'intérets</h1>
 <script>
-	console.log("test");
+	//console.log("test");
     var liste = [];
     <?php
     foreach($adresses as $e){
-		echo("var l={'localisation': '".$e["localisation"]."','categorie': '".$e['categorie']."'};");
+		echo("var l={'localisation': '".$e["localisation"]."','categorie': '".$e['categorie']."','nom': '".$e['nom']."'};");
         echo("liste.push(l);");	
     	}
     ?>
-	console.log("test");
+	//console.log("test");
 	
 	var listeb = [];
 	var ligne = {localisation: 'loc',categorie: 'cat',phone: 'phone'};
@@ -47,10 +47,10 @@
 	<caption>Liste des services:</caption>
 	<thead><!-- en-tête -->
 		<tr><!-- première ligne -->
-			<th> Label </th>
-			<th>| Localisation </th>
-			<th>| Categorie </th>
-			<th>| Telephone </th>
+			<th>Label</th>
+			<th>Localisation</th>
+			<th>Categorie</th>
+			<th>Telephone</th>
 		</tr>
 	</thead>
 	<tbody id="servicesA">
