@@ -3,17 +3,23 @@
 	color:red;
 }
 
-#flexto{
-	
-	display: flex;
-	flex-direction: row;
-}
 #formulaireInscription{
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
+	justify-content: center;
+	/*flex-wrap: wrap;*/
 	text-align: center;
+	align-items: center;
 	Border: 1px black solid;
 	border-radius: 20px;
 	box-shadow: 6px 6px 0px black;
+	width: 75%;
+}
+
+#formulaireInscription div{
+	width: 20%;
+}
+#remplissage{
+	display: flex;
+	justify-content: center;
 }
