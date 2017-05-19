@@ -11,37 +11,45 @@ ob_start();
     <form method="post" action="" id="formulaireInscription">
         <div>
             <h4>Informations personnelles</h4> 
-            <label for="name">Nom: <span class="required">*</span>
-            </label>
+            <h5>
+                Nom: <span class="required">*</span>
+            </h5>
             <input type="text" id="name1" name="nom" value="<?php echo((empty($_POST['nom'])) ? "" : $_POST['nom']); ?>" placeholder="Votre nom" required="required" autofocus />
-        	<label for="name">Prenom: <span class="required">*</span>
-            </label>
+        	<h5>
+                Prenom: <span class="required">*</span>
+            </h5>
             <input type="text" id="name2" name="prenom" placeholder="Votre prénom" required="required" autofocus value="<?php echo((empty($_POST['prenom'])) ? "" : $_POST['prenom']); ?>"  />
         </div>
 
         <div>
             <h4>Contact</h4> 
-            <label for="email">Email ou courriel: <span class="required">*</span>
-            </label>
+            <h5>
+                Email ou courriel: <span class="required">*</span>
+            </h5>
             <input type="email" id="email" name="email" value="<?php echo((empty($_POST['email'])) ? "" : $_POST['email']); ?>" placeholder="example@email.fr" required="required" />
-            <label for="phone">Numéro de téléphone: <span class="required">*</span>
-            </label>
+            <h5>
+                Numéro de téléphone: <span class="required">*</span>
+            </h5>
             <input type="phone" id="phone" name="phone" value="<?php echo((empty($_POST['phone'])) ? "" : $_POST['phone']); ?>" required="required" />
         </div>
 
         <div>
             <h4>Mot de passe</h4> 
-            <label for="password">Votre mot de passe: <span class="required">*</span>
-            </label>
+            <h5>
+                Votre mot de passe: <span class="required">*</span>
+            </h5>
             <input type="password" id="password" name="mdp" value="" placeholder="" required="required" />
-            <label for="password">Confirmation: <span class="required">*</span>
-            </label>
+            <h5>
+                Confirmation: <span class="required">*</span>
+            </h5>
             <input type="password" id="mdpv" name="mdpv" value="" placeholder="" required="required" />
         </div>
 
         <div>
             <h4>Autre</h4> 
-            <label for="gender">Sexe:</label>
+            <h5>
+                Sexe:
+            </h5>
             <select id="gender" name="sexe" value="<?php echo((empty($_POST['sexe'])) ? "" : $_POST['sexe']); ?>">
                 <option value="sexe1">Homme</option>
                 <option value="sexe2">Femme</option>
@@ -53,15 +61,16 @@ ob_start();
 
         <div>
             <h4>Adresse</h4> 
-            <label for="message">Votre adresse:
-            </label>
+            <h5>
+                Votre adresse:
+            </h5>
             <textarea id="adresse" name="adresse" value="<?php echo((empty($_POST['adresse'])) ? "" : $_POST['adresse']); ?>" placeholder="Entrez votre adresse ici"></textarea>
         </div>
 
 
         <div>
             <h4>Géolocalisation</h4>
-            <label for="checkbox">Activer</label>
+            <h5>Activer</h5>
             <input type="checkbox" name="checkbox" value="<?php echo((empty($_POST['checkbox'])) ? "" : $_POST['checkbox']); ?>">
         </div>
 

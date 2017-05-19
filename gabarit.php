@@ -2,6 +2,7 @@
 <html>
 <head>
   <link rel="stylesheet" type="text/css" href="static/headerFooter/headerFooter.css"> <!-- Attention à bien remplacer le lien vers le fichier CSS -->
+  <link rel="icon" type="image/png" href="static/accueil/msf_logo _fichiers/hamster_1.jpeg" />
   <meta charset="utf-8" />
   <title>HeaderFooter</title>
 </head>
@@ -27,7 +28,7 @@
             <a href="https://www.google.fr/advanced_search">
                 <li>
                     <div>
-                        <img src="static/headerFooter/loupe.png" width =21/>
+                        <img src="static/headerFooter/loupe.png" width=21/>
                         <br/>Recherche
                     </div>
                 </li>
@@ -59,7 +60,7 @@
         </ul>
     </header>
 
-    <div>
+    <div id="main">
       <?php echo $contenu; ?>
     </div>
 

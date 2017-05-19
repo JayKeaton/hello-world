@@ -1,4 +1,3 @@
-
 html{
   height: 100%;
 }
@@ -90,7 +89,7 @@ font-weight: bold;
 }
 footer
 {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100%;
   background-color: #808080;
@@ -115,6 +114,11 @@ footer ul li{
 }
 #copyright li{
   color:white;
+}
+
+
+#main{
+  margin-bottom: 23px;
 }
 
 
