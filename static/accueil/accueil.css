@@ -52,7 +52,15 @@ text-align: center;
 	background-color: rgba(120,120,120,0.1);
 	width: 97%;
 	justify-content: center;
+	margin-left: 10px;
 }
+#contenu a:hover{
+	text-decoration: underline;
+}
+.service{
+	background-color: rgba(120,120,120,0.1);
+}
+
 
 .floatl{
 	float:left;
@@ -103,16 +111,20 @@ text-decoration:none;
 
 a:hover{
 color: rgb(180,0,0);
-font-weight: bold;	
+/*font-weight: bold;*/	
 }
 a:active /* Quand le visiteur clique sur le lien */ {
 
-
 }
+
 #contenu img{
 
-box-shadow: -8px 8px 4px rgba(0,0,0,0.75);
 border-radius: 0px 16px 0px 16px;
+margin-left: 10px;
+margin-right: 20px;
+}
+.service:hover img{
+box-shadow: -2px 2px 3px rgba(0,0,0,0.75);
 }
 .annonce{
 	background-color: rgba(120,120,120,0.4);
@@ -154,7 +166,7 @@ background-color: #0000166;
     flex-wrap: wrap;
     align-content: space-between;
     width: 400px;
-    margin: 30px;
+    margin: 3px;
 }
 #form .element input,select
 {
@@ -163,9 +175,6 @@ background-color: #0000166;
 /*.element:focus{
 	background-color:green;
 }*/
-
-
-
 
 header{
   display: flex;
