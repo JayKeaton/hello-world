@@ -95,17 +95,17 @@ height:100%;
 	height: 100%;
 	font-size: 100%;
 }*/
-a {
+#container a {
 color: black;
 font-family:"Arial Black";
 text-decoration:none;
 }
 
-a:hover{
+#container a:hover{
 color: rgb(180,0,0);
 font-weight: bold;	
 }
-a:active /* Quand le visiteur clique sur le lien */ {
+#container a:active /* Quand le visiteur clique sur le lien */ {
 
 
 }
@@ -163,95 +163,3 @@ background-color: #0000166;
 /*.element:focus{
 	background-color:green;
 }*/
-
-
-
-
-header{
-  display: flex;
-}
-header ul
-{
-  background-color:red;
-  flex:1;
-  display:flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-
-}
-header ul li
-{
-	display:flex;
-	flex-direction: row;	
-	list-style: none;
-	padding:5px;
-	height:100%;
-	color: white;
-	width: 200px;
-	justify-content: center;
-	alignt-text:center;
-	justify-content: center;
-}
-
-header ul li div{
-	display:flex;
-	flex-direction: column;	
-}
-header img{
-	display:flex;
-	alignt-text:center;
-	justify-content: center;
-}
-header ul li:hover{
-  background-image: linear-gradient(red 57% , #ff8080);
-}
-header #imageBanniere{
-  border:2px solid red ;
-}
-#rouge{
-  padding-left: 100px;
-  height:100%;
-  margin-top: 16px;
-  padding-top: 54px;
-  background-color: red;
-}
-
-
-#EnTete
-{
-display: flex;
-align-items: center;
-}
-#h
-{
-  width: 100%;
-  font-size: 20px;
-  display: flex;
-  text-align: center;
-}
-footer
-{
-  background-color: #808080;
-  display: flex;
-  flex-direction: row;
-}
-footer ul{
-  margin: 0;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  width: 50%
-}
-footer ul li{
-  list-style: none;
-  margin-right: 20px;
-}
-#copyright{
-  display: flex;
-  justify-content: flex-end;
-}
-#copyright li{
-  color:white;
-}

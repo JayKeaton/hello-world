@@ -13,7 +13,7 @@ ob_start();
 		</div>
 		<div><!--la petite case pour le MDP-->
 		  	<h4>Mot de passe :</h4>
-		  	<input type="text" id="mdp" name="mdp"/>
+		  	<input type="password" id="mdp" name="mdp"/>
 		</div>
 		<div>
 			<input type="submit" value="valider"> 

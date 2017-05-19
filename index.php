@@ -74,8 +74,9 @@ elseif ($page == "modifierServices"){
 elseif ($page == "servicesAffiche"){
     include("controllers/servicesAffiche.php");
 }
-elseif ($page == "signout"){
+elseif ($page == "logout"){
     $_SESSION = array();
+    header("Location: ".SOUS_DOMAINE);
 }
 elseif ($page == "tests"){
     include("controllers/tests.php");

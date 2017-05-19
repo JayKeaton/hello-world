@@ -1,5 +1,6 @@
 <?php
 
+$listeMois = array('Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre');
      
 	if (!empty($_POST["nom"])){
 		if($_POST["mdp"] == $_POST["mdpv"] && verifMail($bdd, $_POST["email"])==false){

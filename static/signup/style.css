@@ -2,24 +2,67 @@
 	text-align:center;
 	color:red;
 }
+#titlebis{
+	text-align:center;
+}
 
-#formulaireInscription{
+
+#inscription{
+	display: flex;
+	justify-content: center;
+}
+
+#inscription form{
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+	align-items: center;
 	/*flex-wrap: wrap;*/
 	text-align: center;
-	align-items: center;
 	Border: 1px black solid;
 	border-radius: 20px;
 	box-shadow: 6px 6px 0px black;
-	width: 75%;
+	width: 50%;
 }
 
-#formulaireInscription div{
-	width: 20%;
-}
-#remplissage{
+#inscription form div{
+	/*background-color: blue;*/
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
+	align-items: center;
+	Border-bottom: 1px black solid;
+}
+
+#inscription form div h3{
+	margin-bottom: 10px;
+}
+
+#inscription form div div{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	margin: 0 20px 20px;
+	Border-bottom: none;
+}
+
+#inscription form div div div{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+#inscription form div div div div{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	margin: 0;
+	padding: 0;
+}
+
+#inscription form #div_submit{
+	margin: 20px;
+	Border-bottom: none;
 }
