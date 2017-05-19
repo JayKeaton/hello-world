@@ -1,14 +1,7 @@
+<?php
 
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <!--link href="static/signin/signin.css" rel="stylesheet" type="text/css"-->
-    </head>
-
-    <body>
-
-
+ob_start();
+?>
 
         <h2>Informations générales :</h2>
         <form action="" method="POST">
@@ -86,7 +79,7 @@
             <input type="submit" name="changerMdp" value="Valider"/>
         </form>
 
+<?php
+$contenu = ob_get_clean();
 
-
-    </body>
-</html>
+include("gabarit.php");

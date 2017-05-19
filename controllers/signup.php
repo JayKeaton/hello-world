@@ -24,15 +24,15 @@
 		}
 		elseif($_POST["mdp"] != $_POST["mdpv"]){
 			echo "Mot de passe différent de la confirmation";
-			include("templates/Signup.php");
+			include("templates/signup.php");
 		}
 		else{
 			echo "Autre erreur";
-			include("templates/Signup.php");
+			include("templates/signup.php");
 		}
 	}
 	else {
-		include("templates/Signup.php");
+		include("templates/signup.php");
 	}
 
 ?>
