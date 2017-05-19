@@ -8,15 +8,15 @@ ob_start();
 <h4 id="titlebis">Chez Error404, nous prenons à coeur la sécurité de vos données, et les données que vous entrez ne peuvent être utilisées que par nous, afin de garantir une meilleure utilisation de nos services.</h4>
 
 <article id="remplissage">
-    <form method="post" action="">
+    <form method="post" action="" id="formulaireInscription">
         <div>
             <h4>Informations personnelles</h4> 
-            	<label for="name">Nom: <span class="required">*</span>
-            	</label>
-            	<input type="text" id="name1" name="nom" value="<?php echo((empty($_POST['nom'])) ? "" : $_POST['nom']); ?>" placeholder="Votre nom" required="required" autofocus />
-        		<label for="name">Prenom: <span class="required">*</span>
-            	</label>
-            	<input type="text" id="name2" name="prenom" placeholder="Votre prénom" required="required" autofocus value="<?php echo((empty($_POST['prenom'])) ? "" : $_POST['prenom']); ?>"  />
+            <label for="name">Nom: <span class="required">*</span>
+            </label>
+            <input type="text" id="name1" name="nom" value="<?php echo((empty($_POST['nom'])) ? "" : $_POST['nom']); ?>" placeholder="Votre nom" required="required" autofocus />
+        	<label for="name">Prenom: <span class="required">*</span>
+            </label>
+            <input type="text" id="name2" name="prenom" placeholder="Votre prénom" required="required" autofocus value="<?php echo((empty($_POST['prenom'])) ? "" : $_POST['prenom']); ?>"  />
         </div>
 
         <div>

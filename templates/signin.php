@@ -5,18 +5,23 @@ ob_start();
 ?>
 <link href="static/signin/signin.css" rel="stylesheet" type="text/css">
 <div id='signin'>
+	<h1 id="titreConnexion">Connexion :</h1>
 	<form action="" method="post" id="conn">
 		<div><!--la petite case pour le login-->
-			<label for="identifiant">Email :</label>
+			<h4>Email :</h4>
 			<input type="text" id="identifiant" name="identifiant" />
 		</div>
 		<div><!--la petite case pour le MDP-->
-		  		<label for="mdp">Mot de passe :</label>
-		  		<input type="text" id="mdp" name="mdp"/>
-			</div>
-				<input type="submit" value="valider"> 
-			<p>
-				Nouveau contributeur ? <a href="/?page=signup">Inscrivez-vous</a><br/>
+		  	<h4>Mot de passe :</h4>
+		  	<input type="text" id="mdp" name="mdp"/>
+		</div>
+		<div>
+			<input type="submit" value="valider"> 
+		</div>
+		<p>
+			Nouveau contributeur ? 
+			<a href="/?page=signup">Inscrivez-vous</a>
+			<br/>
 			<a href="adresse ou fichiers dans le dossier" style="font-family: Verdana,'Arial', 'Arial Black','Times New Roman';font-size: 12px">Mot de passe oublié?</a><!--code css pour afficher la phrase en plus petit-->
 		</p>
 	</form>
