@@ -11,7 +11,7 @@ function afficheServices(){
 	for (var e in listeb){
 		
     	var ligne = listeb[e];
-		document.getElementById('servicesA').innerHTML+='<tr><td> '+labels[i]+' </td>'+'<td> '+ligne.localisation+' </td>'+'<td>| '+ligne.categorie+' </td>'+'<td>| '+ligne.telephone+' </td></tr>';
+		document.getElementById('servicesA').innerHTML+='<tr><td> '+labels[i]+' </td>'+'<td> '+ligne.nom+' </td>'+'<td> '+' </td>'+'<td> '+ligne.localisation+' </td>'+'<td> '+ligne.categorie+' </td>'+'<td> '+ligne.telephone+' </td></tr>';
 		i++;
 	}
 }
@@ -74,7 +74,7 @@ function TrouverAdresse() {
 
 					//icon: url
 		  });
-				console.log(marker);
+
 				var contentString = liste[labelIndex].nom +"</br>"+liste[labelIndex].localisation ;
 				var infowindow = new google.maps.InfoWindow({
           content: contentString
@@ -104,4 +104,18 @@ function TrouverAdresse() {
 }
 
 // Lancement de la construction de la carte google map
+if (navigator.geolocation)
+  var watchId = navigator.geolocation.watchPosition(successCallback, null, {enableHighAccuracy:true});
+                          
+else
+  alert("Votre navigateur ne prend pas en compte la géolocalisation HTML5");
+
 google.maps.event.addDomListener(window, 'load', initialiserCarte);
+
+function successCallback(position){
+  map.panTo(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
+  var marker = new google.maps.Marker({
+    position: new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
+    map: map
+  });
+}

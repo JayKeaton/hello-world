@@ -41,7 +41,7 @@
 	
 	function recupAll($bdd){
 		
-		$req = $bdd->prepare("SELECT localisation, categorie, telephone FROM services");
+		$req = $bdd->prepare("SELECT localisation, categorie, telephone, nom FROM services");
 	    $req->execute();
 	    $data = $req->fetchAll();
 		if ($data == array())

@@ -29,7 +29,7 @@
 	var ligne = {localisation: 'loc',categorie: 'cat',phone: 'phone'};
 	<?php
 	foreach($listeServices as $z){
-		echo("var ligne = {localisation: '".$z["localisation"]."',categorie: '".$z["categorie"]."',telephone: '".$z["telephone"]."'};");
+		echo("var ligne = {nom: '".$z["nom"]."',localisation: '".$z["localisation"]."',categorie: '".$z["categorie"]."',telephone: '".$z["telephone"]."'};");
 		echo("listeb.push(ligne);");
 	}
 	?>
@@ -48,6 +48,7 @@
 	<thead><!-- en-tête -->
 		<tr><!-- première ligne -->
 			<th>Label</th>
+			<th>Nom</th>
 			<th>Localisation</th>
 			<th>Categorie</th>
 			<th>Telephone</th>
