@@ -28,6 +28,7 @@ echo(URL_SITE);
 require_once("models/SQLCo.php");
 require_once("models/utilisateur.php");
 require_once("models/services.php");
+require_once("models/modifierServices.php");
 /*require_once("controllers/functions.php");*/
 
 
@@ -51,7 +52,7 @@ elseif ($page == "signin"){
     include("controllers/signin.php");
 }
 elseif($page == "profil"){
-    loginRequired($page);
+    /*loginRequired($page);*/
     include("controllers/profil.php");
 }
 elseif ($page == "locate"){

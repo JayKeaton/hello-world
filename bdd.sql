@@ -22,6 +22,7 @@ CREATE TABLE categories(
 CREATE TABLE services (
   idService INTEGER PRIMARY KEY AUTO_INCREMENT,
   validation BOOLEAN DEFAULT false,
+  nom VARCHAR(255),
   codePostal INTEGER,
   ville VARCHAR(255),
   rue VARCHAR(255),

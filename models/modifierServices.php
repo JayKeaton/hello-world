@@ -1,30 +1,41 @@
 <?php /*toutes les fonctions pour récupérer*/
 
-	function recupLocalisation($idservice,$bdd){
+	function recupServicesUtilisateur($idUtilisateur,$bdd){
+		$req=$bdd->prepare("SELECT * FROM description WHERE idUtilisateur=idUtilisateur");
+	$req->execute(array('idUtilisateur'=>$idUtilisateur));
+	$data=$req->fetchall();
+	return $data;
+	}
+
+	/*function recupLocalisation($idService,$bdd){
 		$req=$bdd->prepare("SELECT localisation FROM services WHERE idService=idService");
 		$req->execute(array('idService' => $idService));
 	    $data = $req->fetch();
 		
-		if ($data == null)
+		if ($data == null){
 	        return null;
+		}
 	    else{
-	        return array($data['localisation']);
+	        return $data['localisation'];
+	    }
 
 
 	}
-	function recupCategorie($idservice,$bdd){
+	function recupCategorie($idService,$bdd){
 		$req=$bdd->prepare("SELECT categorie FROM services WHERE idService=idService");
 		$req->execute(array('idService' => $idService));
 	    $data = $req->fetch();
 		
-		if ($data == null)
+		if ($data == null){
 	        return null;
+		}
 	    else{
-	        return array($data['categorie']);
+	        return $data['categorie'];
+	    }
 
 
 	}
-	function recupTelephone($idservice,$bdd){
+	function recupTelephone($idService,$bdd){
 		$req=$bdd->prepare("SELECT telephone FROM services WHERE idService=idService");
 		$req->execute(array('idService' => $idService));
 	    $data = $req->fetch();
@@ -32,11 +43,12 @@
 		if ($data == null)
 	        return null;
 	    else{
-	        return array($data['telephone']);
+	        return $data['telephone'];
+	    }
 
 
 	}
-	function recupMail($idservice,$bdd){
+	function recupMail($idService,$bdd){
 		$req=$bdd->prepare("SELECT mail FROM services WHERE idService=idService");
 		$req->execute(array('idService' => $idService));
 	    $data = $req->fetch();
@@ -44,11 +56,12 @@
 		if ($data == null)
 	        return null;
 	    else{
-	        return array($data['mail']);
+	        return $data['mail'];
+	    }
 
 
 	}
-	function recupLien_site($idservice,$bdd){
+	function recupLien_site($idService,$bdd){
 		$req=$bdd->prepare("SELECT lien_site FROM services WHERE idService=idService");
 		$req->execute(array('idService' => $idService));
 	    $data = $req->fetch();
@@ -56,20 +69,38 @@
 		if ($data == null)
 	        return null;
 	    else{
-	        return array($data['lien_site']);
+	        return $data['lien_site'];
+	    }
 
 
 	}
+function recupcodePostal($idService,$bdd){
+		$req=$bdd->prepare("SELECT codePostal FROM services WHERE idService=idService");
+		$req->execute(array('idService' => $idService));
+	    $data = $req->fetch();
+		
+		if ($data == null){
+	        return null;
+		}
+	    else{
+	        return $data['codePostal'];
+	    }
 
 
+	}
+	function recupcodePostal($idService,$bdd){
+		$req=$bdd->prepare("SELECT codePostal FROM services WHERE idService=idService");
+		$req->execute(array('idService' => $idService));
+	    $data = $req->fetch();
+		
+		if ($data == null){
+	        return null;
+		}
+	    else{
+	        return $data['codePostal'];
+	    }
 
 
+	}*/
 
-
-
-
-
-
-
-
- ?>
+?>
