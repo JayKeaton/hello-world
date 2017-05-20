@@ -103,6 +103,14 @@ CREATE TABLE commentaires(
     REFERENCES seances(idSeance) ON DELETE CASCADE
 );
 
+CREATE TABLE inscrits (
+  idInscrit INTEGER PRIMARY KEY AUTO_INCREMENT,
+  idUtilisateur INTEGER
+    REFERENCES utilisateurs(idUtilisateur) ON DELETE SET NULL,
+  idSeance INTEGER
+    REFERENCES seances(idSeance) ON DELETE SET NULL
+);
+
 INSERT INTO `services`(`validation`, `codePostal`, `ville`, `rue`, `numero`, `categorie`, `telephone`, `mail`, `lien_site`) VALUES (0,75000,"Paris","rue de Rivoli",5,"accompagnement médical","0625523251","0001@0001","http://www.dofus.com/fr");
 INSERT INTO `services`(`validation`, `codePostal`, `ville`, `rue`, `numero`, `categorie`, `telephone`, `mail`, `lien_site`) VALUES (0,75000,"Paris","Rue Vieille du Temple",21,"logement","0658921542","0002@0002","http://euw.leagueoflegends.com/fr");
 INSERT INTO `utilisateurs`( `pseudo`, `mail`, `mdp`, `avatar`, `nom`, `prenom`, `dateNaissance`, `verification`, `numero`,`adresse`,`ville`, `droits`, `telephone`) VALUES ("jean eude","jean.eude@kikoolol.fr","saphir","avatar-j-e.jpg","jean-eude","debeaujardin","1982-06-02",1,"22","rue Vieille du Temple","Paris","utilisateur","0645895121");
@@ -114,3 +122,4 @@ INSERT INTO `commentaires`( `note`, `texte`, `date`, `heure`, `censure`, `idUtil
 INSERT INTO `commentaires`( `note`, `texte`, `date`, `heure`, `censure`, `idUtilisateur`, `idService`, `idSeance`) VALUES (4.2,"Très satisfaisant","2017-04-16","12:12:12",0,2,1,1);
 INSERT INTO `favoris`(`idService`, `idUtilisateur`) VALUES (1,1);
 INSERT INTO `seances`(`date`, `idService`) VALUES ("2017-09-02",1);
+INSERT INTO `inscrits`(`idUtilisateur`, `idSeance`) VALUES (1,1);
