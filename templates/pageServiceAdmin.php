@@ -38,7 +38,7 @@
             <h1>Nous Joindre:</h1>
             <div id="Contact">
               <div id="alinea">
-                Adresse: <?php echo $contact["numéro"].' '.$contact["rue"] ?> </br> <?php echo $contact["codePostal"].' '.$contact["ville"] ?> </br> <!-- n°rue Rue CodePostal Ville -->
+                Adresse: <?php echo $contact["numero"].' '.$contact["rue"] ?> </br> <?php echo $contact["codePostal"].' '.$contact["ville"] ?> </br> <!-- n°rue Rue CodePostal Ville -->
                 Numéro de téléphone: <?php echo $contact["telephone"] ?> </br>
                 <a href="<?php echo $contact["lien_site"]; ?>"> Notre Site </a>
                 Mail: <?php echo $contact["mail"]; ?>
@@ -49,7 +49,7 @@
               <thead>
                 <tr>
                   <td>Date</td>
-                  <td>Type de Service</td>
+                  <!-- <td>Type de Service</td> -->
                   <td>Nombre d inscrits</td>
                   <td>Satisfaction</td>
                 </tr>
@@ -57,10 +57,10 @@
               <tbody>
                 <?php for ($index=0;$index<$longueur;$index ++){ ?>
                   <tr>
-                    <td> <?php echo $seances[$index][1] ?> </td>
-                    <td> <?php echo $seances[$index][2] ?> </td>
-                    <td> <?php echo $seances[$index][3] ?> </td>
-                    <td> <?php echo $seances[$index][4] ?> </td>
+                    <td> <?php echo $seances[$index]["date"] ?> </td>
+                    <!-- <td> <?php /* echo $seances[$index][2] */ ?> </td> -->
+                    <td> <?php echo $lesInscrits[$index+$seances[0][0]][0] ?> </td>
+                    <!--<td> <?php echo $seances[$index]["Satisfaction"] ?> </td> -->
                   </tr>
                 <?php } ?>
               </tbody>
@@ -80,13 +80,13 @@
                     <div id="Note">
                       <p>Note:</p>
                         <?php $note=$commentaires[$index][1];
-                          $index2=0;
+                          $index2=1;
                           while ($index2<$note){ ?>
                             <img src="static/pageServiceAdmin/etoileRouge.png" width="50" height="50">
                             <?php $index2++;
                           }
-                        if ($note!=(int)$note){ ?>
-                          <img src="static/pageServiceAdmin/demiEtoileRouge.png" width="50" height="50">
+                        if ($note>=((int)$note+0.5)){ ?>
+                          <img src="static/pageServiceAdmin/demiEtoileRouge.png" width="25" height="50">
                         <?php } ?>
                     </div>
                   </div>

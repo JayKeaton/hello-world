@@ -1,3 +1,10 @@
+html{
+  height: 100%;
+}
+body{
+  height: 100%;
+}
+
 header{
   display: flex;
 }
@@ -9,12 +16,11 @@ header ul
   justify-content: center;
   align-items: center;
   height: 100%;
-
 }
 header ul li
 {
   display:flex;
-  flex-direction: row;  
+  flex-direction: row;
   list-style: none;
   padding:5px;
   height:100%;
@@ -83,6 +89,9 @@ font-weight: bold;
 }
 footer
 {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
   background-color: #808080;
   display: flex;
   flex-direction: row;
@@ -105,6 +114,11 @@ footer ul li{
 }
 #copyright li{
   color:white;
+}
+
+
+#main{
+  margin-bottom: 23px;
 }
 
 

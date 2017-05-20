@@ -26,7 +26,7 @@ CREATE TABLE services (
   codePostal INTEGER,
   ville VARCHAR(255),
   rue VARCHAR(255),
-  numéro INTEGER,
+  numero INTEGER,
   categorie VARCHAR(255),
   telephone VARCHAR(20),
   mail VARCHAR(255),
@@ -104,9 +104,23 @@ CREATE TABLE commentaires(
     REFERENCES seances(idSeance) ON DELETE CASCADE
 );
 
-INSERT INTO `services`(`validation`, `codePostal`, `ville`, `rue`, `numéro`, `categorie`, `telephone`, `mail`, `lien_site`) VALUES (0,75000,"Paris","rue de Rivoli",5,"accompagnement médical","0625523251","0001@0001","http://www.dofus.com/fr");
-INSERT INTO `services`(`validation`, `codePostal`, `ville`, `rue`, `numéro`, `categorie`, `telephone`, `mail`, `lien_site`) VALUES (0,75000,"Paris","Rue Vieille du Temple",21,"logement","0658921542","0002@0002","http://euw.leagueoflegends.com/fr");
+CREATE TABLE inscrits (
+  idInscrit INTEGER PRIMARY KEY AUTO_INCREMENT,
+  idUtilisateur INTEGER
+    REFERENCES utilisateurs(idUtilisateur) ON DELETE SET NULL,
+  idSeance INTEGER
+    REFERENCES seances(idSeance) ON DELETE SET NULL
+);
+
+INSERT INTO `services`(`validation`, `codePostal`, `ville`, `rue`, `numero`, `categorie`, `telephone`, `mail`, `lien_site`) VALUES (0,75000,"Paris","rue de Rivoli",5,"accompagnement médical","0625523251","0001@0001","http://www.dofus.com/fr");
+INSERT INTO `services`(`validation`, `codePostal`, `ville`, `rue`, `numero`, `categorie`, `telephone`, `mail`, `lien_site`) VALUES (0,75000,"Paris","Rue Vieille du Temple",21,"logement","0658921542","0002@0002","http://euw.leagueoflegends.com/fr");
 INSERT INTO `utilisateurs`( `pseudo`, `mail`, `mdp`, `avatar`, `nom`, `prenom`, `dateNaissance`, `verification`, `numero`,`adresse`,`ville`, `droits`, `telephone`) VALUES ("jean eude","jean.eude@kikoolol.fr","saphir","avatar-j-e.jpg","jean-eude","debeaujardin","1982-06-02",1,"22","rue Vieille du Temple","Paris","utilisateur","0645895121");
 INSERT INTO `utilisateurs`( `pseudo`, `mail`, `mdp`, `avatar`, `nom`, `prenom`, `dateNaissance`, `verification`, `numero`,`adresse`,`ville`, `droits`, `telephone`) VALUES ("legyllith","dieu.de.la.bonte@divinité.ciel","gentil","avatar-legyllith.jpg","Aurélien","dreams","1992-06-12",1,"100","rue des archives","Paris","contributeur","0645884521");
 INSERT INTO `descriptions`(`nom`, `texte`, `langue`) VALUES ("soin +","Nous serons heureux de vous soigné","francais");
 INSERT INTO `descriptions`( `nom`, `texte`, `langue`) VALUES ("acceillir","Nous vous acciullerons avec plaisir","francais");
+INSERT INTO `categories`(`code`, `langue`, `traduction`) VALUES ("test","Français","testTest");
+INSERT INTO `commentaires`( `note`, `texte`, `date`, `heure`, `censure`, `idUtilisateur`, `idService`, `idSeance`) VALUES (3.5,"Alice was beginning to get very tired of sitting by her sister on the bank, and of having nothing to do: once or twice she had peeped into the book her sister was reading, but it had no pictures or conversations in it, ‘and what is the use of a book,’ thought Alice ‘without pictures or conversations?","1865-11-18","16:16:16",0,1,1,1);
+INSERT INTO `commentaires`( `note`, `texte`, `date`, `heure`, `censure`, `idUtilisateur`, `idService`, `idSeance`) VALUES (4.2,"Très satisfaisant","2017-04-16","12:12:12",0,2,1,1);
+INSERT INTO `favoris`(`idService`, `idUtilisateur`) VALUES (1,1);
+INSERT INTO `seances`(`date`, `idService`) VALUES ("2017-09-02",1);
+INSERT INTO `inscrits`(`idUtilisateur`, `idSeance`) VALUES (1,1);

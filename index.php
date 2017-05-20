@@ -1,5 +1,7 @@
-<?php
+﻿<?php
 session_start();
+
+
 
 /*
 if (!empty($_SESSION['idUtilisateur']))
@@ -29,7 +31,7 @@ require_once("models/SQLCo.php");
 require_once("models/utilisateur.php");
 require_once("models/services.php");
 require_once("models/modifierServices.php");
-/*require_once("controllers/functions.php");*/
+require_once("controllers/functions.php");
 
 
 if (!empty($_GET['page'])){
@@ -40,7 +42,10 @@ if (!empty($_GET['page'])){
 
 
 if (empty($page)){
-    include("templates/accueil.html");
+    include("controllers/accueil.php");
+}
+elseif ($page == "Accueil"){
+    include("controllers/accueil.php");
 }
 elseif ($page == "signup"){
     include("controllers/signup.php");
@@ -52,7 +57,7 @@ elseif ($page == "signin"){
     include("controllers/signin.php");
 }
 elseif($page == "profil"){
-    /*loginRequired($page);*/
+    loginRequired($page);
     include("controllers/profil.php");
 }
 elseif ($page == "locate"){
@@ -84,4 +89,4 @@ elseif ($page == "pageServiceAdmin"){
 }
 else{
     include("templates/".$page.".html");
-}
+} 

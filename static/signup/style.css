@@ -1,13 +1,25 @@
-@charset "utf-8";
-/* CSS Document */
-
 #title{
 	text-align:center;
 	color:red;
 }
 
-#flexto{
-	
+#formulaireInscription{
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
+	justify-content: center;
+	/*flex-wrap: wrap;*/
+	text-align: center;
+	align-items: center;
+	Border: 1px black solid;
+	border-radius: 20px;
+	box-shadow: 6px 6px 0px black;
+	width: 75%;
+}
+
+#formulaireInscription div{
+	width: 20%;
+}
+#remplissage{
+	display: flex;
+	justify-content: center;
 }
