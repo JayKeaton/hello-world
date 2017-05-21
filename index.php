@@ -1,6 +1,8 @@
 ﻿<?php
 session_start();
 
+/* Salut cher Antonin dont l'ordi bug bien comme il faut !!*/
+
 
 /*
 if (!empty($_SESSION['idUtilisateur']))
