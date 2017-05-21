@@ -2,7 +2,6 @@
 session_start();
 
 
-
 /*
 if (!empty($_SESSION['idUtilisateur']))
     echo $_SESSION['idUtilisateur'];

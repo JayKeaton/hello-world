@@ -1,36 +1,57 @@
 <?php
 
-$listeMois = array('Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre');
-     
+$listeJour = range(1,31);
+$listeMois = array(1 => 'Janvier', 2 => 'Février', 3 => 'Mars', 4 => 'Avril', 5 => 'Mai', 6 => 'Juin', 7 => 'Juillet', 8 => 'Août', 9 => 'Septembre', 10 => 'Octobre', 11 => 'Novembre', 12 => 'Décembre');
+$listeAnnee = range(1900, 2000+date("y"));
+
 	if (!empty($_POST["nom"])){
-		if($_POST["mdp"] == $_POST["mdpv"] && verifMail($bdd, $_POST["email"])==false){
-			$nom=$_POST["nom"];
-			$prenom=$_POST["prenom"];
-			$email=$_POST["email"];
-			$sexe=$_POST["sexe"];
-			$adresse=$_POST["adresse"];
-			$mdp=sha1($_POST["mdp"]);
-			$phone=($_POST["phone"]);
-			$idu = ajouterUtilisateur($bdd, $nom, $prenom, $email, $mdp, $adresse, $sexe, $phone);
-			include("controllers/mailto.php");
-			$randint=rand(1,10000);
-			$hash = date("Ymdhis".$randint);
-			envoyerMail($email, $hash, $nom, $prenom, $idu);
-			ajouterCle($bdd, $idu, $hash);
-			include("templates/validation.html");
+		$erreur = false;
+		if($_POST["mdp"] != $_POST["mdpv"]){
+            $erreur_mdpv = "Mot de passe différent de la confirmation";
+            $erreur = true;
+        }
+        if (verifMail($bdd,$_POST["email"])==true){
+            $erreur_compte = "Cette adresse mail est déjà utilisée.<br/><a href='".SOUS_DOMAINE."/?page=signin'>Connectez vous.</a>";
+            $erreur = true;
 		}
-		elseif(verifMail($bdd,$_POST["email"])==true){
-			$root = (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . '/';
-			echo "Erreur, vous êtes déjà inscrit. <br/><a href='/?page=connexion'>Connectez vous :</a>";
-		}
-		elseif($_POST["mdp"] != $_POST["mdpv"]){
-			echo "Mot de passe différent de la confirmation";
+		if (!in_array($_POST['jour'], $listeJour) || !in_array($_POST['mois'], array_keys($listeMois)) || !in_array($_POST['annee'], $listeAnnee)){
+            $erreur_dateNaissance = "Veuillez entrer une date valide.";
+            $erreur = true;
+        }
+		if ($erreur){
 			include("templates/signup.php");
 		}
-		else{
-			echo "Autre erreur";
-			include("templates/signup.php");
-		}
+		else {
+            $email = $_POST["email"];
+            $pseudo = $_POST['pseudo'];
+
+            $mdp = sha1($_POST["mdp"]);
+
+            $prenom = $_POST["prenom"];
+            $nom = $_POST["nom"];
+
+            $telephone = ($_POST["telephone"]);
+
+            $sexe = $_POST["sexe"];
+            $jour = $_POST['jour'];
+            $mois = $_POST['mois'];
+            $annee = $_POST['annee'];
+            $dateNaissance = $annee."-".$mois."-".$jour;
+
+            $codePostal = $_POST['codePostal'];
+            $adresse = $_POST["adresse"];
+
+            $geolocalisation = !empty($_POST['geolocalisation']);
+
+            $idUtilisateur = ajouterUtilisateur($email, $pseudo, $mdp, $prenom, $nom, $telephone, $sexe, $dateNaissance, $codePostal, $adresse, $geolocalisation);
+
+            include("controllers/mailto.php");
+            $randint = rand(1, 10000);
+            $hash = date("Ymdhis" . $randint);
+            envoyerMail($email, $hash, $nom, $prenom, $idUtilisateur);
+            ajouterCle($bdd, $idUtilisateur, $hash);
+            include("templates/signup.php");
+        }
 	}
 	else {
 		include("templates/signup.php");
