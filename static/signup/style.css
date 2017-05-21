@@ -21,8 +21,7 @@
 	text-align: center;
 	Border: 1px black solid;
 	border-radius: 20px;
-	box-shadow: 6px 6px 0px black;
-	width: 50%;
+	box-shadow: 6px 6px 0 black;
 }
 
 #inscription form div{
@@ -32,6 +31,7 @@
 	justify-content: center;
 	align-items: center;
 	Border-bottom: 1px black solid;
+	margin: auto 50px 50px;
 }
 
 #inscription form div h3{
@@ -43,6 +43,7 @@
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
+	flex-wrap: wrap;
 	margin: 0 20px 20px;
 	Border-bottom: none;
 }

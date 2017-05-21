@@ -10,41 +10,21 @@ ob_start();
 <article id="inscription">
     <form method="post" action="" id="formulaireInscription">
         <div>
-            <h2>Informations personnelles</h2>
-            <div>
-                <div>
-                    <h5>
-                        Prenom: <span class="required">*</span>
-                    </h5>
-                    <input type="text" id="name2" name="prenom" placeholder="Votre prénom" required="required" autofocus value="<?php echo((empty($_POST['prenom'])) ? "" : $_POST['prenom']); ?>"  />
-                </div>
-                <div>
-                    <h5>
-                        Nom: <span class="required">*</span>
-                    </h5>
-                    <input type="text" id="name1" name="nom" value="<?php echo((empty($_POST['nom'])) ? "" : $_POST['nom']); ?>" placeholder="Votre nom" required="required" autofocus />
-                </div>
-            </div>
-        </div>
-
-        <div>
-            <h2>Contact</h2>
+            <h2>Utilisateur</h2>
             <div>
                 <div>
                     <h5>
                         Email ou courriel: <span class="required">*</span>
                     </h5>
                     <input type="email" id="email" name="email" value="<?php echo((empty($_POST['email'])) ? "" : $_POST['email']); ?>" placeholder="example@email.fr" required="required" />
+                    <?php echo((empty($erreur_compte)) ? "" : "<p style='color: red;'>".$erreur_compte."</p>"); ?>
                 </div>
                 <div>
-                    <h5>
-                        Numéro de téléphone: <span class="required">*</span>
-                    </h5>
-                    <input type="phone" id="phone" name="phone" value="<?php echo((empty($_POST['phone'])) ? "" : $_POST['phone']); ?>" required="required" />
+                    <h5>Pseudo: <span class="required">*</span></h5>
+                    <input type="text" id="pseudo" name="pseudo" value="<?php echo((empty($_POST['pseudo'])) ? "" : $_POST['pseudo']); ?>" placeholder="Votre pseudo" required="required" autofocus/>
                 </div>
             </div>
         </div>
-
         <div>
             <h2>Mot de passe</h2>
             <div>
@@ -52,7 +32,7 @@ ob_start();
                     <h5>
                         Votre mot de passe: <span class="required">*</span>
                     </h5>
-                    <input type="password" id="password" name="mdp" value="" placeholder="" required="required" />
+                    <input type="password" id="mdp" name="mdp" value="" placeholder="" required="required" />
                 </div>
                 <div>
                     <h5>
@@ -61,19 +41,46 @@ ob_start();
                     <input type="password" id="mdpv" name="mdpv" value="" placeholder="" required="required" />
                 </div>
             </div>
+            <?php echo((empty($erreur_mdpv)) ? "" : "<p style='color: red;'>".$erreur_mdpv."</p>"); ?>
+        </div>
+
+        <div>
+            <h2>Informations personnelles</h2>
+            <div>
+                <div>
+                    <h5>
+                        Prenom: <span class="required">*</span>
+                    </h5>
+                    <input type="text" id="prenom" name="prenom" placeholder="Votre prénom" required="required" value="<?php echo((empty($_POST['prenom'])) ? "" : $_POST['prenom']); ?>"  />
+                </div>
+                <div>
+                    <h5>
+                        Nom: <span class="required">*</span>
+                    </h5>
+                    <input type="text" id="Nom" name="nom" value="<?php echo((empty($_POST['nom'])) ? "" : $_POST['nom']); ?>" placeholder="Votre nom" required="required" autofocus />
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <h2>Contact</h2>
+            <div>
+                <div>
+                    <h5>Numéro de téléphone:</h5>
+                    <input type="tel" id="telephone" name="telephone" value="<?php echo((empty($_POST['telephone'])) ? "" : $_POST['telephone']); ?>" />
+                </div>
+            </div>
         </div>
 
         <div>
             <h2>Autre</h2>
             <div>
                 <div>
-                    <h5>
-                        Sexe:
-                    </h5>
-                    <select id="gender" name="sexe" value="<?php echo((empty($_POST['sexe'])) ? "" : $_POST['sexe']); ?>">
-                        <option value="sexe1">Homme</option>
-                        <option value="sexe2">Femme</option>
-                        <option value="sexe3">Autre</option>
+                    <h5>Sexe:</h5>
+                    <select id="sexe" name="sexe">
+                        <option value="homme" <?php echo((!empty($_POST['sexe']) && $_POST['sexe'] == "homme") ? "selected='selected'" : ""); ?>>Homme</option>
+                        <option value="femme" <?php echo((!empty($_POST['sexe']) && $_POST['sexe'] == "femme") ? "selected='selected'" : ""); ?>>Femme</option>
+                        <option value="autre" <?php echo((!empty($_POST['sexe']) && $_POST['sexe'] == "autre") ? "selected='selected'" : ""); ?>>Autre</option>
                     </select>
                 </div>
                 <div>
@@ -82,25 +89,41 @@ ob_start();
                         <select name="jour" id="jour">
                             <?php
                             for($i = 1; $i <= 31; $i++){
-                                echo ("<option value=".$i.">".$i."</option>");
+                                if (!empty($_POST['jour']) && $_POST['jour'] == $i){
+                                    echo ("<option value=".$i." selected='selected'>".$i."</option>");
+                                }
+                                else{
+                                    echo ("<option value=".$i.">".$i."</option>");
+                                }
                             }
                             ?>
                         </select>
                         <select name="mois" id="mois">
                             <?php
                             foreach($listeMois as $key => $value){
-                                echo ("<option value=".($key+1).">".$value."</option>");
+                                if (!empty($_POST['mois']) && $_POST['mois'] == $key){
+                                    echo ("<option value=".($key)." selected='selected'>".$value."</option>");
+                                }
+                                else{
+                                    echo ("<option value=".($key).">".$value."</option>");
+                                }
                             }
                             ?>
                         </select>
                         <select name="annee" id="annee">
                             <?php
                             for($i = 2000+date("y"); $i >= 1900; $i--){
-                                echo ("<option value=".$i.">".$i."</option>");
+                                if (!empty($_POST['annee']) && $_POST['annee'] == $i){
+                                    echo ("<option value=".$i." selected='selected'>".$i."</option>");
+                                }
+                                else{
+                                    echo ("<option value=".$i.">".$i."</option>");
+                                }
                             }
                             ?>
                         </select>
                     </div>
+                    <?php echo((empty($erreur_dateNaissance)) ? "" : "<p style='color: red;'>".$erreur_dateNaissance."</p>"); ?>
                 </div>
             </div>
         </div>
@@ -111,22 +134,12 @@ ob_start();
             <h2>Adresse</h2>
             <div>
                 <div>
-                    <h5>
-                        Ville :
-                    </h5>
-                    <input type="text" id="ville" name="ville" placeholder="Exemple : Paris"/>
+                    <h5>Code postal:</h5>
+                    <input type="number" name="codePostal" id="codePostal" value="<?php echo((empty($_POST['codePostal'])) ? "" : $_POST['codePostal']); ?>" placeholder="Exemple: 75001"/>
                 </div>
                 <div>
-                    <h5>
-                        Nom de la rue :
-                    </h5>
-                    <textarea id="rue" name="rue" placeholder="Exemple : Avenue des Champs Elisées" style="resize: none;"></textarea>
-                </div>
-                <div>
-                    <h5>
-                        Numéro:
-                    </h5>
-                    <input type="number" id="numero" name="numero"/>
+                    <h5>Votre adresse:</h5>
+                    <textarea id="adresse" name="adresse" placeholder="Votre adresse"><?php echo((empty($_POST['adresse'])) ? "" : $_POST['adresse']); ?></textarea>
                 </div>
             </div>
         </div>
@@ -137,7 +150,7 @@ ob_start();
             <div>
                 <div>
                     <h5>Activer</h5>
-                    <input type="checkbox" name="checkbox" value="<?php echo((empty($_POST['checkbox'])) ? "" : $_POST['checkbox']); ?>">
+                    <input type="checkbox" value='autoriser' name="geolocalisation" id="geolocalisation" <?php echo((!empty($_POST['geolocalisation']) && $_POST['geolocalisation']) ? "checked" : ""); ?>>
                 </div>
             </div>
         </div>

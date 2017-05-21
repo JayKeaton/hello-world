@@ -7,9 +7,21 @@
         $req->execute();
 	}
 	
-	function ajouterUtilisateur($bdd, $nom, $prenom, $email, $mdp, $adresse, $sexe, $phone){
-		$req = $bdd->prepare("insert into utilisateurs(mail, nom, prenom, mdp, telephone) values(:email, :nom, :prenom, :mdp, :phone)");
-		$result = $req->execute(array("nom"=>$nom, "prenom"=>$prenom, "email"=>$email, "mdp"=>$mdp, "phone"=>$phone));
+	function ajouterUtilisateur($email, $pseudo, $mdp, $prenom, $nom, $telephone, $sexe, $dateNaissance, $codePostal, $adresse, $geolocalisation){
+	    global $bdd;
+		$req = $bdd->prepare("insert into utilisateurs(email, pseudo, mdp, prenom, nom, telephone, sexe, dateNaissance, codePostal, adresse, geolocalisation) values(:email, :pseudo, :mdp, :prenom, :nom, :telephone, :sexe, :dateNaissance, :codePostal, :adresse, :geolocalisation)");
+		$req->bindParam('email', $email);
+		$req->bindParam('pseudo', $pseudo);
+		$req->bindParam('mdp', $mdp);
+		$req->bindParam('prenom', $prenom);
+		$req->bindParam('nom', $nom);
+		$req->bindParam('telephone', $telephone);
+		$req->bindParam('sexe', $sexe);
+		$req->bindParam('dateNaissance', $dateNaissance);
+		$req->bindParam('codePostal', $codePostal);
+		$req->bindParam('adresse', $adresse);
+		$req->bindParam('geolocalisation', $geolocalisation);
+		$req->execute();
 		return $bdd->lastInsertId();
 	}
 
