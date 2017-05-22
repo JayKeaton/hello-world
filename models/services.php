@@ -68,4 +68,14 @@
 		
 	}
 
+
+	function obtenirServiceParCategorie($categorie){
+	    global $bdd;
+	    $req = $bdd->prepare("SELECT * FROM services WHERE categorie=:categorie");
+	    $req->bindParam('categorie', $categorie);
+	    $req->execute();
+	    $data = $req->fetchAll();
+	    return $data;
+    }
+
 ?>
