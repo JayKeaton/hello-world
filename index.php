@@ -48,6 +48,9 @@ if (empty($page)){
 elseif ($page == "Accueil"){
     include("controllers/accueil.php");
 }
+elseif ($page == "accueil_hugo"){
+    include("controllers/accueil_hugo.php");
+}
 elseif ($page == "signup"){
     include("controllers/signup.php");
 }
