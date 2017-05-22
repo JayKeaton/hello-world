@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 if(!empty($_POST['catégorie'])){
 		$typeService = $_POST['catégorie'];
 
@@ -11,6 +11,6 @@ if(!empty($_POST['catégorie'])){
 	$data=$req->fetchall();
 	}
 include ("templates/accueil.php");
-
+include ("models/TriServices.php")
 ?>
 

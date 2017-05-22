@@ -5,7 +5,7 @@
 			<link rel="stylesheet" href="static/headerFooter/headerFooter.css" />
 			<meta charset="utf-8"/>
 			<title>Notre appli php</title>
-			<link rel="icon" type="image/png" href="static/accueil/msf_logo _fichiers/hamster_1.jpeg" />
+			<link rel="icon" type="image/png" href="static/accueil/msf_logo _fichiers/MSF_logo.jpg" />
 		</head>
 		<body>
 			
@@ -51,7 +51,7 @@
 					</div>
 					<div id = "recherche">
 						<h1>Recherche de services</h1>
-				    	<form action="" method="POST" id="form">
+				    	<form action="controlers/accueil.php" method="post" id="form">
 				    		<div class="element">
 				    			<p>Que recherchez-vous ?</p>
 					    		<select name="categorie" id="categorie">
@@ -76,7 +76,7 @@
 					   			<!--<input type="checkbox">Geolocalisation</input>-->
 					   		</div>
 				    		<div class="element">
-				    			<input type="submit" value="Go!"/>
+				    			<input type="submit" action="" value="Go!"/>
 				    		</div>
 				    	</form>
 				    </div>
@@ -89,11 +89,11 @@
 						 ?>-->
 						<p><a href="https://soutenir.msf.fr/b/mon-don?esv_source=Google&esv_medium=sea_brand&esv_campaign=W%2A%2AW00001&esv_term=msf&gclid=COKwx8uJvdMCFccp0wodkDMP4Q">
 								<div id="article 1" class="service">
-									Nom random 1 - 643m<br/>
+									Nom random 1 - 343m<br/>
 									<img src="static/accueil/msf_logo _fichiers/maison.jpeg" width=240 class="floatl" title="photo non contractuelle"/>
 										La cabane au fond de mon jardin<br/>DESCRIPTION.........................<br/>
-						...<br/>...............................
-						..............................................<br/><br/><br/>
+										...<br/>...............................
+										..............................................<br/><br/><br/>
 									Note:	4,4/5
 								</div>
 							</a>
@@ -101,7 +101,7 @@
 						<br/>
 						<p><a href="http://www.lecrystalparis.com/menu.html#mix">
 								<div id="article 2" class="service">
-										Nom random 2 - Paris I -729 m <br/>
+										Nom random 2 - Paris I -629 m <br/>
 										<img src="static/accueil/msf_logo _fichiers/Worlds-Largest-Pizza.jpg" width=240 class=floatl title="photo non contractuelle" />
 										Repas à partager en famille<br/>.........................<br/>
 										...<br/>...............................
@@ -125,17 +125,17 @@
 			<nav id="partage">
 				
 				<ul>
-					<li><a href="https://www.facebook.com/"><img src="static/accueil/msf_logo _fichiers/fb_32x32.png" title="Poke-nous sur Facebook!"/></a>
+					<li><a href="https://www.facebook.com/"><img src="static/accueil/msf_logo _fichiers/fb_32x32.png" title="Facebook"/></a>
 					</li>
-					<li><a href="https://twitter.com/?lang=fr"> <img src="static/accueil/msf_logo _fichiers/twitter_32x32.png" title="RT si t'es src!"/></a></li>
-					<li><a href="https://plus.google.com/?hl=fr"><img src="static/accueil/msf_logo _fichiers/gplus_32x32.png" title="Nous aussi, on croyait que ça avait disparu"> </a></li>
+					<li><a href="https://twitter.com/?lang=fr"> <img src="static/accueil/msf_logo _fichiers/twitter_32x32.png" title="RT si t'es content!"/></a></li>
+					<li><a href="https://plus.google.com/?hl=fr"><img src="static/accueil/msf_logo _fichiers/gplus_32x32.png" title="Google +"> </a></li>
 					
-					<li><a href="https://www.instagram.com/?hl=fr"> <img src="static/accueil/msf_logo _fichiers/instagram.png" title="Envoie-nous ce que tu manges, ça nous intéresse!"/></a></li>
-					<li><a href="https://www.snapchat.com/l/fr-fr/"> <img src="static/accueil/msf_logo _fichiers/snapchat-40x40.png" title="404SkillNotFound sur Snap! ;)"/></a></li>
-					<li><a href="https://www.tumblr.com/"> <img src="static/accueil/msf_logo _fichiers/tumblr.jpeg" title="Si t'es un vrai, retrouve-nous sur Tumblr!"/></a></li>
-					<li><a href="https://fr.pinterest.com/"> <img src="static/accueil/msf_logo _fichiers/pinterest.png" title="Si tu n'as rien de mieux à faire, tu peux nous piner sur Pinterest..."/></a></li>
+					<li><a href="https://www.instagram.com/?hl=fr"> <img src="static/accueil/msf_logo _fichiers/instagram.png" title="Instagram"/></a></li>
+					<li><a href="https://www.snapchat.com/l/fr-fr/"> <img src="static/accueil/msf_logo _fichiers/snapchat-40x40.png" width=32 title="404SkillNotFound sur Snap! ;)"/></a></li>
+					<li><a href="https://www.tumblr.com/"> <img src="static/accueil/msf_logo _fichiers/tumblr.jpeg" title="Retrouve-nous sur Tumblr!"/></a></li>
+					<li><a href="https://fr.pinterest.com/"> <img src="static/accueil/msf_logo _fichiers/pinterest.png" title="Pinterest"/></a></li>
 					<li><a href="https://www.reddit.com/"> <img src="static/accueil/msf_logo _fichiers/reddit-up.png" title="Une suggestion concernant le développement de l'application? C'est par ici!"/></a></li>
-					<li><a href="https://www.youtube.com/watch?v=_wzGjMw6N-E"> <img src="static/accueil/msf_logo _fichiers/You_Tube_moche.png" title="Viens voir la sextape de ta maman!"/></a></li>
+					<li><a href="https://www.youtube.com/watch?v=_wzGjMw6N-E"> <img src="static/accueil/msf_logo _fichiers/You_Tube_moche.png" title="YouTube"/></a></li>
 					<!--<li><a href=""> <img src="msf_logo _fichiers/" title="un truc utile"/></a></li>" </form-->
 				</ul>
 			</nav>
