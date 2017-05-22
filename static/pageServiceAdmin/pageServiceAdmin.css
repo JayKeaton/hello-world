@@ -113,8 +113,19 @@ td {
   text-align: center;
   vertical-align: middle;
 }
+#Mail{
+  color: red;
+}
+#Contact{
+  margin-left: 15px;
+}
 #alinea{
+  margin-left: 10px;
   text-indent:15px
+}
+#Avatar{
+  margin-right: 15px;
+  margin-left: 15px;
 }
 #vide{
   padding:1%;
