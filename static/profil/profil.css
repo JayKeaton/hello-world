@@ -1,0 +1,23 @@
+
+
+#main{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+#main form{
+    width: 30%;
+    Border: 1px black solid;
+    border-radius: 20px;
+    box-shadow: 6px 6px 0px black;
+    margin: 50px 0 0 50px;
+    text-align: center;
+}
+#main form div{
+    margin: 30px;
+}
+#main form div h5{
+    margin-top: 0;
+    margin-bottom: 10px;
+}

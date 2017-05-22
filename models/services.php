@@ -22,23 +22,49 @@
 		$donnees = split(",",$csv[0]);
 		return $donnees[2].",".$donnees[3];
 	}
-	function ajouterService($bdd, $email, $adresse, $phone, $website, $categorie){
-		$req = $bdd->prepare("insert into services(localisation, categorie, telephone, mail, lien_site) values(:adresse, :categorie, :phone, :email, :website)");
-		$result = $req->execute(array("adresse"=>$adresse, "categorie"=>$categorie, "phone"=>$phone, "email"=>$email, "website"=>$website));
+
+
+	function ajouterService($bdd, $email, $adresse, $phone, $website, $categorie,$idContributeur){
+		$req = $bdd->prepare("insert into services (localisation, categorie, telephone, mail, lien_site, idContributeur) values(:adresse, :categorie, :phone, :email, :website, :idContributeur)");
+		$result = $req->execute(array("adresse"=>$adresse, "categorie"=>$categorie, "phone"=>$phone, "email"=>$email, "website"=>$website, "idContributeur"=>$idContributeur));
 		return $bdd->lastInsertId();
 	}
 
+
+	function ajouterDescriptionService($bdd, $nom, $texte, $langue, $ids){
+		$req = $bdd->prepare("insert into descriptions (nom, texte, langue, idService) values(:nom, :texte, :langue, :idService)");
+		$result = $req->execute(array("nom"=>$nom, "texte"=>$texte,"langue"=>$langue, "idService"=>$ids));
+		return $bdd->lastInsertId();
+  }
+
+
 	function recupLocalisation($bdd){
 		
-		$req = $bdd->prepare("SELECT localisation FROM description");
-	    $req->execute(array('idService' => $idService));
-	    $data = $req->fetch();
+		$req = $bdd->prepare("SELECT localisation, categorie, nom FROM services");
+	    $req->execute();
+	    $data = $req->fetchAll();
 		
-		if ($data == null)
-	        return null;
+		if ($data == array())
+	        return false;
 	    else{
-	        return array($data['localisation']);
+	        return $data;
         }
+	}
+
+
+
+	
+	function recupAll($bdd){
+		
+		$req = $bdd->prepare("SELECT localisation, categorie, telephone, nom FROM services");
+	    $req->execute();
+	    $data = $req->fetchAll();
+		if ($data == array())
+	        return false;
+	    else{
+	        return $data;
+        }
+		
 		
 	}
 

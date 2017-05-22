@@ -23,28 +23,33 @@
 
     <main>
       <div id="EnTete">
-          <div id="h"> Médecin Sans Frontière <br> Page d'acceuil </div>
+          <div id="h"> Médecin Sans Frontière <br> Page de Service </div>
       </div>
 
       <section id="Service">
         <div id="IconeCategorie"> <img src="static/pageServiceAdmin/msf2.jpeg" width="50" height="50"> </div> <!-- Icone du service -->
         <div id="b1">
-          <div id="t1">Nom du Service</div>
+          <div id="t1"> <?php echo $description["nom"] ?> </div> <!-- Nom du service !-->
           <article>
             <h1> Description du Service:</h1>
             <div id="Description">
-              <?php /* echo $description */ ?>
+              <div id="alinea"> <?php $description["texte"] ?> </div>
             </div>
             <h1>Nous Joindre:</h1>
             <div id="Contact">
-              <?php /* echo $contact */ ?>
+              <div id="alinea">
+                Adresse: <?php echo $contact["numero"].' '.$contact["rue"] ?> </br> <?php echo $contact["codePostal"].' '.$contact["ville"] ?> </br> <!-- n°rue Rue CodePostal Ville -->
+                Numéro de téléphone: <?php echo $contact["telephone"] ?> </br>
+                <a href="<?php echo $contact["lien_site"]; ?>"> Notre Site </a>
+                Mail: <?php echo $contact["mail"]; ?>
+              </div>
             </div>
             <h1>Historique des services proposés:</h1>
             <table>
               <thead>
                 <tr>
                   <td>Date</td>
-                  <td>Type de Service</td>
+                  <!-- <td>Type de Service</td> -->
                   <td>Nombre d inscrits</td>
                   <td>Satisfaction</td>
                 </tr>
@@ -52,10 +57,10 @@
               <tbody>
                 <?php for ($index=0;$index<$longueur;$index ++){ ?>
                   <tr>
-                    <td> <?php echo $seances[$index][0] ?> </td>
-                    <td> <?php echo $seances[$index][1] ?> </td>
-                    <td> <?php echo $seances[$index][2] ?> </td>
-                    <td> <?php echo $seances[$index][3] ?> </td>
+                    <td> <?php echo $seances[$index]["date"] ?> </td>
+                    <!-- <td> <?php /* echo $seances[$index][2] */ ?> </td> -->
+                    <td> <?php echo $lesInscrits[$index+$seances[0][0]][0] ?> </td>
+                    <!--<td> <?php echo $seances[$index]["Satisfaction"] ?> </td> -->
                   </tr>
                 <?php } ?>
               </tbody>
@@ -66,15 +71,23 @@
                 <article id="Commentaire">
                   <aside id="Avatar">
                     <img src="static/pageServiceAdmin/msf2.jpeg" width="50" height="50"> <?php /* echo <img src="???"+$commentaires[?] width="50" height="50"> */ ?>
-                  </br>Nom de l'utilisateur <?php /* echo $commentaires[?] */ ?>
+                  </br> <div id="center"> <?php echo $commentaires[$index][6]  ?> </div> <!-- Nom de l'utilisateur !-->
                   </aside>
                   <div id="b2">
                     <article id="TexteComment">
-                      <p>Commentaire:</p> <?php /* echo $commentaires[?] */ ?>
+                      <p>Commentaire:</p> <div id="alinea"> <?php echo $commentaires[$index][2] ?> </div>
                     </article>
                     <div id="Note">
                       <p>Note:</p>
-                        <img id="Jauge" style=" background: linear-gradient(to right, yellow <?php echo $commentaires[?] ?>, white 50%)" src="static/pageServiceAdmin/jauge5Stars.png" width="250" height="50">
+                        <?php $note=$commentaires[$index][1];
+                          $index2=1;
+                          while ($index2<$note){ ?>
+                            <img src="static/pageServiceAdmin/etoileRouge.png" width="50" height="50">
+                            <?php $index2++;
+                          }
+                        if ($note>=((int)$note+0.5)){ ?>
+                          <img src="static/pageServiceAdmin/demiEtoileRouge.png" width="25" height="50">
+                        <?php } ?>
                     </div>
                   </div>
                 </article>
@@ -85,6 +98,7 @@
             </article>
           </article>
         </div>
+        <div id="vide">  </div>
       </section>
 
     </main>

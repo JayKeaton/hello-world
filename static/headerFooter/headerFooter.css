@@ -1,45 +1,70 @@
+html{
+  height: 100%;
+}
+body{
+  height: 100%;
+  margin-top: 0;
+}
+
 header{
-  display: flex;
+  padding-top: 20px;
 }
 header ul
 {
+  margin-top: 0;
+  padding-left: 200px;
   background-color:red;
-  flex:1;
   display:flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
-
-}
-header ul li
-{
-  display:flex;
-  flex-direction: row;  
-  list-style: none;
-  padding:5px;
+  font-family: "Arial Black", serif;
+  list-style-type: none;
   height:100%;
-  color: white;
-  width: 200px;
-  justify-content: center;
-  alignt-text:center;
-  justify-content: center;
 }
-
-header ul li div{
-  display:flex;
-  flex-direction: column; 
-}
-header img{
-  display:flex;
-  alignt-text:center;
-  justify-content: center;
+header ul li{
+  height:100%;
 }
 header ul li:hover{
   background-image: linear-gradient(red 57% , #ff8080);
+  font-weight: bold;
+  height: 100%;
+}
+header ul li a
+{
+  color: white;
+  text-decoration:none;
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  padding:5px;
+  height: 40px;
+  width: 200px;
+}
+header ul li a div{
+  height:100%;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+header ul li a div p{
+  margin: 0;
+  padding: 0;
+}
+header img{
+  display:flex;
+  justify-content: center;
 }
 header #imageBanniere{
-  border:2px solid red ;
+  border:2px solid red;
+  position: absolute;
+  top: 4px;
+  left: 100px;
+
 }
+
+
+
 #rouge{
   padding-left: 100px;
   height:100%;
@@ -61,16 +86,8 @@ align-items: center;
   display: flex;
   text-align: center;
 }
-header a {
-color: black;
-font-family:"Arial Black";
-text-decoration:none;
-}
 
-header a:hover{
-color: rgb(180,0,0);
-font-weight: bold;  
-}
+
 footer a {
 color: black;
 font-family:"Arial Black";
@@ -83,6 +100,9 @@ font-weight: bold;
 }
 footer
 {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
   background-color: #808080;
   display: flex;
   flex-direction: row;
@@ -105,6 +125,11 @@ footer ul li{
 }
 #copyright li{
   color:white;
+}
+
+
+#main{
+  margin-bottom: 23px;
 }
 
 

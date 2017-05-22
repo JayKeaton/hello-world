@@ -25,5 +25,5 @@ if (!empty($_POST['identifiant'])){
     }
 }
 else{
-    include("templates/signin.html");
+    include("templates/signin.php");
 }
