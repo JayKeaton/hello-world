@@ -64,26 +64,6 @@ catch(PDOException $se)
     return $tableau;
   }
 
-  function satisfaction($idService,$seances){
-    global $bdd;
-    $satisfaction=array();
-    /*date_default_timezone_set('Paris'); */
-    for($i=0; $i<count($seances); $i++){
-      $req=$bdd->prepare("SELECT AVG(note) FROM commentaires WHERE idService=:idService AND (date BETWEEN :date1 AND :date2) ");
-      $dateD=$seances[$i]["date"];
-      $date1=$dateD;
-      $date2 = date_create($dateD);
-      date_modify($date2, '+3 day');
-      $date2= $date2->format('Y-m-d');
-      $req->bindParam("date1",$date1);
-      $req->bindParam("date2",$date2);
-      $req->bindParam("idService",$idService);
-      $req->execute();
-      $satisfaction[$i]=$req->fetch();
-    }
-    return $satisfaction;
-  }
-
   function lesInscrits($idService){
     global $bdd;
     $req=$bdd->prepare("SELECT count(*), inscrits.idSeance FROM inscrits JOIN seances ON inscrits.idSeance=seances.idSeance WHERE idService=:idService GROUP BY seances.idSeance ORDER BY seances.idSeance ");

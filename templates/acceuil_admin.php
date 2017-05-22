@@ -7,11 +7,11 @@
 
 		<p id="titre">
 			Bienvenu chers administrateurs
-		</p>
+		</P>
 
 		<body>
 			<form action="" method="post" id="recherche">
-				<a id="recherche1">
+				<a>
 					<div><!--la petite case pour le nom du service-->
 						<label for="nomService">nom du service :</label>
 						<input type="text" id="nomService" name="nomService" />
@@ -33,32 +33,18 @@
       		  			<input type="text" id="arrondissement" name="arrondissement"/>
    					</div>
    				</a>
-   				<b id="recherche2">
+   				<b>
    					<input type="checkbox" name="tri"> tri par date de la plus ancienne a la plus récente</br>
    					<input type="checkbox" name="dejaValidé"> cacher les services deja validé</br>
    					<input type="checkbox" name="serviceModifié"> montrer les service qui veule être modifié</br>
    				</b>
-   				<input type="submit" value="valider" id="valider">
+   				<input type="submit" value="valider">
    				
 			</form>
 		</body>
 
 		<p id="titreRecherche">
 			résultat de la recherche (par default de la plus anciènne a la plus récente)
-		</p>
-		
-		<?php
-		if(!empty($_POST['typeService']) or !empty($_POST['nomService']) or !empty($_POST['arrondissement'])){
-			print_r($data);
-		}
-		?> 
-		
-		<form action="" method="post" id="page">
-			<div>	<!--la petite case pour la page -->
-						<label for="page">page :</label>
-						<input type="text" id="page" name="page" />
-			</div>
-				<input type="submit" value="valider">
-		</form>
+		</P>
 
 	<html>
