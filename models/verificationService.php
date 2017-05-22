@@ -1,5 +1,4 @@
 <?php
-
 function dataTypeService ($typeService,$nomService,$arrondissement,$page){
 	global $bdd;
 	$clause=array();
@@ -21,5 +20,4 @@ function dataTypeService ($typeService,$nomService,$arrondissement,$page){
 	$data=$req-> fetchAll();
 	return $data;
 }
-
 ?>

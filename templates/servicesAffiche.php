@@ -51,6 +51,7 @@
 			<th>Localisation</th>
 			<th>Categorie</th>
 			<th>Telephone</th>
+			<th>Lien</th>
 		</tr>
 	</thead>
 	<tbody id="servicesA">

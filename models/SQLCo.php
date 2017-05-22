@@ -1,12 +1,11 @@
-<?php
+﻿<?php
 
 	$bdd = null;
-	try
-{
+	try {
 
     $hostname="localhost";
 	$username="root";
-	$password="";
+	$password="root";
 	$bddname="error404";
      /*
 	$hostname="localhost";

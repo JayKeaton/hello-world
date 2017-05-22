@@ -1,9 +1,7 @@
 <?php
-
-
 ob_start();
 ?>
-<link rel="stylesheet" href="static/accueil/accueil.css" />
+<link rel="stylesheet" href="/static/accueil/accueil.css" />
 <h1 id="myTitle">Pour <strong>VOUS</strong></h1>
 <h3 id="LittleTitle">Par le groupe Error 404</h3>
 <p id="description">MSF a été créé pour contribuer à la protection de la vie et à l'allégement des souffrances en respect de la dignité humaine. MSF apporte des soins à des personnes en situation précaire et travaille à leur permettre de reprendre le contrôle sur leur futur.<br/></p>
@@ -19,7 +17,7 @@ ob_start();
 		-Mode hors connexion<br/>
 		-Partage via réseaux sociaux, etc.<br/>
 		-Interface contributeur(particulier, ONG) avec login/mot de passe: permet d’ajouter un service à proposer<br/>
-		Interface super admin avec login/mot de passe pour vérifier l'authenticité des informations saisies.<br/>
+		-Interface super admin avec login/mot de passe pour vérifier l'authenticité des informations saisies.<br/>
 		-Le projet est fait en Open Source<br/></p>
 	</div>
 	<div id="services">
@@ -69,8 +67,6 @@ ob_start();
 		<h3>Actu 3</h3><p>Blablabla<br/>BlablablaBlablablaBlablablabla<br/>BlablablaBlablabla<br/></p>
 	</div>
 </section>
-
-
 <nav id="partage">
 	<ul>
 		<li><a href="https://www.facebook.com/"><img src="static/accueil/msf_logo _fichiers/fb_32x32.png"/></a>
@@ -86,8 +82,8 @@ ob_start();
 		<!--<li><a href=""> <img src="msf_logo _fichiers/" title="un truc utile"/></a></li>" </form-->
 	</ul>
 </nav>
-
 <?php
 $contenu = ob_get_clean();
-
+ob_end_flush();
 include("gabarit.php");
+?>

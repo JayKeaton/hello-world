@@ -1,14 +1,12 @@
-<!Doctype html>
+<!DOCTYPE html>
 <html>
 <head>
   <link rel="stylesheet" type="text/css" href="static/headerFooter/headerFooter.css"> <!-- Attention à bien remplacer le lien vers le fichier CSS -->
-  <link rel="icon" type="image/png" href="static/accueil/msf_logo _fichiers/hamster_1.jpeg" />
-  <meta charset="utf-8" />
+  <link rel="icon" type="image/png" href="static/accueil/msf_logo_fichiers/hamster_1.jpeg" />
+  <meta charset="utf-8"/>
   <title>MSF</title>
 </head>
-
   <body>
-
     <header>
         <!--div id="rouge"></div> <!-- Sert à créer la bande rouge à gauche de l'image -->
         <div id="imageBanniere">
@@ -113,8 +111,6 @@
     <div id="main">
       <?php echo $contenu; ?>
     </div>
-
-
     <footer>
         <ul>
             <li> <a href="http://hugobriet.000webhostapp.com/?page=accueil"> Plan du Site </a> </li>
@@ -125,7 +121,5 @@
             <li> ©Error404 </li>
         </ul>
     </footer>
-
   </body>
 </html>
-

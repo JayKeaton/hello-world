@@ -64,7 +64,7 @@ catch(PDOException $se)
     return $tableau;
   }
 
-  function satisfaction($idService,$seances){
+ function satisfaction($idService,$seances){
     global $bdd;
     $satisfaction=array();
     /*date_default_timezone_set('Paris'); */

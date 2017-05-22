@@ -12,8 +12,5 @@
 		}
 		$data = dataTypeService($typeService,$nomService,$arrondissement,$page);
 	}
-
 include("templates/acceuil_admin.php")
-
-
 ?>

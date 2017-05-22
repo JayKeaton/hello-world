@@ -1,5 +1,9 @@
-﻿<?php
+<?php
 session_start();
+
+$_SESSION['idUtilisateur']=2;
+$var = $_GET['adresse'];
+//echo($var);
 
 /* Salut cher Antonin dont l'ordi bug bien comme il faut !!*/
 
@@ -25,9 +29,6 @@ echo(SOUS_DOMAINE);
 echo("<br/>");
 echo(URL_SITE);
 */
-
-
-
 require_once("models/SQLCo.php");
 require_once("models/utilisateur.php");
 require_once("models/services.php");
@@ -38,18 +39,11 @@ require_once("controllers/functions.php");
 if (!empty($_GET['page'])){
 	$page = $_GET['page'];
 }
-    
-
-
-
 if (empty($page)){
     include("controllers/accueil.php");
 }
 elseif ($page == "Accueil"){
     include("controllers/accueil.php");
-}
-elseif ($page == "accueil_hugo"){
-    include("controllers/accueil_hugo.php");
 }
 elseif ($page == "signup"){
     include("controllers/signup.php");
