@@ -20,55 +20,46 @@ ob_start();
 		-Interface super admin avec login/mot de passe pour vérifier l'authenticité des informations saisies.<br/>
 		-Le projet est fait en Open Source<br/></p>
 	</div>
-	<div id = "recherche">
-		<h1>Recherche de services</h1>
-    	<form action="" method="POST" id="form">
-	<div class="element">
-			<p>Que recherchez-vous ?</p>
-			<select name="categorie" id="categorie">
-				<option name="soins">Soins</option>
-				<option name="nourriture">Nourriture</option>
-				<option name="logement">Logement</option>
-				<option name="aide_juridique">Aide juridique</option>
-			<option name="services_administratifs">Services administratifs</option>
-				<option name="vetements">Vêtements</option>
-			</select>
-	    		<p>   <a href="https://www.google.fr/advanced_search">Recherche Avancée</a></p>
-    		</div>
-    		<div class="element">
-	   			<p>Quel lieu?</p>
-	   			<input type="text" name="adresse" id="adresse" /><br/> 
-	   			<input type="checkbox">Geolocalisation</input>
-	   		</div>
-    		<div class="element">
-    			<input type="submit" value="Go!"/>
-    		</div>
-    	</form>
-    </div>
-	<div id="contenu">
-		<p><a href="https://soutenir.msf.fr/b/mon-don?esv_source=Google&esv_medium=sea_brand&esv_campaign=W%2A%2AW00001&esv_term=msf&gclid=COKwx8uJvdMCFccp0wodkDMP4Q">
-				<div id="article 2" class="article">
-					Nom random 1 - 643m<br/>
-					<img src="static/accueil/msf_logo _fichiers/maison.jpeg" width=240 class="floatl" title="photo non contractuelle"/>
-						Peut-être votre futur logement?<br/>.........................<br/>
-		...<br/>...............................
-		..............................................<br/><br/><br/>
-			DESCRIPTION
+	<div id="services">
+		<div id = "recherche">
+			<h1>Recherche de services</h1>
+	    	<form action="" method="POST" id="form">
+	    		<div class="element">
+	    			<p>Que recherchez-vous ?</p>
+		    		<select name="categorie" id="categorie">
+		    			<option name="soins">Soins</option>
+		    			<option name="nourriture">Nourriture</option>
+		    			<option name="logement">Logement</option>
+		    			<option name="aide_juridique">Aide juridique</option>
+		    			<option name="services_administratifs">Services administratifs</option>
+		    			<option name="vetements">Vêtements</option>
+		    		</select>
+		    		<p>   <a href="https://www.google.fr/advanced_search">Recherche Avancée</a></p>
+	    		</div>
+	    		<div class="element">
+		   			<p>Quel lieu?</p>
+		   			<input type="text" name="adresse" id="adresse" /><br/>
+		   			<input type="checkbox">Geolocalisation</input>
+		   		</div>
+	    		<div class="element">
+	    			<input type="submit" value="Go!"/>
+	    		</div>
+	    	</form>
+	    </div>
+		<div id="contenu">
+			<a id="lienService" href=""> <!-- Page du Service -->
+				<div id="service" class="article">
+					<aside id="profil">
+						<img src="static/accueil/msf_logo _fichiers/maison.jpeg" width=50 /> </br> <!--Pictogramme du service--><!--class="floatl"-->
+						Type de service
+					</aside>
+					<div id="texte">
+						Nom du service </br>
+						DESCRIPTION
+					</div>
 				</div>
 			</a>
-		</p>
-		<p><a href="http://www.lecrystalparis.com/menu.html#mix">
-				<div id="article 1" class="article">
-					<figure>
-						<img src="static/accueil/msf_logo _fichiers/Worlds-Largest-Pizza.jpg" width=240 class=floatl title="photo non contractuelle" />
-						<figcaption>Repas à partager en famille<br/>.........................<br/>
-							...<br/>...............................
-							...........................................<br/><br/><br/></figcaption>
-					</figure>
-				</div>
-			</a>
-		</p>
-		<br/><br/><br/><br/><br/>
+		</div>
 	</div>
 	<div id="fil_actu">
 		<h3>Actu 1</h3><p>Blablabla<br/>BlablablaBlablablaBlablabla<br/>BlablablaBlablabla<br/></p>
@@ -77,19 +68,17 @@ ob_start();
 	</div>
 </section>
 <nav id="partage">
-	
 	<ul>
-		<li><a href="https://www.facebook.com/"><img src="static/accueil/msf_logo _fichiers/fb_32x32.png" title="Poke-nous sur Facebook!"/></a>
+		<li><a href="https://www.facebook.com/"><img src="static/accueil/msf_logo _fichiers/fb_32x32.png"/></a>
 		</li>
-		<li><a href="https://twitter.com/?lang=fr"> <img src="static/accueil/msf_logo _fichiers/twitter_32x32.png" title="RT si t'es src!"/></a></li>
-		<li><a href="https://plus.google.com/?hl=fr"><img src="static/accueil/msf_logo _fichiers/gplus_32x32.png" title="Nous aussi, on croyait que ça avait disparu"> </a></li>
-		
-		<li><a href="https://www.instagram.com/?hl=fr"> <img src="static/accueil/msf_logo _fichiers/instagram.png" title="Envoie-nous ce que tu manges, ça nous intéresse!"/></a></li>
-		<li><a href="https://www.snapchat.com/l/fr-fr/"> <img src="static/accueil/msf_logo _fichiers/snapchat-40x40.png" title="404SkillNotFound sur Snap! ;)"/></a></li>
-		<li><a href="https://www.tumblr.com/"> <img src="static/accueil/msf_logo _fichiers/tumblr.jpeg" title="Si t'es un vrai, retrouve-nous sur Tumblr!"/></a></li>
-		<li><a href="https://fr.pinterest.com/"> <img src="static/accueil/msf_logo _fichiers/pinterest.png" title="Si tu n'as rien de mieux à faire, tu peux nous piner sur Pinterest..."/></a></li>
-		<li><a href="https://www.reddit.com/"> <img src="static/accueil/msf_logo _fichiers/reddit-up.png" title="Une suggestion concernant le développement de l'application? C'est par ici!"/></a></li>
-		<li><a href="https://www.youtube.com/watch?v=_wzGjMw6N-E"> <img src="static/accueil/msf_logo _fichiers/You_Tube_moche.png" title="Viens voir la sextape de ta maman!"/></a></li>
+		<li><a href="https://twitter.com/?lang=fr"> <img src="static/accueil/msf_logo _fichiers/twitter_32x32.png" /></a></li>
+		<li><a href="https://plus.google.com/?hl=fr"><img src="static/accueil/msf_logo _fichiers/gplus_32x32.png" > </a></li>
+		<li><a href="https://www.instagram.com/?hl=fr"> <img src="static/accueil/msf_logo _fichiers/instagram.png" /></a></li>
+		<li><a href="https://www.snapchat.com/l/fr-fr/"> <img src="static/accueil/msf_logo _fichiers/snapchat-40x40.png" /></a></li>
+		<li><a href="https://www.tumblr.com/"> <img src="static/accueil/msf_logo _fichiers/tumblr.jpeg" /></a></li>
+		<li><a href="https://fr.pinterest.com/"> <img src="static/accueil/msf_logo _fichiers/pinterest.png" /></a></li>
+		<li><a href="https://www.reddit.com/"> <img src="static/accueil/msf_logo _fichiers/reddit-up.png" /></a></li>
+		<li><a href="https://www.youtube.com/watch?v=_wzGjMw6N-E"> <img src="static/accueil/msf_logo _fichiers/You_Tube_moche.png"/></a></li>
 		<!--<li><a href=""> <img src="msf_logo _fichiers/" title="un truc utile"/></a></li>" </form-->
 	</ul>
 </nav>
