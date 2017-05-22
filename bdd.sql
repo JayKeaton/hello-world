@@ -1,6 +1,8 @@
 
 
 
+
+
 --
 -- Base de données: `error404`
 --
@@ -24,12 +26,12 @@ CREATE TABLE services (
   validation BOOLEAN DEFAULT false,
   nom VARCHAR(255),
   codePostal INTEGER,
-  localisation VARCHAR(255),
+  adresse VARCHAR(255),
   categorie VARCHAR(255),
   telephone VARCHAR(20),
-  mail VARCHAR(255),
+  email VARCHAR(255),
   lien_site VARCHAR(255),
-  idContributeur INTEGER
+  idUtilisateur INTEGER
     REFERENCES utilisateurs(idUtilisateur) ON DELETE SET NULL
 );
 
@@ -45,7 +47,6 @@ CREATE TABLE seances(
 
 CREATE TABLE descriptions(
   idDescription INTEGER PRIMARY KEY AUTO_INCREMENT,
-  nom VARCHAR(255),
   texte TEXT,
   langue VARCHAR(255),
   idService INTEGER
@@ -102,6 +103,8 @@ CREATE TABLE commentaires(
   idSeance INTEGER NOT NULL
     REFERENCES seances(idSeance) ON DELETE CASCADE
 );
+
+
 
 CREATE TABLE inscrits (
   idInscrit INTEGER PRIMARY KEY AUTO_INCREMENT,
