@@ -27,7 +27,7 @@ ob_start();
 			<h1>Recherche de services</h1>
 	    	<form action="" method="POST" id="form">
 	    		<div class="element">
-	    			<p>Que recherchez-vous ?</p>
+	    			Que recherchez-vous ?
 		    		<select name="categorie" id="categorie">
 		    			<option name="soins">Soins</option>
 		    			<option name="nourriture">Nourriture</option>
@@ -36,10 +36,10 @@ ob_start();
 		    			<option name="services_administratifs">Services administratifs</option>
 		    			<option name="vetements">Vêtements</option>
 		    		</select>
-		    		<p>   <a href="https://www.google.fr/advanced_search">Recherche Avancée</a></p>
+		    		<a href="https://www.google.fr/advanced_search">Recherche Avancée</a>
 	    		</div>
 	    		<div class="element">
-		   			<p>Quel lieu?</p>
+		   			Quel lieu?
 		   			<input type="text" name="adresse" id="adresse" /><br/>
 		   			<input type="checkbox">Geolocalisation</input>
 		   		</div>
