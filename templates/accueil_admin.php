@@ -2,11 +2,11 @@
 	<html>
 		<head>
 			<meta charset="utf-8" />
-			<link href="static/acceuil_admin/acceuil_admin.css" rel="stylesheet" type="text/css">
+			<link href="static/accueil_admin/acceuil_admin.css" rel="stylesheet" type="text/css">
 		</head>
 
 		<p id="titre">
-			Bienvenu chers administrateurs
+			Bienvenue chers administrateurs
 		</p>
 
 		<body>
@@ -28,15 +28,15 @@
 
     		</select>
    					</div>
-   					<div> <!-- la petite case pour l arrondissement -->
-      		  			<label for="arrondissement">arrondissement:</label>
-      		  			<input type="text" id="arrondissement" name="arrondissement"/>
+   					<div> <!-- la petite case pour l adresse -->
+      		  			<label for="adresse">adresse :</label>
+      		  			<input type="text" id="adresse" name="adresse"/>
    					</div>
    				</a>
    				<b id="recherche2">
    					<input type="checkbox" name="tri"> tri par date de la plus ancienne a la plus récente</br>
    					<input type="checkbox" name="dejaValidé"> cacher les services deja validé</br>
-   					<input type="checkbox" name="serviceModifié"> montrer les service qui veule être modifié</br>
+   					<input type="checkbox" name="serviceModifié"> montrer les services qui veule être modifié</br>
    				</b>
    				<input type="submit" value="valider" id="valider">
    				
@@ -48,9 +48,18 @@
 		</p>
 		
 		<?php
-		if(!empty($_POST['typeService']) or !empty($_POST['nomService']) or !empty($_POST['arrondissement'])){
-			print_r($data);
+		if(!empty($_POST['typeService']) or !empty($_POST['nomService']) or !empty($_POST['adresse'])){	
+			for($i=0;$i<count($data);$i++){
+    			$contenu='<p class="servicesData"> nom du service :'
+				.$data[$i]['nom'].
+    			'</br> description :'.$data[$i]['texte']. 
+    			'</br> <a href=" ">Voir l’annonce</a></p>' ;
+
+			echo $contenu;
+
 		}
+}
+
 		?> 
 		
 		<form action="" method="post" id="page">

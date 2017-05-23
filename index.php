@@ -1,9 +1,6 @@
 <?php
 session_start();
 
-$_SESSION['idUtilisateur']=2;
-$var = $_GET['adresse'];
-//echo($var);
 
 /* Salut cher Antonin dont l'ordi bug bien comme il faut !!*/
 
@@ -81,7 +78,7 @@ elseif ($page == "tests"){
     include("controllers/tests.php");
 }
 elseif ($page == "accueil_admin"){
-    include("controllers/acceuil_admin.php");
+    include("controllers/accueil_admin.php");
 }
 elseif ($page == "pageServiceAdmin"){
     include("controllers/pageServiceAdminC.php");
