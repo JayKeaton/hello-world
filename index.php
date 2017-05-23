@@ -1,17 +1,6 @@
 <?php
 session_start();
 
-$_SESSION['idUtilisateur']=2;
-$var = $_GET['adresse'];
-//echo($var);
-
-/* Salut cher Antonin dont l'ordi bug bien comme il faut !!*/
-
-
-/*
-if (!empty($_SESSION['idUtilisateur']))
-    echo $_SESSION['idUtilisateur'];
-*/
 
 $sous_domaine = $_SERVER['PHP_SELF'];    // Emplacement de ce fichier sur le serveur
 $liste = explode("/", $sous_domaine);

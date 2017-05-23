@@ -7,6 +7,8 @@
     align-items: center;
 }
 #main form{
+    display: flex;
+    flex-direction: column;
     width: 30%;
     Border: 1px black solid;
     border-radius: 20px;
@@ -15,6 +17,8 @@
     text-align: center;
 }
 #main form div{
+    display: flex;
+    flex-direction: column;
     margin: 30px;
 }
 #main form div h5{

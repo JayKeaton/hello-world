@@ -20,37 +20,49 @@ ob_start();
         <input type="text" name="pseudo" id="pseudo" value="<?php echo((empty($data['pseudo'])) ? "" : $data['pseudo']); ?>"/>
     </div>
     <div>
+        <h5>Adresse</h5>
+        <div>
+            <div>
+                <h6>code Postal :
+                <input type="number" name="codePostal" id="codePostal" value="<?php echo((empty($data['codePostal'])) ? "" : $data['codePostal']); ?>" />
+            </div>
+            <textarea></textarea>
+        </div>
+    </div>
+    <div>
         <h5>Votre date de naissance :</h5>
-        <select name="jour" id="jour">
-            <?php
-            for($i = 1; $i <= 31; $i++){
-                if ($jour == $i)
-                    echo ("<option value=".$i." selected='selected'>".$i."</option>");
-                else
-                    echo ("<option value=".$i.">".$i."</option>");
-            }
-            ?>
-        </select>
-        <select name="mois" id="mois">
-            <?php
-            foreach($listeMois as $key => $value){
-                if ($mois == ($key+1))
-                    echo ("<option value=".($key+1)." selected='selected'>".$value."</option>");
-                else
-                    echo ("<option value=".($key+1).">".$value."</option>");
-            }
-            ?>
-        </select>
-        <select name="annee" id="annee">
-            <?php
-            for($i = 2000+date("y"); $i >= 1900; $i--){
-                if($annee == $i)
-                    echo ("<option value=".$i." selected='selected'>".$i."</option>");
-                else
-                    echo ("<option value=".$i.">".$i."</option>");
-            }
-            ?>
-        </select><br/>
+        <div>
+            <select name="jour" id="jour">
+                <?php
+                for($i = 1; $i <= 31; $i++){
+                    if ($jour == $i)
+                        echo ("<option value=".$i." selected='selected'>".$i."</option>");
+                    else
+                        echo ("<option value=".$i.">".$i."</option>");
+                }
+                ?>
+            </select>
+            <select name="mois" id="mois">
+                <?php
+                foreach($listeMois as $key => $value){
+                    if ($mois == ($key+1))
+                        echo ("<option value=".($key+1)." selected='selected'>".$value."</option>");
+                    else
+                        echo ("<option value=".($key+1).">".$value."</option>");
+                }
+                ?>
+            </select>
+            <select name="annee" id="annee">
+                <?php
+                for($i = 2000+date("y"); $i >= 1900; $i--){
+                    if($annee == $i)
+                        echo ("<option value=".$i." selected='selected'>".$i."</option>");
+                    else
+                        echo ("<option value=".$i.">".$i."</option>");
+                }
+                ?>
+            </select>
+        </div>
         <?php echo((empty($erreur_dateNaissance) ? "" : "<p>".$erreur_dateNaissance."</p><br/>")); ?>
     </div>
     <div>
