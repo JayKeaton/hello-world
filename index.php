@@ -1,9 +1,6 @@
-<?php
+﻿<?php
 session_start();
 
-$_SESSION['idUtilisateur']=2;
-$var = $_GET['adresse'];
-//echo($var);
 
 /* Salut cher Antonin dont l'ordi bug bien comme il faut !!*/
 

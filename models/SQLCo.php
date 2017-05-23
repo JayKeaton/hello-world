@@ -5,7 +5,7 @@
 
     $hostname="localhost";
 	$username="root";
-	$password="root";
+	$password="";
 	$bddname="error404";
      /*
 	$hostname="localhost";

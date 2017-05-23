@@ -2,6 +2,9 @@ body {
 color:black;
 background-image: linear-gradient(white 90%, white 100%)
 }
+#recherche a{
+	text-decoration: none
+}
 #main
 {
 	display: flex;
@@ -105,13 +108,13 @@ height:100%;
 	height: 100%;
 	font-size: 100%;
 }*/
-#container a {
+#contenu a {
 color: black;
 font-family:"Arial Black";
 text-decoration:none;
 }
 
-#container a:hover{
+#contenu a:hover{
 color: rgb(180,0,0);
 /*font-weight: bold;*/	
 }
@@ -165,7 +168,7 @@ box-shadow: -2px 2px 3px rgba(0,0,0,0.75);
 {
 background-color: #0000166;
 }
-#form .element
+/*#form .element
 {
 	display: flex;
     flex-direction: row;
@@ -173,10 +176,12 @@ background-color: #0000166;
     align-content: space-between;
     width: 400px;
     margin: 3px;
-}
+}*/
 #form .element input,select
 {
-	height: 20px;
+	height: 25px;
+	background-color: white;
+border-radius: 4px 4px 4px 4px;
 }
 /*.element:focus{
 	background-color:green;
