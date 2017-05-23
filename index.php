@@ -1,9 +1,6 @@
 <?php
 session_start();
-
-$_SESSION['idUtilisateur']=2;
-$var = $_GET['adresse'];
-//echo($var);
+date_default_timezone_set('Europe/Paris'); /*Sert à définir la référence temporelle: essentiel pour l'utilisation du type Temps*/
 
 /* Salut cher Antonin dont l'ordi bug bien comme il faut !!*/
 
@@ -88,4 +85,4 @@ elseif ($page == "pageServiceAdmin"){
 }
 else{
     include("templates/".$page.".html");
-} 
+}

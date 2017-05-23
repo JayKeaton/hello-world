@@ -116,12 +116,12 @@ CREATE TABLE inscrits (
 
 INSERT INTO `services`(`nom`,`validation`, `adresse`, `categorie`, `telephone`, `email`, `lien_site`) VALUES ("SoinPourTous",0,"5 rue de Rivoli Paris","accompagnement médical","0625523251","0001@0001","http://www.dofus.com/fr");
 INSERT INTO `services`(`nom`,`validation`,`adresse`, `categorie`, `telephone`, `email`, `lien_site`) VALUES ("NourriturePourTous",0,"21 Rue Vieille du Temple Paris","logement","0658921542","0002@0002","http://euw.leagueoflegends.com/fr");
-INSERT INTO `utilisateurs`( `pseudo`, `email`, `mdp`, `avatar`, `nom`, `prenom`, `dateNaissance`, `verification`, adresse, `droits`, `telephone`) VALUES ("jean eude","jean.eude@kikoolol.fr","saphir","avatar-j-e.jpg","jean-eude","debeaujardin","1982-06-02",1,"22 rue Vieille du Temple Paris","utilisateur","0645895121");
-INSERT INTO `utilisateurs`( `pseudo`, `email`, `mdp`, `avatar`, `nom`, `prenom`, `dateNaissance`, `verification`, `adresse`, `droits`, `telephone`) VALUES ("legyllith","dieu.de.la.bonte@divinité.ciel","gentil","avatar-legyllith.jpg","Aurélien","dreams","1992-06-12",1,"100 rue des archives Paris","contributeur","0645884521");
-INSERT INTO `descriptions`(`texte`, `langue`) VALUES ("Nous serons heureux de vous soigné","Jérémy");
-INSERT INTO `descriptions`(`texte`, `langue`) VALUES ("Nous vous acciullerons avec plaisir","Jérémy");
+INSERT INTO `utilisateurs`( `pseudo`, `email`, `mdp`, `avatar`, `nom`, `prenom`, `dateNaissance`, `verification`, adresse, `droits`, `telephone`) VALUES ("jean eude","jean.eude@kikoolol.fr","saphir","avatar1.jpg","jean-eude","debeaujardin","1982-06-02",1,"22 rue Vieille du Temple Paris","utilisateur","0645895121");
+INSERT INTO `utilisateurs`( `pseudo`, `email`, `mdp`, `avatar`, `nom`, `prenom`, `dateNaissance`, `verification`, `adresse`, `droits`, `telephone`) VALUES ("legyllith","dieu.de.la.bonte@divinité.ciel","gentil","avatar2.jpg","Aurélien","dreams","1992-06-12",1,"100 rue des archives Paris","contributeur","0645884521");
+INSERT INTO `descriptions`(`texte`, `langue`,`idService`) VALUES ("Nous serons heureux de vous soigné","Jérémy",1);
+INSERT INTO `descriptions`(`texte`, `langue`,`idService`) VALUES ("Nous vous acciullerons avec plaisir","Jérémy",2);
 INSERT INTO `categories`(`code`, `langue`, `traduction`) VALUES ("test","Français","testTest");
-INSERT INTO `commentaires`( `note`, `texte`, `date`, `heure`, `censure`, `idUtilisateur`, `idService`, `idSeance`) VALUES (3.5,"Alice was beginning to get very tired of sitting by her sister on the bank, and of having nothing to do: once or twice she had peeped into the book her sister was reading, but it had no pictures or conversations in it, ‘and what is the use of a book,’ thought Alice ‘without pictures or conversations?","1865-11-18","16:16:16",0,1,1,1);
+INSERT INTO `commentaires`( `note`, `texte`, `date`, `heure`, `censure`, `idUtilisateur`, `idService`, `idSeance`) VALUES (3.5,"Alice was beginning to get very tired of sitting by her sister on the bank, and of having nothing to do: once or twice she had peeped into the book her sister was reading, but it had no pictures or conversations in it, 'and what is the use of a book,' thought Alice 'without pictures or conversations?'","1865-11-18","16:16:16",0,1,1,1);
 INSERT INTO `commentaires`( `note`, `texte`, `date`, `heure`, `censure`, `idUtilisateur`, `idService`, `idSeance`) VALUES (4.2,"Très satisfaisant","2017-04-16","12:12:12",0,2,1,1);
 INSERT INTO `favoris`(`idService`, `idUtilisateur`) VALUES (1,1);
 INSERT INTO `seances`(`date`, `idService`) VALUES ("2017-09-02",1);

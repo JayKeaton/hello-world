@@ -29,17 +29,20 @@
       <section id="Service">
         <div id="IconeCategorie"> <img src="static/pageServiceAdmin/msf2.jpeg" width="50" height="50"> </div> <!-- Icone du service -->
         <div id="b1">
-          <div id="t1"> <?php echo $description["nom"] ?> </div> <!-- Nom du service !-->
+          <div id="t1"> <?php echo $contact["nom"] ?> </div> <!-- Nom du service !-->
           <article>
             <h1> Description du Service:</h1>
             <div id="Description">
-              <div id="alinea"> <?php $description["texte"] ?> </div>
+              <div id="alinea">
+                <?php echo $description["texte"] ?> </br>
+                Note: <?php echo $note[0]?>
+              </div>
             </div>
             <h1>Nous Joindre:</h1>
             <div id="Contact">
-              Adresse: <?php echo $contact["numero"].' '.$contact["rue"] ?> </br> <?php echo $contact["codePostal"].' '.$contact["ville"] ?> </br> <!-- n°rue Rue CodePostal Ville -->
+              Adresse: <?php echo $contact["adresse"] ?> </br> <?php echo $contact["codePostal"] ?>
               Numéro de téléphone: <?php echo $contact["telephone"] ?> </br>
-              Mail: <?php echo $contact["mail"]; ?> </br>
+              Mail: <?php echo $contact["email"]; ?> </br>
               <a id="Mail" href="<?php echo $contact["lien_site"]; ?>"> Notre Site </a>
             </div>
             <h1>Historique des services proposés:</h1>
@@ -68,7 +71,7 @@
               <?php for ($index=0;$index<$longComment;$index ++){ ?>
                 <article id="Commentaire">
                   <aside id="Avatar">
-                    <img src="static/pageServiceAdmin/msf2.jpeg" width="50" height="50"> <?php /* echo <img src="???"+$commentaires[?] width="50" height="50"> */ ?>
+                    <img src=<?php echo "Média/Avatars/".$avatar[$index]["avatar"]?> width="75" height="75"> <?php /* echo <img src="???"+$commentaires[?] width="50" height="50"> */ ?>
                   </br> <div id="center"> <?php echo $commentaires[$index][6]  ?> </div> <!-- Nom de l'utilisateur !-->
                   </aside>
                   <div id="b2">
@@ -76,16 +79,17 @@
                       <p>Commentaire:</p> <div id="alinea"> <?php echo $commentaires[$index][2] ?> </div>
                     </article>
                     <div id="Note">
-                      <p>Note:</p>
+                      <p>Note:
                         <?php $note=$commentaires[$index][1];
                           $index2=1;
                           while ($index2<$note){ ?>
-                            <img src="static/pageServiceAdmin/etoileRouge.png" width="50" height="50">
+                            <img src="static/pageServiceAdmin/etoileRouge.png" width="30" height="30">
                             <?php $index2++;
                           }
                         if ($note>=((int)$note+0.5)){ ?>
-                          <img src="static/pageServiceAdmin/demiEtoileRouge.png" width="25" height="50">
+                          <img src="static/pageServiceAdmin/demiEtoileRouge.png" width="15" height="30">
                         <?php } ?>
+                      </p>
                     </div>
                   </div>
                 </article>

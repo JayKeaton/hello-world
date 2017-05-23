@@ -47,18 +47,20 @@ ob_start();
 	    	</form>
 	    </div>
 		<div id="contenu">
-			<a id="lienService" href=""> <!-- Page du Service -->
-				<div id="service" class="article">
-					<aside id="profil">
-						<img src="static/accueil/msf_logo _fichiers/maison.jpeg" width=50 /> </br> <!--Pictogramme du service--><!--class="floatl"-->
-						Type de service
-					</aside>
-					<div id="texte">
-						Nom du service </br>
-						DESCRIPTION
+			<?php for ($index=0;$index<$nbreServices;$index ++){ ?> <!-- $nbreServices à définir -->
+				<a id="lienService" href=<?php echo $data[$index]["lien_site"]?>> <!-- Page du Service -->
+					<div id="service" class="article">
+						<aside id="profil">
+							<img src=<?php echo $dataSPECIALE[]["Pictogrammes"]?> width=50 /> </br> <!--Pictogramme du service--><!--class="floatl"-->
+							<?php echo $data[$index]["categorie"] ?> <!--Catégorie de service-->
+						</aside>
+						<div id="texte">
+							<?php $data[$index]["nom"] ?> <!--Nom du service--> </br>
+							<?php $dataSPECIALE[]["texte"]?> <!--DESCRIPTION-->
+						</div>
 					</div>
-				</div>
-			</a>
+				</a>
+			<?php } ?>
 		</div>
 	</div>
 	<div id="fil_actu">
