@@ -7,6 +7,7 @@ ob_start();
 <div id='signin'>
 	<h1 id="titreConnexion">Connexion :</h1>
 	<form action="" method="post" id="conn">
+		<?php echo((empty($erreur_verification)) ? "" : "<h3>".$erreur_verification."</h3>"); ?>
 		<div><!--la petite case pour le login-->
 			<h4>Email :</h4>
 			<input type="text" id="identifiant" name="identifiant" required='required'/>

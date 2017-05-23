@@ -50,7 +50,7 @@ $listeAnnee = range(1900, 2000+date("y"));
             $hash = date("Ymdhis" . $randint);
             envoyerMail($email, $hash, $nom, $prenom, $idUtilisateur);
             ajouterCle($bdd, $idUtilisateur, $hash);
-            include("templates/validation.php");
+            include("templates/validation.html");
         }
 	}
 	else {

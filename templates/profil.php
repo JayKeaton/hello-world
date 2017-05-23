@@ -26,7 +26,10 @@ ob_start();
                 <h6>code Postal :
                 <input type="number" name="codePostal" id="codePostal" value="<?php echo((empty($data['codePostal'])) ? "" : $data['codePostal']); ?>" />
             </div>
-            <textarea></textarea>
+            <div>
+                <h6>Lieu</h6>
+                <textarea name="adresse"></textarea>
+            </div>
         </div>
     </div>
     <div>
