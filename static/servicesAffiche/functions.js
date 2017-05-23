@@ -1,91 +1,122 @@
+var geocoder;
 var map;
-var panel;
-var initialize;
-var calculate;
-var direction;
-var adresses;
+var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+var labelIndex = 0;
+var i = 0;
+// initialisation de la carte Google Map de départ
 
-initialize = function(){
-	for(var i=0; var i< var adresses.length; var i=+2){
+
+
+function afficheServices(){
+	for (var e in listeb){
 		
-		var adresses=document.getElementById("passvar").value;
+    	var ligne = listeb[e];
+		document.getElementById('servicesA').innerHTML+='<tr><td>'+labels[i]+'</td>'+'<td>'+ligne.nom+'</td>'+'<td>'+ligne.localisation+'</td>'+'<td>'+ligne.categorie+'</td>'+'<td>'+ligne.telephone+'</td>'+'<td><a href="/?page=servicesMaps&adresse="'+ ligne.localisation.replace(' ', '%20') +'>GO</a></td></tr>';
+		i++;
 	}
-  var latLng = new google.maps.LatLng(50.6371834, 3.063017400000035); // Correspond au coordonnées de Lille
-  var myOptions = {
-    zoom      : 14, // Zoom par défaut
-    center    : latLng, // Coordonnées de départ de la carte de type latLng 
-    mapTypeId : google.maps.MapTypeId.TERRAIN, // Type de carte, différentes valeurs possible HYBRID, ROADMAP, SATELLITE, TERRAIN
-    maxZoom   : 20
-  };
-  
-  map      = new google.maps.Map(document.getElementById('map'), myOptions);
-  panel    = document.getElementById('panel');
-  
-  var marker = new google.maps.Marker({
-    position : latLng,
-    map      : map,
-    title    : "Lille"
-    //icon     : "marker_lille.gif" // Chemin de l'image du marqueur pour surcharger celui par défaut
-  });
-  
-  var contentMarker = [
-      '<div id="containerTabs">',
-      '<div id="tabs">',
-      '<ul>',
-        '<li><a href="#tab-1"><span>Lorem</span></a></li>',
-        '<li><a href="#tab-2"><span>Ipsum</span></a></li>',
-        '<li><a href="#tab-3"><span>Dolor</span></a></li>',
-      '</ul>',
-      '<div id="tab-1">',
-        '<h3>Lille</h3><p>Suspendisse quis magna dapibus orci porta varius sed sit amet purus. Ut eu justo dictum elit malesuada facilisis. Proin ipsum ligula, feugiat sed faucibus a, <a href="http://www.google.fr">google</a> sit amet mauris. In sit amet nisi mauris. Aliquam vestibulum quam et ligula pretium suscipit ullamcorper metus accumsan.</p>',
-      '</div>',
-      '<div id="tab-2">',
-       '<h3>Aliquam vestibulum</h3><p>Aliquam vestibulum quam et ligula pretium suscipit ullamcorper metus accumsan.</p>',
-      '</div>',
-      '<div id="tab-3">',
-        '<h3>Pretium suscipit</h3><ul><li>Lorem</li><li>Ipsum</li><li>Dolor</li><li>Amectus</li></ul>',
-      '</div>',
-      '</div>',
-      '</div>'
-  ].join('');
+}
 
-  var infoWindow = new google.maps.InfoWindow({
-    content  : contentMarker,
-    position : latLng
-  });
-  
-  google.maps.event.addListener(marker, 'click', function() {
-    infoWindow.open(map,marker);
-  });
-  
-  google.maps.event.addListener(infoWindow, 'domready', function(){ // infoWindow est biensûr notre info-bulle
-    jQuery("#tabs").tabs();
-  });
-  
-  
-  direction = new google.maps.DirectionsRenderer({
-    map   : map,
-    panel : panel // Dom element pour afficher les instructions d'itinéraire
-  });
 
-};
 
-calculate = function(){
-    origin      = document.getElementById('origin').value; // Le point départ
-    destination = document.getElementById('destination').value; // Le point d'arrivé
-    if(origin && destination){
-        var request = {
-            origin      : origin,
-            destination : destination,
-            travelMode  : google.maps.DirectionsTravelMode.DRIVING // Mode de conduite
-        }
-        var directionsService = new google.maps.DirectionsService(); // Service de calcul d'itinéraire
-        directionsService.route(request, function(response, status){ // Envoie de la requête pour calculer le parcours
-            if(status == google.maps.DirectionsStatus.OK){
-                direction.setDirections(response); // Trace l'itinéraire sur la carte et les différentes étapes du parcours
-            }
+function initialiserCarte() {
+  geocoder = new google.maps.Geocoder();
+ 
+  var latlng = new google.maps.LatLng(48.855013, 2.372018);
+  
+	var mapOptions = {
+    	zoom      : 12,
+    	center    : latlng,
+		snippet: 'test',
+    	mapTypeId : google.maps.MapTypeId.ROADMAP
+	}
+	
+	
+	
+  // map-canvas est le conteneur HTML de la carte Google Map
+  map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+	
+}
+ 
+function TrouverAdresse() {
+ 
+	//var iconBase = 'http://maps.google.com/mapfiles/ms/icons/';
+	var url;
+	
+	for (var e in liste){
+		
+		
+	/*	if(categorie=="soins")
+			url= iconBase + 'red-dot.png';
+		
+		else if(categorie=="vetements")
+			url= iconBase + 'green-dot.png';
+		
+		else
+			url = iconBase + 'blue-dot.png';
+		
+		*/
+	  	geocoder.geocode( { 'address': liste[e].localisation}, function(results, status) {
+			
+
+			if (status == google.maps.GeocoderStatus.OK) {
+		  		map.setCenter(results[0].geometry.location);
+		  		// Récupération des coordonnées GPS du lieu tapé dans le formulaire
+		  		var strposition = results[0].geometry.location+"";
+		  		strposition=strposition.replace('(', '');
+		  		strposition=strposition.replace(')', '');
+		  		// Création du marqueur du lieu (épingle)
+		  		var marker = new google.maps.Marker({
+			  		position: results[0].geometry.location,
+			  		label:labels[labelIndex],
+			  		map: map,
+					animation:google.maps.Animation.DROP,
+					title:liste[labelIndex].categorie
+
+					//icon: url
+		  });
+
+				var contentString = liste[labelIndex].nom +"</br>"+liste[labelIndex].localisation +'</br><a href="/?page=servicesMaps&adresse="'+ liste[labelIndex].localisation.replace(' ', '%20') +">GO</a>" ;
+				var infowindow = new google.maps.InfoWindow({
+          content: contentString
         });
-    }
-};
+				
+				
+				
+			marker.addListener('click', function() {
+          		map.setZoom(15);
+          		map.setCenter(marker.getPosition());
+		  		map.texte;
+		  		infowindow.open(map, marker);
+        });
+			labelIndex++;
+				
+				//google.maps.event.trigger(polygon, "click", {});
+				/*google.maps.event.addListener(marker, 'click', function(){
+    marker.open(map,marker);
+});*/
+		} 
+			else {
+		  		alert('Adresse introuvable: ' + status);
+		}
+	  });
+	}
+	
+}
 
-initialize();
+// Lancement de la construction de la carte google map
+if (navigator.geolocation)
+  var watchId = navigator.geolocation.watchPosition(successCallback, null, {enableHighAccuracy:true});
+                          
+else
+  alert("Votre navigateur ne prend pas en compte la géolocalisation HTML5");
+
+google.maps.event.addDomListener(window, 'load', initialiserCarte);
+
+function successCallback(position){
+  map.panTo(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
+  var marker = new google.maps.Marker({
+    position: new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
+    map: map
+  });
+}
+

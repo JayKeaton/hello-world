@@ -1,0 +1,27 @@
+#recherche {
+	display: flex;
+	border: 1px black solid;
+	font-family: Verdana ,"Arial", "Arial Black", "Times New Roman";
+	width:60%;
+	position: absolute;
+	left: 20%;	
+}
+#valider{
+	position: absolute;
+	left: 50%;top:110%;
+}
+#titre{
+	font-size: 16px;
+	font-family: Verdana ,"Arial", "Arial Black", "Times New Roman";
+	text-align: center;
+}
+#titreRecherche{
+	
+	font-family: Verdana ,"Arial", "Arial Black", "Times New Roman";
+	text-align: center;
+	padding-top: 10%
+}
+#page{
+	font-size: 12px;
+	text-align: center;
+}

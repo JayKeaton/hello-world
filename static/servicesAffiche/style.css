@@ -1,0 +1,25 @@
+@charset "utf-8";
+/* CSS Document */
+
+table
+{
+    border-collapse: collapse;
+
+}
+td, th 
+{
+	border: 1px solid black;
+	padding: 3px 15px;
+	
+}
+
+tbody
+{
+    height: 20px;
+	overflow:auto;
+}
+
+body
+{
+	font-family:Lucida Grande, Lucida Sans Unicode, Lucida Sans, DejaVu Sans, Verdana," sans-serif";
+}

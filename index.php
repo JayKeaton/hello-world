@@ -1,5 +1,12 @@
-﻿<?php
+<?php
 session_start();
+
+$_SESSION['idUtilisateur']=2;
+$var = $_GET['adresse'];
+//echo($var);
+
+/* Salut cher Antonin dont l'ordi bug bien comme il faut !!*/
+
 
 /*
 if (!empty($_SESSION['idUtilisateur']))
@@ -22,20 +29,16 @@ echo(SOUS_DOMAINE);
 echo("<br/>");
 echo(URL_SITE);
 */
-
-
-
 require_once("models/SQLCo.php");
 require_once("models/utilisateur.php");
 require_once("models/services.php");
-/*require_once("controllers/functions.php");*/
+require_once("models/modifierServices.php");
+require_once("controllers/functions.php");
 
 
-if (!empty($_GET['page']))
-    $page = $_GET['page'];
-    
-
-
+if (!empty($_GET['page'])){
+	$page = $_GET['page'];
+}
 if (empty($page)){
     include("controllers/accueil.php");
 }
@@ -64,17 +67,24 @@ elseif ($page == "servicesMaps"){
 elseif ($page == "ajoutServices"){
     include("controllers/ajoutServices.php");
 }
+elseif ($page == "modifierServices"){
+    include("controllers/modifierServices.php");
+}
 elseif ($page == "servicesAffiche"){
     include("controllers/servicesAffiche.php");
 }
-elseif ($page == "signout"){
+elseif ($page == "logout"){
     $_SESSION = array();
+    header("Location: ".SOUS_DOMAINE);
 }
 elseif ($page == "tests"){
     include("controllers/tests.php");
 }
 elseif ($page == "accueil_admin"){
     include("controllers/acceuil_admin.php");
+}
+elseif ($page == "pageServiceAdmin"){
+    include("controllers/pageServiceAdminC.php");
 }
 else{
     include("templates/".$page.".html");
