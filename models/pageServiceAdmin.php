@@ -58,9 +58,9 @@ catch(PDOException $se)
     return $commentaires;
   }
 
-  function avatar($idService){
+  function profil($idService){
     global $bdd;
-    $req=$bdd->prepare("SELECT avatar FROM utilisateurs JOIN commentaires ON commentaires.idUtilisateur=utilisateurs.idUtilisateur WHERE idService=:idService ORDER BY date ");
+    $req=$bdd->prepare("SELECT avatar,nom FROM utilisateurs JOIN commentaires ON commentaires.idUtilisateur=utilisateurs.idUtilisateur WHERE idService=:idService ORDER BY date ");
     $req->bindParam("idService",$idService);
     $req->execute();
     $avatar=$req->fetchAll();

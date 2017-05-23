@@ -27,7 +27,22 @@
       </div>
 
       <section id="Service">
-        <div id="IconeCategorie"> <img src="static/pageServiceAdmin/msf2.jpeg" width="50" height="50"> </div> <!-- Icone du service -->
+        <div id="IconeCategorie"> <img src=<?php
+          switch($contact["categorie"]){ /* Rajouter des Cases ici et des images dans Média/Pictogrammes/ pour couvrir plus de catégorie */
+            case "logement":
+              echo "Média/Pictogrammes/logement.png";
+              break;
+            case "connaissance":
+              echo "Média/Pictogrammes/connaissance.png";
+              break;
+            case "soin":
+              echo "Média/Pictogrammes/soin.png";
+              break;
+            case "nourriture":
+              echo "Média/Pictogrammes/nourriture.png";
+              break;
+          }
+        ?> width="50" height="50"> </div> <!-- Icone du service -->
         <div id="b1">
           <div id="t1"> <?php echo $contact["nom"] ?> </div> <!-- Nom du service !-->
           <article>
@@ -71,16 +86,16 @@
               <?php for ($index=0;$index<$longComment;$index ++){ ?>
                 <article id="Commentaire">
                   <aside id="Avatar">
-                    <img src=<?php echo "Média/Avatars/".$avatar[$index]["avatar"]?> width="75" height="75"> <?php /* echo <img src="???"+$commentaires[?] width="50" height="50"> */ ?>
-                  </br> <div id="center"> <?php echo $commentaires[$index][6]  ?> </div> <!-- Nom de l'utilisateur !-->
+                    <img src=<?php echo "Média/Avatars/".$profil[$index]["avatar"]?> width="75" height="75"> <?php /* echo <img src="???"+$commentaires[?] width="50" height="50"> */ ?>
+                  </br> <div id="center"> <?php echo $profil[$index]["nom"] ?> </div> <!-- Nom de l'utilisateur !-->
                   </aside>
                   <div id="b2">
                     <article id="TexteComment">
-                      <p>Commentaire:</p> <div id="alinea"> <?php echo $commentaires[$index][2] ?> </div>
+                      <p>Commentaire:</p> <div id="alinea"> <?php echo $commentaires[$index]["texte"] ?> </div>
                     </article>
                     <div id="Note">
                       <p>Note:
-                        <?php $note=$commentaires[$index][1];
+                        <?php $note=$commentaires[$index]["note"];
                           $index2=1;
                           while ($index2<$note){ ?>
                             <img src="static/pageServiceAdmin/etoileRouge.png" width="30" height="30">
