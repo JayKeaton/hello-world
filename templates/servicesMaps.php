@@ -19,10 +19,9 @@
         <div id="destinationForm">
             <form action="" method="get" name="direction" id="direction">
                 <label>Point de départ :</label>
-                <input type="text" name="origin" id="origin">
+				<input type="text" name="origin" id="origin" value="">
                 <label>Destination :</label>
                 <input type="text" name="destination" id="destination" value="<?php echo $localisation; ?>">
-          
                 <input type="button" value="Calculer l'itinéraire" onclick="javascript:calculate()">
             </form>
         </div>

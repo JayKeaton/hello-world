@@ -20,17 +20,17 @@
     var liste = [];
     <?php
     foreach($adresses as $e){
-		echo("var l={'localisation': '".$e["localisation"]."','categorie': '".$e['categorie']."','nom': '".$e['nom']."'};");
+		echo("var l={'localisation': '".$e["adresse"]."','categorie': '".$e['categorie']."','nom': '".$e['nom']."'};");
         echo("liste.push(l);");	
     	}
     ?>
 	//console.log("test");
 	
 	var listeb = [];
-	var ligne = {localisation: 'loc',categorie: 'cat',phone: 'phone'};
+	var ligne = {adresse: 'loc',categorie: 'cat',telephone: 'phone'};
 	<?php
 	foreach($listeServices as $z){
-		echo("var ligne = {nom: '".$z["nom"]."',localisation: '".$z["localisation"]."',categorie: '".$z["categorie"]."',telephone: '".$z["telephone"]."'};");
+		echo("var ligne = {nom: '".$z["nom"]."',adresse: '".$z["adresse"]."',categorie: '".$z["categorie"]."',telephone: '".$z["telephone"]."'};");
 		echo("listeb.push(ligne);");
 	}
 	?>
