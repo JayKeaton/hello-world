@@ -88,17 +88,17 @@ ob_start();
 <nav id="partage">
 	
 	<ul>
-		<li><a href="https://www.facebook.com/"><img src="static/accueil/msf_logo _fichiers/fb_32x32.png" title="Poke-nous sur Facebook!"/></a>
+		<li><a href="https://www.facebook.com/"><img src="static/accueil/msf_logo _fichiers/fb_32x32.png" title="Facebook"/></a>
 		</li>
-		<li><a href="https://twitter.com/?lang=fr"> <img src="static/accueil/msf_logo _fichiers/twitter_32x32.png" title="RT si t'es src!"/></a></li>
-		<li><a href="https://plus.google.com/?hl=fr"><img src="static/accueil/msf_logo _fichiers/gplus_32x32.png" title="Nous aussi, on croyait que ça avait disparu"> </a></li>
+		<li><a href="https://twitter.com/?lang=fr"> <img src="static/accueil/msf_logo _fichiers/twitter_32x32.png" title="RT si t'es content!"/></a></li>
+		<li><a href="https://plus.google.com/?hl=fr"><img src="static/accueil/msf_logo _fichiers/gplus_32x32.png" title="Google +"> </a></li>
 		
-		<li><a href="https://www.instagram.com/?hl=fr"> <img src="static/accueil/msf_logo _fichiers/instagram.png" title="Envoie-nous ce que tu manges, ça nous intéresse!"/></a></li>
+		<li><a href="https://www.instagram.com/?hl=fr"> <img src="static/accueil/msf_logo _fichiers/instagram.png" title="Instagram"/></a></li>
 		<li><a href="https://www.snapchat.com/l/fr-fr/"> <img src="static/accueil/msf_logo _fichiers/snapchat-40x40.png" title="404SkillNotFound sur Snap! ;)"/></a></li>
-		<li><a href="https://www.tumblr.com/"> <img src="static/accueil/msf_logo _fichiers/tumblr.jpeg" title="Si t'es un vrai, retrouve-nous sur Tumblr!"/></a></li>
-		<li><a href="https://fr.pinterest.com/"> <img src="static/accueil/msf_logo _fichiers/pinterest.png" title="Si tu n'as rien de mieux à faire, tu peux nous piner sur Pinterest..."/></a></li>
+		<li><a href="https://www.tumblr.com/"> <img src="static/accueil/msf_logo _fichiers/tumblr.jpeg" title="Tumblr!"/></a></li>
+		<li><a href="https://fr.pinterest.com/"> <img src="static/accueil/msf_logo _fichiers/pinterest.png" title="Pinterest"/></a></li>
 		<li><a href="https://www.reddit.com/"> <img src="static/accueil/msf_logo _fichiers/reddit-up.png" title="Une suggestion concernant le développement de l'application? C'est par ici!"/></a></li>
-		<li><a href="https://www.youtube.com/watch?v=_wzGjMw6N-E"> <img src="static/accueil/msf_logo _fichiers/You_Tube_moche.png" title="Viens voir la sextape de ta maman!"/></a></li>
+		<li><a href="https://www.youtube.com/watch?v=_wzGjMw6N-E"> <img src="static/accueil/msf_logo _fichiers/You_Tube_moche.png" title="YouTube"/></a></li>
 		<!--<li><a href=""> <img src="msf_logo _fichiers/" title="un truc utile"/></a></li>" </form-->
 	</ul>
 </nav>
