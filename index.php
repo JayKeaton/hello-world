@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 session_start();
 date_default_timezone_set('Europe/Paris'); /*Sert à définir la référence temporelle: essentiel pour l'utilisation du type Temps*/
 
