@@ -58,9 +58,23 @@ catch(PDOException $se)
     return $commentaires;
   }
 
+  function ajoutCommentaire($note, $texte,$date,$heure,$idUtilisateur,$idService,$idSeance){
+    global $bdd;
+    $req=$bdd->prepare("INSERT INTO commentaires(note, texte, date, heure, censure, idUtilisateur, idService, idSeance) values(:note, :texte, :date, :heure, :censure, :idUtilisateur, :idService, :idSeance)");
+    $req->bindParam("note",$note);
+    $req->bindParam("texte",$texte);
+    $req->bindParam("date",$date);
+    $req->bindParam("heure",$heure);
+    $req->bindParam("censure",0);
+    $req->bindParam("idUtilisateur",$idUtilisateur);
+    $req->bindParam("idService",$idService);
+    $req->bindParam("idSeance",$idSeance);
+    $req->execute();
+  }
+
   function profil($idService){
     global $bdd;
-    $req=$bdd->prepare("SELECT avatar,nom FROM utilisateurs JOIN commentaires ON commentaires.idUtilisateur=utilisateurs.idUtilisateur WHERE idService=:idService ORDER BY date ");
+    $req=$bdd->prepare("SELECT avatar,pseudo FROM utilisateurs JOIN commentaires ON commentaires.idUtilisateur=utilisateurs.idUtilisateur WHERE idService=:idService ORDER BY date ");
     $req->bindParam("idService",$idService);
     $req->execute();
     $profil=$req->fetchAll();
@@ -69,10 +83,10 @@ catch(PDOException $se)
 
   function profilSession($idUtilisateur){
     global $bdd;
-    $req=$bdd->prepare("SELECT avatar,nom FROM utilisateurs JOIN commentaires ON commentaires.idUtilisateur=utilisateurs.idUtilisateur WHERE utilisateurs.idUtilisateur=:idUtilisateur");
+    $req=$bdd->prepare("SELECT avatar,pseudo FROM utilisateurs WHERE idUtilisateur=:idUtilisateur");
     $req->bindParam("idUtilisateur",$idUtilisateur);
     $req->execute();
-    $profilSession=$req->fetchAll();
+    $profilSession=$req->fetch();
     return($profilSession);
   }
 

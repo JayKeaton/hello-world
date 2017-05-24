@@ -87,7 +87,7 @@
                 <article id="Commentaire">
                   <aside id="Avatar">
                     <img src=<?php echo "Média/Avatars/".$profil[$index]["avatar"]?> width="75" height="75"> <?php /* echo <img src="???"+$commentaires[?] width="50" height="50"> */ ?>
-                  </br> <div id="center"> <?php echo $profil[$index]["nom"] ?> </div> <!-- Nom de l'utilisateur !-->
+                  </br> <div id="center"> <?php echo $profil[$index]["pseudo"] ?> </div> <!-- Pseudo de l'utilisateur !-->
                   </aside>
                   <div id="b2">
                     <article id="TexteComment">
@@ -114,8 +114,8 @@
 
               <article id="Commentaire">
                 <aside id="Avatar">
-                  <img src=<?php echo "Média/Avatars/".$profilSession[0]["avatar"]?> width="75" height="75">
-                </br> <div id="center"> <?php echo $profilSession[0]["nom"] ?> </div>
+                  <img src=<?php echo "Média/Avatars/".$profilSession["avatar"]?> width="75" height="75">
+                </br> <div id="center"> <?php echo $profilSession["pseudo"] ?> </div>
                 </aside>
 
                 <div id="b2">
