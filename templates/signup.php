@@ -67,7 +67,7 @@ ob_start();
             <div>
                 <div>
                     <h5>Numéro de téléphone:</h5>
-                    <input type="tel" id="telephone" name="telephone" value="<?php echo((empty($_POST['telephone'])) ? "" : $_POST['telephone']); ?>" />
+                    <input type="tel" id="telephone" name="telephone" placeholder="01 40 21 29 29" value="<?php echo((empty($_POST['telephone'])) ? "" : $_POST['telephone']); ?>" />
                 </div>
             </div>
         </div>
@@ -139,7 +139,7 @@ ob_start();
                 </div>
                 <div>
                     <h5>Votre adresse:</h5>
-                    <textarea id="adresse" name="adresse" placeholder="Votre adresse"><?php echo((empty($_POST['adresse'])) ? "" : $_POST['adresse']); ?></textarea>
+                    <textarea id="adresse" name="adresse" placeholder="8 rue Saint Sabin, Paris"><?php echo((empty($_POST['adresse'])) ? "" : $_POST['adresse']); ?></textarea>
                 </div>
             </div>
         </div>

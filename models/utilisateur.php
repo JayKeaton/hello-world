@@ -25,10 +25,10 @@
 		return $bdd->lastInsertId();
 	}
 
-	function connexionUtilisateur($mail){
+	function connexionUtilisateur($email){
 	    global $bdd;
-	    $req = $bdd->prepare("SELECT idUtilisateur,mdp,verification FROM utilisateurs WHERE mail=:mail");
-	    $req->execute(array('mail' => $mail));
+	    $req = $bdd->prepare("SELECT idUtilisateur,mdp,verification FROM utilisateurs WHERE email=:email");
+	    $req->execute(array('email' => $email));
 	    $data = $req->fetch();
 	    if ($data == false)
 	        return false;

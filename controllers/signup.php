@@ -22,24 +22,24 @@ $listeAnnee = range(1900, 2000+date("y"));
 			include("templates/signup.php");
 		}
 		else {
-            $email = $_POST["email"];
-            $pseudo = $_POST['pseudo'];
+            $email = htmlspecialchars($_POST["email"]);
+            $pseudo = htmlspecialchars($_POST['pseudo']);
 
             $mdp = sha1($_POST["mdp"]);
 
-            $prenom = $_POST["prenom"];
-            $nom = $_POST["nom"];
+            $prenom = htmlspecialchars($_POST["prenom"]);
+            $nom = htmlspecialchars($_POST["nom"]);
 
-            $telephone = ($_POST["telephone"]);
+            $telephone = htmlspecialchars($_POST["telephone"]);
 
-            $sexe = $_POST["sexe"];
-            $jour = $_POST['jour'];
-            $mois = $_POST['mois'];
-            $annee = $_POST['annee'];
+            $sexe = htmlspecialchars($_POST["sexe"]);
+            $jour = htmlspecialchars($_POST['jour']);
+            $mois = htmlspecialchars($_POST['mois']);
+            $annee = htmlspecialchars($_POST['annee']);
             $dateNaissance = $annee."-".$mois."-".$jour;
 
-            $codePostal = $_POST['codePostal'];
-            $adresse = $_POST["adresse"];
+            $codePostal = htmlspecialchars($_POST['codePostal']);
+            $adresse = htmlspecialchars($_POST["adresse"]);
 
             $geolocalisation = !empty($_POST['geolocalisation']);
 
@@ -50,7 +50,7 @@ $listeAnnee = range(1900, 2000+date("y"));
             $hash = date("Ymdhis" . $randint);
             envoyerMail($email, $hash, $nom, $prenom, $idUtilisateur);
             ajouterCle($bdd, $idUtilisateur, $hash);
-            include("templates/signup.php");
+            include("templates/validation.html");
         }
 	}
 	else {
