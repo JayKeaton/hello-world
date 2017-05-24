@@ -43,7 +43,7 @@ ob_start();
 	   			<input type="checkbox">Geolocalisation</input>
 	   		</div>
     		<div class="element">
-    			<input type="submit" value="Go!"/>
+    			<input type="submit" action="" value="Go!"/>
     		</div>
     	</form>
 		<div id="contenu">
@@ -51,6 +51,7 @@ ob_start();
 			<?php for($i=0;$i<5/*$longList*/;$i++){ ?>
 				<p><a href=<?php $data[$i]["lien_site"] ?>> <!--"https://soutenir.msf.fr/b/mon-don?esv_source=Google&esv_medium=sea_brand&esv_campaign=W%2A%2AW00001&esv_term=msf&gclid=COKwx8uJvdMCFccp0wodkDMP4Q"-->
 						<div id="article 2" class="service">
+							<?php print_r($data[0])?>
 							<img src="static/accueil/msf_logo _fichiers/maison.jpeg" width=240 class="floatl" title="photo non contractuelle"/> </br>
 							<?php echo $data[$i]["categorie"]?><br/>
 							<?php echo $data[$i]["nom"] ?> </br>
