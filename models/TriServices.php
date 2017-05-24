@@ -2,7 +2,7 @@
 	function obtenirServiceParLocalisationEtCategorie($categorie, $adresse){
 		global $bdd;
 		$adresse='%'.$adresse.'%';
-	    $req = $bdd->prepare("SELECT * FROM services WHERE categorie=:categorie AND adresse LIKE :adresse AND validation=true");
+	    $req = $bdd->prepare("SELECT * FROM services WHERE categorie=:categorie AND adresse LIKE :adresse ");/*AND validation=true*/
 	    $req->bindParam('categorie', $categorie);
 	    $req->bindParam('adresse', $adresse);
 	    $req->execute();
@@ -12,15 +12,15 @@
 	function obtenirServiceParLocalisation($adresse){
 		global $bdd;
 		$adresse='%'.$adresse.'%';
-	    $req = $bdd->prepare("SELECT * FROM services WHERE adresse LIKE :adresse AND validation=true");
+	    $req = $bdd->prepare("SELECT * FROM services WHERE adresse LIKE :adresse ");/*AND validation=true*/
 	    $req->bindParam('adresse', $adresse);
 	    $req->execute();
 	    $data = $req->fetchAll();
 	    return $data;
 	}
-	function obtenirServiceParCategorie($categorie){
+	function obtenirServiceValidesParCategorie($categorie){
 	    global $bdd;
-	    $req = $bdd->prepare("SELECT * FROM services WHERE categorie=:categorie AND validation=true");
+	    $req = $bdd->prepare("SELECT * FROM services WHERE categorie=:categorie ");/*AND validation=true*/
 	    $req->bindParam('categorie', $categorie);
 	    $req->execute();
 	    $data = $req->fetchAll();
@@ -28,7 +28,7 @@
 	}
 	function obtenirSansEntree(){
 	    global $bdd;
-	    $req = $bdd->prepare("SELECT * FROM services WHERE validation=true");
+	    $req = $bdd->prepare("SELECT * FROM services ");/*WHERE validation=true*/
 	    $req->bindParam('categorie', $categorie);
 	    $req->execute();
 	    $data = $req->fetchAll();

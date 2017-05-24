@@ -27,7 +27,7 @@ ob_start();
     	<form action="" method="POST" id="form">
     		<div class="element">
     			Que recherchez-vous ?
-	    		<select name="categorie" id="categorie">
+	    		<select name="catégorie" id="categorie"><!--REMPLACER PAR name="categorie" quand les bdd des catégories seront prêtes-->
 	    			<option name="soins">Soins</option>
 	    			<option name="nourriture">Nourriture</option>
 	    			<option name="logement">Logement</option>
@@ -48,13 +48,14 @@ ob_start();
     	</form>
 		<div id="contenu">
 
-			<?php for($i=0;$i<5/*$longList*/;$i++){ ?>
-				<p><a href=<?php $data[$i]["lien_site"] ?>> <!--"https://soutenir.msf.fr/b/mon-don?esv_source=Google&esv_medium=sea_brand&esv_campaign=W%2A%2AW00001&esv_term=msf&gclid=COKwx8uJvdMCFccp0wodkDMP4Q"-->
+			<?php print_r($data)?>
+			<?php foreach($data as $element){ ?>
+				<p><a href=<?php $element/*["lien_site"]*/ ?>> <!--"https://soutenir.msf.fr/b/mon-don?esv_source=Google&esv_medium=sea_brand&esv_campaign=W%2A%2AW00001&esv_term=msf&gclid=COKwx8uJvdMCFccp0wodkDMP4Q"-->
 						<div id="article 2" class="service">
-							<?php print_r($data[0])?>
+
 							<img src="static/accueil/msf_logo _fichiers/maison.jpeg" width=240 class="floatl" title="photo non contractuelle"/> </br>
-							<?php echo $data[$i]["categorie"]?><br/>
-							<?php echo $data[$i]["nom"] ?> </br>
+							<?php echo $element["categorie"]?><br/>
+							<?php echo $element["nom"] ?> </br>
 								<?php /*echo $dataSPECIALE[$i][DESCRIPTION] /*Peut-être votre futur logement?<br/>.........................<br/>
 								...<br/>...............................
 								..............................................<br/><br/><br/>

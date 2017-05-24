@@ -181,8 +181,8 @@ background-color: #0000166;
 {
 	height: 25px;
 	background-color: white;
-border-radius: 4px 4px 4px 4px;
-width:18%;
+	border-radius: 4px 4px 4px 4px;
+	width:28%;
 }
 /*.element:focus{
 	background-color:green;
