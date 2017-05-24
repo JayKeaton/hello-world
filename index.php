@@ -1,6 +1,14 @@
 <?php
 session_start();
+date_default_timezone_set('Europe/Paris'); /*Sert à définir la référence temporelle: essentiel pour l'utilisation du type Temps*/
 
+/* Salut cher Antonin dont l'ordi bug bien comme il faut !!*/
+
+
+/*
+if (!empty($_SESSION['idUtilisateur']))
+    echo $_SESSION['idUtilisateur'];
+*/
 
 $sous_domaine = $_SERVER['PHP_SELF'];    // Emplacement de ce fichier sur le serveur
 $liste = explode("/", $sous_domaine);
@@ -18,11 +26,15 @@ echo(SOUS_DOMAINE);
 echo("<br/>");
 echo(URL_SITE);
 */
+
+/*echo($_SESSION['idUtilisateur']);*/
+
 require_once("models/SQLCo.php");
 require_once("models/utilisateur.php");
 require_once("models/services.php");
 require_once("models/modifierServices.php");
 require_once("controllers/functions.php");
+
 
 
 if (!empty($_GET['page'])){
@@ -73,8 +85,9 @@ elseif ($page == "accueil_admin"){
     include("controllers/acceuil_admin.php");
 }
 elseif ($page == "pageServiceAdmin"){
+    loginRequired($page);
     include("controllers/pageServiceAdminC.php");
 }
 else{
     include("templates/".$page.".html");
-} 
+}
