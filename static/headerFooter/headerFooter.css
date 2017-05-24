@@ -12,17 +12,19 @@ header{
 header ul
 {
   margin-top: 0;
-  padding-left: 200px;
+  padding-left: 220px;
   background-color:red;
   display:flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   font-family: "Arial Black", serif;
   list-style-type: none;
   /*height:100%;*/
+  width: 100%;
 }
 header ul li{
   /*height:100%;*/
+  /*width: 14%;*/
 }
 header ul li:hover{
   background-image: linear-gradient(red 57% , #ff8080);
@@ -31,14 +33,16 @@ header ul li:hover{
 }
 header ul li a
 {
+  font-size: 100%;
   color: white;
   text-decoration:none;
   display:flex;
   flex-direction: row;
   justify-content: center;
+  align-items: center;
   padding:5px;
   height: 40px;
-  width: 200px;
+  width: 150px;
 }
 header ul li a div{
   height:100%;

@@ -1,7 +1,3 @@
-<?php
-
-ob_start();
-?>
 <link href="static/profil/profil.css" rel="stylesheet" type="text/css">
 
 
@@ -111,8 +107,3 @@ ob_start();
         <input type="submit" name="changerMdp" value="Valider"/>
     </div>
 </form>
-
-<?php
-$contenu = ob_get_clean();
-
-include("gabarit.php");

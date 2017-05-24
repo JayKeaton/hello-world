@@ -1,8 +1,3 @@
-<?php
-
-
-ob_start();
-?>
 <link rel="stylesheet" href="static/accueil/accueil.css" />
 <h1 id="myTitle">Pour <strong>VOUS</strong></h1>
 <h3 id="LittleTitle">Par le groupe Error 404</h3>
@@ -103,7 +98,3 @@ ob_start();
 		<!--<li><a href=""> <img src="msf_logo _fichiers/" title="un truc utile"/></a></li>" </form-->
 	</ul>
 </nav>
-
-<?php
-$contenu = ob_get_clean();
-include("gabarit.php");

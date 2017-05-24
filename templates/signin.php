@@ -1,8 +1,3 @@
-<?php
-
-
-ob_start();
-?>
 <link href="static/signin/signin.css" rel="stylesheet" type="text/css">
 <div id='signin'>
 	<h1 id="titreConnexion">Connexion :</h1>
@@ -29,9 +24,3 @@ ob_start();
 		</p>
 	</form>
 </div>
-<?php
-$contenu = ob_get_clean();
-include("gabarit.php");
-
-
-

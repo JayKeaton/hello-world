@@ -41,53 +41,55 @@ if (!empty($_GET['page'])){
 	$page = $_GET['page'];
 }
 if (empty($page)){
-    include("controllers/accueil.php");
+    $path = "controllers/accueil.php";
 }
 elseif ($page == "Accueil"){
-    include("controllers/accueil.php");
+    $path = "controllers/accueil.php";
 }
 elseif ($page == "signup"){
-    include("controllers/signup.php");
+    $path = "controllers/signup.php";
 }
 elseif ($page == "activation"){
-	include("controllers/activation.php");
+	$path = "controllers/activation.php";
 }
 elseif ($page == "signin"){
-    include("controllers/signin.php");
+    $path = "controllers/signin.php";
 }
 elseif($page == "profil"){
     loginRequired($page);
-    include("controllers/profil.php");
+    $path = "controllers/profil.php";
 }
 elseif ($page == "locate"){
-    include("controllers/locate.php");
+    $path = "controllers/locate.php";
 }
 elseif ($page == "servicesMaps"){
-    include("controllers/servicesMaps.php");
+    $path = "controllers/servicesMaps.php";
 }
 elseif ($page == "ajoutServices"){
-    include("controllers/ajoutServices.php");
+    $path = "controllers/ajoutServices.php";
 }
 elseif ($page == "modifierServices"){
-    include("controllers/modifierServices.php");
+    $path = "controllers/modifierServices.php";
 }
 elseif ($page == "servicesAffiche"){
-    include("controllers/servicesAffiche.php");
+    $path = "controllers/servicesAffiche.php";
 }
 elseif ($page == "logout"){
     $_SESSION = array();
     header("Location: ".SOUS_DOMAINE);
 }
 elseif ($page == "tests"){
-    include("controllers/tests.php");
+    $path = "controllers/tests.php";
 }
 elseif ($page == "accueil_admin"){
-    include("controllers/acceuil_admin.php");
+    $path = "controllers/acceuil_admin.php";
 }
 elseif ($page == "pageServiceAdmin"){
     loginRequired($page);
-    include("controllers/pageServiceAdminC.php");
+    $path = "controllers/pageServiceAdminC.php";
 }
 else{
     include("templates/".$page.".html");
 }
+
+include("gabarit.php");
