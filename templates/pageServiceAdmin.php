@@ -109,6 +109,35 @@
                   </div>
                 </article>
               <?php } ?>
+
+
+
+              <article id="Commentaire">
+                <aside id="Avatar">
+                  <img src=<?php echo "Média/Avatars/".$profilSession[0]["avatar"]?> width="75" height="75">
+                </br> <div id="center"> <?php echo $profilSession[0]["nom"] ?> </div>
+                </aside>
+
+                <div id="b2">
+                  <form action="" method="post" id="commentaire">
+                    <article id="TexteComment">
+                      <p>Commentaire:</p>
+                      <input type="text" id="text" name="text"/>
+                    </article>
+                    <div id="Note">
+                      <p>Note:</p>
+                      <input type="integer" id="note" name="note"/>
+                    </div>
+                    <div>
+                      <input type="submit" value="valider">
+                    </div>
+                  </form>
+
+                </div>
+              </article>
+
+
+
             </article>
             <h1>Note du Contributeur:</h1>
             <article id="NoteContrib">

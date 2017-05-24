@@ -63,8 +63,17 @@ catch(PDOException $se)
     $req=$bdd->prepare("SELECT avatar,nom FROM utilisateurs JOIN commentaires ON commentaires.idUtilisateur=utilisateurs.idUtilisateur WHERE idService=:idService ORDER BY date ");
     $req->bindParam("idService",$idService);
     $req->execute();
-    $avatar=$req->fetchAll();
-    return($avatar);
+    $profil=$req->fetchAll();
+    return($profil);
+  }
+
+  function profilSession($idUtilisateur){
+    global $bdd;
+    $req=$bdd->prepare("SELECT avatar,nom FROM utilisateurs JOIN commentaires ON commentaires.idUtilisateur=utilisateurs.idUtilisateur WHERE utilisateurs.idUtilisateur=:idUtilisateur");
+    $req->bindParam("idUtilisateur",$idUtilisateur);
+    $req->execute();
+    $profilSession=$req->fetchAll();
+    return($profilSession);
   }
 
   function tableau($idService){
