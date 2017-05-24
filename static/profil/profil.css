@@ -10,9 +10,9 @@
     display: flex;
     flex-direction: column;
     width: 30%;
+    min-width: 400px;
     Border: 1px black solid;
     border-radius: 20px;
-    box-shadow: 6px 6px 0px black;
     margin: 50px 0 0 50px;
     text-align: center;
 }
@@ -21,17 +21,21 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 30px;
+    margin: 10px 0 10px 0;
 }
 #main form div div{
     display: flex;
     flex-direction: row;
     justify-content: center;
+    align-items: flex-start;
     margin: 0;
 }
 #main form div div div{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
 }
 #main form div h5{
     margin-top: 0;

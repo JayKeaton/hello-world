@@ -6,34 +6,34 @@ ob_start();
 
 
 <form action="" method="POST">
-    <h2>Informations générales :</h2>
+    <h1>Informations générales :</h1>
     <div>
-        <h5>Prénom :</h5>
-        <input type="text" name="prenom" id="prenom" value="<?php echo((empty($data['prenom'])) ? "" : $data['prenom']); ?>"/>
+        <h3>Prénom :</h3>
+        <input type="text" name="prenom" id="prenom" placeholder="Votre prénom" value="<?php echo((empty($data['prenom'])) ? "" : $data['prenom']); ?>"/>
     </div>
     <div>
-        <h5>Nom :</h5>
-        <input type="text" name="nom" id="nom" value="<?php echo((empty($data['nom'])) ? "" : $data['nom']); ?>"/>
+        <h3>Nom :</h3>
+        <input type="text" name="nom" id="nom" placeholder="Votre nom" value="<?php echo((empty($data['nom'])) ? "" : $data['nom']); ?>"/>
     </div>
     <div>
-        <h5>Pseudo :</h5>
-        <input type="text" name="pseudo" id="pseudo" value="<?php echo((empty($data['pseudo'])) ? "" : $data['pseudo']); ?>"/>
+        <h3>Pseudo :</h3>
+        <input type="text" name="pseudo" id="pseudo" placeholder="Votre pseudo" value="<?php echo((empty($data['pseudo'])) ? "" : $data['pseudo']); ?>"/>
     </div>
     <div>
-        <h5>Adresse</h5>
+        <h3>Adresse :</h3>
         <div>
             <div>
-                <h6>code Postal :
-                <input type="number" name="codePostal" id="codePostal" value="<?php echo((empty($data['codePostal'])) ? "" : $data['codePostal']); ?>" />
+                <h4>code Postal :</h4>
+                <input type="number" name="codePostal" id="codePostal" placeholder="Exemple: 75001" value="<?php echo((empty($data['codePostal'])) ? "" : $data['codePostal']); ?>" />
             </div>
             <div>
-                <h6>Lieu</h6>
-                <textarea name="adresse"></textarea>
+                <h4>Lieu :</h4>
+                <textarea name="adresse" placeholder="8 rue Saint Sabin, Paris"></textarea>
             </div>
         </div>
     </div>
     <div>
-        <h5>Votre date de naissance :</h5>
+        <h3>Votre date de naissance :</h3>
         <div>
             <select name="jour" id="jour">
                 <?php
@@ -75,14 +75,14 @@ ob_start();
 
 
 <form action="" method="POST">
-    <h2>Modifier votre addresse email :</h2>
+    <h1>Modifier votre addresse email :</h1>
     <div>
-        <h5>Votre addresse email actuelle :</h5>
-        <p><?php echo($data['mail']); ?></p>
+        <h3>Votre addresse email actuelle :</h3>
+        <p><?php echo($data['email']); ?></p>
     </div>
     <div>
-        <h5>Nouvelle addresse Email :</h5>
-        <input type="email" id="mail" name="email"/>
+        <h3>Nouvelle addresse Email :</h3>
+        <input type="email" id="email" name="email" placeholder="example@email.fr"/>
     </div>
     <div>
         <input type="submit" name="changerEmail" value="Valider">
@@ -92,18 +92,18 @@ ob_start();
 
 
 <form action="" method="POST">
-    <h2>Changer votre mot de passe :</h2>
+    <h1>Changer votre mot de passe :</h1>
     <div>
-        <h5>Ancien mot de passe :</h5>
+        <h3>Ancien mot de passe :</h3>
         <input type="password" id="ancienMdp" name="ancienMdp"><br/>
         <?php echo((empty($erreur_ancienMdp) ? "" : "<p>".$erreur_ancienMdp."</p><br/>")); ?>
     </div>
     <div>
-        <h5>Nouveau mot de passe</h5>
+        <h3>Nouveau mot de passe</h3>
         <input type="password" id="nouveauMdp" name="nouveauMdp"><br/>
     </div>
     <div>
-        <h5>Confirmer votre nouveau mot de passe</h5>
+        <h3>Confirmer votre nouveau mot de passe</h3>
         <input type="password" id="confirmMdp" name="confirmMdp"><br/>
         <?php echo((empty($erreur_confirmMdp) ? "" : "<p>".$erreur_confirmMdp."</p><br/>")); ?>
     </div>
