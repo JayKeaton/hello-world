@@ -18,22 +18,7 @@ initialize = function(){
   panel    = document.getElementById('panel');
   
   
-  
- 
-  var infoWindow = new google.maps.InfoWindow({
-    content  : contentMarker,
-    position : latLng
-  });
-  
-  google.maps.event.addListener(marker, 'click', function() {
-    infoWindow.open(map,marker);
-  });
-  
-  google.maps.event.addListener(infoWindow, 'domready', function(){ // infoWindow est biensûr notre info-bulle
-    jQuery("#tabs").tabs();
-  });
-  
-  
+    
   direction = new google.maps.DirectionsRenderer({
     map   : map,
     panel : panel // Dom element pour afficher les instructions d'itinéraire

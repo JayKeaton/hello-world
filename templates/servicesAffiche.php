@@ -39,9 +39,9 @@
 
   </br>
 <span id="text_latlng"></span>
-<div id="map-canvas" style="float:center;height:420px;width:75%"></div>
+<div id="map-canvas" style="width:700px;height:500px;margin:auto;"></div>
     </div>
-	  
+	  <div id="centrer">
 	  <table>
 		  <caption><h2>Liste des services:</h2></caption>
 	<thead><!-- en-tête -->
@@ -58,6 +58,7 @@
 	
 	</tbody>
 </table>
+	</div>
 	</br>
   	<input type="button"  value="Localiser sur Google Map" onclick="TrouverAdresse();"/>
 	 <input type="submit" value="Afficher la liste des services" onclick="afficheServices();"/>
