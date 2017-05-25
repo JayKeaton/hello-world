@@ -1,19 +1,36 @@
 <link href="static/profil/profil.css" rel="stylesheet" type="text/css">
 
 
+
+<form action="" method="post" enctype="multipart/form-data">
+    <h1>Avatar :</h1>
+    <div>
+        <img src="<?php echo("media/avatars/".$data['avatar']); ?>" height="150" width="150" />
+        <input type="file" name="avatar" id="avatar"/>
+        <?php echo((empty($erreur['avatar']) ? "" : "<p>".$erreur['avatar']."</p><br/>")); ?>
+    </div>
+    <div>
+        <input type="submit" name="changerAvatar" value="Valider"/>
+    </div>
+</form>
+
+
 <form action="" method="POST">
     <h1>Informations générales :</h1>
     <div>
         <h3>Prénom :</h3>
         <input type="text" name="prenom" id="prenom" placeholder="Votre prénom" value="<?php echo((empty($data['prenom'])) ? "" : $data['prenom']); ?>"/>
+        <?php echo((empty($erreur['prenom']) ? "" : "<p>".$erreur['prenom']."</p><br/>")); ?>
     </div>
     <div>
         <h3>Nom :</h3>
         <input type="text" name="nom" id="nom" placeholder="Votre nom" value="<?php echo((empty($data['nom'])) ? "" : $data['nom']); ?>"/>
+        <?php echo((empty($erreur['nom']) ? "" : "<p>".$erreur['nom']."</p><br/>")); ?>
     </div>
     <div>
         <h3>Pseudo :</h3>
         <input type="text" name="pseudo" id="pseudo" placeholder="Votre pseudo" value="<?php echo((empty($data['pseudo'])) ? "" : $data['pseudo']); ?>"/>
+        <?php echo((empty($erreur['pseudo']) ? "" : "<p>".$erreur['pseudo']."</p><br/>")); ?>
     </div>
     <div>
         <h3>Adresse :</h3>
@@ -21,10 +38,12 @@
             <div>
                 <h4>code Postal :</h4>
                 <input type="number" name="codePostal" id="codePostal" placeholder="Exemple: 75001" value="<?php echo((empty($data['codePostal'])) ? "" : $data['codePostal']); ?>" />
+                <?php echo((empty($erreur['codePostal']) ? "" : "<p>".$erreur['codePostal']."</p><br/>")); ?>
             </div>
             <div>
                 <h4>Lieu :</h4>
-                <textarea name="adresse" placeholder="8 rue Saint Sabin, Paris"></textarea>
+                <textarea name="adresse" placeholder="8 rue Saint Sabin, Paris"><?php echo((empty($data['adresse'])) ? "" : $data['adresse']); ?></textarea>
+                <?php echo((empty($erreur['adresse']) ? "" : "<p>".$erreur['adresse']."</p><br/>")); ?>
             </div>
         </div>
     </div>
@@ -62,7 +81,7 @@
                 ?>
             </select>
         </div>
-        <?php echo((empty($erreur_dateNaissance) ? "" : "<p>".$erreur_dateNaissance."</p><br/>")); ?>
+        <?php echo((empty($erreur['dateNaissance']) ? "" : "<p>".$erreur['dateNaissance']."</p><br/>")); ?>
     </div>
     <div>
         <input type="submit" name="info" value="Valider"/>

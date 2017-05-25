@@ -17,10 +17,10 @@
 			<input type="submit" value="valider"> 
 		</div>
 		<p>
-			Nouveau contributeur ? 
-			<a href=<?php echo(SOUS_DOMAINE."/?page=signup"); ?> >Inscrivez-vous</a>
+			Pas encore inscrit ?
+			<a href=<?php echo(SOUS_DOMAINE."?page=signup"); ?> >Inscrivez-vous</a>
 			<br/>
-			<a href="adresse ou fichiers dans le dossier" style="font-family: Verdana,'Arial', 'Arial Black','Times New Roman';font-size: 12px">Mot de passe oublié?</a><!--code css pour afficher la phrase en plus petit-->
+			<a href="#" style="font-family: Verdana,'Arial', 'Arial Black','Times New Roman';font-size: 12px">Mot de passe oublié?</a><!--code css pour afficher la phrase en plus petit-->
 		</p>
 	</form>
 </div>

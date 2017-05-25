@@ -1,4 +1,4 @@
-body {
+#main body {
 color:black;
 background-image: linear-gradient(white 90%, white 100%)
 }
@@ -188,37 +188,6 @@ width:18%;
 	background-color:green;
 }*/
 
-header{
-  display: flex;
-}
-header ul
-{
-  background-color:red;
-  flex:1;
-  display:flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-
-}
-header ul li
-{
-	display:flex;
-	flex-direction: row;	
-	list-style: none;
-	padding:5px;
-	height:100%;
-	color: white;
-	width: 200px;
-	justify-content: center;
-	alignt-text:center;
-	justify-content: center;
-}
-
-header ul li div{
-	display:flex;
-	flex-direction: column;
-}
 .element{
 	text-align: justify;
 }

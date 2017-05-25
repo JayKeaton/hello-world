@@ -4,21 +4,29 @@ $listeJour = range(1,31);
 $listeMois = array(1 => 'Janvier', 2 => 'Février', 3 => 'Mars', 4 => 'Avril', 5 => 'Mai', 6 => 'Juin', 7 => 'Juillet', 8 => 'Août', 9 => 'Septembre', 10 => 'Octobre', 11 => 'Novembre', 12 => 'Décembre');
 $listeAnnee = range(1900, 2000+date("y"));
 
-	if (!empty($_POST["nom"])){
-		$erreur = false;
+	if (!empty($_POST["submit"])){
+		$erreur = array();
+
+		$champsRequis = array("email", "pseudo", "mdp", "prenom", "nom", "jour", "mois", "annee", "sexe");
+		foreach($champsRequis as $champ){
+		    if (empty($_POST[$champ])){
+		        $erreur[$champ] = "Veuillez remplir ce champ.";
+            }
+        }
+
 		if($_POST["mdp"] != $_POST["mdpv"]){
-            $erreur_mdpv = "Mot de passe différent de la confirmation";
-            $erreur = true;
+            $erreur['mdpv'] = "Mot de passe différent de la confirmation";
         }
         if (verifMail($bdd,$_POST["email"])==true){
-            $erreur_compte = "Cette adresse mail est déjà utilisée.<br/><a href='".SOUS_DOMAINE."/?page=signin'>Connectez vous.</a>";
-            $erreur = true;
+            $erreur['email'] = "Cette adresse mail est déjà utilisée.<br/><a href='".SOUS_DOMAINE."?page=signin'>Connectez vous.</a>";
 		}
 		if (!in_array($_POST['jour'], $listeJour) || !in_array($_POST['mois'], array_keys($listeMois)) || !in_array($_POST['annee'], $listeAnnee)){
-            $erreur_dateNaissance = "Veuillez entrer une date valide.";
-            $erreur = true;
+            $erreur['dateNaissance'] = "Veuillez entrer une date valide.";
         }
-		if ($erreur){
+        if (!in_array($_POST['sexe'], array("homme", "femme", "autre"))){
+		    $erreur['sexe'] = "Veuillez selectionner un choix valide.";
+        }
+		if (!empty($erreur)){
 			include("templates/signup.php");
 		}
 		else {
