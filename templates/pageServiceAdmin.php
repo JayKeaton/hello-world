@@ -118,22 +118,22 @@
                 </br> <div id="center"> <?php echo $profilSession["pseudo"] ?> </div>
                 </aside>
 
-                <div id="b2">
-                  <form action="" method="post" id="commentaire">
+                  <form action="" method="post" id="formulaireCommentaire">
                     <article id="TexteComment">
-                      <p>Commentaire:</p>
-                      <input type="text" id="text" name="text"/>
+                      <p>
+                        <label for="texte"> Commentaire </label>: </br> <textarea type="text" id="text" name="text" placeholder="Votre Commentaire"></textarea>
+                      </p>
                     </article>
                     <div id="Note">
-                      <p>Note:</p>
-                      <input type="integer" id="note" name="note"/>
+                      <p>
+                        <label for="note"> Note sur 5 </label>: </br> <input type="number" id="note" name="note" min=0, max=5, step=0.5 placeholder="/5"/>
+                      </p>
                     </div>
                     <div>
                       <input type="submit" value="valider">
                     </div>
                   </form>
 
-                </div>
               </article>
 
 

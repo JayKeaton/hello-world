@@ -58,17 +58,14 @@ catch(PDOException $se)
     return $commentaires;
   }
 
-  function ajoutCommentaire($note, $texte,$date,$heure,$idUtilisateur,$idService,$idSeance){
+  function ajoutCommentaire($note, $texte,$idUtilisateur,$idService){
     global $bdd;
-    $req=$bdd->prepare("INSERT INTO commentaires(note, texte, date, heure, censure, idUtilisateur, idService, idSeance) values(:note, :texte, :date, :heure, :censure, :idUtilisateur, :idService, :idSeance)");
+    $req=$bdd->prepare("INSERT INTO commentaires(note, texte, heure, censure, idUtilisateur, idService) values(:note, :texte, CURDATE(), CURTIME(), 0, :idUtilisateur, :idService)");
     $req->bindParam("note",$note);
     $req->bindParam("texte",$texte);
-    $req->bindParam("date",$date);
-    $req->bindParam("heure",$heure);
-    $req->bindParam("censure",0);
     $req->bindParam("idUtilisateur",$idUtilisateur);
     $req->bindParam("idService",$idService);
-    $req->bindParam("idSeance",$idSeance);
+    /*$req->bindParam("idSeance",$idSeance);*/
     $req->execute();
   }
 
