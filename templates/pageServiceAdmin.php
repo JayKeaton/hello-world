@@ -50,7 +50,7 @@
             <div id="Description">
               <div id="alinea">
                 <?php echo $description["texte"] ?> </br>
-                Note: <?php echo $note[0]?>
+                Note: <?php echo $noteService[0]?>
               </div>
             </div>
             <h1>Nous Joindre:</h1>
@@ -67,7 +67,9 @@
                   <td>Date</td>
                   <!-- <td>Type de Service</td> -->
                   <td>Nombre d inscrits</td>
-                  <td>Satisfaction</td>
+                  <td>Capacité de l'évènement</td>
+                  <td>Note de la séance</td>
+                  <!--<td>Satisfaction</td> -->
                 </tr>
               </thead>
               <tbody>
@@ -76,7 +78,9 @@
                     <td> <?php echo $seances[$index]["date"] ?> </td>
                     <!-- <td> <?php /* echo $seances[$index][2] */ ?> </td> -->
                     <td> <?php echo $lesInscrits[$index+$seances[0][0]][0] ?> </td>
-                    <td> <?php echo $satisfaction[0][$index] ?> </td>
+                    <td><?php echo $seances[$index]["capacite"]?></td>
+                    <td><?php echo $notesSeances[$index]?></td>
+                    <!-- <td> <?php echo $satisfaction[0][$index] ?> </td> -->
                   </tr>
                 <?php } ?>
               </tbody>

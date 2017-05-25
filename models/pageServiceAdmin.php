@@ -25,13 +25,28 @@ catch(PDOException $se)
     return($description);
   }
 
-  function note($idService){
+  function noteService($idService){
     global $bdd;
     $req=$bdd->prepare("SELECT ROUND(AVG(note),2) FROM commentaires WHERE idService=:idService");
     $req->bindParam("idService",$idService);
     $req->execute();
     $note=$req->fetch();
     return $note;
+  }
+
+  function notesSeances($idService){
+    global $bdd;
+    $req1=$bdd->prepare("SELECT idSeance FROM commentaires WHERE idService=:idService");
+    $req1->bindParam("idService",$idService);
+    $req1->execute();
+    $seances=$req1->fetchAll();
+    foreach ($seances as &$value) {
+      $req2=$bdd->prepare("SELECT ROUND(AVG(note),2) FROM commentaires WHERE idSeance=:idSeance");
+      $req2->bindParam("idSeance",$value[0]);
+      $req2->execute();
+      $notesSeances=$req2->fetch();
+    }
+    return $notesSeances;
   }
 
   function contact($idService){
@@ -87,19 +102,19 @@ catch(PDOException $se)
     return($profilSession);
   }
 
-  function tableau($idService){
+  function seances($idService){
     global $bdd;
     $req=$bdd->prepare("SELECT * FROM seances WHERE idService=:idService ORDER BY DATE");
     $req->bindParam("idService",$idService);
     $req->execute();
-    $tableau=array();
+    $seances=array();
     for($i=0; $i<10; $i++){
       $ligne=$req->fetch();
       if ($ligne != false){
-        $tableau[$i]=$ligne;
+        $seances[$i]=$ligne;
       }
     }
-    return $tableau;
+    return $seances;
   }
 
  function satisfaction($idService,$seances){
