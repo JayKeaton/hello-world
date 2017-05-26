@@ -109,7 +109,7 @@
     </header>
 
     <div id="main">
-      <?php echo $contenu; ?>
+      <?php include($path); ?>
     </div>
     
     <footer>

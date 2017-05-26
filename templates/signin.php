@@ -1,8 +1,3 @@
-<?php
-
-
-ob_start();
-?>
 <link href="static/signin/signin.css" rel="stylesheet" type="text/css">
 <div id='signin'>
 	<h1 id="titreConnexion">Connexion :</h1>
@@ -22,16 +17,10 @@ ob_start();
 			<input type="submit" value="valider"> 
 		</div>
 		<p>
-			Nouveau contributeur ? 
-			<a href=<?php echo(SOUS_DOMAINE."/?page=signup"); ?> >Inscrivez-vous</a>
+			Pas encore inscrit ?
+			<a href=<?php echo(SOUS_DOMAINE."?page=signup"); ?> >Inscrivez-vous</a>
 			<br/>
-			<a href="adresse ou fichiers dans le dossier" style="font-family: Verdana,'Arial', 'Arial Black','Times New Roman';font-size: 12px">Mot de passe oublié?</a><!--code css pour afficher la phrase en plus petit-->
+			<a href="#" style="font-family: Verdana,'Arial', 'Arial Black','Times New Roman';font-size: 12px">Mot de passe oublié?</a><!--code css pour afficher la phrase en plus petit-->
 		</p>
 	</form>
 </div>
-<?php
-$contenu = ob_get_clean();
-include("gabarit.php");
-
-
-

@@ -1,8 +1,3 @@
-<?php
-
-
-ob_start();
-?>
 <link href="static/signup/style.css" rel="stylesheet" type="text/css">
 <h1 id="title">Veuillez renseigner vos informations pour completer l'inscription</h1>
 <h4 id="titlebis">Chez Error404, nous prenons à coeur la sécurité de vos données, et les données que vous entrez ne peuvent être utilisées que par nous, afin de garantir une meilleure utilisation de nos services.</h4>
@@ -17,11 +12,12 @@ ob_start();
                         Email ou courriel: <span class="required">*</span>
                     </h5>
                     <input type="email" id="email" name="email" value="<?php echo((empty($_POST['email'])) ? "" : $_POST['email']); ?>" placeholder="example@email.fr" required="required" />
-                    <?php echo((empty($erreur_compte)) ? "" : "<p style='color: red;'>".$erreur_compte."</p>"); ?>
+                    <?php echo((empty($erreur['email'])) ? "" : "<p style='color: red;'>".$erreur['email']."</p>"); ?>
                 </div>
                 <div>
                     <h5>Pseudo: <span class="required">*</span></h5>
-                    <input type="text" id="pseudo" name="pseudo" value="<?php echo((empty($_POST['pseudo'])) ? "" : $_POST['pseudo']); ?>" placeholder="Votre pseudo" required="required" autofocus/>
+                    <input type="text" id="pseudo" name="pseudo" value="<?php echo((empty($_POST['pseudo'])) ? "" : $_POST['pseudo']); ?>" placeholder="Votre pseudo" autofocus required="required" />
+                    <?php echo((empty($erreur['pseudo'])) ? "" : "<p style='color: red;'>".$erreur['pseudo']."</p>"); ?>
                 </div>
             </div>
         </div>
@@ -33,15 +29,16 @@ ob_start();
                         Votre mot de passe: <span class="required">*</span>
                     </h5>
                     <input type="password" id="mdp" name="mdp" value="" placeholder="" required="required" />
+                    <?php echo((empty($erreur['mdp'])) ? "" : "<p style='color: red;'>".$erreur['mdp']."</p>"); ?>
                 </div>
                 <div>
                     <h5>
                         Confirmation: <span class="required">*</span>
                     </h5>
                     <input type="password" id="mdpv" name="mdpv" value="" placeholder="" required="required" />
+                    <?php echo((empty($erreur['mdpv'])) ? "" : "<p style='color: red;'>".$erreur['mdpv']."</p>"); ?>
                 </div>
             </div>
-            <?php echo((empty($erreur_mdpv)) ? "" : "<p style='color: red;'>".$erreur_mdpv."</p>"); ?>
         </div>
 
         <div>
@@ -51,13 +48,15 @@ ob_start();
                     <h5>
                         Prenom: <span class="required">*</span>
                     </h5>
-                    <input type="text" id="prenom" name="prenom" placeholder="Votre prénom" required="required" value="<?php echo((empty($_POST['prenom'])) ? "" : $_POST['prenom']); ?>"  />
+                    <input type="text" id="prenom" name="prenom" placeholder="Votre prénom" value="<?php echo((empty($_POST['prenom'])) ? "" : $_POST['prenom']); ?>" required="required" />
+                    <?php echo((empty($erreur['prenom'])) ? "" : "<p style='color: red;'>".$erreur['prenom']."</p>"); ?>
                 </div>
                 <div>
                     <h5>
                         Nom: <span class="required">*</span>
                     </h5>
                     <input type="text" id="Nom" name="nom" value="<?php echo((empty($_POST['nom'])) ? "" : $_POST['nom']); ?>" placeholder="Votre nom" required="required" autofocus />
+                    <?php echo((empty($erreur['nom'])) ? "" : "<p style='color: red;'>".$erreur['nom']."</p>"); ?>
                 </div>
             </div>
         </div>
@@ -68,6 +67,7 @@ ob_start();
                 <div>
                     <h5>Numéro de téléphone:</h5>
                     <input type="tel" id="telephone" name="telephone" placeholder="01 40 21 29 29" value="<?php echo((empty($_POST['telephone'])) ? "" : $_POST['telephone']); ?>" />
+                    <?php echo((empty($erreur['telephone'])) ? "" : "<p style='color: red;'>".$erreur['telephone']."</p>"); ?>
                 </div>
             </div>
         </div>
@@ -82,6 +82,7 @@ ob_start();
                         <option value="femme" <?php echo((!empty($_POST['sexe']) && $_POST['sexe'] == "femme") ? "selected='selected'" : ""); ?>>Femme</option>
                         <option value="autre" <?php echo((!empty($_POST['sexe']) && $_POST['sexe'] == "autre") ? "selected='selected'" : ""); ?>>Autre</option>
                     </select>
+                    <?php echo((empty($erreur['sexe'])) ? "" : "<p style='color: red;'>".$erreur['sexe']."</p>"); ?>
                 </div>
                 <div>
                     <h5>Date de naissance :</h5>
@@ -123,7 +124,7 @@ ob_start();
                             ?>
                         </select>
                     </div>
-                    <?php echo((empty($erreur_dateNaissance)) ? "" : "<p style='color: red;'>".$erreur_dateNaissance."</p>"); ?>
+                    <?php echo((empty($erreur['dateNaissance'])) ? "" : "<p style='color: red;'>".$erreur['dateNaissance']."</p>"); ?>
                 </div>
             </div>
         </div>
@@ -136,10 +137,12 @@ ob_start();
                 <div>
                     <h5>Code postal:</h5>
                     <input type="number" name="codePostal" id="codePostal" value="<?php echo((empty($_POST['codePostal'])) ? "" : $_POST['codePostal']); ?>" placeholder="Exemple: 75001"/>
+                    <?php echo((empty($erreur['codePostal'])) ? "" : "<p style='color: red;'>".$erreur['codePostal']."</p>"); ?>
                 </div>
                 <div>
                     <h5>Votre adresse:</h5>
                     <textarea id="adresse" name="adresse" placeholder="8 rue Saint Sabin, Paris"><?php echo((empty($_POST['adresse'])) ? "" : $_POST['adresse']); ?></textarea>
+                    <?php echo((empty($erreur['adresse'])) ? "" : "<p style='color: red;'>".$erreur['adresse']."</p>"); ?>
                 </div>
             </div>
         </div>
@@ -151,13 +154,14 @@ ob_start();
                 <div>
                     <h5>Activer</h5>
                     <input type="checkbox" value='autoriser' name="geolocalisation" id="geolocalisation" <?php echo((!empty($_POST['geolocalisation']) && $_POST['geolocalisation']) ? "checked" : ""); ?>>
+                    <?php echo((empty($erreur['geolocalisation'])) ? "" : "<p style='color: red;'>".$erreur['geolocalisation']."</p>"); ?>
                 </div>
             </div>
         </div>
 
 
         <div id="div_submit">
-            <input type="submit" value="Suivant" id="submit" />
+            <input type="submit" name="submit" value="Suivant" id="submit" />
         </div>
     </form>
 </article>
@@ -167,9 +171,3 @@ function googleTranslateElementInit() {
   new google.translate.TranslateElement({pageLanguage: 'fr', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, autoDisplay: false, multilanguagePage: true}, 'google_translate_element');
 }
 </script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
-<?php
-$contenu = ob_get_clean();
-
-include("gabarit.php");
-
