@@ -1,39 +1,3 @@
-header{
-  display: flex;
-}
-header ul
-{
-  background-color:red;
-  flex:1;
-  display:flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-}
-header ul li
-{
-  list-style: none;
-  padding:15px;
-  height:100%;
-  color: white;
-}
-a{
-  text-decoration: none;
-  color: white;
-}
-header ul li:hover{
-  background-image: linear-gradient(red 57% , #ff8080);
-}
-header #imageBanniere{
-  border:2px solid red ;
-}
-#rouge{
-  padding-left: 100px;
-  height:100%;
-  margin-top: 16px;
-  padding-top: 53px;
-  background-color: red;
-}
 
 
 
@@ -55,28 +19,6 @@ align-items: center;
   justify-content: center;
   text-align: center;
 }
-
-
-
-
-footer
-{
-background-color: #808080;
-}
-footer ul{
-  margin-top: 0px;
-  display: flex;
-}
-footer ul li{
-  list-style: none;
-  margin-right: 20px;
-}
-#copyright{
-  align-self: flex-end;
-  color:white;
-}
-
-
 
 
 
