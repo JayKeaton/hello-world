@@ -22,7 +22,7 @@
     	<form action="" method="POST" id="form">
     		<div class="element">
     			Que recherchez-vous ?
-	    		<select <?php /*name="catégorie" */?>id="categorie">
+	    		<select <?php /*name="categorie" */?>id="categorie">
 	    			<option name="">choisir une catégorie</option>
 	    			<option name="soins">Soins</option>
 	    			<option name="nourriture">Nourriture</option>
@@ -35,7 +35,8 @@
     		</div>
     		<div class="element">
 	   			Quel lieu?
-	   			<input type="text" name="adresse" id="adresse" />			   
+	   			<input type="text" name="adresse" id="adresse" />
+	   			<input type="adresse" id="adresse" name="adresse" value="<?php echo((empty($_POST['adresse'])) ? "" : $_POST['adresse']); ?>" placeholder="tapez une adresse" />			   
 	   			<input type="checkbox">Geolocalisation</input>
 	   		</div>
     		<div class="element">
@@ -53,7 +54,7 @@
 							<h3><?php echo $data[$i]["nom"] ?></h3> </br>
 							<?php echo $data[$i]["texte"] ?> </br>
 
-							<a href="<?php echo $data[$i]["lien_site"] ?>"><?php echo $data[$i]["lien_site"] ?></a> </br>
+							<div id="lienOrganisation"> <a href="<?php echo $data[$i]["lien_site"] ?>"><?php echo $data[$i]["lien_site"] ?></a></div> </br>
 								<?php /*echo $dataSPECIALE[$i][DESCRIPTION] /*Peut-être votre futur logement?<br/>.........................<br/>
 								...<br/>...............................
 								..............................................<br/><br/><br/>

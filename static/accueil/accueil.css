@@ -236,3 +236,11 @@ header ul li div{
 	color: black;
 	text-decoration:none;
 }
+#lienOrganisation a{
+	color:rgb(120,120,255);
+	font-family: "Comic sans MS", "Courier New", Georgia);
+}
+#lienOrganisation a:hover{
+	color:rgb(70,70,255);
+	font-family: "Comic sans MS", "Courier New", Georgia);
+}
