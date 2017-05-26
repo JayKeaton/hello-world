@@ -66,11 +66,28 @@
                     <td><?php echo $seances[$index]["capacite"]?></td>
                     <td><?php echo $notesSeances[$index]?></td>
                     <!-- <td> <?php echo $satisfaction[0][$index] ?> </td> -->
-                    <td><?php echo $estInscrit ?></td>
+                    <td><form action="" method="post" id="formulaireCommentaire"><?php
+                    $check = false;
+                    foreach ($estInscrit as $element){
+                      if ($element["idSeance"]=$seances[$index]["idSeance"]){
+                        $check = true;
+                      }
+                    }
+                    if ($check){
+                      echo ('<input type="checkbox" name="inscription_".$seances[$index]["idSeance"] value="inscrit" checked="checked"/>') ;
+                      echo ('<input type="hidden" name="hidden_".$seances[$index]["idSeance"]. value=true />') ;
+                    }
+                    else{
+                      echo('<input type="checkbox" name="inscription_".$seances[$index]["idSeance"] value="inscrit" checked="unchecked">');
+                      echo('<input type="hidden" name="hidden_".$seances[$index]["idSeance"] value=false />');
+                    }
+                    /*echo($check ? "Inscrits" : "Non inscrits");*/
+                    ?></td>
                   </tr>
                 <?php } ?>
               </tbody>
             </table>
+            <input type="submit" name="validerInscript" value="valider"> </form>
             <h1>Commentaires</h1>
             <article id="Commentaires"> <!<!-- ATTENTION AU S DE Commentaire -->
               <?php for ($index=0;$index<$longComment;$index ++){ ?>

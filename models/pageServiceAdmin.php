@@ -107,13 +107,7 @@ catch(PDOException $se)
     $req=$bdd->prepare("SELECT * FROM seances WHERE idService=:idService ORDER BY DATE");
     $req->bindParam("idService",$idService);
     $req->execute();
-    $seances=array();
-    for($i=0; $i<10; $i++){
-      $ligne=$req->fetch();
-      if ($ligne != false){
-        $seances[$i]=$ligne;
-      }
-    }
+    $seances=$req->fetchAll();
     return $seances;
   }
 
@@ -147,10 +141,27 @@ catch(PDOException $se)
 
   function estInscrit($idService){
     global $bdd;
-    $req=$bdd->prepare("SELECT idUtilisateur, idSeance FROM inscrits JOIN seances ON inscrits.idSeance=seances.idSeance WHERE idService=:idService");
-    $req->bindParam("idService,$idService");
+    $req=$bdd->prepare("SELECT * FROM inscrits JOIN seances ON inscrits.idSeance=seances.idSeance WHERE seances.idService=:idService AND inscrits.idUtilisateur=:idUtilisateur");
+    $req->bindParam("idService",$idService);
+    $req->bindParam("idUtilisateur",$_SESSION["idUtilisateur"]);
     $req->execute();
-    $estInscrit=$req->fetch();
-    return $estInscrits;
+    $estInscrit=$req->fetchAll();
+    return $estInscrit;
+  }
+
+  function modifInscription($checked,$idService,$idSeance,$idUtilisateur){
+    global $bdd;
+    if($checked){
+      $req=$bdd->prepare("INSERT INTO `inscrits`(`idUtilisateur`, `idSeance`) VALUES (:idUtilisateur,:idSeance)");
+      $req->bindParam("idUtilisateur",$idUtilisateur);
+      $req->bindParam("idSeance",$idSeance);
+      $req->execute();
+    }
+    else{
+      $req=$bdd->prepare("DELETE FROM `inscrits` WHERE idSeance=:idSeance AND idUtilisateur=:idUtilisateur");
+      $req->bindParam("idUtilisateur",$idUtilisateur);
+      $req->bindParam("idSeance",$idSeance);
+      $req->execute();
+    }
   }
  ?>
