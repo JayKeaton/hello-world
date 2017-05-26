@@ -90,12 +90,15 @@ footer ul li{
 }
 #Commentaires{
   margin:6px;
-  border:2px solid red ;
+  border:5px solid red ;
+  border-radius: 8px;
 }
 #Commentaire{
   border:2px solid red ;
   display: flex;
   align-items: center;
+  border-radius: 12px;
+  margin: 20px;
 }
 #center{
   text-align: center;

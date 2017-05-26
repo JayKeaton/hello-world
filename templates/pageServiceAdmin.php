@@ -70,6 +70,7 @@
                   <td>Capacité de l'évènement</td>
                   <td>Note de la séance</td>
                   <!--<td>Satisfaction</td> -->
+                  <td>Inscription</td>
                 </tr>
               </thead>
               <tbody>
@@ -81,6 +82,7 @@
                     <td><?php echo $seances[$index]["capacite"]?></td>
                     <td><?php echo $notesSeances[$index]?></td>
                     <!-- <td> <?php echo $satisfaction[0][$index] ?> </td> -->
+                    <td><?php echo $estInscrit ?></td>
                   </tr>
                 <?php } ?>
               </tbody>
@@ -101,7 +103,7 @@
                       <p>Note:
                         <?php $note=$commentaires[$index]["note"];
                           $index2=1;
-                          while ($index2<$note){ ?>
+                          while ($index2<=$note){ ?>
                             <img src="static/pageServiceAdmin/etoileRouge.png" width="30" height="30">
                             <?php $index2++;
                           }
@@ -134,7 +136,7 @@
                       </p>
                     </div>
                     <div>
-                      <input type="submit" value="valider">
+                      <input type="submit" name="valider" value="valider">
                     </div>
                   </form>
 

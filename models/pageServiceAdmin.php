@@ -75,7 +75,7 @@ catch(PDOException $se)
 
   function ajoutCommentaire($note, $texte,$idUtilisateur,$idService){
     global $bdd;
-    $req=$bdd->prepare("INSERT INTO commentaires(note, texte, heure, censure, idUtilisateur, idService) values(:note, :texte, CURDATE(), CURTIME(), 0, :idUtilisateur, :idService)");
+    $req=$bdd->prepare("INSERT INTO commentaires(note, texte, date, heure, censure, idUtilisateur, idService, idSeance) values(:note, :texte, CURDATE(), CURTIME(), 0, :idUtilisateur, :idService,0)");
     $req->bindParam("note",$note);
     $req->bindParam("texte",$texte);
     $req->bindParam("idUtilisateur",$idUtilisateur);
@@ -143,5 +143,14 @@ catch(PDOException $se)
     $req->execute();
     $lesInscrits=$req->fetch();
     return $lesInscrits;
+  }
+
+  function estInscrit($idService){
+    global $bdd;
+    $req=$bdd->prepare("SELECT idUtilisateur, idSeance FROM inscrits JOIN seances ON inscrits.idSeance=seances.idSeance WHERE idService=:idService");
+    $req->bindParam("idService,$idService");
+    $req->execute();
+    $estInscrit=$req->fetch();
+    return $estInscrits;
   }
  ?>

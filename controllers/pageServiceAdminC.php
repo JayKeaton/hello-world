@@ -16,8 +16,10 @@ $notesSeances=notesSeances($idService);
 
 if (!empty($_POST["valider"])){
   $note=$_POST["note"];
-  $texte=htmlspecialchars($_POST["texte"]);
+  $texte=htmlspecialchars($_POST["text"]);
   ajoutCommentaire($note,$texte,$_SESSION["idUtilisateur"],$idService);  /*$_POST["idSeance"]*/
+  header("Location: ");
+  exit();
 }
 
 include("templates/pageServiceAdmin.php");
