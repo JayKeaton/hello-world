@@ -81,7 +81,7 @@ elseif ($page == "tests"){
     $path = "controllers/tests.php";
 }
 elseif ($page == "accueil_admin"){
-    $path = "controllers/acceuil_admin.php";
+    $path = "controllers/accueil_admin.php";
 }
 elseif ($page == "pageServiceAdmin"){
     loginRequired($page);
