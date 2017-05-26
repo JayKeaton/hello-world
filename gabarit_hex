@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html>
+﻿<html>
 <head>
   <link rel="stylesheet" type="text/css" href="static/headerFooter/headerFooter.css"> <!-- Attention à bien remplacer le lien vers le fichier CSS -->
   <link rel="icon" type="image/png" href="static/accueil/msf_logo_fichiers/hamster_1.jpeg" />
@@ -109,9 +108,10 @@
     </header>
 
     <div id="main">
-      <?php include($path); ?>
+      <?php echo $contenu; ?>
     </div>
-    
+
+
     <footer>
         <ul>
             <li> <a href="http://hugobriet.000webhostapp.com/?page=accueil"> Plan du Site </a> </li>
@@ -122,5 +122,7 @@
             <li> ©Error404 </li>
         </ul>
     </footer>
+
   </body>
 </html>
+

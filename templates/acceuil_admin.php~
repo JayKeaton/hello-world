@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-	<html>
+
 		<head>
 			<meta charset="utf-8" />
 			<link href="static/accueil_admin/acceuil_admin.css" rel="stylesheet" type="text/css">
@@ -69,5 +68,3 @@
 			</div>
 				<input type="submit" value="valider">
 		</form>
-
-<html>

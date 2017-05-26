@@ -1,0 +1,30 @@
+@charset "utf-8";
+/* CSS Document */
+
+#container #map
+{
+	width:700px;height:500px;margin:auto;
+}
+
+#container #panel
+{
+	width:700px;margin:auto;
+}
+
+#main
+{
+	margin: 0% 5% 0% 5%; 
+	font-family:Lucida Grande, Lucida Sans Unicode, Lucida Sans, DejaVu Sans, Verdana," sans-serif"; 
+	text-align: center;
+}
+
+#container #destinationForm
+{
+	margin:0px 0px 20px 0px;
+	padding:10px 20px;
+}
+
+#container #destinationForm input[type=text]
+{
+	border:solid 1px #C0C0C0;
+}
