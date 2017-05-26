@@ -1,16 +1,31 @@
+
+#accueilAdmin{
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+}
+
 #recherche {
 	display: flex;
-	border: 1px black solid;
-	padding: 3px;
-	border-radius: 20px;
+	flex-direction: column;
+	align-items: center;
 	font-family: Verdana ,"Arial", "Arial Black", "Times New Roman";
-	width:60%;
-	position: absolute;
-	left: 20%;	
+	width:70%;
+	/*position: absolute;
+	left: 20%;*/	
+}
+#recherche_div{
+	border: 1px black solid;
+	display: flex;
+	padding: 7px;
+	border-radius: 20px;
+	
 }
 #valider{
-	position: absolute;
-	left: 50%;top:110%;
+	width: 60px;
+	/*position: absolute;
+	left: 50%;top:110%;*/
 }
 #titre{
 	font-size: 16px;
@@ -18,20 +33,27 @@
 	text-align: center;
 }
 #titreRecherche{
-	
 	font-family: Verdana ,"Arial", "Arial Black", "Times New Roman";
 	text-align: center;
 	padding-top: 10%
 }
-.servicesData{
+.div_servicesData{
 	display: flex;
 	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+}
+.servicesData{
+	/*position:relative;
+	left:200px;*/
 	border: 1px black solid;
 	text-align: center;
 	border-radius: 20px;
 	width:40%;
-	left:20%;
+	/*left:20%;*/
 }
+
 #page{
 	font-size: 12px;
 	text-align: center;

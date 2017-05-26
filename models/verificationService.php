@@ -1,5 +1,5 @@
 <?php
-function dataTypeService ($typeService,$nomService,$adresse,$page){
+function dataTypeService ($page){
 	global $bdd;
 	$clause=array();
 	
@@ -14,6 +14,10 @@ function dataTypeService ($typeService,$nomService,$adresse,$page){
 	}
 	if(!empty($_POST['adresse'])) {
 		$a="services.adresse LIKE '%" . htmlspecialchars($_POST["adresse"]."%'");
+		$clause[]=$a;
+	}
+	if(!empty($_POST['dejaValide'])) {
+		$a="services.validation = 0";
 		$clause[]=$a;
 	}
 	$final = join(" AND ",$clause);

@@ -4,51 +4,52 @@
 			<meta charset="utf-8" />
 			<link href="static/accueil_admin/acceuil_admin.css" rel="stylesheet" type="text/css">
 		</head>
-
+		
+		<div id="accueilAdmin">
+		
 		<p id="titre">
 			Bienvenue chers administrateurs
 		</p>
 
-		<body>
 			<form action="" method="post" id="recherche">
-				<a id="recherche1">
-					<div><!--la petite case pour le nom du service-->
-						<label for="nomService">nom du service :</label>
-						<input type="text" id="nomService" name="nomService" />
-					</div>
-					<div><!--la petite case pour le type du service-->
-						type de service :
-      		  			<select name="typeService">
-    						<option value="" selected>...</option>
-    						<option value="nourriture">Nourriture</option>
-    						<option value="logement">Logement</option>
-    						<option value="Formalités administrative">Formalités administrative</option>
-    						<option value="accompagnement médical">Accompagnement médical</option>
-    					</select>
-
-    		</select>
+				<div id="recherche_div">
+					<div id="recherche1">
+						<div><!--la petite case pour le nom du service-->
+							<label for="nomService">nom du service :</label>
+							<input type="text" id="nomService" name="nomService" value="<?php echo(empty($_POST['nomService']) ? "" : $_POST['nomService']); ?>" />
+						</div>
+						<div><!--la petite case pour le type du service-->
+							type de service :
+      		  				<select name="typeService">
+    							<option value="" <?php echo(empty($_POST['typeService']) ? 'selected' : ''); ?> >...</option>
+    							<option value="nourriture" <?php echo((!empty($_POST['typeService']) && $_POST['typeService'] == 'nourriture') ? 'selected' : ''); ?>>Nourriture</option>
+    							<option value="logement" <?php echo((!empty($_POST['typeService']) && $_POST['typeService'] == 'logement') ? 'selected' : ''); ?>>Logement</option>
+    							<option value="Formalités administrative" <?php echo((!empty($_POST['typeService']) && $_POST['typeService'] == 'Formalités administrative') ? 'selected' : ''); ?>>Formalités administrative</option>
+    							<option value="accompagnement médical" <?php echo((!empty($_POST['typeService']) && $_POST['typeService'] == 'accompagnement médical') ? 'selected' : ''); ?>>Accompagnement médical</option>
+    						</select>
+    					
+   						</div>
+   						<div> <!-- la petite case pour l adresse -->
+      		  				<label for="adresse">adresse :</label>
+      		  				<input type="text" id="adresse" name="adresse" value="<?php echo(empty($_POST['adresse']) ? "" : $_POST['adresse']); ?>"/>
+   						</div>
+   						<input type="checkbox" name="dejaValide"<?php echo(empty($_POST['dejaValide']) ? "" : "checked='checked'"); ?>> cacher les services deja validé</br>
    					</div>
-   					<div> <!-- la petite case pour l adresse -->
-      		  			<label for="adresse">adresse :</label>
-      		  			<input type="text" id="adresse" name="adresse"/>
+   					<div id="recherche2">
    					</div>
-   				</a>
-   				<b id="recherche2">
-   					<input type="checkbox" name="tri"> tri par date de la plus ancienne a la plus récente</br>
-   					<input type="checkbox" name="dejaValidé"> cacher les services deja validé</br>
-   					<input type="checkbox" name="serviceModifié"> montrer les services qui veule être modifié</br>
-   				</b>
-   				<input type="submit" value="valider" id="valider">
+   				</div>
+   				<input type="submit" value="valider" id="valider" />
    				
 			</form>
-		</body>
+		
 
 		<p id="titreRecherche">
-			résultat de la recherche (par default de la plus anciènne a la plus récente)
+			résultat de la recherche (par default de la plus ancienne a la plus récente)
 		</p>
 		
+		<div class="div_servicesData">
 		<?php
-		if(!empty($_POST['typeService']) or !empty($_POST['nomService']) or !empty($_POST['adresse'])){	
+		if(!empty($_POST['typeService']) or !empty($_POST['nomService']) or !empty($_POST['adresse']) or !empty($_POST['dejaValide'])){	
 			for($i=0;$i<count($data);$i++){
     			$contenu='<p class="servicesData"> nom du service :'
 				.$data[$i]['nom'].
@@ -59,8 +60,8 @@
 
 		}
 }
-
 		?> 
+		</div>
 		
 		<form action="" method="post" id="page">
 			<div>	<!--la petite case pour la page -->
@@ -69,5 +70,5 @@
 			</div>
 				<input type="submit" value="valider">
 		</form>
-
-<html>
+	</div>
+</html>

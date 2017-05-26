@@ -1,5 +1,5 @@
 <?php
-	if(!empty($_POST['typeService']) or !empty($_POST['nomService']) or !empty($_POST['adresse'])){
+	if(!empty($_POST['typeService']) or !empty($_POST['nomService']) or !empty($_POST['adresse']) or !empty($_POST['dejaValide'])){
 		$typeService = $_POST['typeService'];
 		$nomService = $_POST['nomService'];
 		$adresse = $_POST['adresse'];
@@ -10,7 +10,7 @@
 		else{
 			$page = 1;
 		}
-		$data = dataTypeService($typeService,$nomService,$adresse,$page);
+		$data = dataTypeService($page);
 	}
 include("templates/accueil_admin.php")
 ?>
