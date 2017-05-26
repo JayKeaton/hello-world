@@ -6,18 +6,33 @@
 	$req=$bdd->prepare("SELECT * FROM services WHERE idUtilisateur=idUtilisateur");
 	$req->execute(array('idUtilisateur'=>$_SESSION['idUtilisateur']));
 	$data=$req->fetchall();*/
-	$req=$bdd->prepare("SELECT * FROM descriptions");
+	/*$req=$bdd->prepare("SELECT * FROM descriptions");
 	$rep->execute(array());
-	$descriptions=$req->fetchall();
-	$req=$bdd->prepare("SELECT * FROM services");
-	$req->execute(array());
-	$data=$req->fetchall();/*les services*/
+	$descriptions=$req->fetchall();*/
+	$idService=1;
+	if (!empty($_POST['idService'])){
+		$idService=$_POST['idService'];
+	}
+
+
+	if (!empty($_POST["email"])){
+		$email=$_POST["email"];
+		$adresse=$_POST["adresse"];
+		$telephone=($_POST["telephone"]);
+		$lien_site=($_POST["lien_site"]);
+		$categorie=($_POST["categorie"]);
+		$nom=($_POST["nom"]);
+		$idService=1;
+		$idService=modifierService($bdd, $nom, $email, $adresse, $telephone,$lien_site, $categorie, $idService);
+	}
+
+
+  	 
 
 
 
-
-
-	/*$data=recupServicesUtilisateur($_SESSION['idUtilisateur'],$bdd);*/
+	$data=recupServicesUtilisateur(1,$bdd);
+	$n=0;
 
 	/*foreach ($data as $element => $value) {
 

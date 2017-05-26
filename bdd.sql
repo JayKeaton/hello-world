@@ -22,17 +22,15 @@ CREATE TABLE categories(
 CREATE TABLE services (
   idService INTEGER PRIMARY KEY AUTO_INCREMENT,
   validation BOOLEAN DEFAULT false,
+  adresse VARCHAR(255),
   nom VARCHAR(255),
-  codePostal INTEGER,
-  ville VARCHAR(255),
-  rue VARCHAR(255),
-  numéro INTEGER,
+  
   categorie VARCHAR(255),
   telephone VARCHAR(20),
-  mail VARCHAR(255),
+  email VARCHAR(255),
   lien_site VARCHAR(255),
-  idContributeur INTEGER
-    REFERENCES utilisateurs(idUtilisateur) ON DELETE SET NULL
+  idUtilisateur INTEGER
+    REFERENCES utilisateurs(idUtilisateur) 
 );
 
 CREATE TABLE seances(
@@ -60,7 +58,7 @@ CREATE TABLE descriptions(
 CREATE TABLE utilisateurs (
   idUtilisateur INTEGER PRIMARY KEY AUTO_INCREMENT,
   pseudo VARCHAR(50) NOT NULL UNIQUE,
-  mail VARCHAR(255),
+  email VARCHAR(255),
   mdp VARCHAR(255) NOT NULL,
   avatar VARCHAR(255),
   nom VARCHAR(100),
@@ -104,9 +102,9 @@ CREATE TABLE commentaires(
     REFERENCES seances(idSeance) ON DELETE CASCADE
 );
 
-INSERT INTO `services`(`validation`, `codePostal`, `ville`, `rue`, `numéro`, `categorie`, `telephone`, `mail`, `lien_site`) VALUES (0,75000,"Paris","rue de Rivoli",5,"accompagnement médical","0625523251","0001@0001","http://www.dofus.com/fr");
-INSERT INTO `services`(`validation`, `codePostal`, `ville`, `rue`, `numéro`, `categorie`, `telephone`, `mail`, `lien_site`) VALUES (0,75000,"Paris","Rue Vieille du Temple",21,"logement","0658921542","0002@0002","http://euw.leagueoflegends.com/fr");
-INSERT INTO `utilisateurs`( `pseudo`, `mail`, `mdp`, `avatar`, `nom`, `prenom`, `dateNaissance`, `verification`, `numero`,`adresse`,`ville`, `droits`, `telephone`) VALUES ("jean eude","jean.eude@kikoolol.fr","saphir","avatar-j-e.jpg","jean-eude","debeaujardin","1982-06-02",1,"22","rue Vieille du Temple","Paris","utilisateur","0645895121");
-INSERT INTO `utilisateurs`( `pseudo`, `mail`, `mdp`, `avatar`, `nom`, `prenom`, `dateNaissance`, `verification`, `numero`,`adresse`,`ville`, `droits`, `telephone`) VALUES ("legyllith","dieu.de.la.bonte@divinité.ciel","gentil","avatar-legyllith.jpg","Aurélien","dreams","1992-06-12",1,"100","rue des archives","Paris","contributeur","0645884521");
+INSERT INTO `services`(`validation`, `adresse`, `categorie`, `telephone`, `email`, `lien_site`) VALUES (0,"75000 Paris 5 rue de Rivoli","accompagnement médical","0625523251","0001@0001","http://www.dofus.com/fr");
+INSERT INTO `services`(`validation`, `adresse`, `categorie`, `telephone`, `email`, `lien_site`) VALUES (0,"75000 Paris 5 rue de Rivoli","logement","0658921542","0002@0002","http://euw.leagueoflegends.com/fr");
+INSERT INTO `utilisateurs`( `pseudo`, `email`, `mdp`, `avatar`, `nom`, `prenom`, `dateNaissance`, `verification`, `numero`,`adresse`,`ville`, `droits`, `telephone`) VALUES ("jean eude","jean.eude@kikoolol.fr","saphir","avatar-j-e.jpg","jean-eude","debeaujardin","1982-06-02",1,"22","rue Vieille du Temple","Paris","utilisateur","0645895121");
+INSERT INTO `utilisateurs`( `pseudo`, `email`, `mdp`, `avatar`, `nom`, `prenom`, `dateNaissance`, `verification`, `numero`,`adresse`,`ville`, `droits`, `telephone`) VALUES ("legyllith","dieu.de.la.bonte@divinité.ciel","gentil","avatar-legyllith.jpg","Aurélien","dreams","1992-06-12",1,"100","rue des archives","Paris","contributeur","0645884521");
 INSERT INTO `descriptions`(`nom`, `texte`, `langue`) VALUES ("soin +","Nous serons heureux de vous soigné","francais");
 INSERT INTO `descriptions`( `nom`, `texte`, `langue`) VALUES ("acceillir","Nous vous acciullerons avec plaisir","francais");
