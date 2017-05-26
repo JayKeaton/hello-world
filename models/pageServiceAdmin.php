@@ -17,12 +17,21 @@ catch(PDOException $se)
 
   function description($idService){
     global $bdd;
-    $req=$bdd->prepare("SELECT nom, texte FROM descriptions WHERE idService=:idService");
+    $req=$bdd->prepare("SELECT texte FROM descriptions WHERE idService=:idService");
     $req->bindParam("idService",$idService);
     $req->execute();
     $description=array();
     $description=$req->fetch();
     return($description);
+  }
+
+  function note($idService){
+    global $bdd;
+    $req=$bdd->prepare("SELECT ROUND(AVG(note),2) FROM commentaires WHERE idService=:idService");
+    $req->bindParam("idService",$idService);
+    $req->execute();
+    $note=$req->fetch();
+    return $note;
   }
 
   function contact($idService){
@@ -49,6 +58,24 @@ catch(PDOException $se)
     return $commentaires;
   }
 
+  function profil($idService){
+    global $bdd;
+    $req=$bdd->prepare("SELECT avatar,nom FROM utilisateurs JOIN commentaires ON commentaires.idUtilisateur=utilisateurs.idUtilisateur WHERE idService=:idService ORDER BY date ");
+    $req->bindParam("idService",$idService);
+    $req->execute();
+    $profil=$req->fetchAll();
+    return($profil);
+  }
+
+  function profilSession($idUtilisateur){
+    global $bdd;
+    $req=$bdd->prepare("SELECT avatar,nom FROM utilisateurs JOIN commentaires ON commentaires.idUtilisateur=utilisateurs.idUtilisateur WHERE utilisateurs.idUtilisateur=:idUtilisateur");
+    $req->bindParam("idUtilisateur",$idUtilisateur);
+    $req->execute();
+    $profilSession=$req->fetchAll();
+    return($profilSession);
+  }
+
   function tableau($idService){
     global $bdd;
     $req=$bdd->prepare("SELECT * FROM seances WHERE idService=:idService ORDER BY DATE");
@@ -67,7 +94,6 @@ catch(PDOException $se)
  function satisfaction($idService,$seances){
     global $bdd;
     $satisfaction=array();
-    /*date_default_timezone_set('Paris'); */
     for($i=0; $i<count($seances); $i++){
       $req=$bdd->prepare("SELECT AVG(note) FROM commentaires WHERE idService=:idService AND (date BETWEEN :date1 AND :date2) ");
       $dateD=$seances[$i]["date"];

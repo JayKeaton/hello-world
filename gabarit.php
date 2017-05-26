@@ -109,8 +109,9 @@
     </header>
 
     <div id="main">
-      <?php echo $contenu; ?>
+      <?php include($path); ?>
     </div>
+    
     <footer>
         <ul>
             <li> <a href="http://hugobriet.000webhostapp.com/?page=accueil"> Plan du Site </a> </li>
