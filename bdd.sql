@@ -1,8 +1,4 @@
 
-
-
-
-
 --
 -- Base de données: `error404`
 --
