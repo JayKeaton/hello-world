@@ -1,12 +1,32 @@
 <?php
-
-function dataTypeService ($typeService){
+function dataTypeService ($page){
 	global $bdd;
-	$req=$bdd -> prepare("SELECT nom,description FROM service WHERE typeService=:typeService");
-	$req->bindvalue('typeService', typeService);
+	$clause=array();
+	
+	/*ici il s'agi de créer un tableau pour le remplir */
+	if(!empty($_POST['typeService'])) {
+		$a="services.categorie= '" . htmlspecialchars($_POST["typeService"]."'");
+		$clause[]=$a;
+	}
+	if(!empty($_POST['nomService'])) {
+		$a="services.nom LIKE '%" . htmlspecialchars($_POST["nomService"]."%'");
+		$clause[]=$a;
+	}
+	if(!empty($_POST['adresse'])) {
+		$a="services.adresse LIKE '%" . htmlspecialchars($_POST["adresse"]."%'");
+		$clause[]=$a;
+	}
+	if(!empty($_POST['dejaValide'])) {
+		$a="services.validation = 0";
+		$clause[]=$a;
+	}
+	$final = join(" AND ",$clause);
+	/*recupéré la base de donné temporaire */
+	$offset = ($page - 1)*10;
+	$req=$bdd -> prepare("SELECT nom,texte FROM descriptions JOIN services ON descriptions.idService = services.idService WHERE $final
+	LIMIT 10 OFFSET $offset");
 	$req->execute();
-	$data=$req-> fretch();
+	$data=$req-> fetchAll();
 	return $data;
 }
-
 ?>

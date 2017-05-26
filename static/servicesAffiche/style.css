@@ -1,0 +1,29 @@
+@charset "utf-8";
+/* CSS Document */
+
+table
+{
+    border-collapse: collapse;
+
+}
+td, th 
+{
+	border: 1px solid black;
+	padding: 3px 15px;
+	
+}
+
+#main
+{
+	margin: 0% 5% 0% 5%;
+	font-family:Lucida Grande, Lucida Sans Unicode, Lucida Sans, DejaVu Sans, Verdana," sans-serif";
+	text-align: center;
+}
+
+#centrer
+{
+	width: 100%;
+	display: flex;
+	justify-content: center;
+
+}

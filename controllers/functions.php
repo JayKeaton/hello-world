@@ -5,7 +5,7 @@
 
 
     function loginRequired($page){
-        if (!$_SESSION['idUtilisateur']) {
+        if (empty($_SESSION['idUtilisateur'])) {
             header("Location: " . SOUS_DOMAINE . "?page=signin&nextPage=".$page);
             exit;
         }
@@ -125,7 +125,6 @@ class input_password extends Input{
 
     public function __toString()
     {
-        public function __toString(){
         $name = $this->name;
         $string = "";
         $string .= "<label for='".$name."'>".$this->label." : </label>";
@@ -158,7 +157,7 @@ class input_select extends Input{
         $string .= "<label for='".$name."'>".$this->label." : </label>";
         $string .= "<select name='".$name."' id='".$name."'/>";
         foreach ($listeValeurs as $key => $value) {
-            
+
         }
         $string .= "/<select>";
         if ($this->erreur)

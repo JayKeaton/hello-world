@@ -1,17 +1,16 @@
-<!DOCTYPE html>
-	<html>
+
 		<head>
 			<meta charset="utf-8" />
-			<link href="static/acceuil_admin/acceuil_admin.css" rel="stylesheet" type="text/css">
+			<link href="static/accueil_admin/acceuil_admin.css" rel="stylesheet" type="text/css">
 		</head>
 
 		<p id="titre">
-			Bienvenu chers administrateurs
-		</P>
+			Bienvenue chers administrateurs
+		</p>
 
 		<body>
 			<form action="" method="post" id="recherche">
-				<a>
+				<a id="recherche1">
 					<div><!--la petite case pour le nom du service-->
 						<label for="nomService">nom du service :</label>
 						<input type="text" id="nomService" name="nomService" />
@@ -28,23 +27,44 @@
 
     		</select>
    					</div>
-   					<div> <!-- la petite case pour l arrondissement -->
-      		  			<label for="arrondissement">arrondissement:</label>
-      		  			<input type="text" id="arrondissement" name="arrondissement"/>
+   					<div> <!-- la petite case pour l adresse -->
+      		  			<label for="adresse">adresse :</label>
+      		  			<input type="text" id="adresse" name="adresse"/>
    					</div>
    				</a>
-   				<b>
+   				<b id="recherche2">
    					<input type="checkbox" name="tri"> tri par date de la plus ancienne a la plus récente</br>
    					<input type="checkbox" name="dejaValidé"> cacher les services deja validé</br>
-   					<input type="checkbox" name="serviceModifié"> montrer les service qui veule être modifié</br>
+   					<input type="checkbox" name="serviceModifié"> montrer les services qui veule être modifié</br>
    				</b>
-   				<input type="submit" value="valider">
+   				<input type="submit" value="valider" id="valider">
    				
 			</form>
 		</body>
 
 		<p id="titreRecherche">
 			résultat de la recherche (par default de la plus anciènne a la plus récente)
-		</P>
+		</p>
+		
+		<?php
+		if(!empty($_POST['typeService']) or !empty($_POST['nomService']) or !empty($_POST['arrondissement'])){	
+			for($i=0;$i<count($data);$i++){
+    			$contenu='<p class="servicesData"> nom du service :'
+				.$data[$i]['nom'].
+    			'</br> description :'.$data[$i]['texte']. 
+    			'</br> <a href=" ">Voir l’annonce</a></p>' ;
 
-	<html>
+			echo $contenu;
+
+		}
+}
+
+		?> 
+		
+		<form action="" method="post" id="page">
+			<div>	<!--la petite case pour la page -->
+						<label for="page">page :</label>
+						<input type="text" id="page" name="page" />
+			</div>
+				<input type="submit" value="valider">
+		</form>

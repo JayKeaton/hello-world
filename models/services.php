@@ -23,13 +23,13 @@
 		return $donnees[2].",".$donnees[3];
 	}
 
+
 	function ajouterService($bdd, $email, $adresse, $phone, $website, $categorie,$idContributeur){
 		$req = $bdd->prepare("insert into services (localisation, categorie, telephone, mail, lien_site, idContributeur) values(:adresse, :categorie, :phone, :email, :website, :idContributeur)");
 		$result = $req->execute(array("adresse"=>$adresse, "categorie"=>$categorie, "phone"=>$phone, "email"=>$email, "website"=>$website, "idContributeur"=>$idContributeur));
-		
 		return $bdd->lastInsertId();
-		
 	}
+
 
 	function ajouterDescriptionService($bdd, $nom, $texte, $langue, $ids){
 		$req = $bdd->prepare("insert into descriptions (nom, texte, langue, idService) values(:nom, :texte, :langue, :idService)");
@@ -38,6 +38,44 @@
   }
 
 
+	function recupLocalisation($bdd){
+		
+		$req = $bdd->prepare("SELECT adresse, categorie, nom FROM services");
+	    $req->execute();
+	    $data = $req->fetchAll();
+		
+		if ($data == array())
+	        return false;
+	    else{
+	        return $data;
+        }
+	}
+
+
+
 	
+	function recupAll($bdd){
+		
+		$req = $bdd->prepare("SELECT adresse, categorie, telephone, nom FROM services");
+	    $req->execute();
+	    $data = $req->fetchAll();
+		if ($data == array())
+	        return false;
+	    else{
+	        return $data;
+        }
+		
+		
+	}
+
+
+	function obtenirServiceParCategorie($categorie){
+	    global $bdd;
+	    $req = $bdd->prepare("SELECT * FROM services WHERE categorie=:categorie");
+	    $req->bindParam('categorie', $categorie);
+	    $req->execute();
+	    $data = $req->fetchAll();
+	    return $data;
+    }
 
 ?>

@@ -1,0 +1,8 @@
+#conn
+{
+	Border: 1px red solid;
+	font-family: Verdana ,"Arial", "Arial Black", "Times New Roman";
+	text-align: center;
+	position: absolute;
+	top: 30%; left: 40%;
+}

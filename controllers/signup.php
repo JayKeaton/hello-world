@@ -1,38 +1,68 @@
 <?php
 
-     
-	if (!empty($_POST["nom"])){
-		if($_POST["mdp"] == $_POST["mdpv"] && verifMail($bdd, $_POST["email"])==false){
-			$nom=$_POST["nom"];
-			$prenom=$_POST["prenom"];
-			$email=$_POST["email"];
-			$sexe=$_POST["sexe"];
-			$adresse=$_POST["adresse"];
-			$mdp=sha1($_POST["mdp"]);
-			$phone=($_POST["phone"]);
-			$idu = ajouterUtilisateur($bdd, $nom, $prenom, $email, $mdp, $adresse, $sexe, $phone);
-			include("controllers/mailto.php");
-			$randint=rand(1,10000);
-			$hash = date("Ymdhis".$randint);
-			envoyerMail($email, $hash, $nom, $prenom, $idu);
-			ajouterCle($bdd, $idu, $hash);
-			include("templates/validation.html");
+$listeJour = range(1,31);
+$listeMois = array(1 => 'Janvier', 2 => 'Février', 3 => 'Mars', 4 => 'Avril', 5 => 'Mai', 6 => 'Juin', 7 => 'Juillet', 8 => 'Août', 9 => 'Septembre', 10 => 'Octobre', 11 => 'Novembre', 12 => 'Décembre');
+$listeAnnee = range(1900, 2000+date("y"));
+
+	if (!empty($_POST["submit"])){
+		$erreur = array();
+
+		$champsRequis = array("email", "pseudo", "mdp", "prenom", "nom", "jour", "mois", "annee", "sexe");
+		foreach($champsRequis as $champ){
+		    if (empty($_POST[$champ])){
+		        $erreur[$champ] = "Veuillez remplir ce champ.";
+            }
+        }
+
+		if($_POST["mdp"] != $_POST["mdpv"]){
+            $erreur['mdpv'] = "Mot de passe différent de la confirmation";
+        }
+        if (verifMail($bdd,$_POST["email"])==true){
+            $erreur['email'] = "Cette adresse mail est déjà utilisée.<br/><a href='".SOUS_DOMAINE."?page=signin'>Connectez vous.</a>";
 		}
-		elseif(verifMail($bdd,$_POST["email"])==true){
-			$root = (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . '/';
-			echo "Erreur, vous êtes déjà inscrit. <br/><a href='/?page=connexion'>Connectez vous :</a>";
+		if (!in_array($_POST['jour'], $listeJour) || !in_array($_POST['mois'], array_keys($listeMois)) || !in_array($_POST['annee'], $listeAnnee)){
+            $erreur['dateNaissance'] = "Veuillez entrer une date valide.";
+        }
+        if (!in_array($_POST['sexe'], array("homme", "femme", "autre"))){
+		    $erreur['sexe'] = "Veuillez selectionner un choix valide.";
+        }
+		if (!empty($erreur)){
+			include("templates/signup.php");
 		}
-		elseif($_POST["mdp"] != $_POST["mdpv"]){
-			echo "Mot de passe différent de la confirmation";
-			include("templates/Signup.php");
-		}
-		else{
-			echo "Autre erreur";
-			include("templates/Signup.php");
-		}
+		else {
+            $email = htmlspecialchars($_POST["email"]);
+            $pseudo = htmlspecialchars($_POST['pseudo']);
+
+            $mdp = sha1($_POST["mdp"]);
+
+            $prenom = htmlspecialchars($_POST["prenom"]);
+            $nom = htmlspecialchars($_POST["nom"]);
+
+            $telephone = htmlspecialchars($_POST["telephone"]);
+
+            $sexe = htmlspecialchars($_POST["sexe"]);
+            $jour = htmlspecialchars($_POST['jour']);
+            $mois = htmlspecialchars($_POST['mois']);
+            $annee = htmlspecialchars($_POST['annee']);
+            $dateNaissance = $annee."-".$mois."-".$jour;
+
+            $codePostal = htmlspecialchars($_POST['codePostal']);
+            $adresse = htmlspecialchars($_POST["adresse"]);
+
+            $geolocalisation = !empty($_POST['geolocalisation']);
+
+            $idUtilisateur = ajouterUtilisateur($email, $pseudo, $mdp, $prenom, $nom, $telephone, $sexe, $dateNaissance, $codePostal, $adresse, $geolocalisation);
+
+            include("controllers/mailto.php");
+            $randint = rand(1, 10000);
+            $hash = date("Ymdhis" . $randint);
+            envoyerMail($email, $hash, $nom, $prenom, $idUtilisateur);
+            ajouterCle($bdd, $idUtilisateur, $hash);
+            include("templates/validation.html");
+        }
 	}
 	else {
-		include("templates/Signup.php");
+		include("templates/signup.php");
 	}
 
 ?>

@@ -7,16 +7,28 @@
         $req->execute();
 	}
 	
-	function ajouterUtilisateur($bdd, $nom, $prenom, $email, $mdp, $adresse, $sexe, $phone){
-		$req = $bdd->prepare("insert into utilisateurs(mail, nom, prenom, mdp, telephone) values(:email, :nom, :prenom, :mdp, :phone)");
-		$result = $req->execute(array("nom"=>$nom, "prenom"=>$prenom, "email"=>$email, "mdp"=>$mdp, "phone"=>$phone));
+	function ajouterUtilisateur($email, $pseudo, $mdp, $prenom, $nom, $telephone, $sexe, $dateNaissance, $codePostal, $adresse, $geolocalisation){
+	    global $bdd;
+		$req = $bdd->prepare("insert into utilisateurs(email, pseudo, mdp, avatar,prenom, nom, telephone, sexe, dateNaissance, codePostal, adresse, geolocalisation) values(:email, :pseudo, :mdp, 'image.png',:prenom, :nom, :telephone, :sexe, :dateNaissance, :codePostal, :adresse, :geolocalisation)");
+		$req->bindParam('email', $email);
+		$req->bindParam('pseudo', $pseudo);
+		$req->bindParam('mdp', $mdp);
+		$req->bindParam('prenom', $prenom);
+		$req->bindParam('nom', $nom);
+		$req->bindParam('telephone', $telephone);
+		$req->bindParam('sexe', $sexe);
+		$req->bindParam('dateNaissance', $dateNaissance);
+		$req->bindParam('codePostal', $codePostal);
+		$req->bindParam('adresse', $adresse);
+		$req->bindParam('geolocalisation', $geolocalisation);
+		$req->execute();
 		return $bdd->lastInsertId();
 	}
 
-	function connexionUtilisateur($mail){
+	function connexionUtilisateur($email){
 	    global $bdd;
-	    $req = $bdd->prepare("SELECT idUtilisateur,mdp,verification FROM utilisateurs WHERE mail=:mail");
-	    $req->execute(array('mail' => $mail));
+	    $req = $bdd->prepare("SELECT idUtilisateur,mdp,verification FROM utilisateurs WHERE email=:email");
+	    $req->execute(array('email' => $email));
 	    $data = $req->fetch();
 	    if ($data == false)
 	        return false;
@@ -61,7 +73,7 @@
 	
 	
 	function verifMail($bdd, $email){
-		$req = $bdd->prepare("SELECT idUtilisateur FROM utilisateurs WHERE mail=:email");
+		$req = $bdd->prepare("SELECT idUtilisateur FROM utilisateurs WHERE email=:email");
 		$req->execute(array('email' => $email));
 		$donnee = $req->fetch();
         if(!empty($donnee['idUtilisateur'])){
@@ -74,19 +86,21 @@
 
     function infoUtilisateur($idUtilisateur){
 	    global $bdd;
-	    $req = $bdd->prepare("SELECT * FROM Utilisateurs WHERE idUtilisateur = :idUtilisateur");
+	    $req = $bdd->prepare("SELECT * FROM utilisateurs WHERE idUtilisateur = :idUtilisateur");
 	    $req->bindParam('idUtilisateur', $idUtilisateur);
 	    $req->execute();
 	    $data = $req->fetch();
 	    return $data;
     }
 
-    function modifierInfoUtilisateur($idUtilisateur, $prenom, $nom, $pseudo, $dateNaissance){
+    function modifierInfoUtilisateur($idUtilisateur, $prenom, $nom, $pseudo, $codePostal, $adresse, $dateNaissance){
         global $bdd;
-        $req = $bdd->prepare("UPDATE utilisateurs SET prenom=:prenom,nom=:nom,pseudo=:pseudo,dateNaissance=:dateNaissance WHERE idUtilisateur=:idUtilisateur");
+        $req = $bdd->prepare("UPDATE utilisateurs SET prenom=:prenom,nom=:nom,pseudo=:pseudo,codePostal=:codePostal,adresse=:adresse,dateNaissance=:dateNaissance WHERE idUtilisateur=:idUtilisateur");
         $req->bindParam('prenom', $prenom);
         $req->bindParam('nom', $nom);
         $req->bindParam('pseudo', $pseudo);
+        $req->bindParam('codePostal', $codePostal);
+        $req->bindParam('adresse', $adresse);
         $req->bindParam('dateNaissance', $dateNaissance);
         $req->bindParam('idUtilisateur', $idUtilisateur);
         $result = $req->execute();
@@ -95,7 +109,7 @@
 
     function changerMail($idUtilisateur, $mail){
         global $bdd;
-        $req = $bdd->prepare("UPDATE utilisateurs SET mail=:mail WHERE idUtilisateur=:idUtilisateur");
+        $req = $bdd->prepare("UPDATE utilisateurs SET email=:email WHERE idUtilisateur=:idUtilisateur");
         $req->bindParam('mail', $mail);
         $req->bindParam('idUtilisateur', $idUtilisateur);
         $result = $req->execute();
@@ -109,5 +123,13 @@
         $req->bindParam('idUtilisateur', $idUtilisateur);
         $result = $req->execute();
         return $result;
+    }
+
+    function modifierAvatar($idUtilisateur, $avatar){
+        global $bdd;
+        $req = $bdd->prepare("UPDATE utilisateurs SET avatar=:avatar WHERE idUtilisateur=:idUtilisateur");
+        $req->bindParam("avatar", $avatar);
+        $req->bindParam("idUtilisateur", $idUtilisateur);
+        $req->execute();
     }
 	
