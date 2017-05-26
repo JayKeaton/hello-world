@@ -25,13 +25,28 @@ catch(PDOException $se)
     return($description);
   }
 
-  function note($idService){
+  function noteService($idService){
     global $bdd;
     $req=$bdd->prepare("SELECT ROUND(AVG(note),2) FROM commentaires WHERE idService=:idService");
     $req->bindParam("idService",$idService);
     $req->execute();
     $note=$req->fetch();
     return $note;
+  }
+
+  function notesSeances($idService){
+    global $bdd;
+    $req1=$bdd->prepare("SELECT idSeance FROM commentaires WHERE idService=:idService");
+    $req1->bindParam("idService",$idService);
+    $req1->execute();
+    $seances=$req1->fetchAll();
+    foreach ($seances as &$value) {
+      $req2=$bdd->prepare("SELECT ROUND(AVG(note),2) FROM commentaires WHERE idSeance=:idSeance");
+      $req2->bindParam("idSeance",$value[0]);
+      $req2->execute();
+      $notesSeances=$req2->fetch();
+    }
+    return $notesSeances;
   }
 
   function contact($idService){
@@ -58,9 +73,20 @@ catch(PDOException $se)
     return $commentaires;
   }
 
+  function ajoutCommentaire($note, $texte,$idUtilisateur,$idService){
+    global $bdd;
+    $req=$bdd->prepare("INSERT INTO commentaires(note, texte, date, heure, censure, idUtilisateur, idService, idSeance) values(:note, :texte, CURDATE(), CURTIME(), 0, :idUtilisateur, :idService,0)");
+    $req->bindParam("note",$note);
+    $req->bindParam("texte",$texte);
+    $req->bindParam("idUtilisateur",$idUtilisateur);
+    $req->bindParam("idService",$idService);
+    /*$req->bindParam("idSeance",$idSeance);*/
+    $req->execute();
+  }
+
   function profil($idService){
     global $bdd;
-    $req=$bdd->prepare("SELECT avatar,nom FROM utilisateurs JOIN commentaires ON commentaires.idUtilisateur=utilisateurs.idUtilisateur WHERE idService=:idService ORDER BY date ");
+    $req=$bdd->prepare("SELECT avatar,pseudo FROM utilisateurs JOIN commentaires ON commentaires.idUtilisateur=utilisateurs.idUtilisateur WHERE idService=:idService ORDER BY date ");
     $req->bindParam("idService",$idService);
     $req->execute();
     $profil=$req->fetchAll();
@@ -69,26 +95,26 @@ catch(PDOException $se)
 
   function profilSession($idUtilisateur){
     global $bdd;
-    $req=$bdd->prepare("SELECT avatar,nom FROM utilisateurs JOIN commentaires ON commentaires.idUtilisateur=utilisateurs.idUtilisateur WHERE utilisateurs.idUtilisateur=:idUtilisateur");
+    $req=$bdd->prepare("SELECT avatar,pseudo FROM utilisateurs WHERE idUtilisateur=:idUtilisateur");
     $req->bindParam("idUtilisateur",$idUtilisateur);
     $req->execute();
-    $profilSession=$req->fetchAll();
+    $profilSession=$req->fetch();
     return($profilSession);
   }
 
-  function tableau($idService){
+  function seances($idService){
     global $bdd;
     $req=$bdd->prepare("SELECT * FROM seances WHERE idService=:idService ORDER BY DATE");
     $req->bindParam("idService",$idService);
     $req->execute();
-    $tableau=array();
+    $seances=array();
     for($i=0; $i<10; $i++){
       $ligne=$req->fetch();
       if ($ligne != false){
-        $tableau[$i]=$ligne;
+        $seances[$i]=$ligne;
       }
     }
-    return $tableau;
+    return $seances;
   }
 
  function satisfaction($idService,$seances){
@@ -117,5 +143,14 @@ catch(PDOException $se)
     $req->execute();
     $lesInscrits=$req->fetch();
     return $lesInscrits;
+  }
+
+  function estInscrit($idService){
+    global $bdd;
+    $req=$bdd->prepare("SELECT idUtilisateur, idSeance FROM inscrits JOIN seances ON inscrits.idSeance=seances.idSeance WHERE idService=:idService");
+    $req->bindParam("idService,$idService");
+    $req->execute();
+    $estInscrit=$req->fetch();
+    return $estInscrits;
   }
  ?>
