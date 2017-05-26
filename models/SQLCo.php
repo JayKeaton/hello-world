@@ -7,13 +7,12 @@
 	$username="root";
 	$password="root";
 	$bddname="error404";
-     /*
+    /*
 	$hostname="localhost";
 	$username="id1517330_error404_database";
 	$password="mirai260";
 	$bddname="id1517330_error404";
-	    */
-
+    */
 	// On se connecte à MySQL
 	$bdd = new PDO("mysql:host=".$hostname.";dbname=".$bddname.";charset=utf8",$username,$password);
 }
