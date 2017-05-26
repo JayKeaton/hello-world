@@ -1,8 +1,3 @@
-<?php
-
-
-ob_start();
-?>
 <link rel="stylesheet" href="static/accueil/accueil.css" />
 <h1 id="myTitle">Pour <strong>VOUS</strong></h1>
 <h3 id="LittleTitle">Par le groupe Error 404</h3>
@@ -27,7 +22,8 @@ ob_start();
     	<form action="" method="POST" id="form">
     		<div class="element">
     			Que recherchez-vous ?
-	    		<select name="catégorie" id="categorie"><!--REMPLACER PAR name="categorie" quand les bdd des catégories seront prêtes-->
+	    		<select <?php /*name="catégorie" */?>id="categorie">
+	    			<option name="">choisir une catégorie</option>
 	    			<option name="soins">Soins</option>
 	    			<option name="nourriture">Nourriture</option>
 	    			<option name="logement">Logement</option>
@@ -47,15 +43,17 @@ ob_start();
     		</div>
     	</form>
 		<div id="contenu">
-
-			<?php print_r($data)?>
-			<?php foreach($data as $element){ ?>
-				<p><a href=<?php $element/*["lien_site"]*/ ?>> <!--"https://soutenir.msf.fr/b/mon-don?esv_source=Google&esv_medium=sea_brand&esv_campaign=W%2A%2AW00001&esv_term=msf&gclid=COKwx8uJvdMCFccp0wodkDMP4Q"-->
+			<?php /*print_r($data)*/?>
+			<?php for($i=0;$i<count($data);$i++){ ?>
+				<p><a href=<?php $data[$i]["lien_site"] ?> >
 						<div id="article 2" class="service">
-
+							
 							<img src="static/accueil/msf_logo _fichiers/maison.jpeg" width=240 class="floatl" title="photo non contractuelle"/> </br>
-							<?php echo $element["categorie"]?><br/>
-							<?php echo $element["nom"] ?> </br>
+							<?php echo $data[$i]["categorie"]?><br/>
+							<h3><?php echo $data[$i]["nom"] ?></h3> </br>
+							<?php echo $data[$i]["texte"] ?> </br>
+
+							<a href="<?php echo $data[$i]["lien_site"] ?>"><?php echo $data[$i]["lien_site"] ?></a> </br>
 								<?php /*echo $dataSPECIALE[$i][DESCRIPTION] /*Peut-être votre futur logement?<br/>.........................<br/>
 								...<br/>...............................
 								..............................................<br/><br/><br/>
@@ -104,8 +102,3 @@ ob_start();
 		<!--<li><a href=""> <img src="msf_logo _fichiers/" title="un truc utile"/></a></li>" </form-->
 	</ul>
 </nav>
-
-<?php
-$contenu = ob_get_clean();
-
-include("gabarit.php");
