@@ -16,6 +16,11 @@
 
         <h4>Contact</h4> 
 
+        <label>Nom
+
+        <input type="nom" id="nom" name="nom" value="<?php echo((empty($_POST['nom'])) ? "" : $_POST['nom']); ?>" required="required"/>
+        </label></br>
+
        
 
         <label for="email">Email ou courriel: <span class="required">*</span>
@@ -24,17 +29,17 @@
 
         <input type="email" id="email" name="email" value="<?php echo((empty($_POST['email'])) ? "" : $_POST['email']); ?>" placeholder="example@email.fr" required="required" />
         
-        <label for="phone">Numéro de téléphone: <span class="required">*</span>
+        <label for="telephone">Numéro de téléphone: <span class="required">*</span>
 
         </label>
 
-        <input type="phone" id="phone" name="phone" value="<?php echo((empty($_POST['phone'])) ? "" : $_POST['phone']); ?>" required="required" />
+        <input type="phone" id="telephone" name="telephone" value="<?php echo((empty($_POST['telephone'])) ? "" : $_POST['telephone']); ?>" required="required" />
         
-        <label for="phone">Lien site web: <span class="required">*</span>
+        <label for="telephone">Lien site web: <span class="required">*</span>
 
         </label>
 
-        <input type="" id="website" name="website" value="<?php echo((empty($_POST['website'])) ? "" : $_POST['website']); ?>" required="required" />
+        <input type="" id="lien_site" name="lien_site" value="<?php echo((empty($_POST['lien_site'])) ? "" : $_POST['lien_site']); ?>" required="required" />
 
     </div>
 
@@ -48,6 +53,9 @@
         </label>
 
         <textarea id="adresse" name="adresse" value="<?php echo((empty($_POST['adresse'])) ? "" : $_POST['adresse']); ?>" placeholder="Entrez votre adresse ici"></textarea>
+        <label>Code Postal:
+        <input type="number" id="codePostal" name="codePostal" value="<?php echo((empty($_POST['codePostal'])) ? "" : $_POST['coddePostal']); ?>" required="required" />
+        </label>
 
     </div>
 
@@ -77,10 +85,7 @@
         </select>
       </Label></br>
 
-    <label>Nom
-
-        <input type="nom" id="nom" name="nom" value="<?php echo((empty($_POST['nom'])) ? "" : $_POST['nom']); ?>" required="required"/>
-    </label></br>
+    
 
         
 

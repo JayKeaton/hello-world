@@ -6,9 +6,9 @@
 		$data=$req->fetchall();
 		return $data;
 	}
-	function recupDescriptionService($idUtilisateur,$bdd){
-		$req=$bdd->prepare("SELECT * FROM descriptions WHERE idUtilisateur=idUtilisateur");
-		$req->execute(array('idUtilisateur'=>$idUtilisateur));
+	function recupDescriptionService($idService,$bdd){
+		$req=$bdd->prepare("SELECT * FROM descriptions WHERE idService=idService");
+		$req->execute(array('idService'=>$idService));
 		$dataDescription=$req->fetchall();
 	return $dataDescription;
 
