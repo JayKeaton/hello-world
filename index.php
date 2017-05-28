@@ -45,6 +45,9 @@ if (empty($page)){
 elseif ($page == "Accueil"){
     $path = "controllers/accueil.php";
 }
+elseif ($page = "recherche"){
+    $path = "controllers/recherche.php";
+}
 elseif ($page == "signup"){
     $path = "controllers/signup.php";
 }
