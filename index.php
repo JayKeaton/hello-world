@@ -65,9 +65,11 @@ elseif ($page == "servicesMaps"){
     $path = "controllers/servicesMaps.php";
 }
 elseif ($page == "ajoutServices"){
+    loginRequired($page);
     $path = "controllers/ajoutServices.php";
 }
 elseif ($page == "modifierServices"){
+    loginRequired($page);
     $path = "controllers/modifierServices.php";
 }
 elseif ($page == "servicesAffiche"){
