@@ -5,16 +5,16 @@ if (!empty($_POST['identifiant'])){
     $mdp = sha1($_POST['mdp']);
     list($idUtilisateur,$mdpBdd,$verification) = connexionUtilisateur($identifiant);
     if ($mdpBdd == false){
-        $erreur = "Identifiant inconnu.";
-        echo $erreur;
+        $erreur_utilisateur = "Utilisateur inconnu.";
+        include("templates/signin.php");
     }
     elseif ($mdp !== $mdpBdd){
-        $erreur = "Mot de passe incorrect.";
-        echo $erreur;
+        $erreur_mdp = "Mot de passe incorrect.";
+        include("templates/signin.php");
     }
     elseif ($verification == false){
-        $erreur = "Adresse mail non vérifiée.";
-        echo $erreur;
+        $erreur_verification = "Adresse mail non vérifiée.";
+        include("templates/signin.php");
     }
     else {
         $_SESSION['idUtilisateur'] = $idUtilisateur;

@@ -40,7 +40,7 @@
 
 	function recupLocalisation($bdd){
 		
-		$req = $bdd->prepare("SELECT localisation, categorie, nom FROM services");
+		$req = $bdd->prepare("SELECT adresse, categorie, nom FROM services");
 	    $req->execute();
 	    $data = $req->fetchAll();
 		
@@ -56,7 +56,7 @@
 	
 	function recupAll($bdd){
 		
-		$req = $bdd->prepare("SELECT localisation, categorie, telephone, nom FROM services");
+		$req = $bdd->prepare("SELECT adresse, categorie, telephone, nom FROM services");
 	    $req->execute();
 	    $data = $req->fetchAll();
 		if ($data == array())
