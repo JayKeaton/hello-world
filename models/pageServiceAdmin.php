@@ -172,4 +172,12 @@ catch(PDOException $se)
     $req->bindParam("validation",$validation);
     $req->execute();
   }
+
+  function censureCommentaire($idCommentaire,$censure){
+    global $bdd;
+    $req=$bdd->prepare("UPDATE `commentaires` SET censure=:censure WHERE idCommentaire=:idCommentaire ");
+    $req->bindParam("censure",$censure);
+    $req->bindParam("idCommentaire",$idCommentaire);
+    $req->execute();
+  }
  ?>

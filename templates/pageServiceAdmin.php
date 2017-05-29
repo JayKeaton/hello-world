@@ -46,50 +46,57 @@
             </div>
             <h1>Historique des services proposés:</h1>
             <form action="" method="post" id="formulaireCommentaire">
-            <table>
-              <thead>
-                <tr>
-                  <td>Date</td>
-                  <!-- <td>Type de Service</td> -->
-                  <td>Nombre d inscrits</td>
-                  <td>Capacité de l'évènement</td>
-                  <td>Note de la séance</td>
-                  <!--<td>Satisfaction</td> -->
-                  <td>Inscription</td>
-                </tr>
-              </thead>
-              <tbody>
-                <?php for ($index=0;$index<$longueur;$index ++){ ?>
+
+              <table>
+                <thead>
                   <tr>
-                    <td> <?php echo $seances[$index]["date"] ?> </td>
-                    <!-- <td> <?php /* echo $seances[$index][2] */ ?> </td> -->
-                    <td> <?php echo $lesInscrits[$index+$seances[0][0]][0] ?> </td>
-                    <td><?php echo $seances[$index]["capacite"]?></td>
-                    <td><?php echo $notesSeances[$index]?></td>
-                    <!-- <td> <?php echo $satisfaction[0][$index] ?> </td> -->
-                    <td><?php
-                    $check = false;
-                    foreach ($estInscrit as $element){
-                      if ($element["idSeance"]=$seances[$index]["idSeance"]){
-                        $check = true;
-                      }
-                    }
-                    if ($check){
-                      echo ('<input type="checkbox" name="inscription_'.$seances[$index]["idSeance"].'" value="inscrit" checked="checked"/>') ;
-                      echo ('<input type="hidden" name="hidden_'.$seances[$index]["idSeance"].'" value=true />') ;
-                    }
-                    else{
-                      echo('<input type="checkbox" name="inscription_'.$seances[$index]["idSeance"].'" value="inscrit" />');
-                      echo('<input type="hidden" name="hidden_'.$seances[$index]["idSeance"].'" value=false />');
-                    }
-                    /*echo($check ? "Inscrits" : "Non inscrits");*/
-                    ?></td>
+                    <td>Date</td>
+                    <!-- <td>Type de Service</td> -->
+                    <td>Nombre d inscrits</td>
+                    <td>Capacité de l'évènement</td>
+                    <td>Note de la séance</td>
+                    <!--<td>Satisfaction</td> -->
+                    <td>Inscription</td>
                   </tr>
-                <?php } ?>
-              </tbody>
-            </table>
-            <input type="submit" name="validerInscript" value="valider"/>
-          </form>
+                </thead>
+                <tbody>
+                  <?php for ($index=0;$index<$longueur;$index ++){ ?>
+                    <tr>
+                      <td> <?php echo $seances[$index]["date"] ?> </td>
+                      <!-- <td> <?php /* echo $seances[$index][2] */ ?> </td> -->
+                      <td> <?php echo $lesInscrits[$index+$seances[0][0]][0] ?> </td>
+                      <td><?php echo $seances[$index]["capacite"]?></td>
+                      <td><?php echo $notesSeances[$index]?></td>
+                      <!-- <td> <?php echo $satisfaction[0][$index] ?> </td> -->
+                      <td><?php
+                      $check = false;
+                      foreach ($estInscrit as $element){
+                        if ($element["idSeance"]=$seances[$index]["idSeance"]){
+                          $check = true;
+                        }
+                      }
+                      if ($check){
+                        echo ('<input type="checkbox" name="inscription_'.$seances[$index]["idSeance"].'" value="inscrit" checked="checked"/>') ;
+                        echo ('<input type="hidden" name="hidden_'.$seances[$index]["idSeance"].'" value=true />') ;
+                      }
+                      else{
+                        echo('<input type="checkbox" name="inscription_'.$seances[$index]["idSeance"].'[]" value="inscrit" />');
+                        echo('<input type="checkbox" name="inscription_'.$seances[$index]["idSeance"].'[]" value="inscrit2" />');
+
+                        echo('<input type="hidden" name="hidden_'.$seances[$index]["idSeance"].'" value=false />');
+                      }
+                      /*echo($check ? "Inscrits" : "Non inscrits");*/
+                      ?></td>
+                    </tr>
+                  <?php } ?>
+                </tbody>
+              </table>
+
+              <input type="submit" name="validerInscript" value="valider"/>
+            </form>
+
+
+
             <h1>Commentaires</h1>
             <article id="Commentaires"> <!<!-- ATTENTION AU S DE Commentaire -->
               <form action="" method="post" id="censureCommentaire">
@@ -97,14 +104,17 @@
 
                 <?php for ($index=0;$index<$longComment;$index ++){ ?>
                   <article id="Commentaire">
+
                     <aside id="Avatar">
                       <img src=<?php echo "Média/Avatars/".$profil[$index]["avatar"]?> width="75" height="75"> <?php /* echo <img src="???"+$commentaires[?] width="50" height="50"> */ ?>
-                    </br> <div id="center"> <?php echo $profil[$index]["pseudo"] ?> </div> <!-- Pseudo de l'utilisateur !-->
+                      </br> <div id="center"> <?php echo $profil[$index]["pseudo"] ?> </div> <!-- Pseudo de l'utilisateur !-->
                     </aside>
+
                     <div id="b2">
                       <article id="TexteComment">
                         <p>Commentaire:</p> <div id="alinea"> <?php echo $commentaires[$index]["texte"] ?> </div>
                       </article>
+
                       <div id="Note">
                         <p>Note:
                           <?php $note=$commentaires[$index]["note"];
@@ -118,20 +128,27 @@
                           <?php } ?>
                         </p>
                       </div>
-                      <input type="submit" name=<?php echo "censureCommentaire".$commentaire[$index]["idCommentaire"] ?> value="Censurer"/>
+
+                      <?php
+                      if ($commentaires[$index]["censure"]==0){
+                        echo '<input type="submit" name="censureCommentaire'.$commentaires[$index]["idCommentaire"].'" value="Censurer"/>';
+                      }
+                      else{
+                        echo '<input type="submit" name="rehabiliterCommentaire'.$commentaires[$index]["idCommentaire"].'" value="Réhabiliter"/>';
+                      }
+                      ?>
+
                     </div>
-
-                </form>
-                </article>
-              <?php } ?>
-
+                  </article>
+                <?php } ?>
+              </form>
 
 
 
               <article id="Commentaire">
                 <aside id="Avatar">
                   <img src=<?php echo "Média/Avatars/".$profilSession["avatar"]?> width="75" height="75">
-                </br> <div id="center"> <?php echo $profilSession["pseudo"] ?> </div>
+                  </br> <div id="center"> <?php echo $profilSession["pseudo"] ?> </div>
                 </aside>
 
                   <form action="" method="post" id="formulaireCommentaire">
@@ -168,5 +185,7 @@
         </div>
         <div id="vide">  </div>
       </section>
+
+      <?php print_r($_POST); ?>
 
     </main>

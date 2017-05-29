@@ -49,5 +49,19 @@ if (!empty($_POST["bloquerAdmin"])){
   validationService($idService,0);
 }
 
+for ($index=0;$index<$longComment;$index ++){
+  $idCommentaire = $commentaires[$index]["idCommentaire"];
+  if (!empty($_POST["censureCommentaire".$idCommentaire])){
+    censureCommentaire($idCommentaire,1);
+    header("Location: ");
+    exit;
+  }
+  if (!empty($_POST["rehabiliterCommentaire".$idCommentaire])){
+    censureCommentaire($idCommentaire,0);
+    header("Location: ");
+    exit;
+  }
+}
+
 include("templates/pageServiceAdmin.php");
  ?>
