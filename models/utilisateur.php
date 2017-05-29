@@ -9,7 +9,7 @@
 	
 	function ajouterUtilisateur($email, $pseudo, $mdp, $prenom, $nom, $telephone, $sexe, $dateNaissance, $codePostal, $adresse, $geolocalisation){
 	    global $bdd;
-		$req = $bdd->prepare("insert into utilisateurs(email, pseudo, mdp, avatar,prenom, nom, telephone, sexe, dateNaissance, codePostal, adresse, geolocalisation) values(:email, :pseudo, :mdp, 'image.png',:prenom, :nom, :telephone, :sexe, :dateNaissance, :codePostal, :adresse, :geolocalisation)");
+		$req = $bdd->prepare("insert into utilisateurs(email, pseudo, mdp, avatar, prenom, nom, telephone, sexe, dateNaissance, codePostal, adresse, geolocalisation) values(:email, :pseudo, :mdp, 'image.png',:prenom, :nom, :telephone, :sexe, :dateNaissance, :codePostal, :adresse, true)");
 		$req->bindParam('email', $email);
 		$req->bindParam('pseudo', $pseudo);
 		$req->bindParam('mdp', $mdp);
@@ -20,8 +20,29 @@
 		$req->bindParam('dateNaissance', $dateNaissance);
 		$req->bindParam('codePostal', $codePostal);
 		$req->bindParam('adresse', $adresse);
-		$req->bindParam('geolocalisation', $geolocalisation);
+		/*echo($email );
+		echo("</br>");
+		echo(	 $pseudo);
+		echo("</br>");
+		echo(	 $mdp);
+		echo("</br>");
+		echo(	 $prenom);
+		echo("</br>");
+		echo(	 $nom);
+		echo("</br>");
+		echo(	 $telephone);
+		echo("</br>");
+		echo(	 $sexe);
+		echo("</br>");
+		echo(	 $dateNaissance);
+		echo("</br>");
+		echo(	 $codePostal);
+		echo("</br>");
+		echo(	 $adresse);
+		echo("</br>");
+		echo(	 $geolocalisation);*/
 		$req->execute();
+		//echo($req);
 		return $bdd->lastInsertId();
 	}
 
