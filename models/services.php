@@ -24,16 +24,16 @@
 	}
 
 
-	function ajouterService($bdd, $email, $adresse, $phone, $website, $categorie,$idContributeur){
-		$req = $bdd->prepare("insert into services (localisation, categorie, telephone, mail, lien_site, idContributeur) values(:adresse, :categorie, :phone, :email, :website, :idContributeur)");
-		$result = $req->execute(array("adresse"=>$adresse, "categorie"=>$categorie, "phone"=>$phone, "email"=>$email, "website"=>$website, "idContributeur"=>$idContributeur));
+	function ajouterService($bdd, $email, $adresse, $codePostal, $telephone, $lien_site, $categorie,$idUtilisateur, $nom){
+		$req = $bdd->prepare("insert into services (adresse, codePostal, categorie, telephone, email, lien_site, nom, idUtilisateur ) values(:adresse, :codePostal, :categorie, :telephone, :email, :lien_site,:nom, :idUtilisateur )");
+		$result = $req->execute(array("adresse"=>$adresse, "codePostal"=>$adresse, "categorie"=>$categorie, "telephone"=>$telephone, "email"=>$email, "lien_site"=>$lien_site, "nom"=>$nom, "idUtilisateur"=>$idUtilisateur));
 		return $bdd->lastInsertId();
 	}
 
 
-	function ajouterDescriptionService($bdd, $nom, $texte, $langue, $ids){
-		$req = $bdd->prepare("insert into descriptions (nom, texte, langue, idService) values(:nom, :texte, :langue, :idService)");
-		$result = $req->execute(array("nom"=>$nom, "texte"=>$texte,"langue"=>$langue, "idService"=>$ids));
+	function ajouterDescriptionService($bdd, $texte, $langue, $idService){
+		$req = $bdd->prepare("insert into descriptions ( texte, langue, idService) values( :texte, :langue, :idService)");
+		$result = $req->execute(array( "texte"=>$texte,"langue"=>$langue, "idService"=>$idService));
 		return $bdd->lastInsertId();
   }
 

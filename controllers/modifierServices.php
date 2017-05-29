@@ -10,6 +10,7 @@
 	$rep->execute(array());
 	$descriptions=$req->fetchall();*/
 	$idService=1;
+	$idDescription=0;
 	if (!empty($_POST['idService'])){
 		$idService=$_POST['idService'];
 	}
@@ -30,8 +31,9 @@
   	 
 
 
-
+	$idUtilisateur=$_SESSION['idUtilisateur'];
 	$data=recupServicesUtilisateur(1,$bdd);
+	$dataDescription=recupDescriptionService($idService,$bdd);
 	$n=0;
 
 	/*foreach ($data as $element => $value) {
