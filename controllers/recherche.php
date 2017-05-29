@@ -28,7 +28,7 @@ echo $coords2['status']." ".$coords2['lat']." ".$coords2['lon'];
 $liste = array(1,5,6,7,4,3,2,9,8);
 $f = function($x, $y){return $x < $y;};
 
-print_r(triListe($liste, $f));
+//print_r(triListe($liste, $f));
 
 $form = new Formulaire("recherche");
 $listeCategories = array('' => "-----", 'soins' => "Soins", 'nourriture' => "Nourriture");
