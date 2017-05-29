@@ -7,6 +7,7 @@
 	$username="root";
 	$password="root";
 	$bddname="error404";
+
      /*
 	$hostname="localhost";
 	$username="id1517330_error404_database";
