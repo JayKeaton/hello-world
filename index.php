@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 session_start();
 date_default_timezone_set('Europe/Paris'); /*Sert à définir la référence temporelle: essentiel pour l'utilisation du type Temps*/
 /* Salut cher Antonin dont l'ordi bug bien comme il faut !!*/
@@ -45,6 +45,9 @@ if (empty($page)){
 elseif ($page == "Accueil"){
     $path = "controllers/accueil.php";
 }
+elseif ($page = "recherche"){
+    $path = "controllers/recherche.php";
+}
 elseif ($page == "signup"){
     $path = "controllers/signup.php";
 }
@@ -65,9 +68,11 @@ elseif ($page == "servicesMaps"){
     $path = "controllers/servicesMaps.php";
 }
 elseif ($page == "ajoutServices"){
+    loginRequired($page);
     $path = "controllers/ajoutServices.php";
 }
 elseif ($page == "modifierServices"){
+    loginRequired($page);
     $path = "controllers/modifierServices.php";
 }
 elseif ($page == "servicesAffiche"){
@@ -81,7 +86,7 @@ elseif ($page == "tests"){
     $path = "controllers/tests.php";
 }
 elseif ($page == "accueil_admin"){
-    $path = "controllers/acceuil_admin.php";
+    $path = "controllers/accueil_admin.php";
 }
 elseif ($page == "pageServiceAdmin"){
     loginRequired($page);

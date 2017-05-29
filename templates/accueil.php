@@ -22,7 +22,8 @@
     	<form action="" method="POST" id="form">
     		<div class="element">
     			Que recherchez-vous ?
-	    		<select name="categorie" id="categorie">
+	    		<select <?php /*name="categorie" */?>id="categorie">
+	    			<option name="">choisir une catégorie</option>
 	    			<option name="soins">Soins</option>
 	    			<option name="nourriture">Nourriture</option>
 	    			<option name="logement">Logement</option>
@@ -34,7 +35,8 @@
     		</div>
     		<div class="element">
 	   			Quel lieu?
-	   			<input type="text" name="adresse" id="adresse" />			   
+	   			<input type="text" name="adresse" id="adresse" />
+	   			<input type="adresse" id="adresse" name="adresse" value="<?php echo((empty($_POST['adresse'])) ? "" : $_POST['adresse']); ?>" placeholder="tapez une adresse" />			   
 	   			<input type="checkbox">Geolocalisation</input>
 	   		</div>
     		<div class="element">
@@ -42,14 +44,17 @@
     		</div>
     	</form>
 		<div id="contenu">
-
-			<?php for($i=0;$i<5/*$longList*/;$i++){ ?>
-				<p><a href=<?php $data[$i]["lien_site"] ?>> <!--"https://soutenir.msf.fr/b/mon-don?esv_source=Google&esv_medium=sea_brand&esv_campaign=W%2A%2AW00001&esv_term=msf&gclid=COKwx8uJvdMCFccp0wodkDMP4Q"-->
+			<?php /*print_r($data)*/?>
+			<?php for($i=0;$i<count($data);$i++){ ?>
+				<p><a href=<?php $data[$i]["lien_site"] ?> >
 						<div id="article 2" class="service">
-							<?php print_r($data[0])?>
+							
 							<img src="static/accueil/msf_logo _fichiers/maison.jpeg" width=240 class="floatl" title="photo non contractuelle"/> </br>
 							<?php echo $data[$i]["categorie"]?><br/>
-							<?php echo $data[$i]["nom"] ?> </br>
+							<h3><?php echo $data[$i]["nom"] ?></h3> </br>
+							<?php echo $data[$i]["texte"] ?> </br>
+
+							<div id="lienOrganisation"> <a href="<?php echo $data[$i]["lien_site"] ?>"><?php echo $data[$i]["lien_site"] ?></a></div> </br>
 								<?php /*echo $dataSPECIALE[$i][DESCRIPTION] /*Peut-être votre futur logement?<br/>.........................<br/>
 								...<br/>...............................
 								..............................................<br/><br/><br/>

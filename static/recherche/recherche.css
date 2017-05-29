@@ -1,0 +1,58 @@
+
+
+
+
+#main{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#main em{
+    font-style: italic;
+    text-decoration: underline;
+}
+
+#main section{
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#resultats fieldset{
+    Border: 1px black solid;
+    border-radius: 20px;
+    width: 100%;
+    height: 700px;
+    overflow: auto;
+}
+
+#resultats fieldset article{
+    Border: 2px black solid;
+    /*border-radius: 20px;*/
+    padding: 20px;
+    margin: 30px;
+    display: flex;
+    flex-direction: row;
+}
+
+#resultats fieldset article img{
+    margin-right: 30px;
+}
+
+#resultats fieldset article div{
+    display: flex;
+    flex-direction: column;
+}
+
+#resultats fieldset article div h2{
+    margin: 0;
+}
+
+#resultats fieldset article div p{
+    text-align: justify;
+}
+
+

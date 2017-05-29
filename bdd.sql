@@ -1,8 +1,3 @@
-
-
-
-
-
 --
 -- Base de données: `error404`
 --
@@ -116,6 +111,7 @@ CREATE TABLE inscrits (
   idSeance INTEGER
     REFERENCES seances(idSeance) ON DELETE SET NULL
 );
+
 
 INSERT INTO `services`(`nom`,`validation`, `adresse`, `categorie`, `telephone`, `email`, `lien_site`,`noteDeMAJ`) VALUES ("SoinPourTous",0,"5 rue de Rivoli Paris","soin","0625523251","0001@0001","http://www.dofus.com/fr", "testtestestestestestestestestestestestestestestestest");
 INSERT INTO `services`(`nom`,`validation`,`adresse`, `categorie`, `telephone`, `email`, `lien_site`,`noteDeMAJ`) VALUES ("NourriturePourTous",0,"21 Rue Vieille du Temple Paris","logement","0658921542","0002@0002","http://euw.leagueoflegends.com/fr",'jqzofjoqjfoiqjfoisjgoijojreoijeijsoigjsgoisjgoijseoigjs');
