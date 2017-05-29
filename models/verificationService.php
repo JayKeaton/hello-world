@@ -17,13 +17,13 @@ function dataTypeService ($page){
 		$clause[]=$a;
 	}
 	if(!empty($_POST['dejaValide'])) {
-		$a="services.validation = 0";
+		$a="services.validation = 1";
 		$clause[]=$a;
 	}
 	$final = join(" AND ",$clause);
 	/*recupéré la base de donné temporaire */
 	$offset = ($page - 1)*10;
-	$req=$bdd -> prepare("SELECT nom,texte FROM descriptions JOIN services ON descriptions.idService = services.idService WHERE $final
+	$req=$bdd -> prepare("SELECT nom,texte,validation FROM descriptions JOIN services ON descriptions.idService = services.idService WHERE $final
 	LIMIT 10 OFFSET $offset");
 	$req->execute();
 	$data=$req-> fetchAll();

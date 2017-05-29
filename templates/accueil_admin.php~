@@ -16,7 +16,7 @@
 					<div id="recherche1">
 						<div><!--la petite case pour le nom du service-->
 							<label for="nomService">nom du service :</label>
-							<input type="text" id="nomService" name="nomService" />
+							<input type="text" id="nomService" name="nomService" value="<?php echo(empty($_POST['nomService']) ? "" : $_POST['nomService']); ?>" />
 						</div>
 						<div><!--la petite case pour le type du service-->
 							type de service :
@@ -51,9 +51,16 @@
 		<?php
 		if(!empty($_POST['typeService']) or !empty($_POST['nomService']) or !empty($_POST['adresse']) or !empty($_POST['dejaValide'])){	
 			for($i=0;$i<count($data);$i++){
+				$valide = null;
+				if($data[$i]['validation']=0){
+					$valide = '<a classe="rouge"> non validé</a>';
+				}
+				else{
+					$valide = '<a classe="vert"> validé</a>';
+				}
     			$contenu='<p class="servicesData"> nom du service :'
 				.$data[$i]['nom'].
-    			'</br> description :'.$data[$i]['texte']. 
+    			'</br> description :'.$data[$i]['texte'].$valide.
     			'</br> <a href=" ">Voir l’annonce</a></p>' ;
 
 			echo $contenu;
