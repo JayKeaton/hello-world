@@ -43,10 +43,10 @@ if (!empty($_POST["validerInscript"])){
 }
 
 if (!empty($_POST["validerAdmin"])){
-  censureService($idService,0);
+  validationService($idService,1);
 }
 if (!empty($_POST["bloquerAdmin"])){
-  censureService($idService,1);
+  validationService($idService,0);
 }
 
 include("templates/pageServiceAdmin.php");

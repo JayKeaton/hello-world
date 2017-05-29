@@ -165,11 +165,11 @@ catch(PDOException $se)
     }
   }
 
-  function censureService($idService,$censure){
+  function validationService($idService,$validation){
     global $bdd;
-    $req=$bdd->prepare("UPDATE `services` SET censure=:booleen WHERE idService=:idService");
+    $req=$bdd->prepare("UPDATE `services` SET validation=:validation WHERE idService=:idService");
     $req->bindParam("idService",$idService);
-    $req->bindParam("booleen",$censure);
+    $req->bindParam("validation",$validation);
     $req->execute();
   }
  ?>
