@@ -12,5 +12,5 @@
 		}
 		$data = dataTypeService($page);
 	}
-include("templates/accueil_admin.php")
+include("templates/accueil_admin.php");
 ?>

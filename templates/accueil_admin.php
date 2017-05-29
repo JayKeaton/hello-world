@@ -51,9 +51,16 @@
 		<?php
 		if(!empty($_POST['typeService']) or !empty($_POST['nomService']) or !empty($_POST['adresse']) or !empty($_POST['dejaValide'])){	
 			for($i=0;$i<count($data);$i++){
+				$valide = null;
+				if($data[$i]['validation']=0){
+					$valide = '<a class="rouge"> non validé</a>';
+				}
+				else{
+					$valide = '<a class="vert"> validé</a>';
+				}
     			$contenu='<p class="servicesData"> nom du service :'
 				.$data[$i]['nom'].
-    			'</br> description :'.$data[$i]['texte']. 
+    			'</br> description :'.$data[$i]['texte'].$valide.
     			'</br> <a href=" ">Voir l’annonce</a></p>' ;
 
 			echo $contenu;
