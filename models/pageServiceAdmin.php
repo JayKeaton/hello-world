@@ -164,4 +164,12 @@ catch(PDOException $se)
       $req->execute();
     }
   }
+
+  function censureService($idService,$censure){
+    global $bdd;
+    $req=$bdd->prepare("UPDATE `services` SET censure=:booleen WHERE idService=:idService");
+    $req->bindParam("idService",$idService);
+    $req->bindParam("booleen",$censure);
+    $req->execute();
+  }
  ?>

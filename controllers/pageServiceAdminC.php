@@ -14,7 +14,6 @@ $longComment=count($commentaires);
 $lesInscrits=lesInscrits($idService);
 $notesSeances=notesSeances($idService);
 $estInscrit=estInscrit($idService);
-print_r($estInscrit);
 
 if (!empty($_POST["valider"])){
   $note=$_POST["note"];
@@ -25,8 +24,12 @@ if (!empty($_POST["valider"])){
 }
 
 if (!empty($_POST["validerInscript"])){
+  echo("test");
+  /*exit();*/
   foreach($seances as $seance){
+    echo(empty($_POST["inscription_".$seance['idSeance']]) == $_POST["hidden_".$seance['idSeance']]);
     if(!empty($_POST["inscription_".$seance['idSeance']])!=$_POST["hidden_".$seance['idSeance']]){
+      echo('test');
       if (!empty($_POST["inscription_".$seance['idSeance']])){
         modifInscription(true,$idService, $seance['idSeance'],$_SESSION["idUtilisateur"]);
       }
@@ -35,8 +38,15 @@ if (!empty($_POST["validerInscript"])){
       }
     }
   }
-  header("Location: ");
-  exit();
+  /*header("Location: ");
+  exit();*/
+}
+
+if (!empty($_POST["validerAdmin"])){
+  censureService($idService,0);
+}
+if (!empty($_POST["bloquerAdmin"])){
+  censureService($idService,1);
 }
 
 include("templates/pageServiceAdmin.php");
