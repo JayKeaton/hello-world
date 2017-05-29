@@ -25,10 +25,9 @@ echo $coords['status']." ".$coords['lat']." ".$coords['lon']."</br>";
 echo $coords2['status']." ".$coords2['lat']." ".$coords2['lon'];
 */
 
-$liste = array(1,5,6,7,4,3,2,9,8);
-$f = function($x, $y){return $x < $y;};
-
 //print_r(triListe($liste, $f));
+
+
 
 $form = new Formulaire("recherche");
 $listeCategories = array('' => "-----", 'soins' => "Soins", 'nourriture' => "Nourriture");
@@ -44,7 +43,9 @@ $ages = array('' => "-----", 'jeune' => "Jeune", 'adulte' => "Adulte", 'senior' 
 $form->add('select', 'age')
     ->affecterValeurs($ages);
 
-$form->isValid();
+if($form->isValid()){
+    $data = $form->get_cleaned_values();
+}
 
 
 include("templates/recherche.php");
