@@ -13,6 +13,7 @@ $longueur=count($seances);
 $longComment=count($commentaires);
 $lesInscrits=lesInscrits($idService);
 $notesSeances=notesSeances($idService);
+$estInscrit=estInscrit($idService);
 
 if (!empty($_POST["valider"])){
   $note=$_POST["note"];
@@ -20,6 +21,32 @@ if (!empty($_POST["valider"])){
   ajoutCommentaire($note,$texte,$_SESSION["idUtilisateur"],$idService);  /*$_POST["idSeance"]*/
   header("Location: ");
   exit();
+}
+
+if (!empty($_POST["validerInscript"])){
+  echo("test");
+  /*exit();*/
+  foreach($seances as $seance){
+    echo(empty($_POST["inscription_".$seance['idSeance']]) == $_POST["hidden_".$seance['idSeance']]);
+    if(!empty($_POST["inscription_".$seance['idSeance']])!=$_POST["hidden_".$seance['idSeance']]){
+      echo('test');
+      if (!empty($_POST["inscription_".$seance['idSeance']])){
+        modifInscription(true,$idService, $seance['idSeance'],$_SESSION["idUtilisateur"]);
+      }
+      else{
+        modifInscription(false,$idService, $seance['idSeance'],$_SESSION["idUtilisateur"]);
+      }
+    }
+  }
+  /*header("Location: ");
+  exit();*/
+}
+
+if (!empty($_POST["validerAdmin"])){
+  validationService($idService,1);
+}
+if (!empty($_POST["bloquerAdmin"])){
+  validationService($idService,0);
 }
 
 include("templates/pageServiceAdmin.php");

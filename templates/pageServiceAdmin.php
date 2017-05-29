@@ -45,6 +45,7 @@
               <a id="Mail" href="<?php echo $contact["lien_site"]; ?>"> Notre Site </a>
             </div>
             <h1>Historique des services proposés:</h1>
+            <form action="" method="post" id="formulaireCommentaire">
             <table>
               <thead>
                 <tr>
@@ -66,39 +67,64 @@
                     <td><?php echo $seances[$index]["capacite"]?></td>
                     <td><?php echo $notesSeances[$index]?></td>
                     <!-- <td> <?php echo $satisfaction[0][$index] ?> </td> -->
-                    <td><?php echo $estInscrit ?></td>
+                    <td><?php
+                    $check = false;
+                    foreach ($estInscrit as $element){
+                      if ($element["idSeance"]=$seances[$index]["idSeance"]){
+                        $check = true;
+                      }
+                    }
+                    if ($check){
+                      echo ('<input type="checkbox" name="inscription_'.$seances[$index]["idSeance"].'" value="inscrit" checked="checked"/>') ;
+                      echo ('<input type="hidden" name="hidden_'.$seances[$index]["idSeance"].'" value=true />') ;
+                    }
+                    else{
+                      echo('<input type="checkbox" name="inscription_'.$seances[$index]["idSeance"].'" value="inscrit" />');
+                      echo('<input type="hidden" name="hidden_'.$seances[$index]["idSeance"].'" value=false />');
+                    }
+                    /*echo($check ? "Inscrits" : "Non inscrits");*/
+                    ?></td>
                   </tr>
                 <?php } ?>
               </tbody>
             </table>
+            <input type="submit" name="validerInscript" value="valider"/>
+          </form>
             <h1>Commentaires</h1>
             <article id="Commentaires"> <!<!-- ATTENTION AU S DE Commentaire -->
-              <?php for ($index=0;$index<$longComment;$index ++){ ?>
-                <article id="Commentaire">
-                  <aside id="Avatar">
-                    <img src=<?php echo "Média/Avatars/".$profil[$index]["avatar"]?> width="75" height="75"> <?php /* echo <img src="???"+$commentaires[?] width="50" height="50"> */ ?>
-                  </br> <div id="center"> <?php echo $profil[$index]["pseudo"] ?> </div> <!-- Pseudo de l'utilisateur !-->
-                  </aside>
-                  <div id="b2">
-                    <article id="TexteComment">
-                      <p>Commentaire:</p> <div id="alinea"> <?php echo $commentaires[$index]["texte"] ?> </div>
-                    </article>
-                    <div id="Note">
-                      <p>Note:
-                        <?php $note=$commentaires[$index]["note"];
-                          $index2=1;
-                          while ($index2<=$note){ ?>
-                            <img src="static/pageServiceAdmin/etoileRouge.png" width="30" height="30">
-                            <?php $index2++;
-                          }
-                        if ($note>=((int)$note+0.5)){ ?>
-                          <img src="static/pageServiceAdmin/demiEtoileRouge.png" width="15" height="30">
-                        <?php } ?>
-                      </p>
+              <form action="" method="post" id="censureCommentaire">
+
+
+                <?php for ($index=0;$index<$longComment;$index ++){ ?>
+                  <article id="Commentaire">
+                    <aside id="Avatar">
+                      <img src=<?php echo "Média/Avatars/".$profil[$index]["avatar"]?> width="75" height="75"> <?php /* echo <img src="???"+$commentaires[?] width="50" height="50"> */ ?>
+                    </br> <div id="center"> <?php echo $profil[$index]["pseudo"] ?> </div> <!-- Pseudo de l'utilisateur !-->
+                    </aside>
+                    <div id="b2">
+                      <article id="TexteComment">
+                        <p>Commentaire:</p> <div id="alinea"> <?php echo $commentaires[$index]["texte"] ?> </div>
+                      </article>
+                      <div id="Note">
+                        <p>Note:
+                          <?php $note=$commentaires[$index]["note"];
+                            $index2=1;
+                            while ($index2<=$note){ ?>
+                              <img src="static/pageServiceAdmin/etoileRouge.png" width="30" height="30">
+                              <?php $index2++;
+                            }
+                          if ($note>=((int)$note+0.5)){ ?>
+                            <img src="static/pageServiceAdmin/demiEtoileRouge.png" width="15" height="30">
+                          <?php } ?>
+                        </p>
+                      </div>
+                      <input type="submit" name=<?php echo "censureCommentaire".$commentaire[$index]["idCommentaire"] ?> value="Censurer"/>
                     </div>
-                  </div>
+
+                </form>
                 </article>
               <?php } ?>
+
 
 
 
@@ -131,8 +157,14 @@
             </article>
             <h1>Note du Contributeur:</h1>
             <article id="NoteContrib">
+              <?php echo $contact["noteDeMAJ"] ?>
             </article>
           </article>
+          <form action="" method="post" id="formulaireValidationAdmin">
+            <p>Autorisez vous ce service à apparaître dans la liste des services? </p>
+            <input type="submit" value="Valider" name="validerAdmin" id="validationAdmin">
+            <input type="submit" value="Bloquer" name="bloquerAdmin" id="validationAdmin">
+          </form>
         </div>
         <div id="vide">  </div>
       </section>
