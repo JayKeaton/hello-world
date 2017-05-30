@@ -104,6 +104,14 @@ class Formulaire{
                 return $valid;
             }
         }
+
+        public function get_cleaned_values(){
+            $data = array();
+            foreach($this->listeInput as $name => $input){
+                $data[$name] = $input->get_cleaned_value();
+            }
+            return $data;
+        }
 }
 /************************************************************************/
 abstract class Input{
@@ -137,6 +145,10 @@ abstract class Input{
             return false;
         }
         return true;
+    }
+
+    public function get_cleaned_value(){
+        return htmlspecialchars($_POST[$this->name]);
     }
 
 }
