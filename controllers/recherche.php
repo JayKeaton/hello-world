@@ -18,6 +18,8 @@ function getXmlCoordsFromAdress($address)
     return $coords;
 }
 
+
+
 /*
 $coords=getXmlCoordsFromAdress("4 rue Joseph Kosma, Acheres");
 $coords2=getXmlCoordsFromAdress("Paris");
@@ -45,6 +47,7 @@ $form->add('select', 'age')
 
 if($form->isValid()){
     $data = $form->get_cleaned_values();
+    $listeServices = obtenirServiceParCategorie($data['categorie']);
 }
 
 
