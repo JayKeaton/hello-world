@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
+<link rel="stylesheet" href="static/ajoutServices/cssAjoutServices.css"/>
 <title>Ajout Services</title>
 </head>
 
@@ -14,7 +15,8 @@
 
     <div>
 
-        <h4>Contact</h4> 
+        <fieldset>
+        <legend>Contact</legend>
 
         <label>Nom
 
@@ -34,29 +36,32 @@
         </label>
 
         <input type="phone" id="telephone" name="telephone" value="<?php echo((empty($_POST['telephone'])) ? "" : $_POST['telephone']); ?>" required="required" />
+        </br>
         
         <label for="telephone">Lien site web: <span class="required">*</span>
 
         </label>
 
         <input type="" id="lien_site" name="lien_site" value="<?php echo((empty($_POST['lien_site'])) ? "" : $_POST['lien_site']); ?>" required="required" />
-
+        </fieldset>
     </div>
 
 
     <div>
 
-        <h4>Adresse</h4> 
+        <fieldset>
+        <legend>Votre adresse</legend>
 
         <label for="message">Votre adresse:
 
         </label>
 
         <textarea id="adresse" name="adresse" value="<?php echo((empty($_POST['adresse'])) ? "" : $_POST['adresse']); ?>" placeholder="Entrez votre adresse ici"></textarea>
+        </br>
         <label>Code Postal:
         <input type="number" id="codePostal" name="codePostal" value="<?php echo((empty($_POST['codePostal'])) ? "" : $_POST['coddePostal']); ?>" required="required" />
         </label>
-
+        </fieldset>
     </div>
 
 
@@ -64,19 +69,18 @@
 
     <div>
 
-        <h4>Catégorie</h4>
-
-        <label for="message">Catégorie :
-
-        </label>
+        <fieldset>
+        <legend>Catégorie</legend>
 
         <textarea id="categorie" name="categorie" value="<?php echo((empty($_POST['categorie'])) ? "" : $_POST['categorie']); ?>" placeholder="Entrez votre categorie ici"></textarea>
-
+        </fieldset>
+        
     </div>
     <div>
-    <h4>Description</h4>
+    <fieldset>
+        <legend>Description</legend>
 
-    <Label>Selectionnez la langue de votre description
+    <Label>Langue
         <select id="langue" name="langue">
             <option>Francais</option>
             <option>Anglais</option>
@@ -90,10 +94,10 @@
         
 
         
-        <label> Description
+        
         <textarea id="texte" name="texte" value="<?php echo((empty($_POST['categorie'])) ? "" : $_POST['categorie']); ?>" placeholder="Decrivez ici votre service"></textarea></label>
 
-
+        </fieldset>
 
     <div>
 

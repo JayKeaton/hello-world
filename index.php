@@ -71,6 +71,10 @@ elseif ($page == "ajoutServices"){
     loginRequired($page);
     $path = "controllers/ajoutServices.php";
 }
+elseif ($page == "favoris"){
+    loginRequired($page);
+    $path = "controllers/favoris.php";
+}
 elseif ($page == "modifierServices"){
     loginRequired($page);
     $path = "controllers/modifierServices.php";
