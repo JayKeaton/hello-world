@@ -181,8 +181,8 @@ background-color: #0000166;
 {
 	height: 25px;
 	background-color: white;
-border-radius: 4px 4px 4px 4px;
-width:18%;
+	border-radius: 4px 4px 4px 4px;
+	width:28%;
 }
 /*.element:focus{
 	background-color:green;
@@ -204,4 +204,12 @@ width:18%;
 #lienService{
 	color: black;
 	text-decoration:none;
+}
+#lienOrganisation a{
+	color:rgb(120,120,255);
+	font-family: "Comic sans MS", "Courier New", Georgia);
+}
+#lienOrganisation a:hover{
+	color:rgb(70,70,255);
+	font-family: "Comic sans MS", "Courier New", Georgia);
 }

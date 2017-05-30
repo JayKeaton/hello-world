@@ -37,10 +37,18 @@
 	text-align: center;
 	padding-top: 10%
 }
+.bleu{
+	color:blue;
+}
+.rouge{
+	color:red;
+}
 .div_servicesData{
 	display: flex;
-	width: 100%;
+	flex-direction: column;
 	justify-content: center;
+	align-items: center;
+	width: 100%;
 }
 .servicesData{
 	/*position:relative;

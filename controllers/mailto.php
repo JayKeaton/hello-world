@@ -67,7 +67,7 @@ function envoyerMail($email, $hash, $nom, $prenom, $idu){
 	//==========
 
 	//=====Envoi de l'e-mail.
-	mail($mail,$sujet,$message,$header);
+	echo(mail($mail,$sujet,$message,$header));
 	//==========
 
 }
