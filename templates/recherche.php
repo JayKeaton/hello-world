@@ -42,15 +42,22 @@
         </article>
 
         <?php
-        foreach ($listeServices as $service) {
-            ?>
-            <div>
-                <h2><em><?php echo($service['nom']); ?></em></h2>
-                <p>
-                    
-                </p>
-            </div>
-            <?php
+        if (isset($listeServices)){
+            foreach ($listeServices as $service) {
+                if($service['langue'] == $data['langue']){
+                    ?>
+                    <article>
+                        <img src="media/isep.jpg" width="200" height="200"/>
+                        <div>
+                            <h2><em><?php echo($service['nom']); ?></em></h2>
+                            <p>
+                                <?php echo($service['texte']); ?>
+                            </p>
+                        </div>
+                    </article>
+                    <?php
+                }
+            }
         }
         ?>
 
