@@ -18,6 +18,7 @@ if (!empty($_POST['identifiant'])){
     }
     else {
         $_SESSION['idUtilisateur'] = $idUtilisateur;
+        $_SESSION['droits'] = "utilisateur";
         if (empty($_GET['nextPage']))
             header("Location: ".SOUS_DOMAINE);
         else
