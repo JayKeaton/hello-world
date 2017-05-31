@@ -1,6 +1,7 @@
 <?php
 
 include("../controllers/functions.php");
+include("../models/utilisateur.php");
 
 if (empty($_POST['idUtilisateur'])){
     include("controllers/login.php");

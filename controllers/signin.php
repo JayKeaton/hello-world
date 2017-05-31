@@ -3,7 +3,7 @@
 if (!empty($_POST['identifiant'])){
     $identifiant = $_POST['identifiant'];
     $mdp = sha1($_POST['mdp']);
-    list($idUtilisateur,$mdpBdd,$verification) = connexionUtilisateur($identifiant);
+    list($idUtilisateur,$mdpBdd,$verification,$droits) = connexionUtilisateur($identifiant);
     if ($mdpBdd == false){
         $erreur_utilisateur = "Utilisateur inconnu.";
         include("templates/signin.php");

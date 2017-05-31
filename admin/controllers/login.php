@@ -10,6 +10,8 @@ $login_form->add('password', 'password')
 
 
 if ($login_form->isValid()){
+    $data = $login_form->get_cleaned_values();
+    list($idUtilisateur,$mdpBdd,$verification,$droits) = connexionUtilisateur($data['email']);
 
 }
 

@@ -48,13 +48,13 @@
 
 	function connexionUtilisateur($email){
 	    global $bdd;
-	    $req = $bdd->prepare("SELECT idUtilisateur,mdp,verification FROM utilisateurs WHERE email=:email");
+	    $req = $bdd->prepare("SELECT idUtilisateur,mdp,verification,droits FROM utilisateurs WHERE email=:email");
 	    $req->execute(array('email' => $email));
 	    $data = $req->fetch();
 	    if ($data == false)
 	        return false;
 	    else{
-	        return array($data['idUtilisateur'],$data['mdp'],$data['verification']);
+	        return array($data['idUtilisateur'],$data['mdp'],$data['verification'],$data['droits']);
         }
     }
 
