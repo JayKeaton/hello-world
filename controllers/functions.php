@@ -12,6 +12,15 @@
     }
 
 
+    function permissionRequired($droits){
+        $listeDroits = array('utilisateur' => 1, 'contributeur' => 2, 'admin' => 3);
+        if( empty($_SESSION['droits']) || ($listeDroits[$_SESSION['droits']] < $listeDroits[$droits]) ){
+            echo("<h1>Vous n'avez pas la permission d'accéder à cette page.</h1>");
+            exit();
+        }
+    }
+
+
 
 
 
@@ -120,10 +129,12 @@ abstract class Input{
     protected $name;
     protected $isRequired;
     protected $value;
+    protected $id;
 
 
     public function __construct($name) {
         $this->name = $name;
+        $this->id = $name;
         $this->erreur = "";
         $this->isRequired = false;
         $this->value = "";
@@ -136,6 +147,11 @@ abstract class Input{
 
     public function value($value){
         $this->value = $value;
+        return $this;
+    }
+
+    public function setId($id){
+        $this->id = $id;
         return $this;
     }
 
@@ -165,9 +181,10 @@ class Input_text extends Input{
 
     public function __toString(){
         $name = $this->name;
+        $id = $this->id;
         $value = $this->value;
         $string = "";
-        $string .= "<input type='text' name='".$name."' id='".$name."' value='".$value."'/>";
+        $string .= "<input type='text' name='".$name."' id='".$id."' value='".$value."'/>";
         if ($this->erreur != "")
             $string .= "</br><p>".$this->erreur."</p>";
         return $string;
@@ -187,9 +204,10 @@ class Input_password extends Input{
 
     public function __toString(){
         $name = $this->name;
+        $id = $this->id;
         $value = $this->value;
         $string = "";
-        $string .= "<input type='submit' name='".$name."' id='".$name."' value='".$value."'/>";
+        $string .= "<input type='password' name='".$name."' id='".$id."' value='".$value."'/>";
         if ($this->erreur != "")
             $string .= "</br><p>".$this->erreur."</p>";
         return $string;
@@ -219,9 +237,10 @@ class Input_select extends Input{
 
     public function __toString(){
         $name = $this->name;
+        $id = $this->id;
         $listeValeurs = $this->listeValeurs;
         $string = "";
-        $string .= "<select name='".$name."' id='".$name."'/>";
+        $string .= "<select name='".$name."' id='".$id."'/>";
         foreach ($listeValeurs as $key => $value) {
             $selected = ($this->value == $key) ? "selected" : "";
             $string .= "<option value='".$key."' ".$selected.">".$value."</option>";

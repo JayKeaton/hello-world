@@ -32,11 +32,16 @@ echo $coords2['status']." ".$coords2['lat']." ".$coords2['lon'];
 
 
 $form = new Formulaire("recherche");
-$listeCategories = array('' => "-----", 'soins' => "Soins", 'nourriture' => "Nourriture");
+$listeCategories = array('' => "-----", 'soin' => "Soins", 'nourriture' => "Nourriture", 'logement' => "Logement");
 $form->add('select', 'categorie')
     ->affecterValeurs($listeCategories)
     ->required(true);
-$listeLangues = array('all' => "Toutes les langues", 'fr' => "Francais", 'en' => "Anglais");
+$listeLangues = array('all' => "Toutes les langues", 'fr' => "Francais", 'en' => "Anglais", 'Jérémy' => "Jeremy");
+$liste = listeLangues();
+$listeLangues = array();
+foreach ($liste as $langue) {
+    $listeLangues[$langue['langue']] = $langue['langue'];
+}
 $form->add('select', 'langue')
     ->value('all')
     ->affecterValeurs($listeLangues)
