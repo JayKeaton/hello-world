@@ -1,19 +1,20 @@
 <!doctype html>
 <html>
-<head>
-<meta charset="utf-8">
-<title>Validation</title>
-</head>
+	<head>
+		<meta charset="utf-8">
+		<title>Validation</title>
+		<link rel="stylesheet" href="static/validation/style.css" />
+	</head>
 
-<h1>Merci, votre inscription a été enregistrée.</h1>
+	<body>
+		<h1>Merci, votre inscription a été enregistrée.</h1>
 
-<h1>Un email vient de vous être envoyé pour valider votre inscription.</h1>
+		<h1>Un email vient de vous être envoyé pour valider votre inscription.</h1>
 
-<div>
-	<form method = "get" action="<?php echo(SOUS_DOMAINE); ?>">
-        <input type="submit" value="Accueil" id="submit" />
-	</form>
-</div>
-<body>
-</body>
+		<div>
+			<form method = "get" action="<?php echo(SOUS_DOMAINE); ?>">
+				<input id="submit" type="submit" value="Retourner vers l'accueil"  />
+			</form>
+		</div>
+	</body>
 </html>
