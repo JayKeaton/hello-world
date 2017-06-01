@@ -1,0 +1,14 @@
+@charset "utf-8";
+/* CSS Document */
+
+body
+{
+	font-family:Lucida Grande, Lucida Sans Unicode, Lucida Sans, DejaVu Sans, Verdana," sans-serif";
+	text-align: center;
+}
+
+#submit 
+{	
+	width:25%;
+	height:50px;
+}
