@@ -141,7 +141,7 @@ catch(PDOException $se)
 
   function estInscrit($idService){
     global $bdd;
-    $req=$bdd->prepare("SELECT * FROM inscrits JOIN seances ON inscrits.idSeance=seances.idSeance WHERE seances.idService=:idService AND inscrits.idUtilisateur=:idUtilisateur");
+    $req=$bdd->prepare("SELECT seances.idSeance FROM inscrits JOIN seances ON inscrits.idSeance=seances.idSeance WHERE seances.idService=:idService AND inscrits.idUtilisateur=:idUtilisateur");
     $req->bindParam("idService",$idService);
     $req->bindParam("idUtilisateur",$_SESSION["idUtilisateur"]);
     $req->execute();
