@@ -1,0 +1,41 @@
+
+table {
+border:3px solid red;
+border-collapse:collapse;
+width:90%;
+margin:auto;
+}
+
+thead {
+background-color:red;
+color : white;
+border:1px solid red;
+}
+
+tbody {
+border:1px solid red;
+}
+
+th {
+font-family:Verdana;
+border:1px dotted red;
+padding:5px;
+width:25%;
+}
+
+td {
+font-family:Arial;
+font-size:80%;
+border:1px solid red;
+padding:5px;
+text-align:center;
+}
+
+#main div p{
+	font-size: 30px;
+	color: red;
+}
+caption {
+font-size : 18px;
+font-family:Arial Black;
+}
