@@ -21,12 +21,37 @@ function dataTypeService ($page){
 		$clause[]=$a;
 	}
 	$final = join(" AND ",$clause);
-	/*recupéré la base de donné temporaire */
-	$offset = ($page - 1)*10;
+	
+	$messagesParPage=10;
+	/* obtention du nombre de donné */
+	$retour_total=$bdd ->prepare("SELECT nom FROM descriptions JOIN services ON descriptions.idService = services.idService WHERE $final");
+	$retour_total->execute();
+	$donnees_total=$retour_total-> fetchAll();
+	$total=count($retour_total);
+	if(empty($_POST['page'])){
+		$page=1;
+	}
+	else{
+		$page=$_POST['page'];
+	}
+	/* obtention du nombre de page max */
+	$nombreDePages=ceil($total/$messagesParPage);
+	if(!empty($_POST['typeService']) or !empty($_POST['nomService']) or !empty($_POST['adresse']) or !empty($_POST['dejaValide'])){
+		$pageActuelle=$page;
+		if($pageActuelle<$nombreDePages){
+			$pageActuelle=$nombreDePages;
+			/* petite sécurité*/
+			}
+		else{
+			$pageActuelle=$page;
+		}
+		$offset=($pageActuelle-1)*$messagesParPage;
+	}
 	$req=$bdd -> prepare("SELECT nom,texte,validation FROM descriptions JOIN services ON descriptions.idService = services.idService WHERE $final
-	LIMIT 10 OFFSET $offset");
+	LIMIT $messagesParPage OFFSET $offset");
 	$req->execute();
 	$data=$req-> fetchAll();
-	return $data;
+	$retour= array($data,$nombreDePages,$pageActuelle);
+	return $retour;
 }
 ?>

@@ -75,7 +75,7 @@
      					}	
      				else
     				 	{
-          		echo ' <a href="accueil_admin.php?page='.$i.'">'.$i.'</a> ';
+          		echo ' <a href="livredor.php?page='.$i.'">'.$i.'</a> ';
      			}
 }
 echo '</p>';
