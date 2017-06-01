@@ -104,6 +104,14 @@
         <input type="submit" value="Suivant" id="submit" />
 
     </div>
+        <h1>Image de service:</h1>
+    <div>
+        <img src="<?php echo("media/imageService/".$data['imageService']); ?>" height="150" width="150" />
+        <input type="file" name="imageService" id="imageService"/>
+    </div>
+    <div>
+        <input type="submit" name="ajouterImageService" value="Valider"/>
+    </div>
 
 </form>
 

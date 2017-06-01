@@ -1,4 +1,5 @@
 <?php
+	
 
      
 	if (!empty($_POST["email"])){
@@ -16,6 +17,19 @@
 
 			$idService = ajouterService($bdd, $email, $adresse, $codePostal, $telephone, $lien_site, $categorie, $_SESSION['idUtilisateur'],$nom);
 			$id2 = ajouterDescriptionService($bdd, $texte, $langue, $idService );
+			if (!empty($_POST['ajouterImageService'])){
+    		require_once("models/image.php");
+   			$result = traitementUploadImage("imageService", "media/imageService", $idService);
+    		/*if ($result[0] == false){
+       		 $erreur['imageService'] = $result[1];
+   			 }*/
+			}
+    		else{
+        	modifierImageService($idService, $result[1]);
+        	header("Location: ");
+        	exit();
+    }
+
 		
 			include("templates/validation.html");
 		}
