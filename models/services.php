@@ -77,5 +77,13 @@
 	    $data = $req->fetchAll();
 	    return $data;
     }
+        function modifierImageService($idService, $imageService){
+        global $bdd;
+        $req = $bdd->prepare("UPDATE services SET imageService=:imageService WHERE idService=:idService");
+        $req->bindParam("imageService", $imageService);
+        $req->bindParam("idService", $idService);
+        $req->execute();
+    }
+	
 
 ?>
