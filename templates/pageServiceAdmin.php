@@ -64,9 +64,13 @@
                     <tr>
                       <td> <?php echo $seances[$index]["date"] ?> </td>
                       <!-- <td> <?php /* echo $seances[$index][2] */ ?> </td> -->
-                      <td> <?php echo $lesInscrits[$index+$seances[0][0]][0] ?> </td>
+                      <td> <?php if(!empty($lesInscrits[$index+$seances[0][0]][0])){
+                         echo $lesInscrits[$index+$seances[0][0]][0];
+                       }?> </td>
                       <td><?php echo $seances[$index]["capacite"]?></td>
-                      <td><?php echo $notesSeances[$index]?></td>
+                      <td><?php if(!empty($notesSeances[$index])){
+                        echo $notesSeances[$index];
+                      }?></td>
                       <!-- <td> <?php echo $satisfaction[0][$index] ?> </td> -->
                       <td><?php
                       $check = false;
@@ -76,16 +80,11 @@
                         }
                       }
                       if ($check){
-                        echo ('<input type="checkbox" name="inscription_'.$seances[$index]["idSeance"].'" value="inscrit" checked="checked"/>') ;
-                        echo ('<input type="hidden" name="hidden_'.$seances[$index]["idSeance"].'" value=true />') ;
+                        echo ('<input type="checkbox" name="inscription[]" value="'.$seances[$index]["idSeance"].'" checked="checked"/>') ;
                       }
                       else{
-                        echo('<input type="checkbox" name="inscription_'.$seances[$index]["idSeance"].'[]" value="inscrit" />');
-                        echo('<input type="checkbox" name="inscription_'.$seances[$index]["idSeance"].'[]" value="inscrit2" />');
-
-                        echo('<input type="hidden" name="hidden_'.$seances[$index]["idSeance"].'" value=false />');
-                      }
-                      /*echo($check ? "Inscrits" : "Non inscrits");*/
+                        echo ('<input type="checkbox" name="inscription[]" value="'.$seances[$index]["idSeance"].'"/>') ;
+                      }/*echo($check ? "Inscrits" : "Non inscrits");*/
                       ?></td>
                     </tr>
                   <?php } ?>

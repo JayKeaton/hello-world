@@ -25,16 +25,34 @@ if (!empty($_POST["valider"])){
 
 if (!empty($_POST["validerInscript"])){
   echo("test");
+  /*print_r($_POST["inscription"]);*/
   /*exit();*/
   foreach($seances as $seance){
-    echo(empty($_POST["inscription_".$seance['idSeance']]) == $_POST["hidden_".$seance['idSeance']]);
-    if(!empty($_POST["inscription_".$seance['idSeance']])!=$_POST["hidden_".$seance['idSeance']]){
-      echo('test');
-      if (!empty($_POST["inscription_".$seance['idSeance']])){
-        modifInscription(true,$idService, $seance['idSeance'],$_SESSION["idUtilisateur"]);
+    $check1=0;
+    $check2=0;
+    /*print_r('    ///checkS///');
+    print_r($check1);
+    print_r($check2);
+    print_r('     /////idSeance//');
+    print_r($seance["idSeance"]); */
+    if(empty($_POST["inscription"])){
+      modifInscription(false,$idService,$seance["idSeance"],$_SESSION["idUtilisateur"]);
+    }
+    else{
+      if (in_array($seance["idSeance"],$_POST["inscription"])){
+        $check2=1;
       }
-      else{
-        modifInscription(false,$idService, $seance['idSeance'],$_SESSION["idUtilisateur"]);
+      if (in_array($seance["idSeance"],$estInscrit)){
+        $check1=1;
+      }
+      print_r($check1, $check2);
+      if($check1!=$check2){
+        if($check2==0){
+          modifInscription(false,$idService,$seance["idSeance"],$_SESSION["idUtilisateur"]);
+        }
+        else{
+          modifInscription(true,$idService,$seance["idSeance"],$_SESSION["idUtilisateur"]);
+        }
       }
     }
   }
@@ -62,6 +80,8 @@ for ($index=0;$index<$longComment;$index ++){
     exit;
   }
 }
+
+/*print_r($seances);*/
 
 include("templates/pageServiceAdmin.php");
  ?>
