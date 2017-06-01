@@ -2,7 +2,7 @@
 
 
 $login_form = new Formulaire('login_admin');
-$login_form->add('text', 'username')
+$login_form->add('text', 'email')
             ->required(true);
 $login_form->add('password', 'password')
             ->required(true);

@@ -4,7 +4,7 @@
 
 <head>
     <title>Log in | MSF site admin</title>
-    <link rel="stylesheet" type="text/css" href="static/login.css" />
+    <link rel="stylesheet" type="text/css" href="static/login/login.css" />
 </head>
 
 <body class="login" data-admin-utc-offset="0">
@@ -29,8 +29,8 @@
 
                 <form action="" method="post" id="login-form">
                     <div class="form-row">
-                        <label class="required" for="username">Username:</label>
-                        <?php $login_form->echoInput('username'); ?>
+                        <label class="required" for="email">Email:</label>
+                        <?php $login_form->echoInput('email'); ?>
                     </div>
                     <div class="form-row">
                         <label class="required" for="password">Password:</label>
