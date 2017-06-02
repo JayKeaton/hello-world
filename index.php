@@ -96,6 +96,13 @@ elseif ($page == "pageServiceAdmin"){
     loginRequired($page);
     $path = "controllers/pageServiceAdminC.php";
 }
+elseif ($page == "ajoutAdmin"){
+    loginRequired($page);
+    $path = "controllers/ajoutAdmin.php";
+}
+elseif ($page == "activationAdmin"){
+    $path = "controllers/activationAdmin.php";
+}
 else{
     include("templates/".$page.".html");
 }
