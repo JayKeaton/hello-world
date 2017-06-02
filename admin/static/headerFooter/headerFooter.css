@@ -14,7 +14,7 @@ header ul
 {
   margin-top: 0;
   padding-left: 220px;
-  background-color:red;
+  background-color:#417690;
   display:flex;
   justify-content: flex-start;
   align-items: center;
@@ -26,7 +26,7 @@ header ul li{
   /*width: 14%;*/
 }
 header ul li:hover{
-  background-image: linear-gradient(red 57% , #ff8080);
+  background-image: linear-gradient(#417690 57% , #79aec8);
   font-weight: bold;
   /*height: 100%;*/
 }
@@ -59,7 +59,7 @@ header img{
   justify-content: center;
 }
 header #imageBanniere{
-  border:2px solid red;
+  border:2px solid #417690;
   position: absolute;
   top: 4px;
   left: 100px;
