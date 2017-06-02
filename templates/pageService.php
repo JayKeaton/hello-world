@@ -1,3 +1,4 @@
+
 <head>
   <link rel="stylesheet" type="text/css" href="static/pageServiceAdmin/pageServiceAdmin.css"> <!-- Attention à bien remplacer le lien vers le fichier CSS -->
   <meta charset="utf-8" />
@@ -10,7 +11,7 @@
       </div>
 
       <section id="Service">
-        <div id="IconeCategorie"> </br> <img src=<?php
+        <div id="IconeCategorie"> <img src=<?php
           switch($contact["categorie"]){ /* Rajouter des Cases ici et des images dans Média/Pictogrammes/ pour couvrir plus de catégorie */
             case "logement":
               echo "Média/Pictogrammes/logement.png";
@@ -95,8 +96,8 @@
 
 
 
+            <h1>Commentaires</h1>
             <article id="Commentaires"> <!<!-- ATTENTION AU S DE Commentaire -->
-              <div id="commentairesTitre">Commentaires</div>
               <form action="" method="post" id="censureCommentaire">
 
 
@@ -104,7 +105,6 @@
                   <article id="Commentaire">
 
                     <aside id="Avatar">
-                      <?php echo date("d/m/Y ", strtotime($commentaires[$index]["date"])); ?> </br>
                       <img src=<?php echo "Média/Avatars/".$profil[$index]["avatar"]?> width="75" height="75"> <?php /* echo <img src="???"+$commentaires[?] width="50" height="50"> */ ?>
                       </br> <div id="center"> <?php echo $profil[$index]["pseudo"] ?> </div> <!-- Pseudo de l'utilisateur !-->
                     </aside>

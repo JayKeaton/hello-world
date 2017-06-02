@@ -1,7 +1,3 @@
-
-
-
-
 main
 {
 background-image:linear-gradient(white 40%, silver);
@@ -24,11 +20,17 @@ align-items: center;
 
 #t1{
   text-align: center;
+  font-size: 22px;
 }
 #Service{
   margin: 50px;
   justify-content: center;
   display: flex;
+}
+#commentairesTitre{
+  text-align: center;
+  font-size:22px;
+  margin-top: 16px;
 }
 #Commentaires{
   margin:6px;
