@@ -54,7 +54,7 @@
 	    if ($data == false)
 	        return false;
 	    else{
-	        return array($data['idUtilisateur'],$data['mdp'],$data['verification'],$data['droits']);
+	        return $data;
         }
     }
 
