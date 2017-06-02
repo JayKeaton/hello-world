@@ -6,6 +6,11 @@
 	align-items: center;
 }
 
+#actualite{
+	
+	
+}
+
 #recherche {
 	display: flex;
 	flex-direction: column;
@@ -37,8 +42,8 @@
 	text-align: center;
 	padding-top: 10%
 }
-.bleu{
-	color:blue;
+.vert{
+	color:green;
 }
 .rouge{
 	color:red;
@@ -64,6 +69,7 @@
 	font-size: 12px;
 	text-align: center;
 }
+
 
 	
 
