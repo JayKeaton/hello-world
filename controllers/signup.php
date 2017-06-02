@@ -56,7 +56,7 @@ $listeAnnee = range(1900, 2000+date("y"));
             include("controllers/mailto.php");
             $randint = rand(1, 10000);
             $hash = date("Ymdhis" . $randint);
-            envoyerMail($email, $hash, $nom, $prenom, $idUtilisateur);
+            envoyerMail($email, $hash, $nom, $prenom, $idUtilisateur, "activationUtilisateur");
             ajouterCle($bdd, $idUtilisateur, $hash);
             include("templates/validation.html");
         }

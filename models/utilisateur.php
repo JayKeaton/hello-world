@@ -85,6 +85,7 @@
         $req->bindParam(':idu', $idu);
         $req->execute();
 	}
+
     function desactive($idUtilisateur){
 	    global $bdd;
         $req = $bdd->prepare("UPDATE utilisateurs SET verification = 0 WHERE idUtilisateur = :idUtilisateur ");
@@ -153,4 +154,72 @@
         $req->bindParam("idUtilisateur", $idUtilisateur);
         $req->execute();
     }
+
+	function modifierDroits($idUtilisateur, $droits){
+		
+		global $bdd;
+        $req = $bdd->prepare("UPDATE utilisateurs SET droits=:droits WHERE idUtilisateur=:idUtilisateur");
+        $req->bindParam("droits", $droits);
+        $req->bindParam("idUtilisateur", $idUtilisateur);
+        $req->execute();
+	}
+
+	function verifMailAdmin($bdd, $email){
+		
+		global $bdd;
+        $req = $bdd->prepare("SELECT email FROM emailsadmin WHERE email=:email");
+        $req->bindParam("email", $email);
+        $req->execute();
+	    $data = $req->fetch();
+	    if ($data == false){
+			
+			return false;
+		}
+	        
+	    else{
+			
+	        return true;
+		}
+	}
+
+
+	function recupCleAdmin($bdd, $email){
+		
+		global $bdd;
+        $req = $bdd->prepare("SELECT cle FROM emailsadmin WHERE email=:email");
+        $req->bindParam("email", $email);
+        $req->execute();
+	    $data = $req->fetch();
+	    return $data['cle'];
+		
+	}
+
+	function activeAdmin($bdd, $email){
+        $req = $bdd->prepare("UPDATE utilisateurs SET droits = 'admin' WHERE email = :email ");
+        $req->bindParam(':email', $email);
+        $req->execute();
+	}
+
+	function ajouterEmailsAdmin($bdd, $email, $hash){
+		
+		$cle=$hash;
+		
+		$req = $bdd->prepare("INSERT INTO emailsadmin(cle, email) values(:cle, :email)");
+        $req->bindParam(':email', $email);
+		$req->bindParam(':cle', $cle);
+        $req->execute();
+		
+	}
+
+	function enleverEmailsAdmin($bdd, $email){
+		
+		$req = $bdd->prepare("DELETE FROM emailsadmin WHERE email = :email");
+        $req->bindParam(':email', $email);
+
+        $req->execute();
+		
+		
+	}
+
+
 	

@@ -14,7 +14,11 @@ CREATE TABLE categories(
   traduction VARCHAR(255)
 );
 
-
+CREATE TABLE emailsAdmin(
+  idEmail INTEGER PRIMARY KEY AUTO_INCREMENT,
+  cle VARCHAR(255),
+  email VARCHAR(255)
+);
 
 CREATE TABLE services (
   idService INTEGER PRIMARY KEY AUTO_INCREMENT,
