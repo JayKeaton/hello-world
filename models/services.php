@@ -64,18 +64,36 @@
 	    else{
 	        return $data;
         }
-		
-		
 	}
 
 
 	function obtenirServiceParCategorie($categorie){
 	    global $bdd;
-	    $req = $bdd->prepare("SELECT * FROM services WHERE categorie=:categorie");
+	    $str = "SELECT services.nom as nom, descriptions.texte as texte, descriptions.langue as langue 
+	    FROM services JOIN descriptions on services.idService = descriptions.idService 
+	    WHERE categorie=:categorie";
+	    $req = $bdd->prepare($str);
 	    $req->bindParam('categorie', $categorie);
 	    $req->execute();
 	    $data = $req->fetchAll();
 	    return $data;
+    }
+        function modifierImageService($idService, $imageService){
+        global $bdd;
+        $req = $bdd->prepare("UPDATE services SET imageService=:imageService WHERE idService=:idService");
+        $req->bindParam("imageService", $imageService);
+        $req->bindParam("idService", $idService);
+        $req->execute();
+    }
+	
+
+
+    function listeLangues(){
+    	global $bdd;
+    	$req = $bdd->prepare("SELECT DISTINCT langue FROM descriptions");
+    	$req->execute();
+    	$data = $req->fetchAll();
+    	return $data;
     }
 
 ?>

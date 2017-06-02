@@ -18,6 +18,6 @@ if($clebdd == $cle) // On compare nos deux clés
        }
      else // Si les deux clés sont différentes on provoque une erreur...
        {
-          echo "Erreur ! Votre compte ne peut être activé...";
+          include("templates/erreurValidation.html");
        }
   

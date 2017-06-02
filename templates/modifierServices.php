@@ -40,21 +40,15 @@
 	</script>
 		<form method="post" action="">
 			<label>Nom:
-				<input type="text" id="nom" name="nom" value="
-					<?php echo($donnees['nom']) ?>
-				" placeholder="" required="required" />
+				<input type="text" id="nom" name="nom" value="<?php echo($donnees['nom']) ?>" placeholder="" required="required" />
 			</label>
 				</br>
 			<label>Email
-				<input type="email" id="email" name="email" value="
-						<?php echo($donnees['email']) ?>
-					" placeholder="" required="required" />
+				<input type="email" id="email" name="email" value="<?php echo($donnees['email']) ?>" placeholder="" required="required" />
 			</label>
 				</br>
 			<label>Adresse:
-				<input type="adresse" id="adresse" name="adresse" value="
-					<?php echo($donnees['adresse']) ?>
-				" placeholder="" required="required" />
+				<input type="adresse" id="adresse" name="adresse" value="<?php echo($donnees['adresse']) ?>" placeholder="" required="required" />
 			</label></br>
 		
 		
@@ -70,21 +64,15 @@
 
 		
 			<label>Categorie:
-				<input type="text" id="categorie" name="categorie" value="
-					<?php echo($donnees['categorie']) ?>
-				" placeholder="" required="required" />
+				<input type="text" id="categorie" name="categorie" value="<?php echo($donnees['categorie']) ?>" placeholder="" required="required" />
 			</label>
 			</br>
 			<label>Telephone
-				<input type="phone" id="telephone" name="telephone" value="
-					<?php echo($donnees['telephone']) ?>
-				" placeholder="" required="required" />
+				<input type="phone" id="telephone" name="telephone" value="<?php echo($donnees['telephone']) ?>" placeholder="" required="required" />
 			</label>
 			</br>
 			<label>Lien de votre site Internet:
-				<input type="" id="lien_site" name="lien_site" value="
-					<?php echo($donnees['lien_site']) ?>
-					" placeholder="" required="required" />
+				<input type="" id="lien_site" name="lien_site" value="<?php echo($donnees['lien_site']) ?>" placeholder="" required="required" />
 			</label>
 			</br>
 

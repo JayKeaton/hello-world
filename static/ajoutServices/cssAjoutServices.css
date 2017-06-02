@@ -1,0 +1,37 @@
+body {
+  font-family : Verdana;
+  font-size : 90%;
+}
+form {
+  background-color : #FAFAFA;
+  padding:10px;
+  width:280px;
+}
+fieldset {
+background-color: #F5F5F5;
+border : 2px solid RED;
+padding:0 20px 20px;
+border-radius:16px;
+
+}
+legend {
+  color : #DF3F3F;
+  font-weight: bold;
+}
+
+#intro {
+  font-family: Verdana;
+  font-size: 70%;
+}
+
+#gauche {
+  display : flex;
+  flex-direction: column;
+  justify content: flex-start;
+}
+
+#droite {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}

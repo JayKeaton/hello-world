@@ -27,10 +27,18 @@
                     </a>
                 </li>
                 <li>
-                    <a href="https://www.google.fr/advanced_search">
+                    <a href="<?php echo(SOUS_DOMAINE."?page=recherche") ?>">
                         <div>
                             <img src="static/headerFooter/loupe.png" width=21/>
                             <p>Recherche</p>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="<?php echo(SOUS_DOMAINE."?page=servicesAffiche") ?>">
+                        <div>
+                            <img src="static/headerFooter/map.png" width=21/>
+                            <p>Carte</p>
                         </div>
                     </a>
                 </li>
@@ -63,10 +71,18 @@
                     </a>
                 </li>
                 <li>
-                    <a href="https://www.google.fr/advanced_search">
+                    <a href="<?php echo(SOUS_DOMAINE."?page=recherche") ?>">
                         <div>
                             <img src="static/headerFooter/loupe.png" width=21/>
                             <p>Recherche</p>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="<?php echo(SOUS_DOMAINE."?page=servicesAffiche") ?>">
+                        <div>
+                            <img src="static/headerFooter/map.png" width=21/>
+                            <p>Carte</p>
                         </div>
                     </a>
                 </li>

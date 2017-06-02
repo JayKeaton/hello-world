@@ -141,7 +141,7 @@ catch(PDOException $se)
 
   function estInscrit($idService){
     global $bdd;
-    $req=$bdd->prepare("SELECT * FROM inscrits JOIN seances ON inscrits.idSeance=seances.idSeance WHERE seances.idService=:idService AND inscrits.idUtilisateur=:idUtilisateur");
+    $req=$bdd->prepare("SELECT seances.idSeance FROM inscrits JOIN seances ON inscrits.idSeance=seances.idSeance WHERE seances.idService=:idService AND inscrits.idUtilisateur=:idUtilisateur");
     $req->bindParam("idService",$idService);
     $req->bindParam("idUtilisateur",$_SESSION["idUtilisateur"]);
     $req->execute();
@@ -170,6 +170,14 @@ catch(PDOException $se)
     $req=$bdd->prepare("UPDATE `services` SET validation=:validation WHERE idService=:idService");
     $req->bindParam("idService",$idService);
     $req->bindParam("validation",$validation);
+    $req->execute();
+  }
+
+  function censureCommentaire($idCommentaire,$censure){
+    global $bdd;
+    $req=$bdd->prepare("UPDATE `commentaires` SET censure=:censure WHERE idCommentaire=:idCommentaire ");
+    $req->bindParam("censure",$censure);
+    $req->bindParam("idCommentaire",$idCommentaire);
     $req->execute();
   }
  ?>

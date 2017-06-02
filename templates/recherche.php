@@ -27,23 +27,37 @@
     <fieldset>
         <legend>Résultats de la recherche :</legend>
 
+        <article>
+            <img src="media/isep.jpg" width="200" height="200"/>
+            <div>
+                <h2><em>L'ISEP</em></h2>
+                <p>
+                    Ceci est la description du service proposé : Le plus beau, le plus magnifique et le plus
+                    efficace service qu'il nous ai été donné de rencontrer :
+                    L'Isep. Certain dirons que ce n'est pas vraiment un service, d'autres que ce n'est pas vraiment
+                    du bonheur. D'autres enfin diront qu'elle n'as pas sa place sur ce site.
+                    Sornettes. Le monde se doit de la connaitre !
+                </p>
+            </div>
+        </article>
+
         <?php
-        for ($i = 0; $i < 10; $i++) {
-            ?>
-            <article>
-                <img src="media/isep.jpg" width="200" height="200"/>
-                <div>
-                    <h2><em>L'ISEP</em></h2>
-                    <p>
-                        Ceci est la description du service proposé : Le plus beau, le plus magnifique et le plus
-                        efficace service qu'il nous ai été donné de rencontrer :
-                        L'Isep. Certain dirons que ce n'est pas vraiment un service, d'autres que ce n'est pas vraiment
-                        du bonheur. D'autres enfin diront qu'elle n'as pas sa place sur ce site.
-                        Sornettes. Le monde se doit de la connaitre !
-                    </p>
-                </div>
-            </article>
-            <?php
+        if (isset($listeServices)){
+            foreach ($listeServices as $service) {
+                if($service['langue'] == $data['langue']){
+                    ?>
+                    <article>
+                        <img src="media/isep.jpg" width="200" height="200"/>
+                        <div>
+                            <h2><em><?php echo($service['nom']); ?></em></h2>
+                            <p>
+                                <?php echo($service['texte']); ?>
+                            </p>
+                        </div>
+                    </article>
+                    <?php
+                }
+            }
         }
         ?>
 

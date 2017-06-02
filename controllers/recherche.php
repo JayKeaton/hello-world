@@ -18,6 +18,8 @@ function getXmlCoordsFromAdress($address)
     return $coords;
 }
 
+
+
 /*
 $coords=getXmlCoordsFromAdress("4 rue Joseph Kosma, Acheres");
 $coords2=getXmlCoordsFromAdress("Paris");
@@ -25,17 +27,21 @@ echo $coords['status']." ".$coords['lat']." ".$coords['lon']."</br>";
 echo $coords2['status']." ".$coords2['lat']." ".$coords2['lon'];
 */
 
-$liste = array(1,5,6,7,4,3,2,9,8);
-$f = function($x, $y){return $x < $y;};
-
 //print_r(triListe($liste, $f));
 
+
+
 $form = new Formulaire("recherche");
-$listeCategories = array('' => "-----", 'soins' => "Soins", 'nourriture' => "Nourriture");
+$listeCategories = array('' => "-----", 'soin' => "Soins", 'nourriture' => "Nourriture", 'logement' => "Logement");
 $form->add('select', 'categorie')
     ->affecterValeurs($listeCategories)
     ->required(true);
-$listeLangues = array('all' => "Toutes les langues", 'fr' => "Francais", 'en' => "Anglais");
+$listeLangues = array('all' => "Toutes les langues", 'fr' => "Francais", 'en' => "Anglais", 'Jérémy' => "Jeremy");
+$liste = listeLangues();
+$listeLangues = array();
+foreach ($liste as $langue) {
+    $listeLangues[$langue['langue']] = $langue['langue'];
+}
 $form->add('select', 'langue')
     ->value('all')
     ->affecterValeurs($listeLangues)
@@ -44,7 +50,10 @@ $ages = array('' => "-----", 'jeune' => "Jeune", 'adulte' => "Adulte", 'senior' 
 $form->add('select', 'age')
     ->affecterValeurs($ages);
 
-$form->isValid();
+if($form->isValid()){
+    $data = $form->get_cleaned_values();
+    $listeServices = obtenirServiceParCategorie($data['categorie']);
+}
 
 
 include("templates/recherche.php");

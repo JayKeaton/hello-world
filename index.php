@@ -71,6 +71,10 @@ elseif ($page == "ajoutServices"){
     loginRequired($page);
     $path = "controllers/ajoutServices.php";
 }
+elseif ($page == "favoris"){
+    loginRequired($page);
+    $path = "controllers/favoris.php";
+}
 elseif ($page == "modifierServices"){
     loginRequired($page);
     $path = "controllers/modifierServices.php";
@@ -81,6 +85,7 @@ elseif ($page == "servicesAffiche"){
 elseif ($page == "logout"){
     $_SESSION = array();
     header("Location: ".SOUS_DOMAINE);
+    exit();
 }
 elseif ($page == "tests"){
     $path = "controllers/tests.php";

@@ -4,6 +4,7 @@ html{
 body{
   height: 100%;
   margin-top: 0;
+  font-family:Lucida Grande, Lucida Sans Unicode, Lucida Sans, DejaVu Sans, Verdana," sans-serif";
 }
 
 header{
@@ -17,7 +18,6 @@ header ul
   display:flex;
   justify-content: flex-start;
   align-items: center;
-  font-family: "Arial Black", serif;
   list-style-type: none;
   /*height:100%;*/
 }
