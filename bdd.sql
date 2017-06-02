@@ -33,7 +33,8 @@ CREATE TABLE services (
   lien_site VARCHAR(255),
   noteDeMAJ VARCHAR(255),
   censure BOOLEAN,
-  idUtilisateur INTEGER
+  idUtilisateur INTEGER,
+  adresseImage VARCHAR(255)
     REFERENCES utilisateurs(idUtilisateur) ON DELETE SET NULL
 );
 

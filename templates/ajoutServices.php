@@ -11,7 +11,7 @@
     <h4 id="titlebis">Chez Error404, nous prenons à coeur la sécurité de vos données, et les données que vous entrez ne peuvent être utilisées que par nous, afin de garantir une meilleure utilisation de nos services.</h4>
    	<article id="remplissage">
     
-    <form method="post" action="">
+    <form method="post" action="" enctype="multipart/form-data">
 
     <div>
 
@@ -101,17 +101,18 @@
 
     <div>
 
-        <input type="submit" value="Suivant" id="submit" />
+        
 
     </div>
         <h1>Image de service:</h1>
     <div>
-        <img src="<?php echo("media/imageService/".$data['imageService']); ?>" height="150" width="150" />
+        <!--<img src="<?php/* echo("media/imageService/".$_FILES['imageService']); */?>" height="150" width="150" />-->
         <input type="file" name="imageService" id="imageService"/>
     </div>
     <div>
         <input type="submit" name="ajouterImageService" value="Valider"/>
     </div>
+
 
 </form>
 
