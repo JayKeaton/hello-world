@@ -15,6 +15,11 @@ $lesInscrits=lesInscrits($idService);
 $notesSeances=notesSeances($idService);
 $estInscrit=estInscrit($idService);
 
+$admin=0;
+if(!empty($_SESSION["idAdministrateur"])){
+  $admin=1;
+}
+
 if (!empty($_POST["valider"])){
   $note=$_POST["note"];
   $texte=htmlspecialchars($_POST["text"]);
@@ -30,11 +35,11 @@ if (!empty($_POST["validerInscript"])){
   foreach($seances as $seance){
     $check1=0;
     $check2=0;
-    /*print_r('    ///checkS///');
+    print_r('    ///checkS///');
     print_r($check1);
     print_r($check2);
     print_r('     /////idSeance//');
-    print_r($seance["idSeance"]); */
+    print_r($seance["idSeance"]);
     if(empty($_POST["inscription"])){
       modifInscription(false,$idService,$seance["idSeance"],$_SESSION["idUtilisateur"]);
     }
