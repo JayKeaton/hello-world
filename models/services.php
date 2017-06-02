@@ -25,7 +25,7 @@
 
 
 	function ajouterService($bdd, $email, $adresse, $codePostal, $telephone, $lien_site, $categorie,$idUtilisateur, $nom){
-		$req = $bdd->prepare("insert into services (adresse, codePostal, categorie, telephone, email, lien_site, nom, idUtilisateur, dateAjout ) values(:adresse, :codePostal, :categorie, :telephone, :email, :lien_site,:nom, :idUtilisateur, :NOW() )");
+		$req = $bdd->prepare("insert into services (adresse, codePostal, categorie, telephone, email, lien_site, nom, idUtilisateur, dateAjout ) values(:adresse, :codePostal, :categorie, :telephone, :email, :lien_site,:nom, :idUtilisateur, NOW() )");
 		$result = $req->execute(array("adresse"=>$adresse, "codePostal"=>$adresse, "categorie"=>$categorie, "telephone"=>$telephone, "email"=>$email, "lien_site"=>$lien_site, "nom"=>$nom, "idUtilisateur"=>$idUtilisateur));
 		return $bdd->lastInsertId();
 	}
