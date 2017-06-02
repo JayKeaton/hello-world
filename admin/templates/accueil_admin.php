@@ -5,6 +5,33 @@
 			<link href="static/accueil_admin/acceuil_admin.css" rel="stylesheet" type="text/css">
 		</head>
 		
+		<div id="placement">
+		
+		<div id="actualite">
+		<?php
+		global $bdd;
+		$fileActu=$bdd ->prepare("SELECT nom,texte,validation FROM descriptions JOIN services ON descriptions.idService = services.idService ORDER By dateAjout");
+		$fileActu->execute();
+		$actuTrier=$fileActu-> fetchAll();
+		$valide2 = null;
+		for($i=0; $i<=10; $i++){
+				if($actuTrier[$i]['validation']=0){
+					$valide2 = '<a class="rouge"> non validé</a>';
+				}
+				else{
+					$valide2 = '<a class="vert"> validé</a>';
+				}
+     				$contenu2='<p class="actuData"> nom du service :'
+					.$actuTrier[$i]['nom'].
+    				'</br> description :'.$actuTrier[$i]['texte'].$valide2.
+    				'</br> <a href=" ">Voir l’annonce</a></p>' ;
+
+				echo $contenu2;
+     			}
+		
+			?>
+		</div>
+		
 		<div id="accueilAdmin">
 		
 		<p id="titre">
@@ -82,29 +109,8 @@ echo '</p>';
 }
 		?> 
 	</div>
+	</div>
 	
-	<div id="actualite">
-		<?php
-		global $bdd;
-		$fileActu=$bdd ->prepare("SELECT nom,texte,validation FROM descriptions JOIN services ON descriptions.idService = services.idService Group By dateAjout");
-		$fileActu->execute();
-		$actuTrier=$fileActu-> fetchAll();
-		$valide2 = null;
-		for($i=0; $i<=10; $i++){
-				if($actuTrier[$i]['validation']=0){
-					$valide2 = '<a class="rouge"> non validé</a>';
-				}
-				else{
-					$valide2 = '<a class="vert"> validé</a>';
-				}
-     				$contenu2='<p class="servicesData"> nom du service :'
-					.$actuTrier[$i]['nom'].
-    				'</br> description :'.$actuTrier[$i]['texte'].$valide2.
-    				'</br> <a href=" ">Voir l’annonce</a></p>' ;
-
-				echo $contenu2;
-     			}
-		
-		?>
+	
 	</div>
 </html>
