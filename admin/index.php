@@ -22,7 +22,7 @@ if (empty($_SESSION['idAdministrateur'])){
     include("controllers/login.php");
 }
 else{
-	$path = "controllers/accueil.php";
+	$path = "controllers/accueil_admin.php";
     if (!empty($_GET['page'])){
     	$page = $_GET['page'];
     	if ($page == "logout"){
