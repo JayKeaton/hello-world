@@ -30,13 +30,11 @@ else{
     		header("Location: ".SOUS_DOMAINE);
     		exit();
     	}
-    	if ($page == "logout"){
-    		$_SESSION = array();
-    		header("Location: ".SOUS_DOMAINE);
-    		exit();
-    	}
     	elseif ($page == "accueil_admin"){
     		$path = "controllers/accueil_admin.php";
+		}
+		elseif ($page == "ajoutAdmin"){
+    		$path = "controllers/ajoutAdmin.php";
 		}
     }
     include("gabarit.php");
