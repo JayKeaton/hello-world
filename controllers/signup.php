@@ -51,7 +51,7 @@ $listeAnnee = range(1900, 2000+date("y"));
 
             $geolocalisation = !empty($_POST['geolocalisation']);
 
-            $idUtilisateur = ajouterUtilisateur($email, $pseudo, $mdp, $prenom, $nom, $telephone, $sexe, $dateNaissance, $codePostal, $adresse, $geolocalisation);
+            $idUtilisateur = ajouterUtilisateur($email, $pseudo, $mdp, $prenom, $nom, $telephone, $sexe, $dateNaissance, $codePostal, $adresse, $geolocalisation, "utilisateur");
 
             include("controllers/mailto.php");
             $randint = rand(1, 10000);

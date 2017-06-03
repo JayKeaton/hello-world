@@ -49,13 +49,21 @@ elseif ($page == "recherche"){
     $path = "controllers/recherche.php";
 }
 elseif ($page == "signup"){
-    $path = "controllers/signup.php";
+	if(!empty($_SESSION)){
+		$path = "controllers/profil.php";
+	}
+	else
+    	$path = "controllers/signup.php";
 }
 elseif ($page == "activation"){
 	$path = "controllers/activation.php";
 }
 elseif ($page == "signin"){
-    $path = "controllers/signin.php";
+	if(!empty($_SESSION)){
+		$path = "controllers/profil.php";
+	}
+	else
+    	$path = "controllers/signin.php";
 }
 elseif($page == "profil"){
     loginRequired($page);

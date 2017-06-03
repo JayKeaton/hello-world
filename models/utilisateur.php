@@ -7,9 +7,9 @@
         $req->execute();
 	}
 	
-	function ajouterUtilisateur($email, $pseudo, $mdp, $prenom, $nom, $telephone, $sexe, $dateNaissance, $codePostal, $adresse, $geolocalisation){
+	function ajouterUtilisateur($email, $pseudo, $mdp, $prenom, $nom, $telephone, $sexe, $dateNaissance, $codePostal, $adresse, $geolocalisation, $droits){
 	    global $bdd;
-		$req = $bdd->prepare("insert into utilisateurs(email, pseudo, mdp, avatar, prenom, nom, telephone, sexe, dateNaissance, codePostal, adresse, geolocalisation) values(:email, :pseudo, :mdp, 'image.png',:prenom, :nom, :telephone, :sexe, :dateNaissance, :codePostal, :adresse, true)");
+		$req = $bdd->prepare("insert into utilisateurs(email, pseudo, mdp, avatar, prenom, nom, telephone, sexe, dateNaissance, codePostal, adresse, geolocalisation, droits) values(:email, :pseudo, :mdp, 'image.png',:prenom, :nom, :telephone, :sexe, :dateNaissance, :codePostal, :adresse, true, :droits)");
 		$req->bindParam('email', $email);
 		$req->bindParam('pseudo', $pseudo);
 		$req->bindParam('mdp', $mdp);
@@ -20,6 +20,7 @@
 		$req->bindParam('dateNaissance', $dateNaissance);
 		$req->bindParam('codePostal', $codePostal);
 		$req->bindParam('adresse', $adresse);
+		$req->bindParam('droits', $droits);
 		/*echo($email );
 		echo("</br>");
 		echo(	 $pseudo);
@@ -219,6 +220,15 @@
         $req->execute();
 		
 		
+	}
+
+	function recupMail($bdd, $idUtilisateur){
+		
+		$req = $bdd->prepare("SELECT email FROM utilisateurs WHERE idUtilisateur = :idUtilisateur ");
+        $req->execute(array(':idUtilisateur'=> $idUtilisateur));
+		$donnee = $req->fetch();
+        return $donnee['email'];
+			
 	}
 
 
