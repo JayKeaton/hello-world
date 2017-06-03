@@ -49,7 +49,7 @@ elseif ($page == "recherche"){
     $path = "controllers/recherche.php";
 }
 elseif ($page == "signup"){
-	if(!empty($_SESSION)){
+	if(!empty($_SESSION["idUtilisateur"])){
 		$path = "controllers/profil.php";
 	}
 	else
@@ -59,7 +59,7 @@ elseif ($page == "activation"){
 	$path = "controllers/activation.php";
 }
 elseif ($page == "signin"){
-	if(!empty($_SESSION)){
+	if(!empty($_SESSION["idUtilisateur"])){
 		$path = "controllers/profil.php";
 	}
 	else
