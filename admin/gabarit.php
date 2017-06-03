@@ -23,6 +23,14 @@
                     </div>
                 </a>
             </li>
+            <li>
+                <a href="<?php echo(SOUS_DOMAINE."?page=ajoutAdmin") ?>">
+                    <div>
+                        <img src="static/headerFooter/ajoutAdmin.ico" width=21/>
+                        <p>Ajouter un admin</p>
+                    </div>
+                </a>
+            </li>
         </ul>
     </header>
 
