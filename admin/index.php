@@ -36,6 +36,9 @@ else{
 		elseif ($page == "ajoutAdmin"){
     		$path = "controllers/ajoutAdmin.php";
 		}
+		elseif ($page == "profil"){
+		    $path = "../controllers/profil.php";
+        }
     }
     include("gabarit.php");
 }

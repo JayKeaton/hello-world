@@ -7,6 +7,8 @@ body{
   font-family:Lucida Grande, Lucida Sans Unicode, Lucida Sans, DejaVu Sans, Verdana," sans-serif";
 }
 
+
+
 header{
   padding-top: 20px;
 }
@@ -134,5 +136,7 @@ footer ul li{
 #main{
   margin-bottom: 23px;
 }
-
+.error{
+  color: red;
+}
 

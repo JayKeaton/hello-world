@@ -1,30 +1,39 @@
 <?php
 
-if (!empty($_POST['identifiant'])){
-    $identifiant = $_POST['identifiant'];
-    $mdp = sha1($_POST['mdp']);
-    list($idUtilisateur,$mdpBdd,$verification,$droits) = connexionUtilisateur($identifiant);
+
+$form_login = new Formulaire('login');
+$form_login->add('email', 'email')
+    ->required(true);
+$form_login->add('password', 'mdp')
+    ->required(true);
+
+
+if ($form_login->isValid()){
+    $data = $form_login->get_cleaned_values();
+    $email = $data['email'];
+    $mdp = sha1($data['mdp']);
+    list($idUtilisateur,$mdpBdd,$verification,$droits) = connexionUtilisateur($email);
     if ($mdpBdd == false){
-        $erreur_utilisateur = "Utilisateur inconnu.";
-        include("templates/signin.php");
+        $form_login->addError('email', "Utilisateur inconnu.");
     }
     elseif ($mdp !== $mdpBdd){
-        $erreur_mdp = "Mot de passe incorrect.";
-        include("templates/signin.php");
+        $form_login->addError('mdp', "Mot de passe incorrect.");
     }
     elseif ($verification == false){
         $erreur_verification = "Adresse mail non vérifiée.";
-        include("templates/signin.php");
     }
     else {
         $_SESSION['idUtilisateur'] = $idUtilisateur;
-        $_SESSION['droits'] = "utilisateur";
-        if (empty($_GET['nextPage']))
-            header("Location: ".SOUS_DOMAINE);
-        else
-            header("Location: ".SOUS_DOMAINE."?page=".$_GET['nextPage']);
+        $_SESSION['droits'] = $droits;
+        if (empty($_GET['nextPage'])) {
+            header("Location: " . SOUS_DOMAINE);
+            exit();
+        }
+        else {
+            header("Location: " . SOUS_DOMAINE . "?page=" . $_GET['nextPage']);
+            exit();
+        }
     }
 }
-else{
-    include("templates/signin.php");
-}
+
+include("templates/signin.php");
