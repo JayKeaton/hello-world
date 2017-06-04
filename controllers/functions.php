@@ -88,6 +88,11 @@ class Formulaire{
             return $input;
         }
 
+        public function addError($name, $erreur){
+            $this->listeInput[$name]->addError($erreur);
+            return $this;
+        }
+
         public function get($name){
             return $this->listeInput[$name];
         }
@@ -98,7 +103,7 @@ class Formulaire{
 
         public function submit($value = "submit"){
             $name = $this->form_Name;
-            echo("<input type=submit name='".$name."' id='".$name."' value='".$value."' />");
+            echo("<input type='submit' name='".$name."' id='".$name."' value='".$value."' >");
         }
 
         public function isValid(){
@@ -130,6 +135,7 @@ abstract class Input{
     protected $isRequired;
     protected $value;
     protected $id;
+    protected $maxLength;
 
 
     public function __construct($name) {
@@ -138,10 +144,16 @@ abstract class Input{
         $this->erreur = "";
         $this->isRequired = false;
         $this->value = "";
+        $this->maxLength = 500;
     }
 
     public function required($isRequired){
         $this->isRequired = $isRequired;
+        return $this;
+    }
+
+    public function maxLength($maxLength){
+        $this->maxLength = $maxLength;
         return $this;
     }
 
@@ -155,12 +167,18 @@ abstract class Input{
         return $this;
     }
 
+    public function addError($erreur){
+        $this->erreur .= $erreur;
+    }
+
     public function isValid(){
-        if ($this->isRequired && empty($_POST[$this->name])){
+        if ($this->isRequired && empty($_POST[$this->name])) {
             $this->erreur .= "Veuillez remplir ce champ.";
-            return false;
         }
-        return true;
+        if (strlen($_POST[$this->name]) > $this->maxLength){
+            $this->erreur .= "Ce champ est limité à ".$this->maxLength." caractères.";
+        }
+        return ($this->erreur == "");
     }
 
     public function get_cleaned_value(){
@@ -186,7 +204,7 @@ class Input_text extends Input{
         $string = "";
         $string .= "<input type='text' name='".$name."' id='".$id."' value='".$value."'/>";
         if ($this->erreur != "")
-            $string .= "</br><p>".$this->erreur."</p>";
+            $string .= "</br><p class='error'>".$this->erreur."</p>";
         return $string;
     }
 }
@@ -209,7 +227,7 @@ class Input_password extends Input{
         $string = "";
         $string .= "<input type='password' name='".$name."' id='".$id."' value='".$value."'/>";
         if ($this->erreur != "")
-            $string .= "</br><p>".$this->erreur."</p>";
+            $string .= "</br><p class='error'>".$this->erreur."</p>";
         return $string;
     }
 }
@@ -247,9 +265,52 @@ class Input_select extends Input{
         }
         $string .= "</select>";
         if ($this->erreur != "")
-            $string .= "<p>".$this->erreur."</p>";
+            $string .= "<p class='error'>".$this->erreur."</p>";
         return $string;
     }
+}
+/**************************************************************************************/
+class Input_email extends Input{
 
+    public function __construct($name){
+        parent::__construct($name);
+    }
 
+    public function isValid(){
+        return parent::isValid();
+    }
+
+    public function __toString(){
+        $name = $this->name;
+        $id = $this->id;
+        $value = $this->value;
+        $string = "";
+        $string .= "<input type='email' name='".$name."' id='".$id."' value='".$value."'/>";
+        if ($this->erreur != "")
+            $string .= "</br><p class='error'>".$this->erreur."</p>";
+        return $string;
+    }
+}
+
+/**************************************************************************************/
+class Input_tel extends Input{
+
+    public function __construct($name){
+        parent::__construct($name);
+    }
+
+    public function isValid(){
+        return parent::isValid();
+    }
+
+    public function __toString(){
+        $name = $this->name;
+        $id = $this->id;
+        $value = $this->value;
+        $string = "";
+        $string .= "<input type='tel' name='".$name."' id='".$id."' value='".$value."'/>";
+        if ($this->erreur != "")
+            $string .= "</br><p class='error'>".$this->erreur."</p>";
+        return $string;
+    }
 }

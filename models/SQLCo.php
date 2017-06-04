@@ -15,6 +15,7 @@
 	$bddname="id1784963_error404";
     */
 
+
 	// On se connecte à MySQL
 	$bdd = new PDO("mysql:host=".$hostname.";dbname=".$bddname.";charset=utf8",$username,$password);
 }
