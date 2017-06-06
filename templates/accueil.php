@@ -6,7 +6,7 @@
 	<div id="presentation">
 		<h2>Fonctionnalités:</h2>
 		<p>
-		-services classés par catégories: onglets où dormir, où manger, où se faire soigner, où trouver une aide juridique, des vêtements, des services administratifs dédiés, etc. <br/>
+		-Services classés par catégories: onglets où dormir, où manger, où se faire soigner, où trouver une aide juridique, des vêtements, des services administratifs dédiés, etc. <br/>
 		- services classés par proximité géographique<br/>
 		-Affichage des services en liste, ou par carte
 		-Langues: français,anglais, arabe, farsi + API traduction Google<br/>
@@ -22,15 +22,16 @@
     	<form action="" method="POST" id="form">
     		<div class="element">
     			Que recherchez-vous ?
-	    		<select <?php /*name="categorie" */?>id="categorie">
-	    			<option name="">choisir une catégorie</option>
-	    			<option name="soins">Soins</option>
-	    			<option name="nourriture">Nourriture</option>
-	    			<option name="logement">Logement</option>
-	    			<option name="aide_juridique">Aide juridique</option>
-	    			<option name="services_administratifs">Services administratifs</option>
-	    			<option name="vetements">Vêtements</option>
+	    		<select type="categorie" id="categorie" name="categorie" />	    			
+	    			<option name="" value=""<?php if($categorie=="") echo "selected"; ?>>Aucune catégorie sélectionée</option>
+	    			<option name="soins" value="soins"<?php if($categorie=="soins") echo "selected"; ?>>soins</option>
+	    			<option name="" value="nourriture"<?php if($categorie=="nourriture") echo "selected"; ?>>Nourriture</option>
+	    			<option name=""	value="logement"<?php if($categorie=="v1") echo "selected"; ?>>Logement</option>
+	    			<option name=""	value="Aide juridique"<?php if($categorie=="Aide juridique") echo "selected"; ?>>Aide juridique</option>
+	    			<option name=""	value="Services administratifs"<?php if($categorie=="Services administratifs") echo "selected"; ?>>Services administratifs</option>
+	    			<option name=""	value="Vêtements"<?php if($categorie=="Vêtements") echo "selected"; ?>>Vêtements</option>
 	    		</select>
+	    		<?//php echo $categorie ?>
 	    		<a href="https://www.google.fr/advanced_search"><input type="submit" value="Affiner mes critères de recherche"/></a>
     		</div>
     		<div class="element">
@@ -44,9 +45,9 @@
     		</div>
     	</form>
 		<div id="contenu">
-			<?php /*print_r($data)*/?>
+			<!--<?php print_r($data)?> DEBUGAGE-->
 			<?php for($i=0;$i<count($data);$i++){ ?>
-				<p><a href=<?php $data[$i]["lien_site"] ?> >
+				<p><a href=<?php echo $data[$i]["lien_site"] ?> >
 						<div id="article 2" class="service">
 							
 							<img src="static/accueil/msf_logo _fichiers/maison.jpeg" width=240 class="floatl" title="photo non contractuelle"/> </br>
@@ -95,7 +96,7 @@
 		<li><a href="https://plus.google.com/?hl=fr"><img src="static/accueil/msf_logo _fichiers/gplus_32x32.png" title="Google +"> </a></li>
 		
 		<li><a href="https://www.instagram.com/?hl=fr"> <img src="static/accueil/msf_logo _fichiers/instagram.png" title="Instagram"/></a></li>
-		<li><a href="https://www.snapchat.com/l/fr-fr/"> <img src="static/accueil/msf_logo _fichiers/snapchat-40x40.png" title="404SkillNotFound sur Snap! ;)"/></a></li>
+		<li><a href="https://www.snapchat.com/l/fr-fr/"> <img src="static/accueil/msf_logo _fichiers/snapchat-40x40.png" title="404SkillNotFound sur Snap! ;)" width=32 /></a></li>
 		<li><a href="https://www.tumblr.com/"> <img src="static/accueil/msf_logo _fichiers/tumblr.jpeg" title="Tumblr!"/></a></li>
 		<li><a href="https://fr.pinterest.com/"> <img src="static/accueil/msf_logo _fichiers/pinterest.png" title="Pinterest"/></a></li>
 		<li><a href="https://www.reddit.com/"> <img src="static/accueil/msf_logo _fichiers/reddit-up.png" title="Une suggestion concernant le développement de l'application? C'est par ici!"/></a></li>
