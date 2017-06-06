@@ -4,14 +4,14 @@ $listeJour = range(1,31);
 $listeMois = array(1 => 'Janvier', 2 => 'Février', 3 => 'Mars', 4 => 'Avril', 5 => 'Mai', 6 => 'Juin', 7 => 'Juillet', 8 => 'Août', 9 => 'Septembre', 10 => 'Octobre', 11 => 'Novembre', 12 => 'Décembre');
 $listeAnnee = range(1900, 2000+date("y"));
 
-$form_signup = new Formulaire('signup');
+/*$form_signup = new Formulaire('signup');
 $form_signup->addInput('email', 'email');
 $form_signup->addInput('pseudo', 'text');
 $form_signup->addInput('password', 'mdp');
 $form_signup->addInput('password', 'mdpv');
 $form_signup->addInput('text', 'prenom');
 $form_signup->addInput('text', 'nom');
-$form_signup->addInput('tel', 'telephone');
+$form_signup->addInput('tel', 'telephone');*/
 
 
 	if (!empty($_POST["submit"])){

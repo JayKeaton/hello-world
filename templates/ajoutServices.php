@@ -20,7 +20,7 @@
 
         <label>Nom
 
-        <input type="nom" id="nom" name="nom" value="<?php echo((empty($_POST['nom'])) ? "" : $_POST['nom']); ?>" required="required"/>
+        <input type="text" id="nom" name="nom" value="<?php echo((empty($_POST['nom'])) ? "" : $_POST['nom']); ?>" required="required"/>
         </label></br>
 
        
@@ -35,14 +35,14 @@
 
         </label>
 
-        <input type="phone" id="telephone" name="telephone" value="<?php echo((empty($_POST['telephone'])) ? "" : $_POST['telephone']); ?>" required="required" />
+        <input type="text" id="telephone" name="telephone" value="<?php echo((empty($_POST['telephone'])) ? "" : $_POST['telephone']); ?>" required="required" />
         </br>
         
         <label for="telephone">Lien site web: <span class="required">*</span>
 
         </label>
 
-        <input type="" id="lien_site" name="lien_site" value="<?php echo((empty($_POST['lien_site'])) ? "" : $_POST['lien_site']); ?>" required="required" />
+        <input type="text" id="lien_site" name="lien_site" value="<?php echo((empty($_POST['lien_site'])) ? "" : $_POST['lien_site']); ?>" required="required" />
         </fieldset>
     </div>
 
@@ -56,11 +56,12 @@
 
         </label>
 
-        <textarea id="adresse" name="adresse" value="<?php echo((empty($_POST['adresse'])) ? "" : $_POST['adresse']); ?>" placeholder="Entrez votre adresse ici"></textarea>
+        <textarea type="text" id="adresse" name="adresse" value="<?php echo((empty($_POST['adresse'])) ? "" : $_POST['adresse']); ?>" placeholder="Entrez votre adresse ici"></textarea>
         </br>
         <label>Code Postal:
-        <input type="number" id="codePostal" name="codePostal" value="<?php echo((empty($_POST['codePostal'])) ? "" : $_POST['coddePostal']); ?>" required="required" />
+        <input type="text" id="codePostal" name="codePostal" value="<?php echo((empty($_POST['codePostal'])) ? "" : $_POST['codePostal']); ?>" required="required" />
         </label>
+
         </fieldset>
     </div>
 
@@ -81,12 +82,7 @@
         <legend>Description</legend>
 
     <Label>Langue
-        <select id="langue" name="langue">
-            <option>Francais</option>
-            <option>Anglais</option>
-            <option>Arabe</option>
-            <option>Klingon</option>
-        </select>
+        <?php $form_service->echoInput("langue"); ?>
       </Label></br>
 
     
@@ -110,7 +106,7 @@
         <input type="file" name="imageService" id="imageService"/>
     </div>
     <div>
-        <input type="submit" name="ajouterImageService" value="Valider"/>
+        <?php $form_service->submit("Ajouter service"); ?>
     </div>
 
 
@@ -119,11 +115,11 @@
     
     </article>
     
-<div id="google_translate_element"></div><script type="text/javascript">
+<!--div id="google_translate_element"></div><script type="text/javascript">
 function googleTranslateElementInit() {
   new google.translate.TranslateElement({pageLanguage: 'fr', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, autoDisplay: false, multilanguagePage: true}, 'google_translate_element');
 }
-</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script-->
 
 </body>
 </html>

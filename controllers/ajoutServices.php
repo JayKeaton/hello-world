@@ -1,24 +1,39 @@
 <?php
 	
 
-     
-	if (!empty($_POST["email"])){
-			$email=$_POST["email"];
-			$adresse=$_POST["adresse"];
-			
-
-			$telephone=($_POST["telephone"]);
-			$lien_site=($_POST["lien_site"]);
+    $form_service = new Formulaire('login');
+	$form_service->add('email', 'email')
+    ->required(true);
+    
+    $form_service->add('text','telephone')
+    ->required(true);
+    $form_service->add('text','lien_site')
+    ->required(true);
+    
+    $form_service->add('text','nom')
+    ->required(true);
+    $liste=array("fr"=>"Francais","En"=>"Anglais","Ar"=>"Arabe","kl"=>"Klingon");
+    $form_service->add('select','langue')
+    ->affecterValeurs($liste)
+    ->required(true);
+    $form_service->add('text','codePostal')
+    ->required(true);
+   
+    
+    if ($form_service->isValid()){
+    		$data = $form_service->get_cleaned_values();
+    		$texte=($_POST["texte"]);
+			$adresse=($_POST["adresse"]);
 			$categorie=($_POST["categorie"]);
-			$nom=($_POST["nom"]);
-			$texte=($_POST["texte"]);
-			$langue=($_POST["langue"]);
-			$codePostal=($_POST["codePostal"]);
+
+			
+
+			
 			
 
 
-			$idService = ajouterService($bdd, $email, $adresse, $codePostal, $telephone, $lien_site, $categorie, $_SESSION['idUtilisateur'],$nom);
-			$id2 = ajouterDescriptionService($bdd, $texte, $langue, $idService);
+			$idService = ajouterService($bdd, $data['email'], $adresse, $data['codePostal'], $data['telephone'], $data['lien_site'], $categorie, $_SESSION['idUtilisateur'],$data['nom']);
+			$id2 = ajouterDescriptionService($bdd, $texte, $data['langue'], $idService);
 
 			require_once("models/image.php");
    			$result = traitementUploadImage('imageService', "media/imageService", $idService);
@@ -45,6 +60,8 @@
 		
 	else {
 		include("templates/ajoutServices.php");
+		echo("lol ca marche pas");
+
 	}
 
 ?>
