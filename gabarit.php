@@ -58,6 +58,15 @@
                         </div>
                     </a>
                 </li>
+                
+                 <li>
+                    <a href="<?php echo(SOUS_DOMAINE."?page=ajoutServices") ?>">
+                        <div>
+                            <img src="static/headerFooter/addServices.png" width=21/>
+                            <p>Contributeur</p>
+                        </div>
+                    </a>
+                </li>
                 <?php
             }
             else {
@@ -103,6 +112,14 @@
                     </a>
                 </li>
                 <li>
+                    <a href="<?php echo(SOUS_DOMAINE."?page=ajoutServices") ?>">
+                        <div>
+                            <img src="static/headerFooter/addServices.png" width=21/>
+                            <p>Contributeur</p>
+                        </div>
+                    </a>
+                </li>
+                <li>
                     <a href="https://fr.wikipedia.org/wiki/Param%C3%A8tre">
                         <div>
                             <img src="static/headerFooter/engrenages_1.png" width=21/>
@@ -118,6 +135,7 @@
                         </div>
                     </a>
                 </li>
+                
                 <?php
             }
             ?>

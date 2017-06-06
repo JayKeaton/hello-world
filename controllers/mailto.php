@@ -85,6 +85,33 @@ function envoyerMail($email, $hash, $nom, $prenom, $idu, $type){
 		$objet="Activation Admin";
 	}
 	
+	elseif($type == "activationContributeur"){
+		
+		$message = "Bonjour,
+		
+		Vous venez de faire une demande pour devenir contributeur. Pour activer votre droit, veuillez cliquer sur le lien ci dessous ou le copier/coller dans votre navigateur internet :
+	 
+		".$root."?page=activationService&cle=".urlencode($hash)."&log=".urlencode($idu)."
+	 
+	 
+		---------------
+		Ceci est un mail automatique, Merci de ne pas y répondre.
+	
+		L'équipe ERROR 404";
+		
+		$messageHTML="<html><head></head><body><p>Bonjour,</p><p>Vous venez de faire une demande pour devenir contributeur. Pour activer votre droit, veuillez cliquer sur le lien ci dessous ou le copier/coller dans votre navigateur internet :</p>
+	 
+		".$root."?page=activationService&cle=".urlencode($hash)."&log=".urlencode($idu)."
+	 
+	 
+		<p>---------------</p>
+		<p>Ceci est un mail automatique, Merci de ne pas y répondre.</p>
+	
+		<p>L'équipe ERROR 404</p></body></html>";
+		
+		$objet="Activation Contributeur";
+	}
+	
 	
 	$root = (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . '/';
 	$mail = $email; // Déclaration de l'adresse de destination.
