@@ -34,6 +34,7 @@ CREATE TABLE services (
   noteDeMAJ VARCHAR(255),
   censure BOOLEAN,
   adresseImage VARCHAR(255),
+  note FLOAT check(note >= 0 AND note <= 5),
   idUtilisateur INTEGER
     REFERENCES utilisateurs(idUtilisateur) ON DELETE SET NULL
 );
@@ -122,6 +123,8 @@ CREATE TABLE inscrits (
 INSERT INTO `services`(`nom`,`dateAjout`,`validation`, `adresse`, `categorie`, `telephone`, `email`, `lien_site`,`noteDeMAJ`) VALUES ("SoinPourTous","2014-04-15-15-30-52",0,"5 rue de Rivoli Paris","soin","0625523251","0001@0001","http://www.dofus.com/fr", "testtestestestestestestestestestestestestestestestest");
 INSERT INTO `services`(`nom`,`dateAjout`,`validation`,`adresse`, `categorie`, `telephone`, `email`, `lien_site`,`noteDeMAJ`) VALUES ("NourriturePourTous","2014-05-15-15-30-52",0,"21 Rue Vieille du Temple Paris","logement","0658921542","0002@0002","http://euw.leagueoflegends.com/fr",'jqzofjoqjfoiqjfoisjgoijojreoijeijsoigjsgoisjgoijseoigjs');
 INSERT INTO `utilisateurs`( `pseudo`, `email`, `mdp`, `avatar`, `nom`, `prenom`, `dateNaissance`, `verification`, `adresse`, `droits`, `telephone`) VALUES ("test","test@test",sha1("test"),"avatar3.jpg","testN","testP","1992-06-12",1,"test","contributeur","0645884521");
+INSERT INTO `utilisateurs`( `pseudo`, `email`, `mdp`, `avatar`, `nom`, `prenom`, `dateNaissance`, `verification`, `adresse`, `droits`, `telephone`) VALUES ("essai","essai@essai",sha1("essai"),"avatar1.jpg","essaiN","essaiP","1999-06-12",2,"essai","utilisateur","0600000000");
+INSERT INTO `utilisateurs`( `pseudo`, `email`, `mdp`, `avatar`, `nom`, `prenom`, `dateNaissance`, `verification`, `adresse`, `droits`, `telephone`) VALUES ("t","t@t",sha1("t"),"avatar2.jpg","tN","tP","1998-06-12",3,"t","contributeur","0666666666");
 INSERT INTO `descriptions`(`texte`, `langue`,`idService`) VALUES ("Nous serons heureux de vous soigner","fr",1);
 INSERT INTO `descriptions`(`texte`, `langue`,`idService`) VALUES ("Nous vous accueillerons avec plaisir","fr",2);
 INSERT INTO `categories`(`code`, `langue`, `traduction`) VALUES ("test","Français","testTest");
@@ -137,5 +140,3 @@ INSERT INTO categories(code, langue, traduction) VALUES('logement', 'fr', 'Logem
 INSERT INTO categories(code, langue, traduction) VALUES('logement', 'en', 'Housing');
 INSERT INTO categories(code, langue, traduction) VALUES('restauration', 'fr', 'Restauration');
 INSERT INTO categories(code, langue, traduction) VALUES('restauration', 'en', 'Food');
-
-

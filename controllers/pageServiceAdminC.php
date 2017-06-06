@@ -23,7 +23,8 @@ if(!empty($_SESSION["idAdministrateur"])){
 if (!empty($_POST["valider"])){
   $note=$_POST["note"];
   $texte=htmlspecialchars($_POST["text"]);
-  ajoutCommentaire($note,$texte,$_SESSION["idUtilisateur"],$idService);  /*$_POST["idSeance"]*/
+  ajoutCommentaire($note[0],$texte,$_SESSION["idUtilisateur"],$idService);  /*$_POST["idSeance"]*/
+  ajoutNote($idService,noteService($idService)["note"]);
   header("Location: ");
   exit();
 }

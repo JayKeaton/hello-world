@@ -27,7 +27,7 @@ catch(PDOException $se)
 
   function noteService($idService){
     global $bdd;
-    $req=$bdd->prepare("SELECT ROUND(AVG(note),2) FROM commentaires WHERE idService=:idService");
+    $req=$bdd->prepare("SELECT ROUND(AVG(note),2) as note FROM commentaires WHERE idService=:idService");
     $req->bindParam("idService",$idService);
     $req->execute();
     $note=$req->fetch();
@@ -178,6 +178,14 @@ catch(PDOException $se)
     $req=$bdd->prepare("UPDATE `commentaires` SET censure=:censure WHERE idCommentaire=:idCommentaire ");
     $req->bindParam("censure",$censure);
     $req->bindParam("idCommentaire",$idCommentaire);
+    $req->execute();
+  }
+
+  function ajoutNote($idService,$note){
+    global $bdd;
+    $req=$bdd->prepare("UPDATE `services` SET note=:note WHERE idService=:idService");
+    $req->bindParam("note",$note);
+    $req->bindParam("idService",$idService);
     $req->execute();
   }
  ?>

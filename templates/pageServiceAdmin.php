@@ -105,7 +105,7 @@
 
                     <aside id="Avatar">
                       <?php echo date("d/m/Y ", strtotime($commentaires[$index]["date"])); ?> </br>
-                      <img src=<?php echo "Média/Avatars/".$profil[$index]["avatar"]?> width="75" height="75"> <?php /* echo <img src="???"+$commentaires[?] width="50" height="50"> */ ?>
+                      <img src="<?php echo "Média/Avatars/".$profil[$index]["avatar"]?>" width="75" height="75"/> <?php /* echo <img src="???"+$commentaires[?] width="50" height="50"> */ ?>
                       </br> <div id="center"> <?php echo $profil[$index]["pseudo"] ?> </div> <!-- Pseudo de l'utilisateur !-->
                     </aside>
 
