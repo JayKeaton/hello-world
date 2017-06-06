@@ -2,18 +2,19 @@
 
 	$bdd = null;
 	try {
-
-
-	/*
+		
+		
+	
     $hostname="localhost";
 	$username="root";
 	$password="";
 	$bddname="error404";
-    */
+    /*
 	$hostname="localhost";
 	$username="id1784963_error404msf";
 	$password="IsepRPIC75";
 	$bddname="id1784963_error404";
+	*/
     
 
 
