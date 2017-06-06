@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
+<link rel="stylesheet" href="static/ajoutServices/cssAjoutServices.css"/>
 <title>Ajout Services</title>
 </head>
 
@@ -10,11 +11,17 @@
     <h4 id="titlebis">Chez Error404, nous prenons à coeur la sécurité de vos données, et les données que vous entrez ne peuvent être utilisées que par nous, afin de garantir une meilleure utilisation de nos services.</h4>
    	<article id="remplissage">
     
-    <form method="post" action="">
+    <form method="post" action="" enctype="multipart/form-data">
 
     <div>
 
-        <h4>Contact</h4> 
+        <fieldset>
+        <legend>Contact</legend>
+
+        <label>Nom
+
+        <input type="nom" id="nom" name="nom" value="<?php echo((empty($_POST['nom'])) ? "" : $_POST['nom']); ?>" required="required"/>
+        </label></br>
 
        
 
@@ -24,31 +31,37 @@
 
         <input type="email" id="email" name="email" value="<?php echo((empty($_POST['email'])) ? "" : $_POST['email']); ?>" placeholder="example@email.fr" required="required" />
         
-        <label for="phone">Numéro de téléphone: <span class="required">*</span>
+        <label for="telephone">Numéro de téléphone: <span class="required">*</span>
 
         </label>
 
-        <input type="phone" id="phone" name="phone" value="<?php echo((empty($_POST['phone'])) ? "" : $_POST['phone']); ?>" required="required" />
+        <input type="phone" id="telephone" name="telephone" value="<?php echo((empty($_POST['telephone'])) ? "" : $_POST['telephone']); ?>" required="required" />
+        </br>
         
-        <label for="phone">Lien site web: <span class="required">*</span>
+        <label for="telephone">Lien site web: <span class="required">*</span>
 
         </label>
 
-        <input type="" id="website" name="website" value="<?php echo((empty($_POST['website'])) ? "" : $_POST['website']); ?>" required="required" />
-
+        <input type="" id="lien_site" name="lien_site" value="<?php echo((empty($_POST['lien_site'])) ? "" : $_POST['lien_site']); ?>" required="required" />
+        </fieldset>
     </div>
 
 
     <div>
 
-        <h4>Adresse</h4> 
+        <fieldset>
+        <legend>Votre adresse</legend>
 
         <label for="message">Votre adresse:
 
         </label>
 
         <textarea id="adresse" name="adresse" value="<?php echo((empty($_POST['adresse'])) ? "" : $_POST['adresse']); ?>" placeholder="Entrez votre adresse ici"></textarea>
-
+        </br>
+        <label>Code Postal:
+        <input type="number" id="codePostal" name="codePostal" value="<?php echo((empty($_POST['codePostal'])) ? "" : $_POST['coddePostal']); ?>" required="required" />
+        </label>
+        </fieldset>
     </div>
 
 
@@ -56,19 +69,18 @@
 
     <div>
 
-        <h4>Catégorie</h4>
-
-        <label for="message">Catégorie :
-
-        </label>
+        <fieldset>
+        <legend>Catégorie</legend>
 
         <textarea id="categorie" name="categorie" value="<?php echo((empty($_POST['categorie'])) ? "" : $_POST['categorie']); ?>" placeholder="Entrez votre categorie ici"></textarea>
-
+        </fieldset>
+        
     </div>
     <div>
-    <h4>Description</h4>
+    <fieldset>
+        <legend>Description</legend>
 
-    <Label>Selectionnez la langue de votre description
+    <Label>Langue
         <select id="langue" name="langue">
             <option>Francais</option>
             <option>Anglais</option>
@@ -77,24 +89,30 @@
         </select>
       </Label></br>
 
-    <label>Nom
-
-        <input type="nom" id="nom" name="nom" value="<?php echo((empty($_POST['nom'])) ? "" : $_POST['nom']); ?>" required="required"/>
-    </label></br>
+    
 
         
 
         
-        <label> Description
+        
         <textarea id="texte" name="texte" value="<?php echo((empty($_POST['categorie'])) ? "" : $_POST['categorie']); ?>" placeholder="Decrivez ici votre service"></textarea></label>
 
-
+        </fieldset>
 
     <div>
 
-        <input type="submit" value="Suivant" id="submit" />
+        
 
     </div>
+        <h1>Image de service:</h1>
+    <div>
+        <!--<img src="<?php/* echo("media/imageService/".$_FILES['imageService']); */?>" height="150" width="150" />-->
+        <input type="file" name="imageService" id="imageService"/>
+    </div>
+    <div>
+        <input type="submit" name="ajouterImageService" value="Valider"/>
+    </div>
+
 
 </form>
 

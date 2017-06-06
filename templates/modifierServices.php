@@ -7,16 +7,53 @@
 	</head>
 
 	<body>
-		<p>lol</p>
-		<?php
-		foreach ($data as $element => $value) {
-		?>
-		<option> mettre le nom</option>
+	<h1>Choisissez votre service a modifier</h1>
+
+	<form method="post" action="" >
+
+		<select name="idService" id="idService">
+			<?php
+				$donnees = null;
+				foreach ($data as $value) {
+
+			?>
+			<option value="<?php echo $value['idService'] ; ?>" <?php
+					if ($value['idService']==$idService){
+						$donnees = $value;
+						echo("selected='selected'");
+					} ?> 
+			/>
+			<?php 
+				echo($value['nom']);
+			?>
+			</option>
+
 		<?php
 		}
 		?>
+		</select>
 		
-		<input type="email" id="email" name="email" value="<?php echo($data[0]['mail']) ?>" placeholder="" required="required" /></br>
+		<input type="submit" value="choisissez votre service" id="submit" />
+	</form>
+
+	
+	</script>
+		<form method="post" action="">
+			<label>Nom:
+				<input type="text" id="nom" name="nom" value="<?php echo($donnees['nom']) ?>" placeholder="" required="required" />
+			</label>
+				</br>
+			<label>Email
+				<input type="email" id="email" name="email" value="<?php echo($donnees['email']) ?>" placeholder="" required="required" />
+			</label>
+				</br>
+			<label>Adresse:
+				<input type="adresse" id="adresse" name="adresse" value="<?php echo($donnees['adresse']) ?>" placeholder="" required="required" />
+			</label></br>
+		
+		
+		</br>
+
 		
 		
 
@@ -26,9 +63,47 @@
 
 
 		
-		<input type="categorie" id="categorie" name="categorie" value="<?php echo($data[0]['categorie']) ?>" placeholder="" required="required" /></br>
-		<input type="telephone" id="telephone" name="telephone" value="<?php echo($data[0]['telephone']) ?>" placeholder="" required="required" /></br>
-		<input type="lien_Site" id="lien_Site" name="lien_Site" value="<?php echo($data[0]['lien_site']) ?>" placeholder="" required="required" /></br>
+			<label>Categorie:
+				<input type="text" id="categorie" name="categorie" value="<?php echo($donnees['categorie']) ?>" placeholder="" required="required" />
+			</label>
+			</br>
+			<label>Telephone
+				<input type="phone" id="telephone" name="telephone" value="<?php echo($donnees['telephone']) ?>" placeholder="" required="required" />
+			</label>
+			</br>
+			<label>Lien de votre site Internet:
+				<input type="" id="lien_site" name="lien_site" value="<?php echo($donnees['lien_site']) ?>" placeholder="" required="required" />
+			</label>
+			</br>
+
+			<input type="submit" value="Modifier" id="submit" />
+
+
+		</form>
+
+		<form method="post" action="" >
+			<select name="descriptions" id="descriptions">
+				<?php 
+					foreach ($dataDescription as $valueDescription) {
+				?>
+			<option valueDescription="
+				<?php echo $valueDescription['idDescription'] ; ?>"
+				 <?php
+					if ($valueDescription['idDescription']==$idDescription){
+						$donnees = $valueDescription;
+						echo("selected='selected'");
+					} ?> 
+			/>
+			<?php 
+				echo($valueDescription['langue']);
+			?>
+			</option>
+
+		<?php
+		}
+		?>
+
+
 
 		
 

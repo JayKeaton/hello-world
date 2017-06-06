@@ -7,9 +7,9 @@
         $req->execute();
 	}
 	
-	function ajouterUtilisateur($email, $pseudo, $mdp, $prenom, $nom, $telephone, $sexe, $dateNaissance, $codePostal, $adresse, $geolocalisation){
+	function ajouterUtilisateur($email, $pseudo, $mdp, $prenom, $nom, $telephone, $sexe, $dateNaissance, $codePostal, $adresse, $geolocalisation, $droits){
 	    global $bdd;
-		$req = $bdd->prepare("insert into utilisateurs(email, pseudo, mdp, prenom, nom, telephone, sexe, dateNaissance, codePostal, adresse, geolocalisation) values(:email, :pseudo, :mdp, :prenom, :nom, :telephone, :sexe, :dateNaissance, :codePostal, :adresse, :geolocalisation)");
+		$req = $bdd->prepare("insert into utilisateurs(email, pseudo, mdp, avatar, prenom, nom, telephone, sexe, dateNaissance, codePostal, adresse, geolocalisation, droits) values(:email, :pseudo, :mdp, 'image.png',:prenom, :nom, :telephone, :sexe, :dateNaissance, :codePostal, :adresse, true, :droits)");
 		$req->bindParam('email', $email);
 		$req->bindParam('pseudo', $pseudo);
 		$req->bindParam('mdp', $mdp);
@@ -20,20 +20,42 @@
 		$req->bindParam('dateNaissance', $dateNaissance);
 		$req->bindParam('codePostal', $codePostal);
 		$req->bindParam('adresse', $adresse);
-		$req->bindParam('geolocalisation', $geolocalisation);
+		$req->bindParam('droits', $droits);
+		/*echo($email );
+		echo("</br>");
+		echo(	 $pseudo);
+		echo("</br>");
+		echo(	 $mdp);
+		echo("</br>");
+		echo(	 $prenom);
+		echo("</br>");
+		echo(	 $nom);
+		echo("</br>");
+		echo(	 $telephone);
+		echo("</br>");
+		echo(	 $sexe);
+		echo("</br>");
+		echo(	 $dateNaissance);
+		echo("</br>");
+		echo(	 $codePostal);
+		echo("</br>");
+		echo(	 $adresse);
+		echo("</br>");
+		echo(	 $geolocalisation);*/
 		$req->execute();
+		//echo($req);
 		return $bdd->lastInsertId();
 	}
 
-	function connexionUtilisateur($mail){
+	function connexionUtilisateur($email){
 	    global $bdd;
-	    $req = $bdd->prepare("SELECT idUtilisateur,mdp,verification FROM utilisateurs WHERE mail=:mail");
-	    $req->execute(array('mail' => $mail));
+	    $req = $bdd->prepare("SELECT idUtilisateur,mdp,verification,droits FROM utilisateurs WHERE email=:email");
+	    $req->execute(array('email' => $email));
 	    $data = $req->fetch();
 	    if ($data == false)
 	        return false;
 	    else{
-	        return array($data['idUtilisateur'],$data['mdp'],$data['verification']);
+	        return $data;
         }
     }
 
@@ -64,6 +86,7 @@
         $req->bindParam(':idu', $idu);
         $req->execute();
 	}
+
     function desactive($idUtilisateur){
 	    global $bdd;
         $req = $bdd->prepare("UPDATE utilisateurs SET verification = 0 WHERE idUtilisateur = :idUtilisateur ");
@@ -73,7 +96,7 @@
 	
 	
 	function verifMail($bdd, $email){
-		$req = $bdd->prepare("SELECT idUtilisateur FROM utilisateurs WHERE mail=:email");
+		$req = $bdd->prepare("SELECT idUtilisateur FROM utilisateurs WHERE email=:email");
 		$req->execute(array('email' => $email));
 		$donnee = $req->fetch();
         if(!empty($donnee['idUtilisateur'])){
@@ -86,19 +109,21 @@
 
     function infoUtilisateur($idUtilisateur){
 	    global $bdd;
-	    $req = $bdd->prepare("SELECT * FROM Utilisateurs WHERE idUtilisateur = :idUtilisateur");
+	    $req = $bdd->prepare("SELECT * FROM utilisateurs WHERE idUtilisateur = :idUtilisateur");
 	    $req->bindParam('idUtilisateur', $idUtilisateur);
 	    $req->execute();
 	    $data = $req->fetch();
 	    return $data;
     }
 
-    function modifierInfoUtilisateur($idUtilisateur, $prenom, $nom, $pseudo, $dateNaissance){
+    function modifierInfoUtilisateur($idUtilisateur, $prenom, $nom, $pseudo, $codePostal, $adresse, $dateNaissance){
         global $bdd;
-        $req = $bdd->prepare("UPDATE utilisateurs SET prenom=:prenom,nom=:nom,pseudo=:pseudo,dateNaissance=:dateNaissance WHERE idUtilisateur=:idUtilisateur");
+        $req = $bdd->prepare("UPDATE utilisateurs SET prenom=:prenom,nom=:nom,pseudo=:pseudo,codePostal=:codePostal,adresse=:adresse,dateNaissance=:dateNaissance WHERE idUtilisateur=:idUtilisateur");
         $req->bindParam('prenom', $prenom);
         $req->bindParam('nom', $nom);
         $req->bindParam('pseudo', $pseudo);
+        $req->bindParam('codePostal', $codePostal);
+        $req->bindParam('adresse', $adresse);
         $req->bindParam('dateNaissance', $dateNaissance);
         $req->bindParam('idUtilisateur', $idUtilisateur);
         $result = $req->execute();
@@ -107,7 +132,7 @@
 
     function changerMail($idUtilisateur, $mail){
         global $bdd;
-        $req = $bdd->prepare("UPDATE utilisateurs SET mail=:mail WHERE idUtilisateur=:idUtilisateur");
+        $req = $bdd->prepare("UPDATE utilisateurs SET email=:email WHERE idUtilisateur=:idUtilisateur");
         $req->bindParam('mail', $mail);
         $req->bindParam('idUtilisateur', $idUtilisateur);
         $result = $req->execute();
@@ -122,4 +147,89 @@
         $result = $req->execute();
         return $result;
     }
+
+    function modifierAvatar($idUtilisateur, $avatar){
+        global $bdd;
+        $req = $bdd->prepare("UPDATE utilisateurs SET avatar=:avatar WHERE idUtilisateur=:idUtilisateur");
+        $req->bindParam("avatar", $avatar);
+        $req->bindParam("idUtilisateur", $idUtilisateur);
+        $req->execute();
+    }
+
+	function modifierDroits($idUtilisateur, $droits){
+		
+		global $bdd;
+        $req = $bdd->prepare("UPDATE utilisateurs SET droits=:droits WHERE idUtilisateur=:idUtilisateur");
+        $req->bindParam("droits", $droits);
+        $req->bindParam("idUtilisateur", $idUtilisateur);
+        $req->execute();
+	}
+
+	function verifMailAdmin($bdd, $email){
+		
+		global $bdd;
+        $req = $bdd->prepare("SELECT email FROM emailsadmin WHERE email=:email");
+        $req->bindParam("email", $email);
+        $req->execute();
+	    $data = $req->fetch();
+	    if ($data == false){
+			
+			return false;
+		}
+	        
+	    else{
+			
+	        return true;
+		}
+	}
+
+
+	function recupCleAdmin($bdd, $email){
+		
+		global $bdd;
+        $req = $bdd->prepare("SELECT cle FROM emailsadmin WHERE email=:email");
+        $req->bindParam("email", $email);
+        $req->execute();
+	    $data = $req->fetch();
+	    return $data['cle'];
+		
+	}
+
+	function activeAdmin($bdd, $email){
+        $req = $bdd->prepare("UPDATE utilisateurs SET droits = 'admin' WHERE email = :email ");
+        $req->bindParam(':email', $email);
+        $req->execute();
+	}
+
+	function ajouterEmailsAdmin($bdd, $email, $hash){
+		
+		$cle=$hash;
+		
+		$req = $bdd->prepare("INSERT INTO emailsadmin(cle, email) values(:cle, :email)");
+        $req->bindParam(':email', $email);
+		$req->bindParam(':cle', $cle);
+        $req->execute();
+		
+	}
+
+	function enleverEmailsAdmin($bdd, $email){
+		
+		$req = $bdd->prepare("DELETE FROM emailsadmin WHERE email = :email");
+        $req->bindParam(':email', $email);
+
+        $req->execute();
+		
+		
+	}
+
+	function recupMail($bdd, $idUtilisateur){
+		
+		$req = $bdd->prepare("SELECT email FROM utilisateurs WHERE idUtilisateur = :idUtilisateur ");
+        $req->execute(array(':idUtilisateur'=> $idUtilisateur));
+		$donnee = $req->fetch();
+        return $donnee['email'];
+			
+	}
+
+
 	

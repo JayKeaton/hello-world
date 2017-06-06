@@ -24,23 +24,29 @@
 	}
 
 
-	function ajouterService($bdd, $email, $adresse, $phone, $website, $categorie,$idContributeur){
-		$req = $bdd->prepare("insert into services (localisation, categorie, telephone, mail, lien_site, idContributeur) values(:adresse, :categorie, :phone, :email, :website, :idContributeur)");
-		$result = $req->execute(array("adresse"=>$adresse, "categorie"=>$categorie, "phone"=>$phone, "email"=>$email, "website"=>$website, "idContributeur"=>$idContributeur));
+	function ajouterService($bdd, $email, $adresse, $codePostal, $telephone, $lien_site, $categorie,$idUtilisateur, $nom){
+		$req = $bdd->prepare("insert into services (adresse, codePostal, categorie, telephone, email, lien_site, nom, idUtilisateur, dateAjout ) values(:adresse, :codePostal, :categorie, :telephone, :email, :lien_site,:nom, :idUtilisateur, NOW() )");
+		$result = $req->execute(array("adresse"=>$adresse, "codePostal"=>$adresse, "categorie"=>$categorie, "telephone"=>$telephone, "email"=>$email, "lien_site"=>$lien_site, "nom"=>$nom, "idUtilisateur"=>$idUtilisateur));
 		return $bdd->lastInsertId();
 	}
 
+	function ajouterAdresseImage($bdd,$adresseImage,$idService){
+		$req = $bdd->prepare("UPDATE services SET adresseImage=:adresseImage WHERE idService=:idService");
+		$result=$req->execute(array("adresseImage"=>$adresseImage, "idService"=>$idService ));
 
-	function ajouterDescriptionService($bdd, $nom, $texte, $langue, $ids){
-		$req = $bdd->prepare("insert into descriptions (nom, texte, langue, idService) values(:nom, :texte, :langue, :idService)");
-		$result = $req->execute(array("nom"=>$nom, "texte"=>$texte,"langue"=>$langue, "idService"=>$ids));
+	}
+
+
+	function ajouterDescriptionService($bdd, $texte, $langue, $idService){
+		$req = $bdd->prepare("insert into descriptions ( texte, langue, idService) values( :texte, :langue, :idService)");
+		$result = $req->execute(array( "texte"=>$texte,"langue"=>$langue, "idService"=>$idService));
 		return $bdd->lastInsertId();
   }
 
 
 	function recupLocalisation($bdd){
 		
-		$req = $bdd->prepare("SELECT localisation, categorie, nom FROM services");
+		$req = $bdd->prepare("SELECT adresse, categorie, nom FROM services");
 	    $req->execute();
 	    $data = $req->fetchAll();
 		
@@ -56,7 +62,7 @@
 	
 	function recupAll($bdd){
 		
-		$req = $bdd->prepare("SELECT localisation, categorie, telephone, nom FROM services");
+		$req = $bdd->prepare("SELECT adresse, categorie, telephone, nom FROM services");
 	    $req->execute();
 	    $data = $req->fetchAll();
 		if ($data == array())
@@ -64,18 +70,36 @@
 	    else{
 	        return $data;
         }
-		
-		
 	}
 
 
 	function obtenirServiceParCategorie($categorie){
 	    global $bdd;
-	    $req = $bdd->prepare("SELECT * FROM services WHERE categorie=:categorie");
+	    $str = "SELECT services.nom as nom, descriptions.texte as texte, descriptions.langue as langue 
+	    FROM services JOIN descriptions on services.idService = descriptions.idService 
+	    WHERE categorie=:categorie";
+	    $req = $bdd->prepare($str);
 	    $req->bindParam('categorie', $categorie);
 	    $req->execute();
 	    $data = $req->fetchAll();
 	    return $data;
+    }
+        function modifierImageService($idService, $imageService){
+        global $bdd;
+        $req = $bdd->prepare("UPDATE services SET imageService=:imageService WHERE idService=:idService");
+        $req->bindParam("imageService", $imageService);
+        $req->bindParam("idService", $idService);
+        $req->execute();
+    }
+	
+
+
+    function listeLangues(){
+    	global $bdd;
+    	$req = $bdd->prepare("SELECT DISTINCT langue FROM descriptions");
+    	$req->execute();
+    	$data = $req->fetchAll();
+    	return $data;
     }
 
 ?>

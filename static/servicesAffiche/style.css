@@ -13,13 +13,16 @@ td, th
 	
 }
 
-tbody
-{
-    height: 20px;
-	overflow:auto;
-}
-
-body
+#main
 {
 	font-family:Lucida Grande, Lucida Sans Unicode, Lucida Sans, DejaVu Sans, Verdana," sans-serif";
+	text-align: center;
+}
+
+#centrer
+{
+	width: 100%;
+	display: flex;
+	justify-content: center;
+
 }

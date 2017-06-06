@@ -1,5 +1,0 @@
-
-Options +FollowSymlinks
-RewriteEngine on
-DirectoryIndex index.php
-#RewriteRule ^([a-zA-Z]*)$ index.php?page=$1 [L]

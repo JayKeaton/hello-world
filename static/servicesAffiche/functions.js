@@ -3,16 +3,21 @@ var map;
 var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 var labelIndex = 0;
 var i = 0;
+var tableMax=10;
 // initialisation de la carte Google Map de départ
 
 
 
 function afficheServices(){
 	for (var e in listeb){
-		
-    	var ligne = listeb[e];
-		document.getElementById('servicesA').innerHTML+='<tr><td>'+labels[i]+'</td>'+'<td>'+ligne.nom+'</td>'+'<td>'+ligne.localisation+'</td>'+'<td>'+ligne.categorie+'</td>'+'<td>'+ligne.telephone+'</td>'+'<td><a href="/?page=servicesMaps&adresse="'+ ligne.localisation.replace(' ', '%20') +'>GO</a></td></tr>';
-		i++;
+		if(i<tableMax){
+    		var ligne = listeb[e];
+			document.getElementById('servicesA').innerHTML+='<tr><td>'+labels[i]+'</td>'+'<td>'+ligne.nom+'</td>'+'<td>'+ligne.adresse+'</td>'+'<td>'+ligne.categorie+'</td>'+'<td>'+ligne.telephone+'</td>'+'<td><a href="/?page=servicesMaps&adresse='+ ligne.adresse +'">GO</a></td></tr>';
+			i++;
+	}
+		else{
+			
+		}
 	}
 }
 
@@ -75,7 +80,7 @@ function TrouverAdresse() {
 					//icon: url
 		  });
 
-				var contentString = liste[labelIndex].nom +"</br>"+liste[labelIndex].localisation +'</br><a href="/?page=servicesMaps&adresse="'+ liste[labelIndex].localisation.replace(' ', '%20') +">GO</a>" ;
+				var contentString = liste[labelIndex].nom +"</br>"+liste[labelIndex].localisation +'</br><a href="/?page=servicesMaps&adresse='+ liste[labelIndex].localisation +'">GO</a>' ;
 				var infowindow = new google.maps.InfoWindow({
           content: contentString
         });
