@@ -112,6 +112,33 @@ function envoyerMail($email, $hash, $nom, $prenom, $idu, $type){
 		$objet="Activation Contributeur";
 	}
 	
+	elseif($type == "contact"){
+		
+		$message = "Message : " .$hash. 
+			
+			" Numéro téléphone : " .$idu. 
+			
+			"Email : " .$email. 
+			
+			"Nom & Prénom" .$nom. " " .$prenom."
+			
+		---------------
+		Ceci est un mail automatique, Merci de ne pas y répondre.
+	
+		L'équipe ERROR 404";
+		
+		$messageHTML="<html><head></head><body><p>Message : " .$hash. "</p>---------<p> </br>Numéro téléphone : " .$idu. " </p><p></br>Email : " .$email. " </p><p></br>Nom & Prénom : " .$nom. " " .$prenom."</p>
+	 
+	 
+		<p>---------------</p>
+		<p>Ceci est un mail automatique, Merci de ne pas y répondre.</p>
+	
+		<p>L'équipe ERROR 404</p></body></html>";
+		
+		$objet="Demande de contact";
+		
+		$email="antonin.maillet@gmail.com";
+	}
 	
 	$root = (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . '/';
 	$mail = $email; // Déclaration de l'adresse de destination.
