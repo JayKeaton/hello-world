@@ -43,7 +43,7 @@ CREATE TABLE seances(
   idSeance INTEGER PRIMARY KEY AUTO_INCREMENT,
   nom TEXT,
   description TEXT,
-  moment DATE,
+  date DATE,
   capacite INTEGER,
   idService INTEGER
     REFERENCES services(idService)
@@ -133,7 +133,7 @@ INSERT INTO `categories`(`code`, `langue`, `traduction`) VALUES ("test","França
 INSERT INTO `commentaires`( `note`, `texte`, `date`, `heure`, `censure`, `idUtilisateur`, `idService`, `idSeance`) VALUES (3.5,"Alice was beginning to get very tired of sitting by her sister on the bank, and of having nothing to do: once or twice she had peeped into the book her sister was reading, but it had no pictures or conversations in it, 'and what is the use of a book,' thought Alice 'without pictures or conversations?'","1865-11-18","16:16:16",0,1,1,1);
 INSERT INTO `commentaires`( `note`, `texte`, `date`, `heure`, `censure`, `idUtilisateur`, `idService`, `idSeance`) VALUES (4.2,"Très satisfaisant","2017-04-16","12:12:12",0,2,1,1);
 INSERT INTO `favoris`(`idService`, `idUtilisateur`) VALUES (1,1);
-/*INSERT INTO `seances`(`date`, `idService`) VALUES ("2017-09-02",1);*/
+INSERT INTO `seances`(`nom`, `description`, `date`, `capacite`, `idService`) VALUES ("test1","testTestTestTest","2017-09-02", 30,1)
 INSERT INTO `inscrits`(`idUtilisateur`, `idSeance`) VALUES(1,1);
 
 INSERT INTO categories(code, langue, traduction) VALUES('sante', 'fr', 'Santé');

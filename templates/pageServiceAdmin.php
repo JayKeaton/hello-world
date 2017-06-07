@@ -43,6 +43,14 @@
               Mail: <?php echo $contact["email"]; ?> </br>
               <a id="Mail" href="<?php echo $contact["lien_site"]; ?>"> Notre Site </a>
             </div>
+            <form action="" method="post" id="formulaireFavoris">
+              <input type="button" value="<?php if (!$isFavoris){
+                echo 'Ajouter aux Favoris';
+              }
+              else{
+                echo 'Supprimer des Favoris';
+              } ?>" name="validerFavoris" id="validerFavoris"/>
+            </form>
             <h1>Historique des services proposés:</h1>
             <form action="" method="post" id="formulaireCommentaire">
 

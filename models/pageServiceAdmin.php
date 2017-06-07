@@ -104,7 +104,7 @@ catch(PDOException $se)
 
   function seances($idService){
     global $bdd;
-    $req=$bdd->prepare("SELECT * FROM seances WHERE idService=:idService ORDER BY DATE");
+    $req=$bdd->prepare("SELECT * FROM seances WHERE idService=:idService ORDER BY date");
     $req->bindParam("idService",$idService);
     $req->execute();
     $seances=$req->fetchAll();
@@ -187,5 +187,31 @@ catch(PDOException $se)
     $req->bindParam("note",$note);
     $req->bindParam("idService",$idService);
     $req->execute();
+  }
+
+  function isFavoris($idService,$idUtilisateur){
+    global $bdd;
+    $req=$bdd->prepare("SELECT * FROM favoris WHERE idService=:idService AND idUtilisateur=:idUtilisateur");
+    $req->bindParam("idService", $idService);
+    $req->bindParam("idUtilisateur",$idUtilisateur);
+    $req->execute();
+    $favoris=$req->fetch();
+    return(!empty($favoris));
+  }
+
+  function modifFavoris($isFavoris,$idService,$idUtilisateur){
+    global $bdd;
+    if ($isFavoris){
+      $req1=$bdd("DELETE FROM favoris WHERE idService:=idService AND idUtilisateur=:idUtilisateur");
+      $req1->bindParam("idService",$idService);
+      $req1->bindParam("idUtilisateur",$idUtilisateur);
+      $req1->execute();
+    }
+    else{
+      $req2=$bdd->prepare("INSERT INTO `favoris`(`idService`,`idUtilisateur`) VALUES (:idService, :idUtilisateur)");
+      $req2->bindParam("idService",$idService);
+      $req2->bindParam("idUtilisateur",$idUtilisateur);
+      $req2->execute();
+    }
   }
  ?>

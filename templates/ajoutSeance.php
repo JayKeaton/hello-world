@@ -1,5 +1,5 @@
 <head>
-  <link rel="stylesheet" type="text/css" href="static/pageServiceAdmin/pageServiceAdmin.css"> <!-- Attention à bien remplacer le lien vers le fichier CSS -->
+  <link rel="stylesheet" type="text/css" href="static/ajoutSeance/ajoutSeance.css"> <!-- Attention à bien remplacer le lien vers le fichier CSS -->
   <meta charset="utf-8" />
   <title>Test</title>
 </head>
