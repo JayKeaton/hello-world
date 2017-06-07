@@ -77,8 +77,7 @@ elseif ($page == "servicesMaps"){
 }
 elseif ($page == "ajoutServices"){
     loginRequired($page);
-	//if($_SESSION['idUtilisateurs'])
-    $path = "controllers/activationContributeur.php";
+    $path = "controllers/ajoutServices.php";
 }
 elseif ($page == "favoris"){
     loginRequired($page);
@@ -109,12 +108,6 @@ elseif ($page == "ajoutAdmin"){
 }
 elseif ($page == "activationAdmin"){
     $path = "controllers/activationAdmin.php";
-}
-elseif ($page == "contact"){
-    $path = "controllers/contact.php";
-}
-elseif ($page == "activationService"){
-    $path = "controllers/activationService.php";
 }
 else{
     include("templates/".$page.".html");
