@@ -20,6 +20,7 @@ CREATE TABLE emailsAdmin(
   email VARCHAR(255)
 );
 
+
 CREATE TABLE services (
   idService INTEGER PRIMARY KEY AUTO_INCREMENT,
   validation BOOLEAN DEFAULT false,
