@@ -94,7 +94,6 @@ for ($index=0;$index<$longComment;$index ++){
 
 
 if(!empty($_POST["validerFavoris"])){
-  print_r("////////////////");
   modifFavoris($isFavoris,$idService,$_SESSION["idUtilisateur"]);
   header("Location: ");
   exit();

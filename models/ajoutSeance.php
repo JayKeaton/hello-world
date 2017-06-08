@@ -14,12 +14,15 @@ catch(PDOException $se)
   echo "Connection failed: " . $se->getMessage();
   }
 
-  function  ajoutSeance($nom,$description, $moment, $capacite, $idService){
+  function  ajoutSeance($nom,$description, $date, $heure, $capacite, $idService){
   global $bdd;
-  $req=$bdd->prepare("INSERT INTO `seances`(`nom`,`description`,`moment`, `capacite`, `idService`) VALUES (:nom, :description, :moment,:capacite,:idService");
+  $req=$bdd->prepare("INSERT INTO `seances`(`nom`,`description`,`date`, `heure`, `capacite`, `idService`) VALUES (:nom, :description, :date, :heure, :capacite,:idService");
   $req->bindParam("nom",$nom);
   $req->bindParam("description",$description);
-  $req->bindParam("moment",$moment);
+  $dateCalibree='"'.$date.'"';
+  $heureCalibree='"'.$heure.'"';
+  $req->bindParam("date",$dateCalibree);
+  $req->bindParam("heure",$heureCalibree);
   $req->bindParam("capacite",$capacite);
   $req->bindParam("idService",$idService);
   $req->execute();

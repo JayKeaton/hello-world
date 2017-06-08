@@ -202,7 +202,7 @@ catch(PDOException $se)
   function modifFavoris($isFavoris,$idService,$idUtilisateur){
     global $bdd;
     if ($isFavoris){
-      $req1=$bdd("DELETE FROM favoris WHERE idService:=idService AND idUtilisateur=:idUtilisateur");
+      $req1=$bdd->prepare("DELETE FROM `favoris` WHERE idService=:idService AND idUtilisateur=:idUtilisateur");
       $req1->bindParam("idService",$idService);
       $req1->bindParam("idUtilisateur",$idUtilisateur);
       $req1->execute();
