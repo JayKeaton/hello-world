@@ -1,8 +1,9 @@
 <?php
+   
 	
 
     $form_service = new Formulaire('login');
-	$form_service->add('email', 'email')
+	  $form_service->add('email', 'email')
     ->required(true);
     
     $form_service->add('text','telephone')
@@ -15,6 +16,16 @@
     $liste=array("fr"=>"Francais","En"=>"Anglais","Ar"=>"Arabe","kl"=>"Klingon");
     $form_service->add('select','langue')
     ->affecterValeurs($liste)
+    ->required(true);
+    $categorie=recupCategorie($bdd);
+    $listeCategorie=array();
+    foreach ($categorie as $value) {
+      $listeCategorie[$value["traduction"]]=$value["code"];
+      
+      # code...
+    }
+    $form_service->add('select','categorie')
+    ->affecterValeurs($listeCategorie)
     ->required(true);
     $form_service->add('text','codePostal')
     ->required(true);
@@ -32,13 +43,14 @@
 			
 
 
-			$idService = ajouterService($bdd, $data['email'], $adresse, $data['codePostal'], $data['telephone'], $data['lien_site'], $categorie, $_SESSION['idUtilisateur'],$data['nom']);
+			$idService = ajouterService($bdd, $data['email'], $adresse, $data['codePostal'], $data['telephone'], $data['lien_site'], $data['categorie'], $_SESSION['idUtilisateur'],$data['nom']);
 			$id2 = ajouterDescriptionService($bdd, $texte, $data['langue'], $idService);
 
 			require_once("models/image.php");
    			$result = traitementUploadImage('imageService', "media/imageService", $idService);
    			$adresseImage=$result[1];
    			ajouterAdresseImage($bdd,$adresseImage,$idService);
+        ajouterService($bdd, $data['email'], $adresse, $data['codePostal'], $data['telephone'], $data['lien_site'], $categorie, $_SESSION['idUtilisateur'],$data['nom']);
 			
 
    			/*echo($result[1]); renvoie le nom de l'image*/
@@ -60,7 +72,7 @@
 		
 	else {
 		include("templates/ajoutServices.php");
-		echo("lol ca marche pas");
+		
 
 	}
 

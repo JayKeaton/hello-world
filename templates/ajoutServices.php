@@ -71,9 +71,12 @@
     <div>
 
         <fieldset>
-        <legend>Catégorie</legend>
 
-        <textarea id="categorie" name="categorie" value="<?php echo((empty($_POST['categorie'])) ? "" : $_POST['categorie']); ?>" placeholder="Entrez votre categorie ici"></textarea>
+        <legend>Catégorie</legend>
+             <?php $form_service->echoInput("categorie"); ?>
+
+        <!--<textarea id="categorie" name="categorie" value="<?php/* echo((empty($_POST['categorie'])) ? "" : $_POST['categorie']);*/ ?>" placeholder="Entrez votre categorie ici"></textarea>-->
+
         </fieldset>
         
     </div>
@@ -91,7 +94,7 @@
 
         
         
-        <textarea id="texte" name="texte" value="<?php echo((empty($_POST['categorie'])) ? "" : $_POST['categorie']); ?>" placeholder="Decrivez ici votre service"></textarea></label>
+        <textarea id="texte" name="texte" value="<?php echo((empty($_POST['categorie'])) ? "" : $_POST['categorie']); ?>" placeholder="Décrivez ici votre service"></textarea></label>
 
         </fieldset>
 
@@ -100,11 +103,12 @@
         
 
     </div>
-        <h1>Image de service:</h1>
-    <div>
+    <fieldset>
+        <legend>Image de service:</legend>
+    
         <!--<img src="<?php/* echo("media/imageService/".$_FILES['imageService']); */?>" height="150" width="150" />-->
         <input type="file" name="imageService" id="imageService"/>
-    </div>
+    </fieldset>
     <div>
         <?php $form_service->submit("Ajouter service"); ?>
     </div>

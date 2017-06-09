@@ -57,7 +57,7 @@
 		</br>
 		<h1>Image :</h1>
     <div>
-        <img src="<?php echo("media/avatars/".$data['avatar']); ?>" height="150" width="150" />
+        <img src="<?php echo("media/imageService/".$value['idService'].".jpeg"); ?>" height="150" width="150" />
         <input type="file" name="avatar" id="avatar"/>
         <?php echo((empty($erreur['avatar']) ? "" : "<p>".$erreur['avatar']."</p><br/>")); ?>
     </div>

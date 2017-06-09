@@ -9,6 +9,33 @@
 	/*$req=$bdd->prepare("SELECT * FROM descriptions");
 	$rep->execute(array());
 	$descriptions=$req->fetchall();*/
+	$form_modifierService = new Formulaire('login');
+	$form_modifierService->add('email', 'email')
+    ->required(true);
+    
+    $form_modifierService->add('text','telephone')
+    ->required(true);
+    $form_modifierService->add('text','lien_site')
+    ->required(true);
+    
+    $form_modifierService->add('text','nom')
+    ->required(true);
+    $liste=array("fr"=>"Francais","En"=>"Anglais","Ar"=>"Arabe","kl"=>"Klingon");
+    $form_modifierService->add('select','langue')
+    ->affecterValeurs($liste)
+    ->required(true);
+    $categorie=recupCategorie($bdd);
+    $listeCategorie=array();
+    foreach ($categorie as $value) {
+      $listeCategorie[$value["traduction"]]=$value["code"];
+      
+      # code...
+    }
+    $form_modifierService->add('select','categorie')
+    ->affecterValeurs($listeCategorie)
+    ->required(true);
+    $form_modifierService->add('text','codePostal')
+    ->required(true);
 	$idService=1;
 	$idDescription=0;
 	if (!empty($_POST['idService'])){
