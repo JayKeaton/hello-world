@@ -7,7 +7,7 @@
 	border: 1px black solid;
 	text-align: center;
 	border-radius: 20px;
-	background:rgb(187,210,245);
+	background:rgb(220,220,245);
 }
 
 #accueilAdmin{
@@ -18,9 +18,16 @@
 	align-items: center;
 }
 
+#petitTitre{
+	border: 1px black solid;
+	font-family: Verdana ,"Arial", "Arial Black", "Times New Roman";
+	text-align: center;
+}
+
 #actualite{
+	border: 1px black solid;
 	width: 25%;
-	background:rgb(187,210,245);
+	background:rgb(200,200,200);
 }
 
 #recherche {
