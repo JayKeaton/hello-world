@@ -121,6 +121,7 @@ CREATE TABLE inscrits (
 
 INSERT INTO `services`(`nom`,`dateAjout`,`validation`, `adresse`, `categorie`, `telephone`, `email`, `lien_site`,`noteDeMAJ`) VALUES ("SoinPourTous","2014-04-15-15-30-52",0,"5 rue de Rivoli Paris","soin","0625523251","0001@0001","http://www.dofus.com/fr", "testtestestestestestestestestestestestestestestestest");
 INSERT INTO `services`(`nom`,`dateAjout`,`validation`,`adresse`, `categorie`, `telephone`, `email`, `lien_site`,`noteDeMAJ`) VALUES ("NourriturePourTous","2014-05-15-15-30-52",0,"21 Rue Vieille du Temple Paris","logement","0658921542","0002@0002","http://euw.leagueoflegends.com/fr",'jqzofjoqjfoiqjfoisjgoijojreoijeijsoigjsgoisjgoijseoigjs');
+INSERT INTO `services`(`idService`, `validation`, `nom`, `adresse`, `categorie`, `telephone`, `email`, `lien_site`, `idUtilisateur`) VALUES ("6","1","Mûre","6, rue Saint-Marc 75002","nourriture","0","exemple@gmail.com","http://www.mure-restaurant.com/","220");
 INSERT INTO `utilisateurs`( `pseudo`, `email`, `mdp`, `avatar`, `nom`, `prenom`, `dateNaissance`, `verification`, `adresse`, `droits`, `telephone`) VALUES ("test","test@test",sha1("test"),"avatar3.jpg","testN","testP","1992-06-12",1,"test","contributeur","0645884521");
 INSERT INTO `descriptions`(`texte`, `langue`,`idService`) VALUES ("Nous serons heureux de vous soigner","fr",1);
 INSERT INTO `descriptions`(`texte`, `langue`,`idService`) VALUES ("Nous vous accueillerons avec plaisir","fr",2);

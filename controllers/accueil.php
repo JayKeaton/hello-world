@@ -1,5 +1,5 @@
-
 <?php
+//echo $_POST['categorie'];
 $categorie = $_POST['categorie'];
 include ("models/TriServices.php");
 /*include ("models/services.php");  déjà appelé dans l'index:""require_once("models/services.php")"";*/
