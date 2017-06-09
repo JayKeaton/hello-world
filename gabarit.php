@@ -150,7 +150,8 @@
         <ul>
             <li> <a href=<?php echo(SOUS_DOMAINE."?page=planDuSite") ?>> Plan du Site </a> </li>
             <li> <a href=<?php echo(SOUS_DOMAINE."?page=contact") ?>> Contact </a> </li>
-            <li> <a href="http://hugobriet.000webhostapp.com/?page=accueil"> En savoir plus </a> </li>
+            <li> <a href=<?php echo(SOUS_DOMAINE."?page=enSavoirPlus") ?>> En savoir plus </a> </li>
+            <li> <a href=<?php echo(SOUS_DOMAINE."?page=FAQ") ?>> FAQ </a> </li>
         </ul>
         <ul id="copyright">
             <li> ©Error404 </li>
