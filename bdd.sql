@@ -35,13 +35,17 @@ CREATE TABLE services (
   noteDeMAJ VARCHAR(255),
   censure BOOLEAN,
   adresseImage VARCHAR(255),
+  note FLOAT check(note >= 0 AND note <= 5),
   idUtilisateur INTEGER
     REFERENCES utilisateurs(idUtilisateur) ON DELETE SET NULL
 );
 
 CREATE TABLE seances(
   idSeance INTEGER PRIMARY KEY AUTO_INCREMENT,
+  nom TEXT,
+  description TEXT,
   date DATE,
+  heure TIME,
   capacite INTEGER,
   idService INTEGER
     REFERENCES services(idService)
@@ -133,6 +137,8 @@ INSERT INTO `services`(`nom`,`dateAjout`,`validation`, `adresse`, `categorie`, `
 INSERT INTO `services`(`nom`,`dateAjout`,`validation`, `adresse`, `categorie`, `telephone`, `email`, `lien_site`,`noteDeMAJ`) VALUES ("kiwi","2014-04-15-15-30-52",1,"5 rue de Rivoli Paris","Nourriture","0625523251","00012@00012","http://www.dofus.com/fr", "testtestestestestestestestestestestestestestestestest");
 
 INSERT INTO `services`(`nom`,`dateAjout`,`validation`,`adresse`, `categorie`, `telephone`, `email`, `lien_site`,`noteDeMAJ`) VALUES ("NourriturePourTous","2014-05-15-15-30-52",0,"21 Rue Vieille du Temple Paris","logement","0658921542","0002@0002","http://euw.leagueoflegends.com/fr",'jqzofjoqjfoiqjfoisjgoijojreoijeijsoigjsgoisjgoijseoigjs');
+INSERT INTO `utilisateurs`( `pseudo`, `email`, `mdp`, `avatar`, `nom`, `prenom`, `dateNaissance`, `verification`, `adresse`, `droits`, `telephone`) VALUES ("essai","essai@essai",sha1("essai"),"avatar1.jpg","essaiN","essaiP","1999-06-12",2,"essai","utilisateur","0600000000");
+INSERT INTO `utilisateurs`( `pseudo`, `email`, `mdp`, `avatar`, `nom`, `prenom`, `dateNaissance`, `verification`, `adresse`, `droits`, `telephone`) VALUES ("t","t@t",sha1("t"),"avatar2.jpg","tN","tP","1998-06-12",3,"t","contributeur","0666666666");
 INSERT INTO `services`(`validation`, `nom`, `adresse`, `categorie`, `telephone`, `email`, `lien_site`, `idUtilisateur`) VALUES ("1","Mûre","6, rue Saint-Marc 75002","nourriture","0","exemple@gmail.com","http://www.mure-restaurant.com/","220");
 INSERT INTO `utilisateurs`( `pseudo`, `email`, `mdp`, `avatar`, `nom`, `prenom`, `dateNaissance`, `verification`, `adresse`, `droits`, `telephone`) VALUES ("test","test@test",sha1("test"),"avatar3.jpg","testN","testP","1992-06-12",1,"test","admin","0645884521");
 INSERT INTO `descriptions`(`texte`, `langue`,`idService`) VALUES ("Nous serons heureux de vous soigner","fr",1);
@@ -151,7 +157,7 @@ INSERT INTO `categories`(`code`, `langue`, `traduction`) VALUES ("test","França
 INSERT INTO `commentaires`( `note`, `texte`, `date`, `heure`, `censure`, `idUtilisateur`, `idService`, `idSeance`) VALUES (3.5,"Alice was beginning to get very tired of sitting by her sister on the bank, and of having nothing to do: once or twice she had peeped into the book her sister was reading, but it had no pictures or conversations in it, 'and what is the use of a book,' thought Alice 'without pictures or conversations?'","1865-11-18","16:16:16",0,1,1,1);
 INSERT INTO `commentaires`( `note`, `texte`, `date`, `heure`, `censure`, `idUtilisateur`, `idService`, `idSeance`) VALUES (4.2,"Très satisfaisant","2017-04-16","12:12:12",0,2,1,1);
 INSERT INTO `favoris`(`idService`, `idUtilisateur`) VALUES (1,1);
-INSERT INTO `seances`(`date`, `idService`) VALUES ("2017-09-02",1);
+INSERT INTO `seances`(`nom`, `description`, `date`, `heure`, `capacite`, `idService`) VALUES ("test1","testTestTestTest","2017-09-02", "19:32:00", 30,1);
 INSERT INTO `inscrits`(`idUtilisateur`, `idSeance`) VALUES(1,1);
 
 INSERT INTO categories(code, langue, traduction) VALUES('sante', 'fr', 'Santé');
@@ -160,5 +166,3 @@ INSERT INTO categories(code, langue, traduction) VALUES('logement', 'fr', 'Logem
 INSERT INTO categories(code, langue, traduction) VALUES('logement', 'en', 'Housing');
 INSERT INTO categories(code, langue, traduction) VALUES('restauration', 'fr', 'Restauration');
 INSERT INTO categories(code, langue, traduction) VALUES('restauration', 'en', 'Food');
-
-

@@ -14,6 +14,7 @@ $longComment=count($commentaires);
 $lesInscrits=lesInscrits($idService);
 $notesSeances=notesSeances($idService);
 $estInscrit=estInscrit($idService);
+$isFavoris=isFavoris($idService,$_SESSION["idUtilisateur"]);
 
 $admin=0;
 if(!empty($_SESSION["idAdministrateur"])){
@@ -23,7 +24,8 @@ if(!empty($_SESSION["idAdministrateur"])){
 if (!empty($_POST["valider"])){
   $note=$_POST["note"];
   $texte=htmlspecialchars($_POST["text"]);
-  ajoutCommentaire($note,$texte,$_SESSION["idUtilisateur"],$idService);  /*$_POST["idSeance"]*/
+  ajoutCommentaire($note[0],$texte,$_SESSION["idUtilisateur"],$idService);  /*$_POST["idSeance"]*/
+  ajoutNote($idService,noteService($idService)["note"]);
   header("Location: ");
   exit();
 }
@@ -61,15 +63,19 @@ if (!empty($_POST["validerInscript"])){
       }
     }
   }
-  /*header("Location: ");
-  exit();*/
+  header("Location: ");
+  exit();
 }
 
 if (!empty($_POST["validerAdmin"])){
   validationService($idService,1);
+  header("Location: ");
+  exit();
 }
 if (!empty($_POST["bloquerAdmin"])){
   validationService($idService,0);
+  header("Location: ");
+  exit();
 }
 
 for ($index=0;$index<$longComment;$index ++){
@@ -84,6 +90,13 @@ for ($index=0;$index<$longComment;$index ++){
     header("Location: ");
     exit;
   }
+}
+
+
+if(!empty($_POST["validerFavoris"])){
+  modifFavoris($isFavoris,$idService,$_SESSION["idUtilisateur"]);
+  header("Location: ");
+  exit();
 }
 
 /*print_r($seances);*/

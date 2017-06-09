@@ -123,6 +123,9 @@ elseif ($page == "ajoutAdmin"){
 elseif ($page == "activationAdmin"){
     $path = "controllers/activationAdmin.php";
 }
+elseif ($page == "gestionSeances"){
+    $path = "controllers/gestionSeancesC.php";
+}
 elseif ($page == "contact"){
     $path = "controllers/contact.php";
 }
@@ -138,7 +141,6 @@ elseif ($page == "enSavoirPlus"){
 elseif ($page == "FAQ"){
     $path = "templates/FAQbeau.html";
 }
-
 else{
     include("templates/".$page.".html");
 }

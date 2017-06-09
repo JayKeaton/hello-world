@@ -1,0 +1,22 @@
+#EnTete
+{
+display: flex;
+align-items: center;
+}
+#h
+{
+  width: 100%;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+table{
+  border-collapse: collapse;
+}
+td {
+  border: 1px solid black;
+  padding: 7px;
+  text-align: center;
+  vertical-align: middle;
+}
