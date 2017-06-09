@@ -1,5 +1,5 @@
 <head>
-  <link rel="stylesheet" type="text/css" href="static/pageServiceAdmin/pageServiceAdmin.css"> <!-- Attention à bien remplacer le lien vers le fichier CSS -->
+  <link rel="stylesheet" type="text/css" href="static/descriptionService/descriptionService.css"> <!-- Attention à bien remplacer le lien vers le fichier CSS -->
   <meta charset="utf-8" />
   <title>Test</title>
 </head>
@@ -92,6 +92,7 @@
                           if ($element["idSeance"]=$seances[$index]["idSeance"]){
                             $check = true;
                           }
+
                         }
                         if ($check){
                           echo ('<input type="checkbox" name="inscription[]" value="'.$seances[$index]["idSeance"].'" checked="checked"/>') ;
