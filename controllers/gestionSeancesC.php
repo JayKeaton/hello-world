@@ -1,6 +1,9 @@
 <?php
-include("models/ajoutSeance.php");
+include("models/gestionSeances.php");
 $idService=1;   /*$_GET["idService"];*/
+$seances=seances($idService);
+$longueur=count($seances);
+$lesInscrits=lesInscrits($idService);
 
 if(!empty($_POST["valider"])){
   if (empty($_POST["nom"]) || empty($_POST["description"]) || empty($_POST["date"]) || empty($_POST["heure"]) || empty($_POST["capacite"])){
@@ -19,4 +22,15 @@ if(!empty($_POST["valider"])){
   }
 }
 
-include("templates/ajoutSeance.php");
+foreach($seances as $seance) {
+  if(!empty($_POST["supprimerSeance".$seance["idSeance"]])){
+    supprimerSeance($idService,$seance["idSeance"]);
+    header("Location: ");
+    exit();
+  }
+  if(!empty($_POST["modifierSeance"])){
+    /*ENVOYER SUR LA PAGE CONCERNEE*/
+  }
+}
+
+include("templates/gestionSeances.php");

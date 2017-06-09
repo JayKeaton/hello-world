@@ -109,8 +109,8 @@ elseif ($page == "ajoutAdmin"){
 elseif ($page == "activationAdmin"){
     $path = "controllers/activationAdmin.php";
 }
-elseif ($page == "ajoutSeance"){
-    $path = "controllers/ajoutSeanceC.php";
+elseif ($page == "gestionSeances"){
+    $path = "controllers/gestionSeancesC.php";
 }
 else{
     include("templates/".$page.".html");
