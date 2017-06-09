@@ -2,14 +2,14 @@
 
 <link rel="stylesheet" href="static/favoris/favoris.css"/>
 
-
-  
   <?php
-  $NbrColonne = 4;
+  $NbrColonne = 3;
   $NbrLigne = 0;
 
   if ($NbrData != 0) {
   	$j = 1; ?>
+    <table border="1">
+
     <thead>
     <tr>
       <td>Nom</td>
@@ -17,7 +17,7 @@
       <td>Site Internet</td>
     </tr>
     </thead>
-  	<table border="1">
+  	
   	<tbody>
   <?php
   	foreach ( $rowAll as $row )
@@ -28,11 +28,10 @@
   ?>		<tr>
   <?php		}
   ?>
+  <td> <?php echo $row[0]; ?> </td>
   <td> <?php echo $row[1]; ?> </td>
-  <td> <?php echo $row[2]; ?> </td>
-  <td> <?php echo $row[3]; ?> </td>
-  <td> <input type="checkbox" name="suppr" value="suppr">; </td>
-  <?php		if ($j%$NbrCol == 0) {
+  <td> <a href="<?php echo $row[2]; ?>"><?php echo $row[2] ?></a> </td>
+  <?php		if ($j%$NbrColonne == 0) {
   			$fintr = 1;
   ?>		
   </tr>
@@ -41,19 +40,14 @@
   	}
   	// dernière balise /tr
   	if ($fintr!=1) {
-  ?>		</tr>
+  ?>
+      </tr>
   <?php	} ?>
   	</tbody>
   	</table>
   <?php
   } else { ?>
     <div>
-      <p>pas de favoris</p>
+      <p>Vous n'avez pas encore de favoris</p>
     </div>
-  <?php
-  }
-  ?>
-
-<form action="supprimerFavoris.php" method="post">
-<p><input type="submit" value="supprimer"></p>
-</form>
+  <?php } ?>
