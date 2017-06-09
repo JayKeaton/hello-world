@@ -12,25 +12,22 @@ body{
 header{
   padding-top: 20px;
 }
+
 header ul
 {
   margin-top: 0;
   padding-left: 220px;
-  background-color:red;
   display:flex;
   justify-content: flex-start;
   align-items: center;
   list-style-type: none;
-  /*height:100%;*/
-}
-header ul li{
-  /*height:100%;*/
-  /*width: 14%;*/
+  background-color: red;
+  height: 50px;
 }
 header ul li:hover{
   background-image: linear-gradient(red 57% , #ff8080);
   font-weight: bold;
-  /*height: 100%;*/
+  height: 50px;
 }
 header ul li a
 {
@@ -41,12 +38,10 @@ header ul li a
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding:5px;
-  height: 40px;
+  padding: 5px;
   width: 150px;
 }
 header ul li a div{
-  /*height:100%;*/
   display:flex;
   flex-direction: column;
   justify-content: center;
@@ -56,6 +51,7 @@ header ul li a div p{
   margin: 0;
   padding: 0;
 }
+
 header img{
   display:flex;
   justify-content: center;
@@ -65,18 +61,10 @@ header #imageBanniere{
   position: absolute;
   top: 4px;
   left: 100px;
-
 }
 
 
 
-#rouge{
-  padding-left: 100px;
-  height:100%;
-  margin-top: 16px;
-  padding-top: 54px;
-  background-color: red;
-}
 
 
 #EnTete

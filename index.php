@@ -9,6 +9,9 @@ if (!empty($_SESSION['idUtilisateur']))
     echo $_SESSION['idUtilisateur'];
 */
 
+
+$pages=[['accueil','controllers/accueil.php'],['recherche', 'controllers/recherche.php'],['signup','controllers/signup.php'],['activation','controllers/activation.php'],['signin','controllers/signin.php'],['profil','controllers/profil.php'],['locate','controllers/locate.php'],['servicesMaps','controllers/servicesMaps.php'],['activationContributeur', 'controllers/activationContributeur.php'],['favoris','controllers/favoris.php'],['modifierServices', 'controllers/modifierServices.php'],['servicesAffiche','controllers/servicesAffiche.php'],['pageServiceAdmin','controllers/pageServiceAdminC.php'],['ajoutAdmin','controllers/ajoutAdmin.php'],['activationAdmin','controllers/activationAdmin.php'],['contact','controllers/contact.php'],['activationService','controllers/activationService.php']];
+
 $sous_domaine = $_SERVER['PHP_SELF'];    // Emplacement de ce fichier sur le serveur
 $liste = explode("/", $sous_domaine);
 $sous_domaine = "";
@@ -110,8 +113,14 @@ elseif ($page == "ajoutAdmin"){
 elseif ($page == "activationAdmin"){
     $path = "controllers/activationAdmin.php";
 }
+elseif ($page == "contact"){
+    $path = "controllers/contact.php";
+}
 elseif ($page == "activationService"){
     $path = "controllers/activationService.php";
+}
+elseif ($page == "planDuSite"){
+    $path = "controllers/planDuSite.php";
 }
 else{
     include("templates/".$page.".html");

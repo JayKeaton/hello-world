@@ -1,8 +1,8 @@
 <?php
 
+	$droits = recupDroits($bdd, $_SESSION['idUtilisateur']);
 
-
-	if(recupDroits($bdd, $_SESSION['idUtilisateur'])=="utilisateur"){
+	if($droits == "utilisateur"){
 
 		echo ("<h1>Vous n'êtes pas contributeur actuellement !</h1>");
 		echo("<p>Si vous souaitez devenir contributeur cliquer sur le boutton, vous recevrez un email de confirmation</p>");
@@ -18,7 +18,7 @@
 
 	}
 
-	if(recupDroits($bdd, $_SESSION['idUtilisateur'])=="contributeur"){
+	if($droits == "contributeur" or $droits == "admin+"){
 		
 		include("controllers/ajoutServices.php");
 
