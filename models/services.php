@@ -13,6 +13,12 @@
         }
 		
 	}
+	function recupCategorie($bdd){
+		$req = $bdd->prepare("SELECT code,traduction FROM categories WHERE langue='fr'");
+		$req->execute();
+		 $data = $req->fetchAll();
+		 return $data;
+	}
 
 
 	function getCoordonnees($adresse){
@@ -33,6 +39,7 @@
 	function ajouterAdresseImage($bdd,$adresseImage,$idService){
 		$req = $bdd->prepare("UPDATE services SET adresseImage=:adresseImage WHERE idService=:idService");
 		$result=$req->execute(array("adresseImage"=>$adresseImage, "idService"=>$idService ));
+		return $adresseImage ;
 
 	}
 

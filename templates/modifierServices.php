@@ -34,6 +34,8 @@
 		</select>
 		
 		<input type="submit" value="choisissez votre service" id="submit" />
+
+
 	</form>
 
 	
@@ -53,6 +55,15 @@
 		
 		
 		</br>
+		<h1>Image :</h1>
+    <div>
+        <img src="<?php echo("media/imageService/".$value['idService'].".jpeg"); ?>" height="150" width="150" />
+        <input type="file" name="avatar" id="avatar"/>
+        <?php echo((empty($erreur['avatar']) ? "" : "<p>".$erreur['avatar']."</p><br/>")); ?>
+    </div>
+    <div>
+        <input type="submit" name="changerAvatar" value="Valider"/>
+    </div>
 
 		
 		
