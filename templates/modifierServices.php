@@ -3,6 +3,7 @@
 	<head>
 
 		<meta charset="utf-8">
+		<link rel="stylesheet" href="static/modifierService/modifierService.css"/>
 		<title>Modifier Services</title>
 	</head>
 
@@ -12,7 +13,7 @@
 	<form method="post" action="" >
 
 		<select name="idService" id="idService">
-			<?php
+			<?php                  /*mettre ca dans le formulaire*/
 				$donnees = null;
 				foreach ($data as $value) {
 
@@ -40,7 +41,7 @@
 
 	
 	</script>
-		<form method="post" action="">
+		<form method="post" action="" enctype="multipart/form-data">
 			<label>Nom:
 				<input type="text" id="nom" name="nom" value="<?php echo($donnees['nom']) ?>" placeholder="" required="required" />
 			</label>
@@ -50,20 +51,20 @@
 			</label>
 				</br>
 			<label>Adresse:
-				<input type="adresse" id="adresse" name="adresse" value="<?php echo($donnees['adresse']) ?>" placeholder="" required="required" />
+				<input type="text" id="adresse" name="adresse" value="<?php echo($donnees['adresse']) ?>" placeholder="" required="required" />
 			</label></br>
 		
 		
 		</br>
-		<h1>Image :</h1>
+		<fieldset>
+		<legend>Image :</legend>
     <div>
         <img src="<?php echo("media/imageService/".$value['idService'].".jpeg"); ?>" height="150" width="150" />
         <input type="file" name="avatar" id="avatar"/>
         <?php echo((empty($erreur['avatar']) ? "" : "<p>".$erreur['avatar']."</p><br/>")); ?>
     </div>
-    <div>
-        <input type="submit" name="changerAvatar" value="Valider"/>
-    </div>
+    </fieldset>
+    
 
 		
 		
@@ -74,16 +75,21 @@
 
 
 		
-			<label>Categorie:
-				<input type="text" id="categorie" name="categorie" value="<?php echo($donnees['categorie']) ?>" placeholder="" required="required" />
-			</label>
+			 <fieldset>
+
+        	<legend>Catégorie</legend>
+            	<?php $form_modifierService->echoInput("categorie"); ?>
+
+        		<!--<textarea id="categorie" name="categorie" value="<?php/* echo((empty($_POST['categorie'])) ? "" : $_POST['categorie']);*/ ?>" placeholder="Entrez votre categorie ici"></textarea>-->
+
+        	</fieldset>
 			</br>
 			<label>Telephone
-				<input type="phone" id="telephone" name="telephone" value="<?php echo($donnees['telephone']) ?>" placeholder="" required="required" />
+				<input type="text" id="telephone" name="telephone" value="<?php echo($donnees['telephone']) ?>" placeholder="" required="required" />
 			</label>
 			</br>
 			<label>Lien de votre site Internet:
-				<input type="" id="lien_site" name="lien_site" value="<?php echo($donnees['lien_site']) ?>" placeholder="" required="required" />
+				<input type="text" id="lien_site" name="lien_site" value="<?php echo($donnees['lien_site']) ?>" placeholder="" required="required" />
 			</label>
 			</br>
 

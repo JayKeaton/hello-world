@@ -43,15 +43,14 @@
 	}
 
 
-	if (!empty($_POST["email"])){
-		$email=$_POST["email"];
-		$adresse=$_POST["adresse"];
-		$telephone=($_POST["telephone"]);
-		$lien_site=($_POST["lien_site"]);
-		$categorie=($_POST["categorie"]);
-		$nom=($_POST["nom"]);
-		$idService=1;
-		$idService=modifierService($bdd, $nom, $email, $adresse, $telephone,$lien_site, $categorie, $idService);
+	 if ($form_modifierService->isValid()){
+    		$data = $form_service->get_cleaned_values();
+    		$texte=($_POST["texte"]);
+			$adresse=($_POST["adresse"]);
+			$categorie=($_POST["categorie"]);
+		
+		$idService=$_POST["idService"];
+		$idService=modifierService($bdd, $data['nom'], $data['email'], $adresse, $data['telephone'],$data['lien_site'], $data['categorie'], $idService);
 	}
 
 
