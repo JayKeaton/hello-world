@@ -20,7 +20,7 @@
 	}
 	function obtenirServiceValidesParCategorie($categorie){
 	    global $bdd;
-	    $req = $bdd->prepare("SELECT * FROM services WHERE categorie=:categorie");/* WHERE validation=true*/
+	    $req = $bdd->prepare("SELECT * FROM services JOIN descriptions ON descriptions.idService = services.idService WHERE categorie=:categorie ");/* WHERE validation=true*/
 	    $req->bindParam('categorie', $categorie);
 	    $req->execute();
 	    $data = $req->fetchAll();

@@ -20,6 +20,7 @@ CREATE TABLE emailsAdmin(
   email VARCHAR(255)
 );
 
+
 CREATE TABLE services (
   idService INTEGER PRIMARY KEY AUTO_INCREMENT,
   validation BOOLEAN DEFAULT false,
@@ -124,12 +125,34 @@ CREATE TABLE inscrits (
 
 
 INSERT INTO `services`(`nom`,`dateAjout`,`validation`, `adresse`, `categorie`, `telephone`, `email`, `lien_site`,`noteDeMAJ`) VALUES ("SoinPourTous","2014-04-15-15-30-52",0,"5 rue de Rivoli Paris","soin","0625523251","0001@0001","http://www.dofus.com/fr", "testtestestestestestestestestestestestestestestestest");
+INSERT INTO `services`(`nom`,`dateAjout`,`validation`, `adresse`, `categorie`, `telephone`, `email`, `lien_site`,`noteDeMAJ`) VALUES ("carotte","2014-04-15-15-30-52",1,"5 rue des carrottes Paris","Nourriture","0625523251","0003@0003","http://www.dofus.com/fr", "testtestestestestestestestestestestestestestestestest");
+INSERT INTO `services`(`nom`,`dateAjout`,`validation`, `adresse`, `categorie`, `telephone`, `email`, `lien_site`,`noteDeMAJ`) VALUES ("poireau","2014-04-11-15-30-52",1,"5 rue des poireaux Paris","Nourriture","0625523251","0004@0004","http://www.dofus.com/fr", "testtestestestestestestestestestestestestestestestest");
+INSERT INTO `services`(`nom`,`dateAjout`,`validation`, `adresse`, `categorie`, `telephone`, `email`, `lien_site`,`noteDeMAJ`) VALUES ("oignon","2014-04-15-15-30-52",1,"5 rue de Rivoli Paris","Nourriture","0625523251","0005@0005","http://www.dofus.com/fr", "testtestestestestestestestestestestestestestestestest");
+INSERT INTO `services`(`nom`,`dateAjout`,`validation`, `adresse`, `categorie`, `telephone`, `email`, `lien_site`,`noteDeMAJ`) VALUES ("riz","2014-04-15-15-30-52",1,"5 rue de Rivoli Paris","Nourriture","0625523251","0006@0006","http://www.dofus.com/fr", "testtestestestestestestestestestestestestestestestest");
+INSERT INTO `services`(`nom`,`dateAjout`,`validation`, `adresse`, `categorie`, `telephone`, `email`, `lien_site`,`noteDeMAJ`) VALUES ("courgette","2014-04-15-15-30-52",1,"5 rue de Rivoli Paris","Nourriture","0625523251","0007@0007","http://www.dofus.com/fr", "testtestestestestestestestestestestestestestestestest");
+INSERT INTO `services`(`nom`,`dateAjout`,`validation`, `adresse`, `categorie`, `telephone`, `email`, `lien_site`,`noteDeMAJ`) VALUES ("banane","2014-04-15-15-30-52",1,"5 rue de Rivoli Paris","Nourriture","0625523251","0008@0008","http://www.dofus.com/fr", "testtestestestestestestestestestestestestestestestest");
+INSERT INTO `services`(`nom`,`dateAjout`,`validation`, `adresse`, `categorie`, `telephone`, `email`, `lien_site`,`noteDeMAJ`) VALUES ("abricot","2014-04-15-15-30-52",1,"5 rue de Rivoli Paris","Nourriture","0625523251","0009@0009","http://www.dofus.com/fr", "testtestestestestestestestestestestestestestestestest");
+INSERT INTO `services`(`nom`,`dateAjout`,`validation`, `adresse`, `categorie`, `telephone`, `email`, `lien_site`,`noteDeMAJ`) VALUES ("papaye","2014-04-15-15-30-52",1,"5 rue de Rivoli Paris","Nourriture","0625523251","00010@00010","http://www.dofus.com/fr", "testtestestestestestestestestestestestestestestestest");
+INSERT INTO `services`(`nom`,`dateAjout`,`validation`, `adresse`, `categorie`, `telephone`, `email`, `lien_site`,`noteDeMAJ`) VALUES ("pomme","2014-04-15-15-30-52",1,"5 rue de Rivoli Paris","Nourriture","0625523251","00011@00011","http://www.dofus.com/fr", "testtestestestestestestestestestestestestestestestest");
+INSERT INTO `services`(`nom`,`dateAjout`,`validation`, `adresse`, `categorie`, `telephone`, `email`, `lien_site`,`noteDeMAJ`) VALUES ("kiwi","2014-04-15-15-30-52",1,"5 rue de Rivoli Paris","Nourriture","0625523251","00012@00012","http://www.dofus.com/fr", "testtestestestestestestestestestestestestestestestest");
+
 INSERT INTO `services`(`nom`,`dateAjout`,`validation`,`adresse`, `categorie`, `telephone`, `email`, `lien_site`,`noteDeMAJ`) VALUES ("NourriturePourTous","2014-05-15-15-30-52",0,"21 Rue Vieille du Temple Paris","logement","0658921542","0002@0002","http://euw.leagueoflegends.com/fr",'jqzofjoqjfoiqjfoisjgoijojreoijeijsoigjsgoisjgoijseoigjs');
-INSERT INTO `utilisateurs`( `pseudo`, `email`, `mdp`, `avatar`, `nom`, `prenom`, `dateNaissance`, `verification`, `adresse`, `droits`, `telephone`) VALUES ("test","test@test",sha1("test"),"avatar3.jpg","testN","testP","1992-06-12",1,"test","contributeur","0645884521");
 INSERT INTO `utilisateurs`( `pseudo`, `email`, `mdp`, `avatar`, `nom`, `prenom`, `dateNaissance`, `verification`, `adresse`, `droits`, `telephone`) VALUES ("essai","essai@essai",sha1("essai"),"avatar1.jpg","essaiN","essaiP","1999-06-12",2,"essai","utilisateur","0600000000");
 INSERT INTO `utilisateurs`( `pseudo`, `email`, `mdp`, `avatar`, `nom`, `prenom`, `dateNaissance`, `verification`, `adresse`, `droits`, `telephone`) VALUES ("t","t@t",sha1("t"),"avatar2.jpg","tN","tP","1998-06-12",3,"t","contributeur","0666666666");
+INSERT INTO `services`(`validation`, `nom`, `adresse`, `categorie`, `telephone`, `email`, `lien_site`, `idUtilisateur`) VALUES ("1","Mûre","6, rue Saint-Marc 75002","nourriture","0","exemple@gmail.com","http://www.mure-restaurant.com/","220");
+INSERT INTO `utilisateurs`( `pseudo`, `email`, `mdp`, `avatar`, `nom`, `prenom`, `dateNaissance`, `verification`, `adresse`, `droits`, `telephone`) VALUES ("test","test@test",sha1("test"),"avatar3.jpg","testN","testP","1992-06-12",1,"test","admin","0645884521");
 INSERT INTO `descriptions`(`texte`, `langue`,`idService`) VALUES ("Nous serons heureux de vous soigner","fr",1);
-INSERT INTO `descriptions`(`texte`, `langue`,`idService`) VALUES ("Nous vous accueillerons avec plaisir","fr",2);
+INSERT INTO `descriptions`(`texte`, `langue`,`idService`) VALUES ("les carottes ses oranges","fr",2);
+INSERT INTO `descriptions`(`texte`, `langue`,`idService`) VALUES ("les poireaux sa fait du bourguinion","fr",3);
+INSERT INTO `descriptions`(`texte`, `langue`,`idService`) VALUES ("sa fait pleurer","fr",4);
+INSERT INTO `descriptions`(`texte`, `langue`,`idService`) VALUES ("vive les sushis","fr",5);
+INSERT INTO `descriptions`(`texte`, `langue`,`idService`) VALUES ("quand on aime la ratatouille","fr",6);
+INSERT INTO `descriptions`(`texte`, `langue`,`idService`) VALUES ("je prefere les petite banane","fr",7);
+INSERT INTO `descriptions`(`texte`, `langue`,`idService`) VALUES ("tarte a l abricot","fr",8);
+INSERT INTO `descriptions`(`texte`, `langue`,`idService`) VALUES ("la papye est un agrédien prisé par les gens qui aime dire des fruits chelou, la papye est un très bon fruit avec un nom facil a retenir","fr",9);
+INSERT INTO `descriptions`(`texte`, `langue`,`idService`) VALUES ("Vive le cidre","fr",10);
+INSERT INTO `descriptions`(`texte`, `langue`,`idService`) VALUES ("les kiwi sont acides","fr",11);
+INSERT INTO `descriptions`(`texte`, `langue`,`idService`) VALUES ("Nous vous accueillerons avec plaisir","fr",12);
 INSERT INTO `categories`(`code`, `langue`, `traduction`) VALUES ("test","Français","testTest");
 INSERT INTO `commentaires`( `note`, `texte`, `date`, `heure`, `censure`, `idUtilisateur`, `idService`, `idSeance`) VALUES (3.5,"Alice was beginning to get very tired of sitting by her sister on the bank, and of having nothing to do: once or twice she had peeped into the book her sister was reading, but it had no pictures or conversations in it, 'and what is the use of a book,' thought Alice 'without pictures or conversations?'","1865-11-18","16:16:16",0,1,1,1);
 INSERT INTO `commentaires`( `note`, `texte`, `date`, `heure`, `censure`, `idUtilisateur`, `idService`, `idSeance`) VALUES (4.2,"Très satisfaisant","2017-04-16","12:12:12",0,2,1,1);

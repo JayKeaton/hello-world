@@ -58,6 +58,15 @@
                         </div>
                     </a>
                 </li>
+                <!--
+                 <li>
+                    <a href="<?php echo(SOUS_DOMAINE."?page=ajoutServices") ?>">
+                        <div>
+                            <img src="static/headerFooter/addServices.png" width=21/>
+                            <p>Contributeur</p>
+                        </div>
+                    </a>
+                </li>-->
                 <?php
             }
             else {
@@ -86,14 +95,14 @@
                         </div>
                     </a>
                 </li>
-                <li>
+               <!-- <li>
                     <a href="http://www.partage.org/">
                         <div>
                             <img src="static/headerFooter/share.png" width=21/>
                             <p>Partage</p>
                         </div>
                     </a>
-                </li>
+                </li>-->
                 <li>
                     <a href="<?php echo(SOUS_DOMAINE."?page=profil") ?>">
                         <div>
@@ -103,13 +112,21 @@
                     </a>
                 </li>
                 <li>
+                    <a href="<?php echo(SOUS_DOMAINE."?page=ajoutServices") ?>">
+                        <div>
+                            <img src="static/headerFooter/addServices.png" width=21/>
+                            <p>Contributeur</p>
+                        </div>
+                    </a>
+                </li>
+               <!-- <li>
                     <a href="https://fr.wikipedia.org/wiki/Param%C3%A8tre">
                         <div>
                             <img src="static/headerFooter/engrenages_1.png" width=21/>
                             <p>Paramètres</p>
                         </div>
                     </a>
-                </li>
+                </li>-->
                 <li>
                     <a href="<?php echo(SOUS_DOMAINE."?page=logout") ?>">
                         <div>
@@ -118,6 +135,7 @@
                         </div>
                     </a>
                 </li>
+                
                 <?php
             }
             ?>
@@ -130,9 +148,10 @@
     
     <footer>
         <ul>
-            <li> <a href="http://hugobriet.000webhostapp.com/?page=accueil"> Plan du Site </a> </li>
-            <li> <a href="http://hugobriet.000webhostapp.com/?page=accueil"> Contact </a> </li>
-            <li> <a href="http://hugobriet.000webhostapp.com/?page=accueil"> En savoir plus </a> </li>
+            <li> <a href=<?php echo(SOUS_DOMAINE."?page=planDuSite") ?>> Plan du Site </a> </li>
+            <li> <a href=<?php echo(SOUS_DOMAINE."?page=contact") ?>> Contact </a> </li>
+            <li> <a href=<?php echo(SOUS_DOMAINE."?page=enSavoirPlus") ?>> En savoir plus </a> </li>
+            <li> <a href=<?php echo(SOUS_DOMAINE."?page=FAQ") ?>> FAQ </a> </li>
         </ul>
         <ul id="copyright">
             <li> ©Error404 </li>
