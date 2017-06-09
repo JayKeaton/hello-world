@@ -3,6 +3,7 @@
 <h3 id="LittleTitle">Par le groupe Error 404</h3>
 <p id="description">MSF a été créé pour contribuer à la protection de la vie et à l'allégement des souffrances en respect de la dignité humaine. MSF apporte des soins à des personnes en situation précaire et travaille à leur permettre de reprendre le contrôle sur leur futur.<br/></p>
 <section id="articles">
+	
 	<div id="presentation">
 		<h2>Fonctionnalités:</h2>
 		<p>
@@ -36,7 +37,6 @@
     		</div>
     		<div class="element">
 	   			Quel lieu?
-	   			<input type="text" name="adresse" id="adresse" />
 	   			<input type="adresse" id="adresse" name="adresse" value="<?php echo((empty($_POST['adresse'])) ? "" : $_POST['adresse']); ?>" placeholder="tapez une adresse" />			   
 	   			<input type="checkbox">Geolocalisation</input>
 	   		</div>
@@ -45,7 +45,7 @@
     		</div>
     	</form>
 		<div id="contenu">
-			<!--<?php print_r($data)?> DEBUGAGE-->
+			<?php print_r($data)?> 
 			<?php for($i=0;$i<count($data);$i++){ ?>
 				<p><a href=<?php echo $data[$i]["lien_site"] ?> >
 						<div id="article 2" class="service">
