@@ -10,24 +10,82 @@ body{
 
 
 header{
-  padding-top: 20px;
+  margin-top: 20px;
+  background-color: red;
+  height: 50px;
+}
+header #menuDeroulant{
+  position: absolute;
+  left: 18px;
+  top: 25px;
+}
+
+
+
+header #menuDeroulant:hover + ul{
+  left: 8px;
+}
+header ul:hover{
+  left: 8px;
 }
 
 header ul
 {
-  margin-top: 0;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  left: -999px;
+  top: 60px;
+  display:flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  list-style-type: none;
+  background-color: #DCDCDC;
+  Border: 2px black solid;
+  border-radius: 20px;
+  width: 150px;
+}
+header ul li{
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  Border-bottom: 1px black solid;
+}
+header ul li div{
+  width: 100%;
+  padding: 8px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+header ul li div img{
+  margin-right: 10px;
+}
+header ul li a{
+  width: 100%;
+  text-decoration: none;
+  color: red;
+}
+
+
+
+/*
+header #menuDeroulant{
+  visibility: hidden;
+}
+header ul
+{
   padding-left: 220px;
   display:flex;
   justify-content: flex-start;
   align-items: center;
   list-style-type: none;
-  background-color: red;
-  height: 50px;
 }
 header ul li:hover{
   background-image: linear-gradient(red 57% , #ff8080);
   font-weight: bold;
-  height: 50px;
 }
 header ul li a
 {
@@ -51,6 +109,12 @@ header ul li a div p{
   margin: 0;
   padding: 0;
 }
+*/
+
+
+
+
+
 
 header img{
   display:flex;
@@ -62,7 +126,6 @@ header #imageBanniere{
   top: 4px;
   left: 100px;
 }
-
 
 
 
