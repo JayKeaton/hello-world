@@ -10,7 +10,9 @@ if (!empty($_SESSION['idUtilisateur']))
 */
 
 
-$pages=[['accueil','controllers/accueil.php'],['recherche', 'controllers/recherche.php'],['signup','controllers/signup.php'],['activation','controllers/activation.php'],['signin','controllers/signin.php'],['profil','controllers/profil.php'],['locate','controllers/locate.php'],['servicesMaps','controllers/servicesMaps.php'],['activationContributeur', 'controllers/activationContributeur.php'],['favoris','controllers/favoris.php'],['modifierServices', 'controllers/modifierServices.php'],['servicesAffiche','controllers/servicesAffiche.php'],['pageServiceAdmin','controllers/pageServiceAdminC.php'],['ajoutAdmin','controllers/ajoutAdmin.php'],['activationAdmin','controllers/activationAdmin.php'],['contact','controllers/contact.php'],['activationService','controllers/activationService.php']];
+$pages=[['accueil','controllers/accueil.php'],['recherche', 'controllers/recherche.php'],['signup','controllers/signup.php'],['activation','controllers/activation.php'],['signin','controllers/signin.php'],['profil','controllers/profil.php'],['locate','controllers/locate.php'],['servicesMaps','controllers/servicesMaps.php'],['activationContributeur', 'controllers/activationContributeur.php'],['favoris','controllers/favoris.php'],['modifierServices', 'controllers/modifierServices.php'],['servicesAffiche','controllers/servicesAffiche.php'],['pageServiceAdmin','controllers/pageServiceAdminC.php'],['ajoutAdmin','controllers/ajoutAdmin.php'],['activationAdmin','controllers/activationAdmin.php'],['contact','controllers/contact.php'],['activationService','controllers/activationService.php'],['ajoutServices','controllers/ajoutServices']];
+
+$pagesPlan=[['accueil','controllers/accueil.php'],['recherche', 'controllers/recherche.php'],['signup','controllers/signup.php'],['signin','controllers/signin.php'],['profil','controllers/profil.php'],['locate','controllers/locate.php'],['servicesMaps','controllers/servicesMaps.php'],['favoris','controllers/favoris.php'],['modifierServices', 'controllers/modifierServices.php'],['servicesAffiche','controllers/servicesAffiche.php'],['contact','controllers/contact.php'],['ajoutServices','controllers/ajoutServices']];
 
 $sous_domaine = $_SERVER['PHP_SELF'];    // Emplacement de ce fichier sur le serveur
 $liste = explode("/", $sous_domaine);
@@ -80,16 +82,24 @@ elseif ($page == "servicesMaps"){
 }
 elseif ($page == "ajoutServices"){
     loginRequired($page);
-	//if($_SESSION['idUtilisateurs'])
-    $path = "controllers/activationContributeur.php";
+	if($_SESSION['droits']=="utilisateur"){
+		$path = "templates/internalError.html";
+	}
+    	
+	else{
+		$path = "controllers/activationContributeur.php";
+	}
 }
 elseif ($page == "favoris"){
     loginRequired($page);
     $path = "controllers/favoris.php";
 }
-elseif ($page == "modifierServices"){
-    loginRequired($page);
-    $path = "controllers/modifierServices.php";
+elseif ($page == "modifierServices"){ 
+	loginRequired($page);
+	if($_SESSION['droits']=="utilisateur")
+   		$path = "templates/internalError.html";
+	else
+    	$path = "controllers/modifierServices.php";
 }
 elseif ($page == "servicesAffiche"){
     $path = "controllers/servicesAffiche.php";
@@ -122,6 +132,13 @@ elseif ($page == "activationService"){
 elseif ($page == "planDuSite"){
     $path = "controllers/planDuSite.php";
 }
+elseif ($page == "enSavoirPlus"){
+    $path = "templates/enSavoirPlus.html";
+}
+elseif ($page == "FAQ"){
+    $path = "templates/FAQbeau.html";
+}
+
 else{
     include("templates/".$page.".html");
 }
