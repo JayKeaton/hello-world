@@ -2,8 +2,9 @@
 
 	$bdd = null;
 	try {
-
-
+		
+		
+	
     $hostname="localhost";
 	$username="root";
 	$password="root";
@@ -13,7 +14,8 @@
 	$username="id1784963_error404msf";
 	$password="IsepRPIC75";
 	$bddname="id1784963_error404";
-    */
+	*/
+    
 
 
 	// On se connecte à MySQL

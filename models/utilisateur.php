@@ -231,5 +231,21 @@
 			
 	}
 
+	function recupDroits($bdd, $idUtilisateur){
+		
+		$req = $bdd->prepare("SELECT droits FROM utilisateurs WHERE idUtilisateur = :idUtilisateur ");
+        $req->execute(array(':idUtilisateur'=> $idUtilisateur));
+		$donnee = $req->fetch();
+        return $donnee['droits'];
+		
+	}
 
+	function activeContributeur($bdd, $idUtilisateur){
+		
+		$req = $bdd->prepare("UPDATE utilisateurs SET droits = 'contributeur' WHERE idUtilisateur = :idUtilisateur ");
+        $req->execute(array(':idUtilisateur'=> $idUtilisateur));
+        $req->execute();
+		
+		
+	}
 	

@@ -17,6 +17,7 @@ define('SOUS_DOMAINE', $sous_domaine);
 require_once("../models/SQLCo.php");
 require_once("../controllers/functions.php");
 require_once("../models/utilisateur.php");
+require_once("../models/verificationService.php");
 
 if (empty($_SESSION['idAdministrateur'])){
     include("controllers/login.php");

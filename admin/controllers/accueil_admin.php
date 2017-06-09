@@ -3,14 +3,13 @@
 		$typeService = $_POST['typeService'];
 		$nomService = $_POST['nomService'];
 		$adresse = $_POST['adresse'];
-		include("models/verificationService.php");
-		if(!empty($_POST['page'])){
-			$page = $_POST['page'];
+		if(!empty($_POST['page2'])){
+			$page2 = $_POST['page2'];
 		}
 		else{
-			$page = 1;
+			$page2 = 1;
 		}
-		$retour = dataTypeService($page);
+		$retour = dataTypeService($page2,$typeService);
 		$data = $retour[0];
 		$nombreDePages = $retour[1];
 		$pageActuelle = $retour[2];
