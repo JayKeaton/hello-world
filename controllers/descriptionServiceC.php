@@ -1,5 +1,5 @@
 <?php
-include("models/pageServiceAdmin.php");
+include("models/descriptionService.php");
 $idService=1; /*$_GET['idService']; */
 $seances=seances($idService);
 $noteService=noteService($idService);
@@ -101,5 +101,5 @@ if(!empty($_POST["validerFavoris"])){
 
 /*print_r($seances);*/
 
-include("templates/pageServiceAdmin.php");
+include("templates/descriptionService.php");
  ?>

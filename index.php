@@ -85,7 +85,7 @@ elseif ($page == "ajoutServices"){
 	if($_SESSION['droits']=="utilisateur"){
 		$path = "templates/internalError.html";
 	}
-    	
+
 	else{
 		$path = "controllers/activationContributeur.php";
 	}
@@ -94,7 +94,7 @@ elseif ($page == "favoris"){
     loginRequired($page);
     $path = "controllers/favoris.php";
 }
-elseif ($page == "modifierServices"){ 
+elseif ($page == "modifierServices"){
 	loginRequired($page);
 	if($_SESSION['droits']=="utilisateur")
    		$path = "templates/internalError.html";
@@ -112,9 +112,9 @@ elseif ($page == "logout"){
 elseif ($page == "tests"){
     $path = "controllers/tests.php";
 }
-elseif ($page == "pageServiceAdmin"){
+elseif ($page == "descriptionService"){
     loginRequired($page);
-    $path = "controllers/pageServiceAdminC.php";
+    $path = "controllers/descriptionServiceC.php";
 }
 elseif ($page == "ajoutAdmin"){
     loginRequired($page);
