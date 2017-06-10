@@ -12,13 +12,14 @@
 			include("controllers/mailto.php");
 			$email = recupMail($bdd, $_SESSION['idUtilisateur']);
 			envoyerMail($email, recupCle($bdd, $_SESSION['idUtilisateur']), "", "", $_SESSION['idUtilisateur'], "activationContributeur");
+			include("templates/validation.html");
 
 		}
 
 
 	}
 
-	if($droits == "contributeur" or $droits == "admin+"){
+	if($droits == "contributeur" or $droits == "admin"){
 		
 		include("controllers/ajoutServices.php");
 

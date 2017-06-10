@@ -91,10 +91,7 @@ elseif ($page == "favoris"){
     $path = "controllers/favoris.php";
 }
 elseif ($page == "modifierServices"){
-	loginRequired($page);
-	if($_SESSION['droits']=="utilisateur")
-   		$path = "templates/internalError.html";
-	else
+	
     	$path = "controllers/modifierServices.php";
 }
 elseif ($page == "servicesAffiche"){
