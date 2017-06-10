@@ -23,7 +23,7 @@
     	<form action="" method="POST" id="form">
     		<div class="element">
     			Que recherchez-vous ?
-    			<?//php $form_service->echoInput("categorie"); AffiCHAGE DES CATÉGORIES EN FRANCAIS?>
+    			
 	    		<select type="categorie" id="categorie" name="categorie" />	    			
 	    			<option name="" value=""<?php if($categorie=="") echo "selected"; ?>>Aucune catégorie sélectionée</option>
 	    			<option name="soins" value="soins"<?php if($categorie=="soins") echo "selected"; ?>>soins</option>
@@ -33,7 +33,7 @@
 	    			<option name=""	value="Services administratifs"<?php if($categorie=="Services administratifs") echo "selected"; ?>>Services administratifs</option>
 	    			<option name=""	value="Vêtements"<?php if($categorie=="Vêtements") echo "selected"; ?>>Vêtements</option>
 	    		</select>
-	    		<?//php echo $categorie ?>
+	    	
 	    		<a href="https://www.google.fr/advanced_search"><input type="submit" value="Affiner mes critères de recherche"/></a>
     		</div>
     		<div class="element">
