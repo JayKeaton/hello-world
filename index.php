@@ -82,13 +82,9 @@ elseif ($page == "servicesMaps"){
 }
 elseif ($page == "ajoutServices"){
     loginRequired($page);
-	if($_SESSION['droits']=="utilisateur"){
-		$path = "templates/internalError.html";
-	}
-
-	else{
-		$path = "controllers/activationContributeur.php";
-	}
+	
+	$path = "controllers/activationContributeur.php";
+	
 }
 elseif ($page == "favoris"){
     loginRequired($page);
