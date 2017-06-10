@@ -5,16 +5,16 @@
 <section id="articles">
 	
 	<div id="presentation">
-		<h2>Fonctionnalités:</h2>
+		<h3>Fonctions:</h3>
 		<p>
 		-Services classés par catégories: onglets où dormir, où manger, où se faire soigner, où trouver une aide juridique, des vêtements, des services administratifs dédiés, etc. <br/>
 		- services classés par proximité géographique<br/>
 		-Affichage des services en liste, ou par carte
-		-Langues: français,anglais, arabe, farsi + API traduction Google<br/>
+		-Langues: français, anglais, arabe, farsi + API traduction Google<br/>
 		-Géolocalisation pour repérer les services d’aide lien vers Maps, Citymapper, etc.<br/>
 		-Mode hors connexion<br/>
 		-Partage via réseaux sociaux, etc.<br/>
-		-Interface contributeur(particulier, ONG) avec login/mot de passe: permet d’ajouter un service à proposer<br/>
+		-Interface contributeur (particulier, ONG) avec login/mot de passe: permet d’ajouter un service à proposer<br/>
 		Interface super admin avec login/mot de passe pour vérifier l'authenticité des informations saisies.<br/>
 		-Le projet est fait en Open Source<br/></p>
 	</div>
@@ -23,6 +23,7 @@
     	<form action="" method="POST" id="form">
     		<div class="element">
     			Que recherchez-vous ?
+    			<?//php $form_service->echoInput("categorie"); AffiCHAGE DES CATÉGORIES EN FRANCAIS?>
 	    		<select type="categorie" id="categorie" name="categorie" />	    			
 	    			<option name="" value=""<?php if($categorie=="") echo "selected"; ?>>Aucune catégorie sélectionée</option>
 	    			<option name="soins" value="soins"<?php if($categorie=="soins") echo "selected"; ?>>soins</option>
@@ -45,7 +46,7 @@
     		</div>
     	</form>
 		<div id="contenu">
-			<?php print_r($data)?> 
+			<?php // print_r($data)?> 
 			<?php for($i=0;$i<count($data);$i++){ ?>
 				<p><a href=<?php echo $data[$i]["lien_site"] ?> >
 						<div id="article 2" class="service">
@@ -65,7 +66,7 @@
 				</p>
 			<?php } ?>
 
-			<p><a href="http://www.lecrystalparis.com/menu.html#mix">
+		<!--<p><a href="http://www.lecrystalparis.com/menu.html#mix">
 					<div id="article 1" class="service">
 						<figure>
 							<img src="static/accueil/msf_logo _fichiers/Worlds-Largest-Pizza.jpg" width=240 class=floatl title="photo non contractuelle" />
@@ -75,7 +76,7 @@
 						</figure>
 					</div>
 				</a>
-			</p>
+			</p>-->
 			<br/><br/><br/><br/><br/>
 		</div>
 	</div>

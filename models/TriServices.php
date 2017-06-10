@@ -33,7 +33,13 @@
 	    $data = $req->fetchAll();
 	    return $data;
 	}
-
+	function recupCategorie($bdd){
+			$req = $bdd->prepare("SELECT code,traduction FROM categories WHERE langue='fr'");
+			//$req->bindParam('categorie', $categorie);
+			$req->execute();
+			 $data = $req->fetchAll();
+			 return $data;
+		}
 	/*JOIN text FROM description WHERE IdServices=IdServices*/
 
 
