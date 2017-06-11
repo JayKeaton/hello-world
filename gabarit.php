@@ -14,12 +14,12 @@
                 <img src="static/headerFooter/msf2.jpeg" width="120" height="80"/>
             </a>
         </div>
-        <img src="https://image.flaticon.com/icons/svg/149/149199.svg" id="menuDeroulant" width="40"/>
+        <img src="https://image.flaticon.com/icons/svg/149/149199.svg" id="menuDeroulant" width="40" height="40"/>
         <ul>
             <?php
             if (empty($_SESSION['idUtilisateur'])){
                 ?>
-                <li>
+                <li class="border_bottom">
                     <a href="<?php echo(SOUS_DOMAINE) ?>">
                         <div>
                             <img src="static/headerFooter/home.png" width=20 height=20/>
@@ -27,7 +27,7 @@
                         </div>
                     </a>
                 </li>
-                <li>
+                <li class="border_bottom">
                     <a href="<?php echo(SOUS_DOMAINE."?page=recherche") ?>">
                         <div>
                             <img src="static/headerFooter/loupe.png" width=20 height=20/>
@@ -35,7 +35,7 @@
                         </div>
                     </a>
                 </li>
-                <li>
+                <li class="border_bottom">
                     <a href="<?php echo(SOUS_DOMAINE."?page=servicesAffiche") ?>">
                         <div>
                             <img src="static/headerFooter/map.png" width=20 height=20/>
@@ -43,7 +43,7 @@
                         </div>
                     </a>
                 </li>
-                <li>
+                <li class="border_bottom">
                     <a href="<?php echo(SOUS_DOMAINE."?page=signin") ?>">
                         <div>
                             <img src="static/headerFooter/engrenages_1.png" width=20 height=20/>
@@ -72,7 +72,7 @@
             }
             else {
                 ?>
-                <li>
+                <li class="border_bottom">
                     <a href="<?php echo(SOUS_DOMAINE) ?>">
                         <div>
                             <img src="static/headerFooter/home.png" width=20 height=20/>
@@ -80,7 +80,7 @@
                         </div>
                     </a>
                 </li>
-                <li>
+                <li class="border_bottom">
                     <a href="<?php echo(SOUS_DOMAINE."?page=recherche") ?>">
                         <div>
                             <img src="static/headerFooter/loupe.png" width=20 height=20/>
@@ -88,7 +88,7 @@
                         </div>
                     </a>
                 </li>
-                <li>
+                <li class="border_bottom">
                     <a href="<?php echo(SOUS_DOMAINE."?page=servicesAffiche") ?>">
                         <div>
                             <img src="static/headerFooter/map.png" width=20 height=20/>
@@ -104,7 +104,7 @@
                         </div>
                     </a>
                 </li>-->
-                <li>
+                <li class="border_bottom">
                     <a href="<?php echo(SOUS_DOMAINE."?page=profil") ?>">
                         <div>
                             <img src="static/headerFooter/Profil.png" width=20 height=20/>
@@ -112,7 +112,7 @@
                         </div>
                     </a>
                 </li>
-                <li>
+                <li class="border_bottom">
                     <a href="<?php echo(SOUS_DOMAINE."?page=ajoutServices") ?>">
                         <div>
                             <img src="static/headerFooter/addServices.png" width=20 height=20/>
