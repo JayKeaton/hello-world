@@ -4,12 +4,13 @@
 	try {
 		
 		
-	
+
     $hostname="localhost";
 	$username="root";
-	$password="";
+	$password="root";
 	$bddname="error404";
-    /*
+
+    /* 000webhostapp
 	$hostname="localhost";
 	$username="id1784963_error404msf";
 	$password="IsepRPIC75";

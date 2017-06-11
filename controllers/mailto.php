@@ -2,7 +2,7 @@
 
 
 function envoyerMail($email, $hash, $nom, $prenom, $idu, $type){
-	$root = (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . '/';
+	$root = (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . '/' . SOUS_DOMAINE . '/';
 	if($type == "activationUtilisateur"){
 		
 		$message = "Bonjour ".$nom ." ".$prenom.". Pour activer votre compte, veuillez cliquer sur le lien ci dessous ou le copier/coller dans votre navigateur internet :
@@ -139,8 +139,7 @@ function envoyerMail($email, $hash, $nom, $prenom, $idu, $type){
 		
 		$email="antonin.maillet@gmail.com";
 	}
-	
-	$root = (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . '/';
+
 	$mail = $email; // Déclaration de l'adresse de destination.
 	if (!preg_match("#^[a-z0-9._-]+@(hotmail|live|msn).[a-z]{2,4}$#", $mail)) // On filtre les serveurs qui rencontrent des bogues.
 	{

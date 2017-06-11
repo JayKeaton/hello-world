@@ -52,7 +52,7 @@ $form->add('select', 'age')
 
 if($form->isValid()){
     $data = $form->get_cleaned_values();
-    $listeServices = obtenirServiceParCategorie($data['categorie']);
+    $listeServices = obtenirServiceParCategorie($data['categorie'], $data['langue']);
 }
 
 

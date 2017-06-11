@@ -27,7 +27,7 @@
     <fieldset>
         <legend>Résultats de la recherche :</legend>
 
-        <article>
+        <!--article>
             <img src="media/isep.jpg" width="200" height="200"/>
             <div>
                 <h2><em>L'ISEP</em></h2>
@@ -39,7 +39,7 @@
                     Sornettes. Le monde se doit de la connaitre !
                 </p>
             </div>
-        </article>
+        </article-->
 
         <?php
         if (isset($listeServices)){
@@ -47,12 +47,24 @@
                 if($service['langue'] == $data['langue']){
                     ?>
                     <article>
-                        <img src="media/isep.jpg" width="200" height="200"/>
+                        <?php
+                        if (empty($service['adresseImage'])) {
+                            ?>
+                            <img src="media/isep.jpg" width="200" height="200"/>
+                            <?php
+                        }
+                        else{
+                            ?>
+                            <img src="media/imageService/<?php echo($service['adresseImage']); ?>" width="200" height="200"/>
+                            <?php
+                        }
+                        ?>
                         <div>
                             <h2><em><?php echo($service['nom']); ?></em></h2>
                             <p>
                                 <?php echo($service['texte']); ?>
                             </p>
+                            <a href="<?php echo(SOUS_DOMAINE."?page=descriptionService&idService=".$service['idService']); ?>">En savoir plus</a>
                         </div>
                     </article>
                     <?php
