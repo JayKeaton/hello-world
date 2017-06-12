@@ -48,7 +48,7 @@
 		<div id="contenu">
 			<?php // print_r($data)?> 
 			<?php for($i=0;$i<count($data);$i++){ ?>
-				<p><a href=<?php echo $data[$i]["lien_site"] ?> >
+				<p><a href="<?php echo(SOUS_DOMAINE."?page=descriptionService&idService=".$data[$i]["idService"]) ?>" >
 						<div id="article 2" class="service">
 							
 							<img src="static/accueil/msf_logo _fichiers/maison.jpeg" width=240 class="floatl" title="photo non contractuelle"/> </br>
@@ -81,9 +81,9 @@
 		</div>
 	</div>
 	<div id="fil_actu">
-		<h3>Actu 1</h3><p>Blablabla<br/>BlablablaBlablablaBlablabla<br/>BlablablaBlablabla<br/></p>
-		<h3>Actu 2</h3><p>Blablabla<br/>BlablablaBlablablaBlablabla<br/>BlablablaBlablabla<br/></p>
-		<h3>Actu 3</h3><p>Blablabla<br/>BlablablaBlablablaBlablablabla<br/>BlablablaBlablabla<br/></p>
+		<h2>Fil d'actus<h2>
+		<h3>Reboot Challenge</h3><p>Nous avons été sélectionnés pour présenter notre application devant le Reboot Challenge</p>
+		<h3>Nuit de l'Info</h3><p> Nous sommes très heureux d'avoir participé à la nuit de l'Info, cela fut une belle expérience, et le début d'un projet prometteur avec MSF<br/></p>
 	</div>
 </section>	
 	

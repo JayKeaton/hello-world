@@ -138,7 +138,7 @@ INSERT INTO `utilisateurs`( `pseudo`, `email`, `mdp`, `avatar`, `nom`, `prenom`,
 INSERT INTO `descriptions`(`texte`, `langue`,`idService`) VALUES ("Nous serons heureux de vous soigner","fr",1);
 INSERT INTO `descriptions`(`texte`, `langue`,`idService`) VALUES ("les carottes ses oranges","fr",2);
 INSERT INTO `descriptions`(`texte`, `langue`,`idService`) VALUES ("les poireaux sa fait du bourguinion","fr",3);
-INSERT INTO `descriptions`(`texte`, `langue`,`idService`) VALUES ("sa fait pleurer","fr",4);
+INSERT INTO `descriptions`(`texte`, `langue`,`idService`) VALUES ("ça fait pleurer","fr",4);
 INSERT INTO `descriptions`(`texte`, `langue`,`idService`) VALUES ("vive les sushis","fr",5);
 INSERT INTO `descriptions`(`texte`, `langue`,`idService`) VALUES ("quand on aime la ratatouille","fr",6);
 INSERT INTO `descriptions`(`texte`, `langue`,`idService`) VALUES ("je prefere les petite banane","fr",7);
