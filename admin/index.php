@@ -5,13 +5,14 @@ session_start();
 $sous_domaine = $_SERVER['PHP_SELF'];    // Emplacement de ce fichier sur le serveur
 $liste = explode("/", $sous_domaine);
 $sous_domaine = "";
-for ($k = 0; $k < sizeof($liste)-1; $k++){
+for ($k = 0; $k < sizeof($liste)-2; $k++){
     $sous_domaine .= $liste[$k]."/";
 }
 $url = "http://".$_SERVER['HTTP_HOST'];
 
 define('URL_SITE', $url);
-define('SOUS_DOMAINE', $sous_domaine);
+define('SOUS_DOMAINE_ROOT', $sous_domaine);
+define('SOUS_DOMAINE', $sous_domaine."/admin");
 
 
 require_once("../models/SQLCo.php");

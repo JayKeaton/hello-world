@@ -11,7 +11,7 @@
 		<p id="petitTitre"> Dernière annonce non validé </p>
 		<?php
 		global $bdd;
-		$fileActu=$bdd ->prepare("SELECT nom,texte,validation FROM descriptions JOIN services ON descriptions.idService = services.idService where services.validation = 1 ORDER By dateAjout");
+		$fileActu=$bdd ->prepare("SELECT descriptions.idService as idService,nom,texte,validation FROM descriptions JOIN services ON descriptions.idService = services.idService where services.validation = 1 ORDER By dateAjout");
 		$fileActu->execute();
 		$actuTrier=$fileActu-> fetchAll();
 		$valide2 = null;
@@ -27,7 +27,7 @@
      				$contenu2='<p class="actuData"> nom du service :'
 					.$actuTrier[$i]['nom'].
     				'</br> description :'.$actuTrier[$i]['texte'].$valide2.
-    				'</br> <a href=" ">Voir l’annonce</a></p>' ;
+    				'</br> <a href="'.SOUS_DOMAINE_ROOT.'?page=descriptionService&idService='.$actuTrier[$i]['idService'].'">Voir l’annonce</a></p>' ;
 
 				echo $contenu2;
      			}
@@ -121,7 +121,7 @@
 	    			$contenu='<div class="positionData">'.$image.'<p class="servicesData">  nom du service :'
 					.$data[$j]['nom'].
 	    			'</br> description :'.$data[$j]['texte'].$valide.
-	    			'</br> <a href=" ">Voir l’annonce</a></p></div>' ;
+	    			'</br> <a href="'.SOUS_DOMAINE_ROOT.'?page=descriptionService&idService='.$data[$i]['idService'].'">Voir l’annonce</a></p></div>' ;
 
 					echo $contenu;
 

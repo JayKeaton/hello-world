@@ -22,7 +22,7 @@ function dataTypeService ($typeService,$messagesParPage){
 		$clause[]=$a;
 	}
 	$final = join(" AND ",$clause);
-	$req=$bdd -> prepare("SELECT nom,texte,validation,adresseImage FROM descriptions JOIN services ON descriptions.idService = services.idService WHERE $final");
+	$req=$bdd -> prepare("SELECT descriptions.idService as idService,nom,texte,validation,adresseImage FROM descriptions JOIN services ON descriptions.idService = services.idService WHERE $final");
 	$req->bindValue('typeService',$typeService);
 	$req->execute();
 	$data=$req-> fetchAll();
