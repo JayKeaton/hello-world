@@ -14,38 +14,39 @@
                 <img src="static/headerFooter/msf2.jpeg" width="120" height="80"/>
             </a>
         </div>
+        <img src="https://image.flaticon.com/icons/svg/149/149199.svg" id="menuDeroulant" width="40" height="40"/>
         <ul>
             <?php
             if (empty($_SESSION['idUtilisateur'])){
                 ?>
-                <li>
+                <li class="border_bottom">
                     <a href="<?php echo(SOUS_DOMAINE) ?>">
                         <div>
-                            <img src="static/headerFooter/home.png" width=21/>
+                            <img src="static/headerFooter/home.png" width=20 height=20/>
                             <p>Accueil</p>
                         </div>
                     </a>
                 </li>
-                <li>
+                <li class="border_bottom">
                     <a href="<?php echo(SOUS_DOMAINE."?page=recherche") ?>">
                         <div>
-                            <img src="static/headerFooter/loupe.png" width=21/>
+                            <img src="static/headerFooter/loupe.png" width=20 height=20/>
                             <p>Recherche</p>
                         </div>
                     </a>
                 </li>
-                <li>
+                <li class="border_bottom">
                     <a href="<?php echo(SOUS_DOMAINE."?page=servicesAffiche") ?>">
                         <div>
-                            <img src="static/headerFooter/map.png" width=21/>
+                            <img src="static/headerFooter/map.png" width=20 height=20/>
                             <p>Carte</p>
                         </div>
                     </a>
                 </li>
-                <li>
+                <li class="border_bottom">
                     <a href="<?php echo(SOUS_DOMAINE."?page=signin") ?>">
                         <div>
-                            <img src="static/headerFooter/engrenages_1.png" width=21/>
+                            <img src="static/headerFooter/engrenages_1.png" width=20 height=20/>
                             <p>Login</p>
                         </div>
                     </a>
@@ -53,7 +54,7 @@
                 <li>
                     <a href="<?php echo(SOUS_DOMAINE."?page=signup") ?>">
                         <div>
-                            <img src="static/headerFooter/signup.png" width=21/>
+                            <img src="static/headerFooter/signup.png" width=20 height=20/>
                             <p>S'inscrire</p>
                         </div>
                     </a>
@@ -71,26 +72,26 @@
             }
             else {
                 ?>
-                <li>
+                <li class="border_bottom">
                     <a href="<?php echo(SOUS_DOMAINE) ?>">
                         <div>
-                            <img src="static/headerFooter/home.png" width=21/>
+                            <img src="static/headerFooter/home.png" width=20 height=20/>
                             <p>Accueil</p>
                         </div>
                     </a>
                 </li>
-                <li>
+                <li class="border_bottom">
                     <a href="<?php echo(SOUS_DOMAINE."?page=recherche") ?>">
                         <div>
-                            <img src="static/headerFooter/loupe.png" width=21/>
+                            <img src="static/headerFooter/loupe.png" width=20 height=20/>
                             <p>Recherche</p>
                         </div>
                     </a>
                 </li>
-                <li>
+                <li class="border_bottom">
                     <a href="<?php echo(SOUS_DOMAINE."?page=servicesAffiche") ?>">
                         <div>
-                            <img src="static/headerFooter/map.png" width=21/>
+                            <img src="static/headerFooter/map.png" width=20 height=20/>
                             <p>Carte</p>
                         </div>
                     </a>
@@ -103,18 +104,18 @@
                         </div>
                     </a>
                 </li>-->
-                <li>
+                <li class="border_bottom">
                     <a href="<?php echo(SOUS_DOMAINE."?page=profil") ?>">
                         <div>
-                            <img src="static/headerFooter/Profil.png" width=21/>
+                            <img src="static/headerFooter/Profil.png" width=20 height=20/>
                             <p>Mon Profil</p>
                         </div>
                     </a>
                 </li>
-                <li>
+                <li class="border_bottom">
                     <a href="<?php echo(SOUS_DOMAINE."?page=ajoutServices") ?>">
                         <div>
-                            <img src="static/headerFooter/addServices.png" width=21/>
+                            <img src="static/headerFooter/addServices.png" width=20 height=20/>
                             <p>Contributeur</p>
                         </div>
                     </a>
@@ -130,7 +131,7 @@
                 <li>
                     <a href="<?php echo(SOUS_DOMAINE."?page=logout") ?>">
                         <div>
-                            <img src="static/headerFooter/logout.png" width=21/>
+                            <img src="static/headerFooter/logout.png" width=20 height=20/>
                             <p>Logout</p>
                         </div>
                     </a>
@@ -150,7 +151,8 @@
         <ul>
             <li> <a href=<?php echo(SOUS_DOMAINE."?page=planDuSite") ?>> Plan du Site </a> </li>
             <li> <a href=<?php echo(SOUS_DOMAINE."?page=contact") ?>> Contact </a> </li>
-            <li> <a href="http://hugobriet.000webhostapp.com/?page=accueil"> En savoir plus </a> </li>
+            <li> <a href=<?php echo(SOUS_DOMAINE."?page=enSavoirPlus") ?>> En savoir plus </a> </li>
+            <li> <a href=<?php echo(SOUS_DOMAINE."?page=FAQ") ?>> FAQ </a> </li>
         </ul>
         <ul id="copyright">
             <li> ©Error404 </li>

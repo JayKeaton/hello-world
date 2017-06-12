@@ -20,7 +20,7 @@
 
         <label>Nom
 
-        <input type="nom" id="nom" name="nom" value="<?php echo((empty($_POST['nom'])) ? "" : $_POST['nom']); ?>" required="required"/>
+        <input type="text" id="nom" name="nom" value="<?php echo((empty($_POST['nom'])) ? "" : $_POST['nom']); ?>" required="required"/>
         </label></br>
 
        
@@ -35,14 +35,14 @@
 
         </label>
 
-        <input type="phone" id="telephone" name="telephone" value="<?php echo((empty($_POST['telephone'])) ? "" : $_POST['telephone']); ?>" required="required" />
+        <input type="text" id="telephone" name="telephone" value="<?php echo((empty($_POST['telephone'])) ? "" : $_POST['telephone']); ?>" required="required" />
         </br>
         
         <label for="telephone">Lien site web: <span class="required">*</span>
 
         </label>
 
-        <input type="" id="lien_site" name="lien_site" value="<?php echo((empty($_POST['lien_site'])) ? "" : $_POST['lien_site']); ?>" required="required" />
+        <input type="text" id="lien_site" name="lien_site" value="<?php echo((empty($_POST['lien_site'])) ? "" : $_POST['lien_site']); ?>" required="required" />
         </fieldset>
     </div>
 
@@ -56,11 +56,12 @@
 
         </label>
 
-        <textarea id="adresse" name="adresse" value="<?php echo((empty($_POST['adresse'])) ? "" : $_POST['adresse']); ?>" placeholder="Entrez votre adresse ici"></textarea>
+        <textarea type="text" id="adresse" name="adresse" value="<?php echo((empty($_POST['adresse'])) ? "" : $_POST['adresse']); ?>" placeholder="Entrez votre adresse ici"></textarea>
         </br>
         <label>Code Postal:
-        <input type="number" id="codePostal" name="codePostal" value="<?php echo((empty($_POST['codePostal'])) ? "" : $_POST['coddePostal']); ?>" required="required" />
+        <input type="text" id="codePostal" name="codePostal" value="<?php echo((empty($_POST['codePostal'])) ? "" : $_POST['codePostal']); ?>" required="required" />
         </label>
+
         </fieldset>
     </div>
 
@@ -70,24 +71,24 @@
     <div>
 
         <fieldset>
-        <legend>Catégorie</legend>
 
-        <textarea id="categorie" name="categorie" value="<?php echo((empty($_POST['categorie'])) ? "" : $_POST['categorie']); ?>" placeholder="Entrez votre categorie ici"></textarea>
+        <legend>Catégorie</legend>
+             <?php $form_service->echoInput("categorie"); ?>
+
+        <!--<textarea id="categorie" name="categorie" value="<?php/* echo((empty($_POST['categorie'])) ? "" : $_POST['categorie']);*/ ?>" placeholder="Entrez votre categorie ici"></textarea>-->
+
         </fieldset>
         
     </div>
     <div>
     <fieldset>
+
         <legend>Description</legend>
 
-    <Label>Langue
-        <select id="langue" name="langue">
-            <option>Francais</option>
-            <option>Anglais</option>
-            <option>Arabe</option>
-            <option>Klingon</option>
-        </select>
-      </Label></br>
+     </br>
+     <Label>Langue
+            <?php $form_service->echoInput("langue"); ?>
+        </Label>
 
     
 
@@ -95,7 +96,7 @@
 
         
         
-        <textarea id="texte" name="texte" value="<?php echo((empty($_POST['categorie'])) ? "" : $_POST['categorie']); ?>" placeholder="Decrivez ici votre service"></textarea></label>
+        <textarea id="texte" name="texte" value="<?php echo((empty($_POST['categorie'])) ? "" : $_POST['categorie']); ?>" placeholder="Décrivez ici votre service"></textarea></label>
 
         </fieldset>
 
@@ -104,13 +105,14 @@
         
 
     </div>
-        <h1>Image de service:</h1>
-    <div>
+    <fieldset>
+        <legend>Image de service:</legend>
+    
         <!--<img src="<?php/* echo("media/imageService/".$_FILES['imageService']); */?>" height="150" width="150" />-->
         <input type="file" name="imageService" id="imageService"/>
-    </div>
+    </fieldset>
     <div>
-        <input type="submit" name="ajouterImageService" value="Valider"/>
+        <?php $form_service->submit("Ajouter service"); ?>
     </div>
 
 
@@ -119,11 +121,11 @@
     
     </article>
     
-<div id="google_translate_element"></div><script type="text/javascript">
+<!--div id="google_translate_element"></div><script type="text/javascript">
 function googleTranslateElementInit() {
   new google.translate.TranslateElement({pageLanguage: 'fr', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, autoDisplay: false, multilanguagePage: true}, 'google_translate_element');
 }
-</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script-->
 
 </body>
 </html>

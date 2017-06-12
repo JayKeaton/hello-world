@@ -9,6 +9,33 @@
 	/*$req=$bdd->prepare("SELECT * FROM descriptions");
 	$rep->execute(array());
 	$descriptions=$req->fetchall();*/
+	$form_modifierService = new Formulaire('login');
+	$form_modifierService->add('email', 'email')
+    ->required(true);
+    
+    $form_modifierService->add('text','telephone')
+    ->required(true);
+    $form_modifierService->add('text','lien_site')
+    ->required(true);
+    
+    $form_modifierService->add('text','nom')
+    ->required(true);
+    $liste=array("fr"=>"Francais","En"=>"Anglais","Ar"=>"Arabe","kl"=>"Klingon");
+    $form_modifierService->add('select','langue')
+    ->affecterValeurs($liste)
+    ->required(true);
+    $categorie=recupCategorie($bdd);
+    $listeCategorie=array();
+    foreach ($categorie as $value) {
+      $listeCategorie[$value["traduction"]]=$value["code"];
+      
+      # code...
+    }
+    $form_modifierService->add('select','categorie')
+    ->affecterValeurs($listeCategorie)
+    ->required(true);
+    $form_modifierService->add('text','codePostal')
+    ->required(true);
 	$idService=1;
 	$idDescription=0;
 	if (!empty($_POST['idService'])){
@@ -16,15 +43,14 @@
 	}
 
 
-	if (!empty($_POST["email"])){
-		$email=$_POST["email"];
-		$adresse=$_POST["adresse"];
-		$telephone=($_POST["telephone"]);
-		$lien_site=($_POST["lien_site"]);
-		$categorie=($_POST["categorie"]);
-		$nom=($_POST["nom"]);
-		$idService=1;
-		$idService=modifierService($bdd, $nom, $email, $adresse, $telephone,$lien_site, $categorie, $idService);
+	 if ($form_modifierService->isValid()){
+    		$data = $form_service->get_cleaned_values();
+    		$texte=($_POST["texte"]);
+			$adresse=($_POST["adresse"]);
+			$categorie=($_POST["categorie"]);
+		
+		$idService=$_POST["idService"];
+		$idService=modifierService($bdd, $data['nom'], $data['email'], $adresse, $data['telephone'],$data['lien_site'], $data['categorie'], $idService);
 	}
 
 
@@ -32,8 +58,8 @@
 
 
 	$idUtilisateur=$_SESSION['idUtilisateur'];
-	$data=recupServicesUtilisateur(1,$bdd);
-	$dataDescription=recupDescriptionService($idService,$bdd);
+	$dataServicesUtilisateur=recupServicesUtilisateur($_SESSION['idUtilisateur'],$bdd);
+	$dataDescription=recupDescriptionService($donnees['idService'],$bdd);
 	$n=0;
 
 	/*foreach ($data as $element => $value) {

@@ -13,6 +13,12 @@
         }
 		
 	}
+	function recupCategorie($bdd){
+		$req = $bdd->prepare("SELECT code,traduction FROM categories WHERE langue='fr'");
+		$req->execute();
+		 $data = $req->fetchAll();
+		 return $data;
+	}
 
 
 	function getCoordonnees($adresse){
@@ -33,6 +39,7 @@
 	function ajouterAdresseImage($bdd,$adresseImage,$idService){
 		$req = $bdd->prepare("UPDATE services SET adresseImage=:adresseImage WHERE idService=:idService");
 		$result=$req->execute(array("adresseImage"=>$adresseImage, "idService"=>$idService ));
+		return $adresseImage ;
 
 	}
 
@@ -73,13 +80,14 @@
 	}
 
 
-	function obtenirServiceParCategorie($categorie){
+	function obtenirServiceParCategorie($categorie, $langue){
 	    global $bdd;
-	    $str = "SELECT services.nom as nom, descriptions.texte as texte, descriptions.langue as langue 
+	    $str = "SELECT services.idService as idService, services.nom as nom, services.adresseImage as adresseImage, descriptions.texte as texte, descriptions.langue as langue 
 	    FROM services JOIN descriptions on services.idService = descriptions.idService 
-	    WHERE categorie=:categorie";
+	    WHERE categorie=:categorie and descriptions.langue=:langue";
 	    $req = $bdd->prepare($str);
 	    $req->bindParam('categorie', $categorie);
+	    $req->bindParam('langue', $langue);
 	    $req->execute();
 	    $data = $req->fetchAll();
 	    return $data;

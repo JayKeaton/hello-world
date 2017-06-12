@@ -14,13 +14,17 @@
 			}
 		
 		</style>
+		<?php
 		
+		$root = (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . '/';
+		
+		?>
 		<div>
 			<h2>Plan du Site</h2>
 			<div>
 				<ul>
-					<?php foreach($pages as $e){
-						echo("<li><a href =".$e[1].">".$e[0]."</a></li>"); 
+					<?php foreach($pagesPlan as $e){
+						echo("<li><a href =".$root."/?page=".$e[0].">".$e[0]."</a></li>"); 
 				}
 					?>
 				</ul>

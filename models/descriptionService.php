@@ -1,20 +1,5 @@
 <?php
 
-$servername="localhost";
-$username="root";
-$password="root";
-$dbname="error404";
-$bdd = null;
-try{
-  $bdd=new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-  $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-  echo "Connected successfully";
-  }
-catch(PDOException $se)
-  {
-  echo "Connection failed: " . $se->getMessage();
-  }
-
   function description($idService){
     global $bdd;
     $req=$bdd->prepare("SELECT texte FROM descriptions WHERE idService=:idService");
@@ -27,7 +12,7 @@ catch(PDOException $se)
 
   function noteService($idService){
     global $bdd;
-    $req=$bdd->prepare("SELECT ROUND(AVG(note),2) FROM commentaires WHERE idService=:idService");
+    $req=$bdd->prepare("SELECT ROUND(AVG(note),2) as note FROM commentaires WHERE idService=:idService");
     $req->bindParam("idService",$idService);
     $req->execute();
     $note=$req->fetch();
@@ -104,7 +89,7 @@ catch(PDOException $se)
 
   function seances($idService){
     global $bdd;
-    $req=$bdd->prepare("SELECT * FROM seances WHERE idService=:idService ORDER BY DATE");
+    $req=$bdd->prepare("SELECT * FROM seances WHERE idService=:idService ORDER BY date");
     $req->bindParam("idService",$idService);
     $req->execute();
     $seances=$req->fetchAll();
@@ -139,11 +124,11 @@ catch(PDOException $se)
     return $lesInscrits;
   }
 
-  function estInscrit($idService){
+  function estInscrit($idService,$idUtilisateur){
     global $bdd;
     $req=$bdd->prepare("SELECT seances.idSeance FROM inscrits JOIN seances ON inscrits.idSeance=seances.idSeance WHERE seances.idService=:idService AND inscrits.idUtilisateur=:idUtilisateur");
     $req->bindParam("idService",$idService);
-    $req->bindParam("idUtilisateur",$_SESSION["idUtilisateur"]);
+    $req->bindParam("idUtilisateur",$idUtilisateur);
     $req->execute();
     $estInscrit=$req->fetchAll();
     return $estInscrit;
@@ -179,5 +164,39 @@ catch(PDOException $se)
     $req->bindParam("censure",$censure);
     $req->bindParam("idCommentaire",$idCommentaire);
     $req->execute();
+  }
+
+  function ajoutNote($idService,$note){
+    global $bdd;
+    $req=$bdd->prepare("UPDATE `services` SET note=:note WHERE idService=:idService");
+    $req->bindParam("note",$note);
+    $req->bindParam("idService",$idService);
+    $req->execute();
+  }
+
+  function isFavoris($idService,$idUtilisateur){
+    global $bdd;
+    $req=$bdd->prepare("SELECT * FROM favoris WHERE idService=:idService AND idUtilisateur=:idUtilisateur");
+    $req->bindParam("idService", $idService);
+    $req->bindParam("idUtilisateur",$idUtilisateur);
+    $req->execute();
+    $favoris=$req->fetch();
+    return(!empty($favoris));
+  }
+
+  function modifFavoris($isFavoris,$idService,$idUtilisateur){
+    global $bdd;
+    if ($isFavoris){
+      $req1=$bdd->prepare("DELETE FROM `favoris` WHERE idService=:idService AND idUtilisateur=:idUtilisateur");
+      $req1->bindParam("idService",$idService);
+      $req1->bindParam("idUtilisateur",$idUtilisateur);
+      $req1->execute();
+    }
+    else{
+      $req2=$bdd->prepare("INSERT INTO `favoris`(`idService`,`idUtilisateur`) VALUES (:idService, :idUtilisateur)");
+      $req2->bindParam("idService",$idService);
+      $req2->bindParam("idUtilisateur",$idUtilisateur);
+      $req2->execute();
+    }
   }
  ?>

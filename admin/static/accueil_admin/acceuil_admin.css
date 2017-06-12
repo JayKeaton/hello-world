@@ -10,6 +10,11 @@
 	background:rgb(220,220,245);
 }
 
+.imageService{
+	width:100px;
+	height:100px;
+}
+
 #accueilAdmin{
 	width: 75%;
 	display: flex;
@@ -77,11 +82,19 @@
 .servicesData{
 	/*position:relative;
 	left:200px;*/
-	border: 1px black solid;
+	
 	text-align: center;
-	border-radius: 20px;
-	width:40%;
 	/*left:20%;*/
+}
+
+.positionData{
+	display:flex;
+	border: 1px black solid;
+	border-radius: 20px;
+	width:100%;
+}
+
+.placementData{
 }
 
 #page{

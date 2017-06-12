@@ -11,7 +11,7 @@
 		<p id="petitTitre"> Dernière annonce non validé </p>
 		<?php
 		global $bdd;
-		$fileActu=$bdd ->prepare("SELECT nom,texte,validation FROM descriptions JOIN services ON descriptions.idService = services.idService where services.validation = 1 ORDER By dateAjout");
+		$fileActu=$bdd ->prepare("SELECT descriptions.idService as idService,nom,texte,validation FROM descriptions JOIN services ON descriptions.idService = services.idService where services.validation = 1 ORDER By dateAjout");
 		$fileActu->execute();
 		$actuTrier=$fileActu-> fetchAll();
 		$valide2 = null;
@@ -27,7 +27,7 @@
      				$contenu2='<p class="actuData"> nom du service :'
 					.$actuTrier[$i]['nom'].
     				'</br> description :'.$actuTrier[$i]['texte'].$valide2.
-    				'</br> <a href=" ">Voir l’annonce</a></p>' ;
+    				'</br> <a href="'.SOUS_DOMAINE_ROOT.'?page=descriptionService&idService='.$actuTrier[$i]['idService'].'">Voir l’annonce</a></p>' ;
 
 				echo $contenu2;
      			}
@@ -102,33 +102,36 @@
 		<div class="div_servicesData">
 		<?php
 		if(!empty($_POST['typeService']) or !empty($_POST['nomService']) or !empty($_POST['adresse']) or !empty($_POST['dejaValide'])){	
-			for($i=0;$i<count($data);$i++){
-				$valide = null;
-				if($data[$i]['validation']==1){
-					$valide = '<a class="rouge"> non validé</a>';
-				}
-				else{
-					$valide = '<a class="vert"> validé</a>';
-				}
-    			$contenu='<p class="servicesData"> nom du service :'
-				.$data[$i]['nom'].
-    			'</br> description :'.$data[$i]['texte'].$valide.
-    			'</br> <a href=" ">Voir l’annonce</a></p>' ;
+			for($i=0;$i<$nombreDePages;$i++){
+				echo("<div id='page".$i."'>");
+				for($j=$i*$messagesParPage;$j<min(count($data),($i+1)*$messagesParPage);$j++){
+					$valide = null;
+					if($data[$j]['validation']==1){
+						$valide = '<a class="rouge"> non validé</a>';
+					}
+					else{
+						$valide = '<a class="vert"> validé</a>';
+					}
+					if($data[$j]['adresseImage']==null){
+						$image = '';
+					}
+					else{
+						$image = '<img src="../'.$data[$j]['adresseImage'].'"class="imageService"/>';
+					}
+	    			$contenu='<div class="positionData">'.$image.'<p class="servicesData">  nom du service :'
+					.$data[$j]['nom'].
+	    			'</br> description :'.$data[$j]['texte'].$valide.
+	    			'</br> <a href="'.SOUS_DOMAINE_ROOT.'?page=descriptionService&idService='.$data[$i]['idService'].'">Voir l’annonce</a></p></div>' ;
 
-			echo $contenu;
+					echo $contenu;
 
-		}
+				}
+				echo("</div>");
+			}
 		echo '<p align="center">Page : '; 
 			for($j=1; $j<=$nombreDePages; $j++) 
 				{
-     				if($j==$pageActuelle)
-     					{
-        					 echo ' [ '.$j.' ] '; 
-     					}	
-     				else
-    				 	{
-          		echo ' <a href=SOUS_DOMAINE."/?page=accueil_admin&page2='.$j.'">'.$j.'</a> ';
-     				}
+          		echo '<a href="#" onclick="pagination('.($j-1).');return false">'.$j.'</a> ';
 				}
 				echo '</p>';
 				}
@@ -138,4 +141,22 @@
 	
 	
 	</div>
+
+
+	<script>
+	function pagination(page){
+		for (var k = 0; k < <?php echo($nombreDePages); ?>; k++){
+			var div = document.getElementById('page' + k);
+			if (k == page){
+				div.style.display = "";
+			}
+			else{
+				div.style.display = "none";
+			}
+		}
+	}
+	pagination(0);
+	</script>
+
+
 </html>

@@ -3,6 +3,7 @@
 	<head>
 
 		<meta charset="utf-8">
+		<link rel="stylesheet" href="static/modifierService/modifierService.css"/>
 		<title>Modifier Services</title>
 	</head>
 
@@ -11,10 +12,11 @@
 
 	<form method="post" action="" >
 
+
 		<select name="idService" id="idService">
-			<?php
+			<?php                  /*mettre ca dans le formulaire*/
 				$donnees = null;
-				foreach ($data as $value) {
+				foreach ($dataServicesUtilisateur as $value) {
 
 			?>
 			<option value="<?php echo $value['idService'] ; ?>" <?php
@@ -34,56 +36,72 @@
 		</select>
 		
 		<input type="submit" value="choisissez votre service" id="submit" />
+
+
 	</form>
 
 	
 	</script>
-		<form method="post" action="">
-			<label>Nom:
+		<form method="post" action="" enctype="multipart/form-data">
+		<fieldset>
+	<legend>Contact</legend>
+			<label>Nom:</br>
 				<input type="text" id="nom" name="nom" value="<?php echo($donnees['nom']) ?>" placeholder="" required="required" />
 			</label>
 				</br>
-			<label>Email
+			<label>Email:</br>
 				<input type="email" id="email" name="email" value="<?php echo($donnees['email']) ?>" placeholder="" required="required" />
 			</label>
 				</br>
 			<label>Adresse:
-				<input type="adresse" id="adresse" name="adresse" value="<?php echo($donnees['adresse']) ?>" placeholder="" required="required" />
+				<input type="text" id="adresse" name="adresse" value="<?php echo($donnees['adresse']) ?>" placeholder="" required="required" />
 			</label></br>
-		
-		
-		</br>
-
-		
-		
-
-
-
-
-
-
-		
-			<label>Categorie:
-				<input type="text" id="categorie" name="categorie" value="<?php echo($donnees['categorie']) ?>" placeholder="" required="required" />
-			</label>
-			</br>
-			<label>Telephone
-				<input type="phone" id="telephone" name="telephone" value="<?php echo($donnees['telephone']) ?>" placeholder="" required="required" />
+			<label>Telephone:
+				<input type="text" id="telephone" name="telephone" value="<?php echo($donnees['telephone']) ?>" placeholder="" required="required" />
 			</label>
 			</br>
 			<label>Lien de votre site Internet:
-				<input type="" id="lien_site" name="lien_site" value="<?php echo($donnees['lien_site']) ?>" placeholder="" required="required" />
+				<input type="text" id="lien_site" name="lien_site" value="<?php echo($donnees['lien_site']) ?>" placeholder="" required="required" />
 			</label>
+		
+		</fieldset>
+		</br>
+		<fieldset>
+		<legend>Image :</legend>
+    <div>
+        <img src="<?php echo("media/imageService/".$donnees['adresseImage']); ?>" height="150" width="150" />
+        <input type="file" name="avatar" id="avatar"/>
+        <?php echo((empty($erreur['avatar']) ? "" : "<p>".$erreur['avatar']."</p><br/>")); ?>
+    </div>
+    </fieldset>
+    
+
+		
+		
+
+
+
+
+
+
+		
+			 <fieldset>
+
+        	<legend>Catégorie</legend>
+            	<?php $form_modifierService->echoInput("categorie"); ?>
+
+        		<!--<textarea id="categorie" name="categorie" value="<?php/* echo((empty($_POST['categorie'])) ? "" : $_POST['categorie']);*/ ?>" placeholder="Entrez votre categorie ici"></textarea>-->
+
+        	</fieldset>
 			</br>
+			<fieldset>
 
-			<input type="submit" value="Modifier" id="submit" />
-
-
-		</form>
-
-		<form method="post" action="" >
-			<select name="descriptions" id="descriptions">
-				<?php 
+        	<legend>Description</legend>
+			<Label>Langue
+        	<?php $form_modifierService->echoInput("langue"); ?>
+     	</Label>
+			<!--<select name="descriptions" id="descriptions">
+				<?php /*
 					foreach ($dataDescription as $valueDescription) {
 				?>
 			<option valueDescription="
@@ -96,11 +114,22 @@
 			/>
 			<?php 
 				echo($valueDescription['langue']);
-			?>
-			</option>
+			*/?>-->
+			</br>
+			<label>Description:
+			 <textarea id="texte" name="texte" value="<?php echo($dataDescription); ?>" ></textarea></label>
+			 </fieldset>
+			
+
+			<input type="submit" value="Modifier" id="submit" />
+
+
+		</form>
+
+		<form method="post" action="" >
+
 
 		<?php
-		}
 		?>
 
 

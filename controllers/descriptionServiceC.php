@@ -1,6 +1,14 @@
 <?php
-include("models/pageServiceAdmin.php");
-$idService=1; /*$_GET['idService']; */
+include("models/descriptionService.php");
+
+if(empty($_GET['idService'])){
+  header("Location: ".SOUS_DOMAINE."?page=error404");
+  exit();
+}
+else{
+  $idService=$_GET['idService'];
+}
+
 $seances=seances($idService);
 $noteService=noteService($idService);
 $satisfaction=satisfaction($idService,$seances);
@@ -12,8 +20,9 @@ $contact=contact($idService);
 $longueur=count($seances);
 $longComment=count($commentaires);
 $lesInscrits=lesInscrits($idService);
-$notesSeances=notesSeances($idService);
-$estInscrit=estInscrit($idService);
+/*$notesSeances=notesSeances($idService);*/
+$estInscrit=estInscrit($idService,$_SESSION["idUtilisateur"]);
+$isFavoris=isFavoris($idService,$_SESSION["idUtilisateur"]);
 
 $admin=0;
 if(!empty($_SESSION["idAdministrateur"])){
@@ -23,7 +32,8 @@ if(!empty($_SESSION["idAdministrateur"])){
 if (!empty($_POST["valider"])){
   $note=$_POST["note"];
   $texte=htmlspecialchars($_POST["text"]);
-  ajoutCommentaire($note,$texte,$_SESSION["idUtilisateur"],$idService);  /*$_POST["idSeance"]*/
+  ajoutCommentaire($note[0],$texte,$_SESSION["idUtilisateur"],$idService);  /*$_POST["idSeance"]*/
+  ajoutNote($idService,noteService($idService)["note"]);
   header("Location: ");
   exit();
 }
@@ -35,6 +45,7 @@ if (!empty($_POST["validerInscript"])){
   foreach($seances as $seance){
     $check1=0;
     $check2=0;
+    print_r($_POST);
     print_r('    ///checkS///');
     print_r($check1);
     print_r($check2);
@@ -61,15 +72,19 @@ if (!empty($_POST["validerInscript"])){
       }
     }
   }
-  /*header("Location: ");
-  exit();*/
+  header("Location: ");
+  exit();
 }
 
 if (!empty($_POST["validerAdmin"])){
   validationService($idService,1);
+  header("Location: ");
+  exit();
 }
 if (!empty($_POST["bloquerAdmin"])){
   validationService($idService,0);
+  header("Location: ");
+  exit();
 }
 
 for ($index=0;$index<$longComment;$index ++){
@@ -86,7 +101,14 @@ for ($index=0;$index<$longComment;$index ++){
   }
 }
 
+
+if(!empty($_POST["validerFavoris"])){
+  modifFavoris($isFavoris,$idService,$_SESSION["idUtilisateur"]);
+  header("Location: ");
+  exit();
+}
+
 /*print_r($seances);*/
 
-include("templates/pageServiceAdmin.php");
+include("templates/descriptionService.php");
  ?>
