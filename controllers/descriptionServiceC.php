@@ -1,6 +1,6 @@
 <?php
 include("models/descriptionService.php");
-$idService=1; /*$_GET['idService']; */
+$idService=2; /*$_GET['idService']; */
 $seances=seances($idService);
 $noteService=noteService($idService);
 $satisfaction=satisfaction($idService,$seances);
@@ -13,7 +13,7 @@ $longueur=count($seances);
 $longComment=count($commentaires);
 $lesInscrits=lesInscrits($idService);
 $notesSeances=notesSeances($idService);
-$estInscrit=estInscrit($idService);
+$estInscrit=estInscrit($idService,$_SESSION["idUtilisateur"]);
 $isFavoris=isFavoris($idService,$_SESSION["idUtilisateur"]);
 
 $admin=0;
@@ -37,6 +37,7 @@ if (!empty($_POST["validerInscript"])){
   foreach($seances as $seance){
     $check1=0;
     $check2=0;
+    print_r($_POST);
     print_r('    ///checkS///');
     print_r($check1);
     print_r($check2);
