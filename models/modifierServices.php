@@ -1,13 +1,13 @@
 <?php /*toutes les fonctions pour récupérer*/
 
 	function recupServicesUtilisateur($idUtilisateur,$bdd){
-		$req=$bdd->prepare("SELECT * FROM services WHERE idUtilisateur=idUtilisateur");
+		$req=$bdd->prepare("SELECT * FROM services WHERE idUtilisateur=:idUtilisateur");
 		$req->execute(array('idUtilisateur'=>$idUtilisateur));
 		$data=$req->fetchall();
 		return $data;
 	}
 	function recupDescriptionService($idService,$bdd){
-		$req=$bdd->prepare("SELECT * FROM descriptions WHERE idService=idService");
+		$req=$bdd->prepare("SELECT * FROM descriptions WHERE idService=:idService");
 		$req->execute(array('idService'=>$idService));
 		$dataDescription=$req->fetchall();
 	return $dataDescription;
