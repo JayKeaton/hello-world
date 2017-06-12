@@ -1,6 +1,14 @@
 <?php
 include("models/descriptionService.php");
-$idService=1; /*$_GET['idService']; */
+
+if(empty($_GET['idService'])){
+  header("Location: ".SOUS_DOMAINE."?page=error404");
+  exit();
+}
+else{
+  $idService=$_GET(['idService']);
+}
+
 $seances=seances($idService);
 $noteService=noteService($idService);
 $satisfaction=satisfaction($idService,$seances);
@@ -12,8 +20,8 @@ $contact=contact($idService);
 $longueur=count($seances);
 $longComment=count($commentaires);
 $lesInscrits=lesInscrits($idService);
-$notesSeances=notesSeances($idService);
-$estInscrit=estInscrit($idService);
+/*$notesSeances=notesSeances($idService);*/
+$estInscrit=estInscrit($idService,$_SESSION["idUtilisateur"]);
 $isFavoris=isFavoris($idService,$_SESSION["idUtilisateur"]);
 
 $admin=0;
@@ -37,6 +45,7 @@ if (!empty($_POST["validerInscript"])){
   foreach($seances as $seance){
     $check1=0;
     $check2=0;
+    print_r($_POST);
     print_r('    ///checkS///');
     print_r($check1);
     print_r($check2);

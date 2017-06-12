@@ -13,16 +13,16 @@
         <div id="IconeCategorie"> </br> <img src=<?php
           switch($contact["categorie"]){ /* Rajouter des Cases ici et des images dans Média/Pictogrammes/ pour couvrir plus de catégorie */
             case "logement":
-              echo "Média/Pictogrammes/logement.png";
+              echo "media/pictogrammes/logement.png";
               break;
             case "connaissance":
-              echo "Média/Pictogrammes/connaissance.png";
+              echo "media/pictogrammes/connaissance.png";
               break;
             case "soin":
-              echo "Média/Pictogrammes/soin.png";
+              echo "media/pictogrammes/soin.png";
               break;
             case "nourriture":
-              echo "Média/Pictogrammes/nourriture.png";
+              echo "media/pictogrammes/nourriture.png";
               break;
           }
         ?> width="50" height="50"> </div> <!-- Icone du service -->
@@ -152,7 +152,7 @@
 
                     <aside id="Avatar">
                       <?php echo date("d/m/Y ", strtotime($commentaires[$index]["date"])); ?> </br>
-                      <img src="<?php echo "Média/Avatars/".$profil[$index]["avatar"]?>" width="75" height="75"/> <?php /* echo <img src="???"+$commentaires[?] width="50" height="50"> */ ?>
+                      <img src="<?php echo "media/avatars/".$profil[$index]["avatar"]?>" width="75" height="75"/> <?php /* echo <img src="???"+$commentaires[?] width="50" height="50"> */ ?>
                       </br> <div id="center"> <?php echo $profil[$index]["pseudo"] ?> </div> <!-- Pseudo de l'utilisateur !-->
                     </aside>
 
@@ -166,11 +166,11 @@
                           <?php $note=$commentaires[$index]["note"];
                             $index2=1;
                             while ($index2<=$note){ ?>
-                              <img src="static/pageServiceAdmin/etoileRouge.png" width="30" height="30">
+                              <img src="static/descriptionService/etoileRouge.png" width="30" height="30">
                               <?php $index2++;
                             }
                           if ($note>=((int)$note+0.5)){ ?>
-                            <img src="static/pageServiceAdmin/demiEtoileRouge.png" width="15" height="30">
+                            <img src="static/descriptionService/demiEtoileRouge.png" width="15" height="30">
                           <?php } ?>
                         </p>
                       </div>
@@ -193,7 +193,7 @@
 
               <article id="Commentaire">
                 <aside id="Avatar">
-                  <img src=<?php echo "Média/Avatars/".$profilSession["avatar"]?> width="75" height="75">
+                  <img src=<?php echo "media/avatars/".$profilSession["avatar"]?> width="75" height="75">
                   </br> <div id="center"> <?php echo $profilSession["pseudo"] ?> </div>
                 </aside>
 
