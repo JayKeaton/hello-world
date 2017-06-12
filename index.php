@@ -113,7 +113,6 @@ elseif ($page == "tests"){
     $path = "controllers/tests.php";
 }
 elseif ($page == "descriptionService"){
-    loginRequired($page);
     $path = "controllers/descriptionServiceC.php";
 }
 elseif ($page == "ajoutAdmin"){
@@ -140,6 +139,9 @@ elseif ($page == "enSavoirPlus"){
 }
 elseif ($page == "FAQ"){
     $path = "templates/FAQbeau.html";
+}
+elseif ($page == "error404"){
+    $path = "templates/error404.html";
 }
 else{
     include("templates/".$page.".html");
