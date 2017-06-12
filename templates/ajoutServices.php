@@ -82,11 +82,13 @@
     </div>
     <div>
     <fieldset>
+
         <legend>Description</legend>
 
-    <Label>Langue
-        <?php $form_service->echoInput("langue"); ?>
-      </Label></br>
+     </br>
+     <Label>Langue
+            <?php $form_service->echoInput("langue"); ?>
+        </Label>
 
     
 
