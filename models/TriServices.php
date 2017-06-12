@@ -2,7 +2,7 @@
 	function obtenirServiceParLocalisationEtCategorie($categorie, $adresse){
 		global $bdd;
 		$adresse='%'.$adresse.'%';
-	    $req = $bdd->prepare("SELECT * FROM services WHERE categorie=:categorie AND adresse LIKE :adresse");/* WHERE validation=true*/
+	    $req = $bdd->prepare("SELECT * FROM services JOIN descriptions ON descriptions.idService = services.idService WHERE categorie=:categorie AND adresse LIKE :adresse");/* WHERE validation=true*/
 	    $req->bindParam('categorie', $categorie);
 	    $req->bindParam('adresse', $adresse);
 	    $req->execute();
@@ -12,7 +12,7 @@
 	function obtenirServiceParLocalisation($adresse){
 		global $bdd;
 		$adresse='%'.$adresse.'%';
-	    $req = $bdd->prepare("SELECT * FROM services WHERE adresse LIKE :adresse");/* WHERE validation=true*/
+	    $req = $bdd->prepare("SELECT * FROM services JOIN descriptions ON descriptions.idService = services.idService WHERE adresse LIKE :adresse");/* WHERE validation=true*/
 	    $req->bindParam('adresse', $adresse);
 	    $req->execute();
 	    $data = $req->fetchAll();
