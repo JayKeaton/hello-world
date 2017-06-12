@@ -6,7 +6,7 @@ if(empty($_GET['idService'])){
   exit();
 }
 else{
-  $idService=$_GET(['idService']);
+  $idService=$_GET['idService'];
 }
 
 $seances=seances($idService);

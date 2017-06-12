@@ -1,6 +1,12 @@
 <?php
 include("models/gestionSeances.php");
-$idService=1;   /*$_GET["idService"];*/
+if(empty($_GET['idService'])){
+  header("Location: ".SOUS_DOMAINE."?page=error404");
+  exit();
+}
+else{
+  $idService=$_GET['idService'];
+}
 $seances=seances($idService);
 $longueur=count($seances);
 $lesInscrits=lesInscrits($idService);
