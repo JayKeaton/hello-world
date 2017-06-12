@@ -59,7 +59,7 @@
 
 	$idUtilisateur=$_SESSION['idUtilisateur'];
 	$dataServicesUtilisateur=recupServicesUtilisateur($_SESSION['idUtilisateur'],$bdd);
-	$dataDescription=recupDescriptionService($donnees['idService'],$bdd);
+	$dataDescription=recupDescriptionService($idService,$bdd);
 	$n=0;
 
 	/*foreach ($data as $element => $value) {
