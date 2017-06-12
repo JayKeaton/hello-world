@@ -236,6 +236,4 @@
         <div id="vide">  </div>
       </section>
 
-      <?php print_r($_POST); ?>
-
     </main>
