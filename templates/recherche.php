@@ -50,7 +50,7 @@
                         <?php
                         if (empty($service['adresseImage'])) {
                             ?>
-                            <img src="media/isep.jpg" width="200" height="200"/>
+                            <img src="media/pictogrammes/<?php echo($data['categorie']); ?>.png" width="200" height="200"/>
                             <?php
                         }
                         else{
