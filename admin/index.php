@@ -12,7 +12,7 @@ $url = "http://".$_SERVER['HTTP_HOST'];
 
 define('URL_SITE', $url);
 define('SOUS_DOMAINE_ROOT', $sous_domaine);
-define('SOUS_DOMAINE', $sous_domaine."/admin");
+define('SOUS_DOMAINE', $sous_domaine."admin");
 
 
 require_once("../models/SQLCo.php");
