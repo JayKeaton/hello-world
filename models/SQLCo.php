@@ -7,7 +7,7 @@
 
     $hostname="localhost";
 	$username="root";
-	$password="";
+	$password="root";
 	$bddname="error404";
 
     /* 000webhostapp

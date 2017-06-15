@@ -50,7 +50,7 @@
    			$result = traitementUploadImage('imageService', "media/imageService", $idService);
    			$adresseImage=$result[1];
    			ajouterAdresseImage($bdd,$adresseImage,$idService);
-        ajouterService($bdd, $data['email'], $adresse, $data['codePostal'], $data['telephone'], $data['lien_site'], $categorie, $_SESSION['idUtilisateur'],$data['nom']);
+        /*ajouterService($bdd, $data['email'], $adresse, $data['codePostal'], $data['telephone'], $data['lien_site'], $categorie, $_SESSION['idUtilisateur'],$data['nom']);*/
 			
 
    			/*echo($result[1]); renvoie le nom de l'image*/
