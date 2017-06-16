@@ -19,6 +19,7 @@ require_once("../models/SQLCo.php");
 require_once("../controllers/functions.php");
 require_once("../models/utilisateur.php");
 require_once("../models/verificationService.php");
+require_once("../models/services.php");
 
 if (empty($_SESSION['idAdministrateur'])){
     include("controllers/login.php");

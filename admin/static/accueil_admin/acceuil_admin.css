@@ -89,13 +89,14 @@
 
 .positionData{
 	display:flex;
+	justify-content: center;
 	border: 1px black solid;
 	border-radius: 20px;
 	width:100%;
 }
 
 .placementData{
-}
+	jusity-content: center;
 
 #page{
 	font-size: 12px;

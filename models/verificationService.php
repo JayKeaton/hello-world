@@ -18,7 +18,7 @@ function dataTypeService ($typeService,$messagesParPage){
 		$clause[]=$a;
 	}
 	if(!empty($_POST['dejaValide'])) {
-		$a="services.validation = 1";
+		$a="services.validation = 0";
 		$clause[]=$a;
 	}
 	$final = join(" AND ",$clause);
