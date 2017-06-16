@@ -27,7 +27,7 @@ function lesInscrits($idService){
   $req=$bdd->prepare("SELECT count(*), inscrits.idSeance FROM inscrits JOIN seances ON inscrits.idSeance=seances.idSeance WHERE idService=:idService GROUP BY seances.idSeance ORDER BY seances.idSeance ");
   $req->bindParam("idService",$idService);
   $req->execute();
-  $lesInscrits=$req->fetch();
+  $lesInscrits=$req->fetchAll();
   return $lesInscrits;
 }
 function supprimerSeance($idService, $idSeance){

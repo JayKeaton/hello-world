@@ -40,9 +40,11 @@
           <td> <?php echo $seances[$index]["heure"]; ?> </td>
           <td> <?php echo $seances[$index]["nom"]; ?> </td>
           <td> <?php echo $seances[$index]["description"]; ?> </td>
-          <td> <?php if(!empty($lesInscrits[$index+$seances[0][0]][0])){
-             echo $lesInscrits[$index+$seances[0][0]][0];
-           }?> </td>
+          <td> <?php foreach($lesInscrits as $element){
+            if($seances[$index]["idSeance"]==$element["idSeance"]){
+              echo $element["count(*)"] ;
+            }
+          }?> </td>
           <td><?php echo $seances[$index]["capacite"];?></td>
           <td>
             <form action="" method="post" id="formulaireSeance">
@@ -76,9 +78,11 @@
           <td> <?php echo $seances[$index]["heure"]; ?> </td>
           <td> <?php echo $seances[$index]["nom"]; ?> </td>
           <td> <?php echo $seances[$index]["description"]; ?> </td>
-          <td> <?php if(!empty($lesInscrits[$index+$seances[0][0]][0])){
-             echo $lesInscrits[$index+$seances[0][0]][0];
-           }?> </td>
+          <td> <?php foreach($lesInscrits as $element){
+            if($seances[$index]["idSeance"]==$element["idSeance"]){
+              echo $element["count(*)"] ;
+            }
+          }?> </td>
           <td><?php echo $seances[$index]["capacite"];?></td>
 
         </tr>

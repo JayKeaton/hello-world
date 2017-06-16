@@ -22,7 +22,7 @@ $longComment=count($commentaires);
 /*$notesSeances=notesSeances($idService);*/
 $estInscrit=estInscrit($idService,$_SESSION["idUtilisateur"]);
 $isFavoris=isFavoris($idService,$_SESSION["idUtilisateur"]);
-$seancesSansInscrits=seancesSansInscrits($idService);
+$lesInscrits=lesInscrits($idService);
 
 $admin=0;
 if(!empty($_SESSION["idAdministrateur"])){
