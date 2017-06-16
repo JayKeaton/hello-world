@@ -19,10 +19,10 @@ $description=description($idService);
 $contact=contact($idService);
 $longueur=count($seances);
 $longComment=count($commentaires);
-$lesInscrits=lesInscrits($idService);
 /*$notesSeances=notesSeances($idService);*/
 $estInscrit=estInscrit($idService,$_SESSION["idUtilisateur"]);
 $isFavoris=isFavoris($idService,$_SESSION["idUtilisateur"]);
+$seancesSansInscrits=seancesSansInscrits($idService);
 
 $admin=0;
 if(!empty($_SESSION["idAdministrateur"])){
@@ -39,18 +39,9 @@ if (!empty($_POST["valider"])){
 }
 
 if (!empty($_POST["validerInscript"])){
-  echo("test");
-  /*print_r($_POST["inscription"]);*/
-  /*exit();*/
   foreach($seances as $seance){
     $check1=0;
     $check2=0;
-    print_r($_POST);
-    print_r('    ///checkS///');
-    print_r($check1);
-    print_r($check2);
-    print_r('     /////idSeance//');
-    print_r($seance["idSeance"]);
     if(empty($_POST["inscription"])){
       modifInscription(false,$idService,$seance["idSeance"],$_SESSION["idUtilisateur"]);
     }
@@ -58,10 +49,11 @@ if (!empty($_POST["validerInscript"])){
       if (in_array($seance["idSeance"],$_POST["inscription"])){
         $check2=1;
       }
-      if (in_array($seance["idSeance"],$estInscrit)){
-        $check1=1;
+      foreach($estInscrit as $inscription){
+        if (in_array($seance["idSeance"],$inscription)){
+          $check1=1;
+        }
       }
-      print_r($check1, $check2);
       if($check1!=$check2){
         if($check2==0){
           modifInscription(false,$idService,$seance["idSeance"],$_SESSION["idUtilisateur"]);

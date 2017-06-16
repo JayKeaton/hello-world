@@ -78,9 +78,10 @@
                         <td> <?php echo $seances[$index]["nom"]; ?> </td>
                         <td> <?php echo $seances[$index]["description"]; ?> </td>
                         <!-- <td> <?php /* echo $seances[$index][2] */ ?> </td> -->
-                        <td> <?php if(!empty($lesInscrits[$index+$seances[0][0]][0])){
-                           echo $lesInscrits[$index+$seances[0][0]][0];
-                         }?> </td>
+                        <td> <?php
+                          if(!empty($seances[$index]["count(*)"])){
+                            echo $seances[$index]["count(*)"];
+                        }?> </td>
                         <td><?php echo $seances[$index]["capacite"];?></td>
                         <!-- <td><?php /* if(!empty($notesSeances[$index])){
                           echo $notesSeances[$index];
@@ -89,7 +90,7 @@
                         <td><?php
                         $check = false;
                         foreach ($estInscrit as $element){
-                          if ($element["idSeance"]=$seances[$index]["idSeance"]){
+                          if ($element["idSeance"]==$seances[$index]["idSeance"]){
                             $check = true;
                           }
 
@@ -125,15 +126,17 @@
               </thead>
               <tbody>
                 <?php for ($index=0;$index<$longueur;$index++){
+                  print_r($seances[$index]);
                   if($seances[$index]["date"]<date("Y m d")){ ?>
                     <tr>
                       <td> <?php echo $seances[$index]["date"]; ?> </td>
                       <td> <?php echo $seances[$index]["heure"]; ?> </td>
                       <td> <?php echo $seances[$index]["nom"]; ?> </td>
                       <td> <?php echo $seances[$index]["description"]; ?> </td>
-                      <td> <?php if(!empty($lesInscrits[$index+$seances[0][0]][0])){
-                         echo $lesInscrits[$index+$seances[0][0]][0];
-                       }?> </td>
+                      <td> <?php
+                        if(!empty($seances[$index]["count(*)"])){
+                          echo $seances[$index]["count(*)"];
+                      }?> </td>
                       <td><?php echo $seances[$index]["capacite"];?></td>
 
                     </tr>
