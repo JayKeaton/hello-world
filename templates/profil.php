@@ -22,7 +22,7 @@ if ($_SESSION['droits'] == 'admin'){
     <h1>Vous êtes admin :</h1>
     <input type='hidden' name='page' value='modifierServices'/>
     <div>
-        <input type="submit" value="Accéder à vos contribution."/>
+        <input type="submit" value="Accéder à vos contributions."/>
     </div>
 </form>
 <?php

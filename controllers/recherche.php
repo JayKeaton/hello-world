@@ -51,6 +51,7 @@ $form->add('select', 'age')
     ->affecterValeurs($ages);
 
 if($form->isValid()){
+    $form->set_values($_POST);
     $data = $form->get_cleaned_values();
     $listeServices = obtenirServiceParCategorie($data['categorie'], $data['langue']);
 }

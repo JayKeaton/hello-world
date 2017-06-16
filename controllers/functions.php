@@ -126,6 +126,15 @@ class Formulaire{
             }
             return $data;
         }
+
+        public function set_values($listeValues){
+            $listeInput = $this->listeInput;
+            foreach($listeInput as $name => $input){
+                if (in_array($name, array_keys($listeValues))){
+                    $input->value($listeValues[$name]);
+                }
+            }
+        }
 }
 /************************************************************************/
 abstract class Input{
