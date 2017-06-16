@@ -10,13 +10,12 @@ else{
 $seances=seances($idService);
 $longueur=count($seances);
 $lesInscrits=lesInscrits($idService);
-
 if(!empty($_POST["valider"])){
   if (empty($_POST["nom"]) || empty($_POST["description"]) || empty($_POST["date"]) || empty($_POST["heure"]) || empty($_POST["capacite"])){
-    echo ("Merci de remplir tous les champs" ); ?> </br> <?php
+    ?> </br> <?php echo ("Merci de remplir tous les champs" ); ?> </br> <?php
   }
   if ($_POST["date"]<date("Y m d")){
-    print_r ("Merci de saisir une date valide"); ?> </br> <?php
+    ?> </br> <?php print_r ("Merci de saisir une date valide"); ?> </br> <?php
   }
   else{
     $date=$_POST["date"];
