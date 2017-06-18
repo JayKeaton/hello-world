@@ -43,14 +43,16 @@
               Mail: <?php echo $contact["email"]; ?> </br>
               <a id="Mail" href="<?php echo $contact["lien_site"]; ?>"> Notre Site </a>
             </div>
-            <form action="" method="post" id="formulaireFavoris">
-              <input type="submit" value="<?php if (!$isFavoris){
-                echo 'Ajouter aux Favoris';
-              }
-              else{
-                echo 'Supprimer des Favoris';
-              } ?>" name="validerFavoris" id="validerFavoris"/>
-            </form>
+            <?php if ($login==1){ ?>
+              <form action="" method="post" id="formulaireFavoris">
+                <input type="submit" value="<?php if (!$isFavoris){
+                  echo 'Ajouter aux Favoris';
+                }
+                else{
+                  echo 'Supprimer des Favoris';
+                } ?>" name="validerFavoris" id="validerFavoris"/>
+              </form>
+            <?php } ?>
             <h1>Les séances à venir:</h1>
             <form action="" method="post" id="formulaireCommentaire">
 
@@ -66,7 +68,7 @@
                     <td>Capacité de l'évènement</td>
                     <!--<td>Note de la séance</td>-->
                     <!--<td>Satisfaction</td> -->
-                    <td>Inscription</td>
+                    <?php if ($login==1){ ?> <td>Inscription</td> <?php } ?>
                   </tr>
                 </thead>
                 <tbody>
@@ -88,7 +90,7 @@
                           echo $notesSeances[$index];
                         } */?></td> -->
                         <!-- <td> <?php /* echo $satisfaction[0][$index] */?> </td> -->
-                        <td><?php
+                        <?php if ($login==1){ ?> <td><?php
                         $check = false;
                         foreach ($estInscrit as $element){
                           if ($element["idSeance"]==$seances[$index]["idSeance"]){
@@ -102,14 +104,14 @@
                         else{
                           echo ('<input type="checkbox" name="inscription[]" value="'.$seances[$index]["idSeance"].'"/>') ;
                         }/*echo($check ? "Inscrits" : "Non inscrits");*/
-                        ?></td>
+                        ?></td> <?php } ?>
                       </tr>
                     <?php }
                    } ?>
                 </tbody>
               </table>
 
-              <input type="submit" name="validerInscript" value="valider"/>
+              <?php if ($login==1){ ?> <input type="submit" name="validerInscript" value="valider"/> <?php } ?>
             </form>
 
 
@@ -194,30 +196,31 @@
               </form>
 
 
+              <?php if ($login==1){ ?>
+                <article id="Commentaire">
+                  <aside id="Avatar">
+                    <img src=<?php echo "media/avatars/".$profilSession["avatar"]?> width="75" height="75">
+                    </br> <div id="center"> <?php echo $profilSession["pseudo"] ?> </div>
+                  </aside>
 
-              <article id="Commentaire">
-                <aside id="Avatar">
-                  <img src=<?php echo "media/avatars/".$profilSession["avatar"]?> width="75" height="75">
-                  </br> <div id="center"> <?php echo $profilSession["pseudo"] ?> </div>
-                </aside>
+                    <form action="" method="post" id="formulaireCommentaire">
+                      <article id="TexteComment">
+                        <p>
+                          <label for="texte"> Commentaire </label>: </br> <textarea type="text" id="text" name="text" placeholder="Votre Commentaire"></textarea>
+                        </p>
+                      </article>
+                      <div id="Note">
+                        <p>
+                          <label for="note"> Note sur 5 </label>: </br> <input type="number" id="note" name="note" min=0, max=5, step=0.5 placeholder="/5"/>
+                        </p>
+                      </div>
+                      <div>
+                        <input type="submit" name="valider" value="valider">
+                      </div>
+                    </form>
 
-                  <form action="" method="post" id="formulaireCommentaire">
-                    <article id="TexteComment">
-                      <p>
-                        <label for="texte"> Commentaire </label>: </br> <textarea type="text" id="text" name="text" placeholder="Votre Commentaire"></textarea>
-                      </p>
-                    </article>
-                    <div id="Note">
-                      <p>
-                        <label for="note"> Note sur 5 </label>: </br> <input type="number" id="note" name="note" min=0, max=5, step=0.5 placeholder="/5"/>
-                      </p>
-                    </div>
-                    <div>
-                      <input type="submit" name="valider" value="valider">
-                    </div>
-                  </form>
-
-              </article>
+                </article>
+              <?php } ?>
 
 
 

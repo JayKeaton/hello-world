@@ -14,14 +14,11 @@ $noteService=noteService($idService);
 $satisfaction=satisfaction($idService,$seances);
 $commentaires=commentaires($idService);
 $profil=profil($idService);
-$profilSession=profilSession($_SESSION["idUtilisateur"]);
 $description=description($idService);
 $contact=contact($idService);
 $longueur=count($seances);
 $longComment=count($commentaires);
 /*$notesSeances=notesSeances($idService);*/
-$estInscrit=estInscrit($idService,$_SESSION["idUtilisateur"]);
-$isFavoris=isFavoris($idService,$_SESSION["idUtilisateur"]);
 $lesInscrits=lesInscrits($idService);
 
 $admin=0;
@@ -29,10 +26,18 @@ if(!empty($_SESSION["idAdministrateur"])){
   $admin=1;
 }
 
-if (!empty($_POST["valider"])){
+$login=0;
+if(!empty($_SESSION["idUtilisateur"])){
+  $login=1;
+  $estInscrit=estInscrit($idService,$_SESSION["idUtilisateur"]);
+  $isFavoris=isFavoris($idService,$_SESSION["idUtilisateur"]);
+  $profilSession=profilSession($_SESSION["idUtilisateur"]);
+}
+
+if (!empty($_POST["valider"]) && $_POST["note"]<=5){
   $note=$_POST["note"];
   $texte=htmlspecialchars($_POST["text"]);
-  ajoutCommentaire($note[0],$texte,$_SESSION["idUtilisateur"],$idService);  /*$_POST["idSeance"]*/
+  ajoutCommentaire($note,$texte,$_SESSION["idUtilisateur"],$idService);  /*$_POST["idSeance"]*/
   ajoutNote($idService,noteService($idService)["note"]);
   header("Location: ");
   exit();

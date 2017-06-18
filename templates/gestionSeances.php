@@ -49,7 +49,7 @@
           <td>
             <form action="" method="post" id="formulaireSeance">
               <input type="submit" value="Supprimer la séance" name=<?php echo '"supprimerSeance'.$seances[$index]["idSeance"].'"' ?> id="supprimerSeance"/> </br>
-              <input type="submit" value="Modifier la séance" name=<?php echo '"modifierSeance'.$seances[$index]["idSeance"].'"' ?> id="modifierSeance"/>
+              <?php /* <input type="submit" value="Modifier la séance" name=<?php echo '"modifierSeance'.$seances[$index]["idSeance"].'"' ?> id="modifierSeance"/> */ ?>
             </form>
           </td>
         </tr>
