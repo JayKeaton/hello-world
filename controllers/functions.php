@@ -41,6 +41,18 @@
 
 
     function distance($coordsA, $coordsB){
+        if (empty($coordsA['lat'])){
+            $c = explode(',', $coordsA);
+            $coordsA = array();
+            $coordsA['lat'] = $c[0];
+            $coordsA['lon'] = $c[1];
+        }
+        if (empty($coordsB['lat'])){
+            $c = explode(',', $coordsB);
+            $coordsB = array();
+            $coordsB['lat'] = $c[0];
+            $coordsB['lon'] = $c[1];
+        }
         $conv = pi()/180;
         $distance = 6378137*acos(sin($coordsA['lat']*$conv)*sin($coordsB['lat']*$conv) + cos($coordsA['lat']*$conv)*cos($coordsB['lat']*$conv)*cos(($coordsB['lon']-$coordsA['lon'])*$conv));
         return $distance;
@@ -366,19 +378,24 @@ class Input_radio extends Input{
         return ($this->erreur == "");
     }
 
-    public function affecterValeurs($listeValeurs){
-        $this->listeValeurs = $listeValeurs;
+    public function addOption($key, $value, $boolean = true){
+        $this->listeValeurs[$key] = array($value, $boolean);
+        return $this;
+    }
+
+    public function disabled($option, $boolean){
+        $this->listeValeurs[$option][1] = $boolean;
         return $this;
     }
 
     public function __toString(){
         $name = $this->name;
-        //$id = $this->id;
         $listeValeurs = $this->listeValeurs;
         $string = "";
         foreach ($listeValeurs as $key => $value) {
+            $disabled = $value[1] ? "" : " disabled";
             $selected = ($this->value == $key) ? "checked" : "";
-            $string .= "<input type='radio' name='".$name."' value='".$key."' ".$selected."/>".$value."</br>";
+            $string .= "<input type='radio' id='".$name.$key."' name='".$name."' value='".$key."' ".$selected.$disabled."/><a id='label".$key."'>".$value[0]."</a></br>";
         }
         if ($this->erreur != "")
             $string .= "<p class='error'>".$this->erreur."</p>";

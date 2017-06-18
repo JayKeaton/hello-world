@@ -30,17 +30,32 @@ $form->add('select', 'langue')
     ->value('all')
     ->affecterValeurs($listeLangues)
     ->required(true);
-$typeDeRecherche = array('note' => "Classement des services par note", 'localisation' => "Services les plus proche de votre position");
 $form->add('radio', 'typeRecherche')
-    ->affecterValeurs($typeDeRecherche)
+    ->addOption('note', "Classement des services par note")
+    ->addOption('localisation', "Services les plus proche de votre position (Vous devez activer la geolocalisation)", false)
+    ->addOption('adresse', "Rechercher les services à proximité d'une adresse")
     ->required(true)
     ->value('note');
 
 if($form->isValid()){
     $form->set_values($_POST);
     $data = $form->get_cleaned_values();
-    $listeServices = rechercheServices($data['categorie'], $data['langue'], $data['typeRecherche']);
+    if ($data["typeRecherche"] == 'note'){
+        $listeServices = rechercheServices($data['categorie'], $data['langue'], 'note');
+    }
+    elseif ($data['typeRecherche'] == 'localisation' and !empty($_POST['coords']) and $_POST['coords'] != false){
+        $coords = $_POST['coords'];
+        $listeServices = rechercheServices($data['categorie'], $data['langue'], 'localisation');
+        foreach ($listeServices as $key => $service){
+            $dist = round(distance($coords, $service['geolocalisation']));
+            $service['distance'] = $dist;
+            $listeServices[$key] = $service;
+        }
+        function comparaison($serviceA, $serviceB){
+            return ($serviceA['distance'] < $serviceB['distance']);
+        }
+        $listeServices = triListe($listeServices, 'comparaison');
+    }
 }
-
 
 include("templates/recherche.php");

@@ -19,6 +19,7 @@
         <h2>Comment rechercher les services ?</h2>
         <?php $form->echoInput('typeRecherche') ?>
         <br/><br/><br/><br/>
+        <input type="hidden" name="coords" id="coords" value="false"/>
         <?php $form->submit("Rechercher"); ?>
     </form>
 
@@ -26,20 +27,6 @@
 <section id="resultats">
     <fieldset>
         <legend>Résultats de la recherche :</legend>
-
-        <!--article>
-            <img src="media/isep.jpg" width="200" height="200"/>
-            <div>
-                <h2><em>L'ISEP</em></h2>
-                <p>
-                    Ceci est la description du service proposé : Le plus beau, le plus magnifique et le plus
-                    efficace service qu'il nous ai été donné de rencontrer :
-                    L'Isep. Certain dirons que ce n'est pas vraiment un service, d'autres que ce n'est pas vraiment
-                    du bonheur. D'autres enfin diront qu'elle n'as pas sa place sur ce site.
-                    Sornettes. Le monde se doit de la connaitre !
-                </p>
-            </div>
-        </article-->
 
         <?php
         if (isset($listeServices)){
@@ -61,6 +48,13 @@
                         ?>
                         <div>
                             <h2><em><?php echo($service['nom']); ?></em></h2>
+                            <?php
+                            if ($data['typeRecherche'] == "localisation"){
+                                echo("<p>");
+                                echo("A ".$service['distance']." mètres.");
+                                echo("</p>");
+                            }
+                            ?>
                             <p>
                                 <?php echo($service['texte']); ?>
                             </p>
@@ -77,4 +71,15 @@
         ?>
 
     </fieldset>
+    <script>
+        function maPosition(position) {
+            var pos = position.coords.latitude + "," + position.coords.longitude;
+            document.getElementById("coords").value = pos;
+            document.getElementById("typeRecherchelocalisation").disabled = false;
+            document.getElementById("labellocalisation").innerHTML = "Services les plus proche de votre position";
+        }
+
+        if(navigator.geolocation)
+            navigator.geolocation.getCurrentPosition(maPosition);
+    </script>
 </section>

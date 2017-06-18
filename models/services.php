@@ -86,6 +86,7 @@
 		$req = $bdd->prepare("UPDATE services SET geolocalisation=:geolocalisation WHERE idService=:idService");
 		$req->bindParam('idService', $idService);
 		$req->bindParam('geolocalisation', $loc);
+		$req->execute();
 	}
 
 
@@ -104,6 +105,18 @@
 			WHERE categorie=:categorie AND descriptions.langue=:langue AND services.validation = TRUE 
 			ORDER BY note DESC";
         }
+        elseif ($typeRecherche == "localisation"){
+            $str = "SELECT 
+				services.idService AS idService, 
+				services.nom AS nom, 
+				services.adresseImage AS adresseImage, 
+				descriptions.texte AS texte, 
+				descriptions.langue AS langue, 
+				services.note as note,
+				services.geolocalisation as geolocalisation
+			FROM services JOIN descriptions ON services.idService = descriptions.idService 
+			WHERE categorie=:categorie AND descriptions.langue=:langue AND services.validation = TRUE";
+		}
         $req = $bdd->prepare($str);
         $req->bindParam('categorie', $categorie);
         $req->bindParam('langue', $langue);
