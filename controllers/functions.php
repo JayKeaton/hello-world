@@ -21,6 +21,32 @@
     }
 
 
+    function getXmlCoordsFromAdress($address)
+    {
+        $coords=array();
+        $base_url="http://maps.googleapis.com/maps/api/geocode/xml?";
+        // ajouter &region=FR si ambiguité (lieu de la requete pris par défaut)
+        $request_url = $base_url . "address=" . urlencode($address).'&sensor=false';
+        $xml = simplexml_load_file($request_url) or die("url not loading");
+        //print_r($xml);
+        $coords['lat']=$coords['lon']='';
+        $coords['status'] = $xml->status ;
+        if($coords['status']=='OK')
+        {
+            $coords['lat'] = $xml->result->geometry->location->lat ;
+            $coords['lon'] = $xml->result->geometry->location->lng ;
+        }
+        return $coords;
+    }
+
+
+    function distance($coordsA, $coordsB){
+        $conv = pi()/180;
+        $distance = 6378137*acos(sin($coordsA['lat']*$conv)*sin($coordsB['lat']*$conv) + cos($coordsA['lat']*$conv)*cos($coordsB['lat']*$conv)*cos(($coordsB['lon']-$coordsA['lon'])*$conv));
+        return $distance;
+    }
+
+
 
 
 
@@ -320,6 +346,42 @@ class Input_tel extends Input{
         $string .= "<input type='tel' name='".$name."' id='".$id."' value='".$value."'/>";
         if ($this->erreur != "")
             $string .= "</br><p class='error'>".$this->erreur."</p>";
+        return $string;
+    }
+}
+/**************************************************************************************/
+class Input_radio extends Input{
+
+    protected $listeValeurs;
+
+    public function __construct($name){
+        parent::__construct($name);
+    }
+
+    public function isValid(){
+        parent::isValid();
+        if (!empty($_POST[$this->name]) && !in_array($_POST[$this->name], array_keys($this->listeValeurs))){
+            $this->erreur .= "Veuillez selectionner une option valide.";
+        }
+        return ($this->erreur == "");
+    }
+
+    public function affecterValeurs($listeValeurs){
+        $this->listeValeurs = $listeValeurs;
+        return $this;
+    }
+
+    public function __toString(){
+        $name = $this->name;
+        //$id = $this->id;
+        $listeValeurs = $this->listeValeurs;
+        $string = "";
+        foreach ($listeValeurs as $key => $value) {
+            $selected = ($this->value == $key) ? "checked" : "";
+            $string .= "<input type='radio' name='".$name."' value='".$key."' ".$selected."/>".$value."</br>";
+        }
+        if ($this->erreur != "")
+            $string .= "<p class='error'>".$this->erreur."</p>";
         return $string;
     }
 }

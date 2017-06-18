@@ -16,8 +16,8 @@
         <h2>Langue d'accueil</h2>
         <?php $form->echoInput('langue') ?>
         <br/>
-        <h2>A quelle tranche d'âge appartennez-vous ?</h2>
-        <?php $form->echoInput('age') ?>
+        <h2>Comment rechercher les services ?</h2>
+        <?php $form->echoInput('typeRecherche') ?>
         <br/><br/><br/><br/>
         <?php $form->submit("Rechercher"); ?>
     </form>
@@ -63,6 +63,9 @@
                             <h2><em><?php echo($service['nom']); ?></em></h2>
                             <p>
                                 <?php echo($service['texte']); ?>
+                            </p>
+                            <p>
+                                Note : <?php echo($service['note']); ?>
                             </p>
                             <a href="<?php echo(SOUS_DOMAINE."?page=descriptionService&idService=".$service['idService']); ?>">En savoir plus</a>
                         </div>

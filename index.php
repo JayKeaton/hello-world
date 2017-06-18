@@ -124,6 +124,9 @@ elseif ($page == "FAQ"){
 elseif ($page == "error404"){
     $path = "templates/error404.html";
 }
+elseif($page == "test"){
+    $path = "test.php";
+}
 else{
     include("templates/".$page.".html");
 }

@@ -48,20 +48,20 @@
 		$req = $bdd->prepare("insert into descriptions ( texte, langue, idService) values( :texte, :langue, :idService)");
 		$result = $req->execute(array( "texte"=>$texte,"langue"=>$langue, "idService"=>$idService));
 		return $bdd->lastInsertId();
-  }
+	}
 
 
 	function recupLocalisation($bdd){
-		
+
 		$req = $bdd->prepare("SELECT adresse, categorie, nom FROM services");
-	    $req->execute();
-	    $data = $req->fetchAll();
-		
+		$req->execute();
+		$data = $req->fetchAll();
+
 		if ($data == array())
-	        return false;
-	    else{
-	        return $data;
-        }
+			return false;
+		else{
+			return $data;
+		}
 	}
 
 
@@ -79,25 +79,45 @@
         }
 	}
 
+	function saveGeolocation($idService, $adresse){
+		global $bdd;
+		$coords = getXmlCoordsFromAdress($adresse);
+		$loc = $coords['lat'].",".$coords['lon'];
+		$req = $bdd->prepare("UPDATE services SET geolocalisation=:geolocalisation WHERE idService=:idService");
+		$req->bindParam('idService', $idService);
+		$req->bindParam('geolocalisation', $loc);
+	}
 
-	function obtenirServiceParCategorie($categorie, $langue){
-	    global $bdd;
-	    $str = "SELECT services.idService as idService, services.nom as nom, services.adresseImage as adresseImage, descriptions.texte as texte, descriptions.langue as langue 
-	    FROM services JOIN descriptions on services.idService = descriptions.idService 
-	    WHERE categorie=:categorie and descriptions.langue=:langue";
-	    $req = $bdd->prepare($str);
-	    $req->bindParam('categorie', $categorie);
-	    $req->bindParam('langue', $langue);
-	    $req->execute();
-	    $data = $req->fetchAll();
-	    return $data;
-    }
-        function modifierImageService($idService, $imageService){
+
+	function rechercheServices($categorie, $langue, $typeRecherche)
+    {
         global $bdd;
-        $req = $bdd->prepare("UPDATE services SET imageService=:imageService WHERE idService=:idService");
-        $req->bindParam("imageService", $imageService);
-        $req->bindParam("idService", $idService);
+        if ($typeRecherche == "note") {
+            $str = "SELECT 
+				services.idService AS idService, 
+				services.nom AS nom, 
+				services.adresseImage AS adresseImage, 
+				descriptions.texte AS texte, 
+				descriptions.langue AS langue, 
+				services.note as note
+			FROM services JOIN descriptions ON services.idService = descriptions.idService 
+			WHERE categorie=:categorie AND descriptions.langue=:langue AND services.validation = TRUE 
+			ORDER BY note DESC";
+        }
+        $req = $bdd->prepare($str);
+        $req->bindParam('categorie', $categorie);
+        $req->bindParam('langue', $langue);
         $req->execute();
+        $data = $req->fetchAll();
+        return $data;
+    }
+
+	function modifierImageService($idService, $imageService){
+		global $bdd;
+		$req = $bdd->prepare("UPDATE services SET imageService=:imageService WHERE idService=:idService");
+		$req->bindParam("imageService", $imageService);
+		$req->bindParam("idService", $idService);
+		$req->execute();
     }
 	
 
