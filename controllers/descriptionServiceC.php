@@ -14,43 +14,39 @@ $noteService=noteService($idService);
 $satisfaction=satisfaction($idService,$seances);
 $commentaires=commentaires($idService);
 $profil=profil($idService);
-$profilSession=profilSession($_SESSION["idUtilisateur"]);
 $description=description($idService);
 $contact=contact($idService);
 $longueur=count($seances);
 $longComment=count($commentaires);
-$lesInscrits=lesInscrits($idService);
 /*$notesSeances=notesSeances($idService);*/
-$estInscrit=estInscrit($idService,$_SESSION["idUtilisateur"]);
-$isFavoris=isFavoris($idService,$_SESSION["idUtilisateur"]);
+$lesInscrits=lesInscrits($idService);
 
 $admin=0;
 if(!empty($_SESSION["idAdministrateur"])){
   $admin=1;
 }
 
-if (!empty($_POST["valider"])){
+$login=0;
+if(!empty($_SESSION["idUtilisateur"])){
+  $login=1;
+  $estInscrit=estInscrit($idService,$_SESSION["idUtilisateur"]);
+  $isFavoris=isFavoris($idService,$_SESSION["idUtilisateur"]);
+  $profilSession=profilSession($_SESSION["idUtilisateur"]);
+}
+
+if (!empty($_POST["valider"]) && $_POST["note"]<=5){
   $note=$_POST["note"];
   $texte=htmlspecialchars($_POST["text"]);
-  ajoutCommentaire($note[0],$texte,$_SESSION["idUtilisateur"],$idService);  /*$_POST["idSeance"]*/
+  ajoutCommentaire($note,$texte,$_SESSION["idUtilisateur"],$idService);  /*$_POST["idSeance"]*/
   ajoutNote($idService,noteService($idService)["note"]);
   header("Location: ");
   exit();
 }
 
 if (!empty($_POST["validerInscript"])){
-  echo("test");
-  /*print_r($_POST["inscription"]);*/
-  /*exit();*/
   foreach($seances as $seance){
     $check1=0;
     $check2=0;
-    print_r($_POST);
-    print_r('    ///checkS///');
-    print_r($check1);
-    print_r($check2);
-    print_r('     /////idSeance//');
-    print_r($seance["idSeance"]);
     if(empty($_POST["inscription"])){
       modifInscription(false,$idService,$seance["idSeance"],$_SESSION["idUtilisateur"]);
     }
@@ -58,10 +54,11 @@ if (!empty($_POST["validerInscript"])){
       if (in_array($seance["idSeance"],$_POST["inscription"])){
         $check2=1;
       }
-      if (in_array($seance["idSeance"],$estInscrit)){
-        $check1=1;
+      foreach($estInscrit as $inscription){
+        if (in_array($seance["idSeance"],$inscription)){
+          $check1=1;
+        }
       }
-      print_r($check1, $check2);
       if($check1!=$check2){
         if($check2==0){
           modifInscription(false,$idService,$seance["idSeance"],$_SESSION["idUtilisateur"]);

@@ -4,39 +4,43 @@ if(empty($_GET['idService'])){
   header("Location: ".SOUS_DOMAINE."?page=error404");
   exit();
 }
-else{
+
+if ($_SESSION['idUtilisateur']==createur($_GET['idService'])){
   $idService=$_GET['idService'];
-}
-$seances=seances($idService);
-$longueur=count($seances);
-$lesInscrits=lesInscrits($idService);
+  $seances=seances($idService);
+  $longueur=count($seances);
+  $lesInscrits=lesInscrits($idService);
+  if(!empty($_POST["valider"])){
+    if (empty($_POST["nom"]) || empty($_POST["description"]) || empty($_POST["date"]) || empty($_POST["heure"]) || empty($_POST["capacite"])){
+      ?> </br> <?php echo ("Merci de remplir tous les champs" ); ?> </br> <?php
+    }
+    if ($_POST["date"]<date("Y m d")){
+      ?> </br> <?php print_r ("Merci de saisir une date valide"); ?> </br> <?php
+    }
+    else{
+      $date=$_POST["date"];
+      $heure=$_POST["heure"];
+      $nom=htmlspecialchars($_POST["nom"]);
+      $description=htmlspecialchars($_POST["description"]);
+      print_r($_POST);
+      ajoutSeance($nom,$description,$date, $heure, $_POST["capacite"], $idService );
+      header("Location: ");
+      exit();
+    }
+  }
 
-if(!empty($_POST["valider"])){
-  if (empty($_POST["nom"]) || empty($_POST["description"]) || empty($_POST["date"]) || empty($_POST["heure"]) || empty($_POST["capacite"])){
-    echo ("Merci de remplir tous les champs" ); ?> </br> <?php
+  foreach($seances as $seance) {
+    if(!empty($_POST["supprimerSeance".$seance["idSeance"]])){
+      supprimerSeance($idService,$seance["idSeance"]);
+      header("Location: ");
+      exit();
+    }
+    /*if(!empty($_POST["modifierSeance"])){
+        ENVOYER SUR LA PAGE CONCERNEE
+    }*/
   }
-  if ($_POST["date"]<date("Y m d")){
-    print_r ("Merci de saisir une date valide"); ?> </br> <?php
-  }
-  else{
-    $date=$_POST["date"];
-    $heure=$_POST["heure"];
-    $nom=htmlspecialchars($_POST["nom"]);
-    $description=htmlspecialchars($_POST["description"]);
-    print_r($_POST);
-    ajoutSeance($nom,$description,$date, $heure, $_POST["capacite"], $idService );
-  }
+  include("templates/gestionSeances.php");
 }
-
-foreach($seances as $seance) {
-  if(!empty($_POST["supprimerSeance".$seance["idSeance"]])){
-    supprimerSeance($idService,$seance["idSeance"]);
-    header("Location: ");
-    exit();
-  }
-  if(!empty($_POST["modifierSeance"])){
-    /*ENVOYER SUR LA PAGE CONCERNEE*/
-  }
+else{
+  echo("</br> Vous devez être le créateur du service pour pouvoir modifier les séances de ce service");
 }
-
-include("templates/gestionSeances.php");

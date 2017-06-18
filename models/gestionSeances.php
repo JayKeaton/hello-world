@@ -2,7 +2,6 @@
 
   function  ajoutSeance($nom,$description, $date, $heure, $capacite, $idService){
   global $bdd;
-
   $req=$bdd->prepare("INSERT INTO `seances`(`nom`,`description`,`date`, `heure`, `capacite`, `idService`) VALUES (:nom, :description, :date, :heure, :capacite,:idService)");
   $req->bindParam("nom",$nom);
   $req->bindParam("description",$description);
@@ -12,6 +11,15 @@
   $req->bindParam("idService",$idService);
   print_r($req);
   $req->execute();
+}
+
+function createur($idService){
+  global $bdd;
+  $req=$bdd->prepare("SELECT idUtilisateur FROM services WHERE idService=:idService");
+  $req->bindParam("idService",$idService);
+  $req->execute();
+  $createur=$req->fetch();
+  return($createur[0]);
 }
 
 function seances($idService){
@@ -27,7 +35,7 @@ function lesInscrits($idService){
   $req=$bdd->prepare("SELECT count(*), inscrits.idSeance FROM inscrits JOIN seances ON inscrits.idSeance=seances.idSeance WHERE idService=:idService GROUP BY seances.idSeance ORDER BY seances.idSeance ");
   $req->bindParam("idService",$idService);
   $req->execute();
-  $lesInscrits=$req->fetch();
+  $lesInscrits=$req->fetchAll();
   return $lesInscrits;
 }
 function supprimerSeance($idService, $idSeance){
