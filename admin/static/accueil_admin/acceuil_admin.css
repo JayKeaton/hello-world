@@ -1,3 +1,41 @@
+@media only screen and (max-width: 500px) {
+
+	#placement{
+	display: flex;
+	flex-direction: column-reverse;
+	}
+
+	#actualite{
+	border: 1px black solid;
+	width: 100%;
+	background:rgb(200,200,200);
+	}
+
+	#accueilAdmin{
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	}
+
+}
+
+@media only screen and (min-width: 500px){
+	#actualite{
+	border: 1px black solid;
+	width: 25%;
+	background:rgb(200,200,200);
+	}
+
+	#accueilAdmin{
+	width: 75%;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	}
+}
 
 #placement{
 	display: flex; 
@@ -15,13 +53,6 @@
 	height:100px;
 }
 
-#accueilAdmin{
-	width: 75%;
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-start;
-	align-items: center;
-}
 
 #petitTitre{
 	border: 1px black solid;
@@ -29,11 +60,6 @@
 	text-align: center;
 }
 
-#actualite{
-	border: 1px black solid;
-	width: 25%;
-	background:rgb(200,200,200);
-}
 
 #recherche {
 	display: flex;
