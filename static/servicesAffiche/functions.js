@@ -112,8 +112,8 @@ function TrouverAdresse() {
 
 // Lancement de la construction de la carte google map
 if (navigator.geolocation)
-  var watchId = navigator.geolocation.watchPosition(successCallback, null, {enableHighAccuracy:true});
-                          
+    var watchId = navigator.geolocation.watchPosition(successCallback, null, {enableHighAccuracy: true});
+
 else
   alert("Votre navigateur ne prend pas en compte la géolocalisation HTML5");
 

@@ -158,7 +158,7 @@
                     </article>
                     <div id="Note">
                       <p>
-                        <label for="note"> Note sur 5 </label>: </br> <input type="number" id="note" name="note" min=0, max=5, step=0.5 placeholder="/5"/>
+                        <label for="note"> Note sur 5 </label>: </br> <input type="number" id="note" name="note" min=0.0, max=5.0, step=0.5 placeholder="/5"/>
                       </p>
                     </div>
                     <div>
