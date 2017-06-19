@@ -1,8 +1,8 @@
 <?php
-include("models/descriptionService.php");
+include("../models/descriptionService.php");
 
 if(empty($_GET['idService'])){
-  header("Location: ".SOUS_DOMAINE."?page=error404");
+  header("Location: ".SOUS_DOMAINE_ROOT."?page=error404");
   exit();
 }
 else{
@@ -21,19 +21,14 @@ $longComment=count($commentaires);
 /*$notesSeances=notesSeances($idService);*/
 $lesInscrits=lesInscrits($idService);
 
-$login=0;
-if(!empty($_SESSION["idUtilisateur"])){
-  $idUtilisateur=$_SESSION["idUtilisateur"];
-  $login=1;
-  $estInscrit=estInscrit($idService,$idUtilisateur);
-  $isFavoris=isFavoris($idService,$idUtilisateur);
-  $profilSession=profilSession($idUtilisateur);
-}
-
 $admin=0;
 if(!empty($_SESSION["idAdministrateur"])){
   $admin=1;
   $idUtilisateur=$_SESSION["idAdministrateur"];
+  $login=1;
+  $estInscrit=estInscrit($idService,$idUtilisateur);
+  $isFavoris=isFavoris($idService,$idUtilisateur);
+  $profilSession=profilSession($idUtilisateur);
 }
 
 if (!empty($_POST["valider"]) && $_POST["note"]<=5){

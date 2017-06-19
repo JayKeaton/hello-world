@@ -12,7 +12,7 @@
 
   function noteService($idService){
     global $bdd;
-    $req=$bdd->prepare("SELECT ROUND(AVG(note),2) as note FROM commentaires WHERE idService=:idService");
+    $req=$bdd->prepare("SELECT ROUND(AVG(note),2) as note FROM commentaires WHERE idService=:idService AND censure=0");
     $req->bindParam("idService",$idService);
     $req->execute();
     $note=$req->fetch();
