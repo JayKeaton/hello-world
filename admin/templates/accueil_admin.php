@@ -109,7 +109,7 @@
 						$image = '';
 					}
 					else{
-						$image = '<img src="../'.$data[$j]['adresseImage'].'"class="imageService"/>';
+						$image = '<img src="../media/imageService/'.$data[$j]['adresseImage'].'"class="imageService"/>';
 					}
 	    			$contenu='<div class="positionData">'.$image.'<p class="servicesData">  nom du service :'
 					.$data[$j]['nom'].
