@@ -12,7 +12,7 @@ background-image: linear-gradient(white 90%, white 100%)
 }
 #myTitle
 {
-font-family:Impact, Arial;
+font-family: Arial, Impact;
 font-size: 50px;
 text-align: center;
 }
@@ -29,30 +29,41 @@ text-align: center;
 }
 #presentation
 {
-	background-color: rgb(225,225,225);
+	
+	border-radius: 20px 20px 20px 20px;
+	background-color: rgb(255,255,255);
 	width: 20%;
 	height: auto;
-	border-right: 1px black groove;
+	border: 6px red solid;
+	padding-left: 20px;
 	padding-right: 20px;
+	height:40%;
+	margin-right:1%;
 }
 #fil_actu
 {
-	background-color: rgba(120,120,120,0.6);
+	background-color: rgba(255,255,255,1);
 	width: 20%;
-	border-bottom: 1px black groove;
+	height:40%;
+	border: 6px red solid;
+	border-radius: 32px 32px 32px 32px;
 	padding-left: 20px;
 	padding-bottom: 20px;
 	justify-content: right;
+	margin-left:1%;
 }
 #recherche
 {
-	background-color: rgba(120,120,120,0.1);
+	padding-left: 16px;
+	background-color: rgba(255,255,255,0.5);
 	width: 60%;
 	justify-content: center;
+	border: 1px black solid;
+	border-radius: 32px 32px 32px 32px;
 }
 #contenu
 {
-	background-color: rgba(120,120,120,0.1);
+	background-color: rgba(255,255,255,0.1);
 	width: 97%;
 	justify-content: center;
 	margin-left: 10px;
@@ -61,15 +72,20 @@ text-align: center;
 	text-decoration: underline;
 }
 .service{
-	background-color: rgba(120,120,120,0.1);
-		border-radius: 0px 30px 30px 0px;
-
+	background-color: rgba(255,255,255,0.1);
+	border-radius: 0px 30px 30px 0px;
+	border-bottom: 1px black solid;
+	border-right: 1px black solid;
+}
+#form{
+	border-bottom: 1px black solid;
 }
 
 
 .floatl{
 	float:left;
 }
+
 /*#menu
 {
 	display: flex;
@@ -122,7 +138,6 @@ color: rgb(180,0,0);
 }
 
 #contenu img{
-
 border-radius: 0px 16px 0px 16px;
 margin-left: 10px;
 margin-right: 20px;
@@ -140,11 +155,14 @@ box-shadow: -2px 2px 3px rgba(0,0,0,0.75);
 #partage
 {
 	display: flex;
-	justify-content: right;
-	background-image: linear-gradient(to right, rgb(70,150,255) 0%, white 100%);
+	justify-content: center;
+	justify-content: middle;
+	background-color: white;
 	background-size: cover;
 	opacity:1;
-	border: 1px black groove;
+	border-top: 3px black solid;
+	font-size: 15px;
+	margin-top:10%;
 }
 #partage ul
 {
@@ -160,8 +178,7 @@ box-shadow: -2px 2px 3px rgba(0,0,0,0.75);
 	/*min-width: 100px;*/
 	padding-left: 10px;
 	padding-right: 10px;
-
-	height: 32px;
+	height: 64px;
 }
 #partage ul li:hover
 {
@@ -183,6 +200,7 @@ background-color: #0000166;
 	border-radius: 4px 4px 4px 4px;
 	width:28%;
 }
+
 /*.element:focus{
 	background-color:green;
 }*/
@@ -190,7 +208,10 @@ background-color: #0000166;
 .element{
 	text-align: justify;
 }
-
+#submit {
+	background-color: blue;
+	font-family: Impact
+}
 #services .article{
 	border:2px solid red ;
 	display: flex;
@@ -200,15 +221,18 @@ background-color: #0000166;
 	margin:15px;
 	text-align: center;
 }
+#margin{
+	width:60%;
+}
 #lienService{
 	color: black;
 	text-decoration:none;
 }
 #lienOrganisation a{
 	color:rgb(120,120,255);
-	font-family: "Comic sans MS", "Courier New", Georgia);
+	/*font-family: Arial,"Comic sans MS", "Courier New", Georgia;*/
 }
 #lienOrganisation a:hover{
 	color:rgb(70,70,255);
-	font-family: "Comic sans MS", "Courier New", Georgia);
+	/*font-family: Arial, "Comic sans MS", "Courier New", Georgia;*/
 }
