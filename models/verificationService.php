@@ -30,4 +30,12 @@ function dataTypeService ($typeService,$messagesParPage){
 	$retour= array($data,$nombreDePages);
 	return $retour;
 }
+
+function actualite(){
+	global $bdd;
+		$fileActu=$bdd ->prepare("SELECT descriptions.idService as idService,nom,texte,validation FROM descriptions JOIN services ON descriptions.idService = services.idService where services.validation = 0 ORDER By dateAjout");
+		$fileActu->execute();
+		$actuTrier=$fileActu-> fetchAll();
+		return $actuTrier;
+}
 ?>

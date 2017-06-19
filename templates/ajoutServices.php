@@ -13,6 +13,8 @@
     
     <form method="post" action="" enctype="multipart/form-data">
 
+    <div id="placement">
+    <div id="bloc1">    
     <div>
 
         <fieldset>
@@ -64,10 +66,14 @@
 
         </fieldset>
     </div>
+        <div id="valide">
+            <?php $form_service->submit("Ajouter service"); ?>
+        </div>
+    </div>
 
 
 
-
+    <div id="bloc2">
     <div>
 
         <fieldset>
@@ -111,9 +117,9 @@
         <!--<img src="<?php/* echo("media/imageService/".$_FILES['imageService']); */?>" height="150" width="150" />-->
         <input type="file" name="imageService" id="imageService"/>
     </fieldset>
-    <div>
-        <?php $form_service->submit("Ajouter service"); ?>
     </div>
+    </div>
+    
 
 
 </form>
