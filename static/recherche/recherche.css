@@ -83,4 +83,20 @@
     text-align: justify;
 }
 
+#resultats .distance{
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+#resultats .distance p{
+    margin: 0;
+    padding: 0;
+}
+#resultats .distance img{
+    margin: 0;
+    padding: 0;
+}
+
 

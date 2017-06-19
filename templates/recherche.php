@@ -1,8 +1,3 @@
-<?php
-
-
-?>
-
 <link rel="stylesheet" href="static/recherche/recherche.css" />
 
 <section>
@@ -14,10 +9,12 @@
         <?php $form->echoInput('categorie'); ?>
         <br/>
         <h2>Langue d'accueil</h2>
-        <?php $form->echoInput('langue') ?>
+        <?php $form->echoInput('langue'); ?>
         <br/>
         <h2>Comment rechercher les services ?</h2>
-        <?php $form->echoInput('typeRecherche') ?>
+        <?php $form->echoInput('typeRecherche'); ?>
+        Adresse :
+        <?php $form->echoInput('adresseDeRecherche'); ?>
         <br/><br/><br/><br/>
         <input type="hidden" name="coords" id="coords" value="false"/>
         <?php $form->submit("Rechercher"); ?>
@@ -49,10 +46,11 @@
                         <div>
                             <h2><em><?php echo($service['nom']); ?></em></h2>
                             <?php
-                            if ($data['typeRecherche'] == "localisation"){
-                                echo("<p>");
-                                echo("A ".$service['distance']." mètres.");
-                                echo("</p>");
+                            if ($data['typeRecherche'] == "localisation" or $data['typeRecherche'] == "adresse"){
+                                echo("<div class='distance'>");
+                                echo("<img src='static/recherche/marker.png' width='30' />");
+                                echo("<p>A ".$service['distance']." mètres.</p>");
+                                echo("</div>");
                             }
                             ?>
                             <p>

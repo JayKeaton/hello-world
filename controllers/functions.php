@@ -19,7 +19,7 @@
             exit();
         }
     }
-
+ 
 
     function getXmlCoordsFromAdress($address)
     {

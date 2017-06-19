@@ -36,6 +36,8 @@ $form->add('radio', 'typeRecherche')
     ->addOption('adresse', "Rechercher les services à proximité d'une adresse")
     ->required(true)
     ->value('note');
+$form->add('text', 'adresseDeRecherche')
+    ->required(false);
 
 if($form->isValid()){
     $form->set_values($_POST);
@@ -55,6 +57,22 @@ if($form->isValid()){
             return ($serviceA['distance'] < $serviceB['distance']);
         }
         $listeServices = triListe($listeServices, 'comparaison');
+    }
+    else{
+        if (!empty($data['adresseDeRecherche'])){
+            $loc = getXmlCoordsFromAdress($data['adresseDeRecherche']);
+            $coords = $loc['lat'].",".$loc['lon'];
+            $listeServices = rechercheServices($data['categorie'], $data['langue'], 'localisation');
+            foreach ($listeServices as $key => $service){
+                $dist = round(distance($coords, $service['geolocalisation']));
+                $service['distance'] = $dist;
+                $listeServices[$key] = $service;
+            }
+            function comparaison($serviceA, $serviceB){
+                return ($serviceA['distance'] < $serviceB['distance']);
+            }
+            $listeServices = triListe($listeServices, 'comparaison');
+        }
     }
 }
 
