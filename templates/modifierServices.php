@@ -117,8 +117,15 @@
 			*/?>-->
 			</br>
 			<label>Description:
-			 <textarea id="texte" name="texte" value="<?php echo($dataDescription); ?>" ></textarea></label>
-			 </fieldset>
+			<textarea id="texte" name="texte"  ><?php 
+			foreach ($dataDescription as $ligneDescription) {
+				if($ligneDescription[2]=='fr'){
+					echo($ligneDescription[1]);
+				}
+			} ?></textarea>
+			</label>
+			</fieldset>
+
 			
 
 			<input type="submit" value="Modifier" id="submit" />
@@ -140,6 +147,7 @@
 	
 
 </html>
+
 
 
 
