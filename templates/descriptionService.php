@@ -111,7 +111,7 @@
                 </tbody>
               </table>
 
-              <?php if ($login==1){ ?> <input type="submit" name="validerInscript" value="valider"/> <?php } ?>
+              <?php if ($login==1){ ?> <input type="submit" name="validerInscript" value="Valider"/> <?php } ?>
             </form>
 
 
@@ -215,7 +215,7 @@
                         </p>
                       </div>
                       <div>
-                        <input type="submit" name="valider" value="valider">
+                        <input type="submit" name="valider" value="Valider">
                       </div>
                     </form>
 

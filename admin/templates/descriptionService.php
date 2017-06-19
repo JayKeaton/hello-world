@@ -111,7 +111,7 @@
                 </tbody>
               </table>
 
-              <?php if ($login==1){ ?> <input type="submit" name="validerInscript" value="valider"/> <?php } ?>
+              <?php if ($login==1){ ?> <input type="submit" name="validerInscript" value="Valider"/> <?php } ?>
             </form>
 
 
@@ -172,11 +172,11 @@
                           <?php $note=$commentaires[$index]["note"];
                             $index2=1;
                             while ($index2<=$note){ ?>
-                              <img src="static/descriptionService/etoileRouge.png" width="30" height="30">
+                              <img src="static/descriptionService/etoileBleue.png" width="30" height="30">
                               <?php $index2++;
                             }
                           if ($note>=((int)$note+0.5)){ ?>
-                            <img src="static/descriptionService/demiEtoileRouge.png" width="15" height="30">
+                            <img src="static/descriptionService/demiEtoileBleue.png" width="15" height="30">
                           <?php } ?>
                         </p>
                       </div>
@@ -215,7 +215,7 @@
                         </p>
                       </div>
                       <div>
-                        <input type="submit" name="valider" value="valider">
+                        <input type="submit" name="valider" value="Valider">
                       </div>
                     </form>
 
