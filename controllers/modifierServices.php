@@ -51,6 +51,7 @@
 		
 		$idService=$_POST["idService"];
 		$idService=modifierService($bdd, $data['nom'], $data['email'], $adresse, $data['telephone'],$data['lien_site'], $data['categorie'], $idService);
+		/*saveGeolocation($idService, $adresse);*/
 	}
 
 
@@ -61,6 +62,9 @@
 	$dataServicesUtilisateur=recupServicesUtilisateur($_SESSION['idUtilisateur'],$bdd);
 	$dataDescription=recupDescriptionService($idService,$bdd);
 	$n=0;
+	
+	
+	
 
 	/*foreach ($data as $element => $value) {
 

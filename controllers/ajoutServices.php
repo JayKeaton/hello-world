@@ -44,12 +44,14 @@
 
 
 			$idService = ajouterService($bdd, $data['email'], $adresse, $data['codePostal'], $data['telephone'], $data['lien_site'], $data['categorie'], $_SESSION['idUtilisateur'],$data['nom']);
+      /*saveGeolocation($idService, $adresse);*/
 			$id2 = ajouterDescriptionService($bdd, $texte, $data['langue'], $idService);
 
 			require_once("models/image.php");
    			$result = traitementUploadImage('imageService', "media/imageService", $idService);
    			$adresseImage=$result[1];
    			ajouterAdresseImage($bdd,$adresseImage,$idService);
+
         /*ajouterService($bdd, $data['email'], $adresse, $data['codePostal'], $data['telephone'], $data['lien_site'], $categorie, $_SESSION['idUtilisateur'],$data['nom']);*/
 			
 

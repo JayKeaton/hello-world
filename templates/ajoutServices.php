@@ -33,7 +33,7 @@
         
         <label for="telephone">Numéro de téléphone: <span class="required">*</span>
 
-        </label>
+        </label></br>
 
         <input type="text" id="telephone" name="telephone" value="<?php echo((empty($_POST['telephone'])) ? "" : $_POST['telephone']); ?>" required="required" />
         </br>
