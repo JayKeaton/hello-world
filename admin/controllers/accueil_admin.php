@@ -25,5 +25,6 @@
     	$categorie_service->get('typeService')
     						->value($dataCategorie['typeService']);
     }
+$actuTrier=actualite();    
 include("templates/accueil_admin.php");
 ?>

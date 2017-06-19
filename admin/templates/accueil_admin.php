@@ -8,49 +8,45 @@
 		
 		<div id="actualite">
 		<p id="petitTitre"> Dernière annonce non validé </p>
-		<?php
-		global $bdd;
-		$fileActu=$bdd ->prepare("SELECT descriptions.idService as idService,nom,texte,validation FROM descriptions JOIN services ON descriptions.idService = services.idService where services.validation = 0 ORDER By dateAjout");
-		$fileActu->execute();
-		$actuTrier=$fileActu-> fetchAll();
-		$valide2 = null;
-		$taille=count($actuTrier);
-		if($taille>=10){
-		for($i=0; $i<10; $i++){
-				if($actuTrier[$i]['validation']==0){
-					$valide2 = '<a class="rouge"> non validé</a>';
-				}
-				else{
-					$valide2 = '<a class="vert"> validé</a>';
-				}
-     				$contenu2='<p class="actuData"> nom du service :'
-					.$actuTrier[$i]['nom'].
-    				'</br> description :'.$actuTrier[$i]['texte'].'</br>'.$valide2.
-    				'</br> <a href="'.SOUS_DOMAINE_ROOT.'?page=descriptionService&idService='.$actuTrier[$i]['idService'].'">Voir l’annonce</a></p>' ;
+			<?php
+			$valide2 = null;
+			$taille=count($actuTrier);
+			if($taille>=10){
+			for($i=0; $i<10; $i++){
+					if($actuTrier[$i]['validation']==0){
+						$valide2 = '<a class="rouge"> non validé</a>';
+					}
+					else{
+						$valide2 = '<a class="vert"> validé</a>';
+					}
+     					$contenu2='<p class="actuData"> nom du service :'
+						.$actuTrier[$i]['nom'].
+    					'</br> description :'.$actuTrier[$i]['texte'].'</br>'.$valide2.
+    					'</br> <a href="'.SOUS_DOMAINE_ROOT.'?page=descriptionService&idService='.$actuTrier[$i]['idService'].'">Voir l’annonce</a></p>' ;
 
-				echo $contenu2;
+					echo $contenu2;
      			}
-     	}
-     	else if($taille==0){
-     		$contenu2='<p class="actuData"> Il n y a pas de nouvelle donnée
-    				</p>' ;
-    		echo $contenu2;
+     		}
+     		else if($taille==0){
+     			$contenu2='<p class="actuData"> Il n y a pas de nouvelle donnée
+    					</p>' ;
+    			echo $contenu2;
      	
-     	}
-     	else {for($i=0; $i<$taille; $i++){
-				if($actuTrier[$i]['validation']==0){
-					$valide2 = '<a class="rouge"> non validé</a>';
-				}
-				else{
-					$valide2 = '<a class="vert"> validé</a>';
-				}
-     				$contenu2='<p class="actuData"> nom du service :'
-					.$actuTrier[$i]['nom'].
-    				'</br> description :'.$actuTrier[$i]['texte'].$valide2.
-    				'</br> <a href="'.SOUS_DOMAINE_ROOT.'?page=descriptionService&idService='.$actuTrier[$i]['idService'].'">Voir l’annonce</a></p>' ;
+     		}
+     		else {for($i=0; $i<$taille; $i++){
+					if($actuTrier[$i]['validation']==0){
+						$valide2 = '<a class="rouge"> non validé</a>';
+					}
+					else{
+						$valide2 = '<a class="vert"> validé</a>';
+					}
+     					$contenu2='<p class="actuData"> nom du service :'
+						.$actuTrier[$i]['nom'].
+    					'</br> description :'.$actuTrier[$i]['texte'].$valide2.
+    					'</br> <a href="'.SOUS_DOMAINE_ROOT.'?page=descriptionService&idService='.$actuTrier[$i]['idService'].'">Voir l’annonce</a></p>' ;
 
-				echo $contenu2;
-     			}
+					echo $contenu2;
+     				}
      	}
 		
 			?>
