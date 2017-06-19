@@ -1,13 +1,6 @@
 <?php
 session_start();
 date_default_timezone_set('Europe/Paris'); /*Sert à définir la référence temporelle: essentiel pour l'utilisation du type Temps*/
-/* Salut cher Antonin dont l'ordi bug bien comme il faut !!*/
-
-
-/*
-if (!empty($_SESSION['idUtilisateur']))
-    echo $_SESSION['idUtilisateur'];
-*/
 
 
 $pages=[['accueil','controllers/accueil.php'],['recherche', 'controllers/recherche.php'],['signup','controllers/signup.php'],['activation','controllers/activation.php'],['signin','controllers/signin.php'],['profil','controllers/profil.php'],['locate','controllers/locate.php'],['servicesMaps','controllers/servicesMaps.php'],['activationContributeur', 'controllers/activationContributeur.php'],['favoris','controllers/favoris.php'],['modifierServices', 'controllers/modifierServices.php'],['servicesAffiche','controllers/servicesAffiche.php'],['pageServiceAdmin','controllers/pageServiceAdminC.php'],['ajoutAdmin','controllers/ajoutAdmin.php'],['activationAdmin','controllers/activationAdmin.php'],['contact','controllers/contact.php'],['activationService','controllers/activationService.php'],['ajoutServices','controllers/ajoutServices']];
@@ -25,13 +18,8 @@ $url = "http://".$_SERVER['HTTP_HOST'];
 define('URL_SITE', $url);
 define('SOUS_DOMAINE', $sous_domaine);
 
-/*
-echo(SOUS_DOMAINE);
-echo("<br/>");
-echo(URL_SITE);
-*/
 
-/*echo($_SESSION['idUtilisateur']);*/
+
 
 require_once("models/SQLCo.php");
 require_once("models/utilisateur.php");
@@ -82,16 +70,16 @@ elseif ($page == "servicesMaps"){
 }
 elseif ($page == "ajoutServices"){
     loginRequired($page);
-	
+
 	$path = "controllers/activationContributeur.php";
-	
+
 }
 elseif ($page == "favoris"){
     loginRequired($page);
     $path = "controllers/favoris.php";
 }
 elseif ($page == "modifierServices"){
-	
+
     	$path = "controllers/modifierServices.php";
 }
 elseif ($page == "servicesAffiche"){
@@ -135,6 +123,9 @@ elseif ($page == "FAQ"){
 }
 elseif ($page == "error404"){
     $path = "templates/error404.html";
+}
+elseif($page == "test"){
+    $path = "test.php";
 }
 else{
     include("templates/".$page.".html");

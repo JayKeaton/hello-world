@@ -19,6 +19,44 @@
             exit();
         }
     }
+ 
+
+    function getXmlCoordsFromAdress($address)
+    {
+        $coords=array();
+        $base_url="http://maps.googleapis.com/maps/api/geocode/xml?";
+        // ajouter &region=FR si ambiguité (lieu de la requete pris par défaut)
+        $request_url = $base_url . "address=" . urlencode($address).'&sensor=false';
+        $xml = simplexml_load_file($request_url) or die("url not loading");
+        //print_r($xml);
+        $coords['lat']=$coords['lon']='';
+        $coords['status'] = $xml->status ;
+        if($coords['status']=='OK')
+        {
+            $coords['lat'] = $xml->result->geometry->location->lat ;
+            $coords['lon'] = $xml->result->geometry->location->lng ;
+        }
+        return $coords;
+    }
+
+
+    function distance($coordsA, $coordsB){
+        if (empty($coordsA['lat'])){
+            $c = explode(',', $coordsA);
+            $coordsA = array();
+            $coordsA['lat'] = $c[0];
+            $coordsA['lon'] = $c[1];
+        }
+        if (empty($coordsB['lat'])){
+            $c = explode(',', $coordsB);
+            $coordsB = array();
+            $coordsB['lat'] = $c[0];
+            $coordsB['lon'] = $c[1];
+        }
+        $conv = pi()/180;
+        $distance = 6378137*acos(sin($coordsA['lat']*$conv)*sin($coordsB['lat']*$conv) + cos($coordsA['lat']*$conv)*cos($coordsB['lat']*$conv)*cos(($coordsB['lon']-$coordsA['lon'])*$conv));
+        return $distance;
+    }
 
 
 
@@ -125,6 +163,15 @@ class Formulaire{
                 $data[$name] = $input->get_cleaned_value();
             }
             return $data;
+        }
+
+        public function set_values($listeValues){
+            $listeInput = $this->listeInput;
+            foreach($listeInput as $name => $input){
+                if (in_array($name, array_keys($listeValues))){
+                    $input->value($listeValues[$name]);
+                }
+            }
         }
 }
 /************************************************************************/
@@ -311,6 +358,47 @@ class Input_tel extends Input{
         $string .= "<input type='tel' name='".$name."' id='".$id."' value='".$value."'/>";
         if ($this->erreur != "")
             $string .= "</br><p class='error'>".$this->erreur."</p>";
+        return $string;
+    }
+}
+/**************************************************************************************/
+class Input_radio extends Input{
+
+    protected $listeValeurs;
+
+    public function __construct($name){
+        parent::__construct($name);
+    }
+
+    public function isValid(){
+        parent::isValid();
+        if (!empty($_POST[$this->name]) && !in_array($_POST[$this->name], array_keys($this->listeValeurs))){
+            $this->erreur .= "Veuillez selectionner une option valide.";
+        }
+        return ($this->erreur == "");
+    }
+
+    public function addOption($key, $value, $boolean = true){
+        $this->listeValeurs[$key] = array($value, $boolean);
+        return $this;
+    }
+
+    public function disabled($option, $boolean){
+        $this->listeValeurs[$option][1] = $boolean;
+        return $this;
+    }
+
+    public function __toString(){
+        $name = $this->name;
+        $listeValeurs = $this->listeValeurs;
+        $string = "";
+        foreach ($listeValeurs as $key => $value) {
+            $disabled = $value[1] ? "" : " disabled";
+            $selected = ($this->value == $key) ? "checked" : "";
+            $string .= "<input type='radio' id='".$name.$key."' name='".$name."' value='".$key."' ".$selected.$disabled."/><a id='label".$key."'>".$value[0]."</a></br>";
+        }
+        if ($this->erreur != "")
+            $string .= "<p class='error'>".$this->erreur."</p>";
         return $string;
     }
 }

@@ -1,8 +1,3 @@
-<?php
-
-
-?>
-
 <link rel="stylesheet" href="static/recherche/recherche.css" />
 
 <section>
@@ -14,11 +9,14 @@
         <?php $form->echoInput('categorie'); ?>
         <br/>
         <h2>Langue d'accueil</h2>
-        <?php $form->echoInput('langue') ?>
+        <?php $form->echoInput('langue'); ?>
         <br/>
-        <h2>A quelle tranche d'âge appartennez-vous ?</h2>
-        <?php $form->echoInput('age') ?>
+        <h2>Comment rechercher les services ?</h2>
+        <?php $form->echoInput('typeRecherche'); ?>
+        Adresse :
+        <?php $form->echoInput('adresseDeRecherche'); ?>
         <br/><br/><br/><br/>
+        <input type="hidden" name="coords" id="coords" value="false"/>
         <?php $form->submit("Rechercher"); ?>
     </form>
 
@@ -26,20 +24,6 @@
 <section id="resultats">
     <fieldset>
         <legend>Résultats de la recherche :</legend>
-
-        <!--article>
-            <img src="media/isep.jpg" width="200" height="200"/>
-            <div>
-                <h2><em>L'ISEP</em></h2>
-                <p>
-                    Ceci est la description du service proposé : Le plus beau, le plus magnifique et le plus
-                    efficace service qu'il nous ai été donné de rencontrer :
-                    L'Isep. Certain dirons que ce n'est pas vraiment un service, d'autres que ce n'est pas vraiment
-                    du bonheur. D'autres enfin diront qu'elle n'as pas sa place sur ce site.
-                    Sornettes. Le monde se doit de la connaitre !
-                </p>
-            </div>
-        </article-->
 
         <?php
         if (isset($listeServices)){
@@ -61,8 +45,19 @@
                         ?>
                         <div>
                             <h2><em><?php echo($service['nom']); ?></em></h2>
+                            <?php
+                            if ($data['typeRecherche'] == "localisation" or $data['typeRecherche'] == "adresse"){
+                                echo("<div class='distance'>");
+                                echo("<img src='static/recherche/marker.png' width='30' />");
+                                echo("<p>A ".$service['distance']." mètres.</p>");
+                                echo("</div>");
+                            }
+                            ?>
                             <p>
                                 <?php echo($service['texte']); ?>
+                            </p>
+                            <p>
+                                Note : <?php echo($service['note']); ?>
                             </p>
                             <a href="<?php echo(SOUS_DOMAINE."?page=descriptionService&idService=".$service['idService']); ?>">En savoir plus</a>
                         </div>
@@ -74,4 +69,15 @@
         ?>
 
     </fieldset>
+    <script>
+        function maPosition(position) {
+            var pos = position.coords.latitude + "," + position.coords.longitude;
+            document.getElementById("coords").value = pos;
+            document.getElementById("typeRecherchelocalisation").disabled = false;
+            document.getElementById("labellocalisation").innerHTML = "Services les plus proche de votre position";
+        }
+
+        if(navigator.geolocation)
+            navigator.geolocation.getCurrentPosition(maPosition);
+    </script>
 </section>

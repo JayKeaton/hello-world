@@ -1,6 +1,33 @@
 <link href="static/profil/profil.css" rel="stylesheet" type="text/css">
 
 
+<?php
+if ($_SESSION['droits'] == 'contributeur'){
+?>
+<form action="" method="get">
+    <h1>Vous êtes contributeur :</h1>
+    <input type='hidden' name='page' value='modifierServices'/>
+    <div>
+        <input type="submit" value="Accéder à vos contribution."/>
+    </div>
+</form>
+<?php
+}
+?>
+
+<?php
+if ($_SESSION['droits'] == 'admin'){
+?>
+<form action="" method="get">
+    <h1>Vous êtes admin :</h1>
+    <input type='hidden' name='page' value='modifierServices'/>
+    <div>
+        <input type="submit" value="Accéder à vos contributions."/>
+    </div>
+</form>
+<?php
+}
+?>
 
 <form action="" method="post" enctype="multipart/form-data">
     <h1>Avatar :</h1>

@@ -1,0 +1,75 @@
+#EnTete
+{
+display: flex;
+align-items: center;
+}
+#h
+{
+  width: 100%;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+
+
+#t1{
+  text-align: center;
+  font-size: 22px;
+}
+#Service{
+  margin: 50px;
+  justify-content: center;
+  display: flex;
+}
+#commentairesTitre{
+  text-align: center;
+  font-size:22px;
+  margin-top: 16px;
+}
+#Commentaires{
+  margin:6px;
+  border:5px solid #417690 ;
+  border-radius: 8px;
+}
+#Commentaire{
+  border:2px solid #417690 ;
+  display: flex;
+  align-items: center;
+  border-radius: 12px;
+  margin: 20px;
+}
+#center{
+  text-align: center;
+  vertical-align: middle;
+}
+#Note{
+  align-items: center;
+}
+table{
+  border-collapse: collapse;
+}
+td {
+  border: 3px solid black;
+  padding: 7px;
+  text-align: center;
+  vertical-align: middle;
+}
+#Mail{
+  color: #417690;
+}
+#Contact{
+  margin-left: 15px;
+}
+#alinea{
+  margin-left: 10px;
+  text-indent:15px
+}
+#Avatar{
+  margin-right: 15px;
+  margin-left: 15px;
+}
+#vide{
+  padding:1%;
+}

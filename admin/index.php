@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+date_default_timezone_set('Europe/Paris');
 
 $sous_domaine = $_SERVER['PHP_SELF'];    // Emplacement de ce fichier sur le serveur
 $liste = explode("/", $sous_domaine);
@@ -12,7 +12,7 @@ $url = "http://".$_SERVER['HTTP_HOST'];
 
 define('URL_SITE', $url);
 define('SOUS_DOMAINE_ROOT', $sous_domaine);
-define('SOUS_DOMAINE', $sous_domaine."/admin");
+define('SOUS_DOMAINE', $sous_domaine."admin");
 
 
 require_once("../models/SQLCo.php");
@@ -38,6 +38,9 @@ else{
 		}
 		elseif ($page == "ajoutAdmin"){
     		$path = "controllers/ajoutAdmin.php";
+		}
+    elseif ($page == "descriptionService"){
+    		$path = "controllers/descriptionServiceC.php";
 		}
 		elseif ($page == "profil"){
 		    $path = "../controllers/profil.php";

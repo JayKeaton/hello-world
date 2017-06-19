@@ -3,9 +3,9 @@
 			<meta charset="utf-8" />
 			<link href="static/accueil_admin/acceuil_admin.css" rel="stylesheet" type="text/css">
 		</head>
-		
+
 		<div id="placement">
-		
+
 		<div id="actualite">
 		<p id="petitTitre"> Dernière annonce non validé </p>
 			<?php
@@ -22,7 +22,7 @@
      					$contenu2='<p class="actuData"> nom du service :'
 						.$actuTrier[$i]['nom'].
     					'</br> description :'.$actuTrier[$i]['texte'].'</br>'.$valide2.
-    					'</br> <a href="'.SOUS_DOMAINE_ROOT.'?page=descriptionService&idService='.$actuTrier[$i]['idService'].'">Voir l’annonce</a></p>' ;
+    					'</br> <a href="'.SOUS_DOMAINE.'?page=descriptionService&idService='.$actuTrier[$i]['idService'].'">Voir l’annonce</a></p>' ;
 
 					echo $contenu2;
      			}
@@ -43,17 +43,17 @@
      					$contenu2='<p class="actuData"> nom du service :'
 						.$actuTrier[$i]['nom'].
     					'</br> description :'.$actuTrier[$i]['texte'].$valide2.
-    					'</br> <a href="'.SOUS_DOMAINE_ROOT.'?page=descriptionService&idService='.$actuTrier[$i]['idService'].'">Voir l’annonce</a></p>' ;
+    					'</br> <a href="'.SOUS_DOMAINE.'?page=descriptionService&idService='.$actuTrier[$i]['idService'].'">Voir l’annonce</a></p>' ;
 
 					echo $contenu2;
      				}
      	}
-		
+
 			?>
 		</div>
-		
+
 		<div id="accueilAdmin">
-		
+
 		<p id="titre">
 			Bienvenue chers administrateurs
 		</p>
@@ -66,7 +66,7 @@
 							<input type="text" id="nomService" name="nomService" value="<?php echo(empty($_POST['nomService']) ? "" : $_POST['nomService']); ?>" />
 						</div>
 
-						<div id='typeService'> type de service : 
+						<div id='typeService'> type de service :
 						<?php
 						$categorie_service->echoInput('typeService');
 
@@ -80,17 +80,17 @@
    					</div>
    				</div>
    				<?php $categorie_service->submit('Valider'); ?>
-   				
+
 			</form>
-		
+
 
 		<p id="titreRecherche">
 			résultat de la recherche (par default de la plus ancienne a la plus récente)
 		</p>
-		
+
 		<div class="div_servicesData">
 		<?php
-		if(!empty($_POST['typeService']) or !empty($_POST['nomService']) or !empty($_POST['adresse']) or !empty($_POST['dejaValide'])){	
+		if(!empty($_POST['typeService']) or !empty($_POST['nomService']) or !empty($_POST['adresse']) or !empty($_POST['dejaValide'])){
 			for($i=0;$i<$nombreDePages;$i++){
 				echo("<div id='page".$i."'>");
 				for($j=$i*$messagesParPage;$j<min(count($data),($i+1)*$messagesParPage);$j++){
@@ -117,18 +117,18 @@
 				}
 				echo("</div>");
 			}
-		echo '<p align="center">Page : '; 
-			for($j=1; $j<=$nombreDePages; $j++) 
+		echo '<p align="center">Page : ';
+			for($j=1; $j<=$nombreDePages; $j++)
 				{
           		echo '<a href="#" onclick="pagination('.($j-1).');return false">'.$j.'</a> ';
 				}
 				echo '</p>';
 				}
-		?> 
+		?>
 	</div>
 	</div>
-	
-	
+
+
 	</div>
 
 
