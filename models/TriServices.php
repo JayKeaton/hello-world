@@ -2,7 +2,7 @@
 	function obtenirServiceParLocalisationEtCategorie($categorie, $adresse){
 		global $bdd;
 		$adresse='%'.$adresse.'%';
-	    $req = $bdd->prepare("SELECT * FROM services JOIN descriptions ON descriptions.idService = services.idService WHERE categorie=:categorie AND adresse LIKE :adresse");/* WHERE validation=true*/
+	    $req = $bdd->prepare("SELECT * FROM services JOIN descriptions ON descriptions.idService = services.idService WHERE categorie=:categorie AND adresse LIKE :adresse AND validation=true");/* WHERE validation=true*/
 	    $req->bindParam('categorie', $categorie);
 	    $req->bindParam('adresse', $adresse);
 	    $req->execute();
@@ -12,7 +12,7 @@
 	function obtenirServiceParLocalisation($adresse){
 		global $bdd;
 		$adresse='%'.$adresse.'%';
-	    $req = $bdd->prepare("SELECT * FROM services JOIN descriptions ON descriptions.idService = services.idService WHERE adresse LIKE :adresse");/* WHERE validation=true*/
+	    $req = $bdd->prepare("SELECT * FROM services JOIN descriptions ON descriptions.idService = services.idService WHERE adresse LIKE :adresse AND validation=true");/* WHERE validation=true*/
 	    $req->bindParam('adresse', $adresse);
 	    $req->execute();
 	    $data = $req->fetchAll();
@@ -20,7 +20,7 @@
 	}
 	function obtenirServiceValidesParCategorie($categorie){
 	    global $bdd;
-	    $req = $bdd->prepare("SELECT * FROM services JOIN descriptions ON descriptions.idService = services.idService WHERE categorie=:categorie ");/* WHERE validation=true*/
+	    $req = $bdd->prepare("SELECT * FROM services JOIN descriptions ON descriptions.idService = services.idService WHERE categorie=:categorie AND validation=true");/* WHERE validation=true*/
 	    $req->bindParam('categorie', $categorie);
 	    $req->execute();
 	    $data = $req->fetchAll();
@@ -28,7 +28,7 @@
 	}
 	function obtenirSansEntree(){
 	    global $bdd;
-	    $req = $bdd->prepare("SELECT * FROM services JOIN descriptions ON descriptions.idService = services.idService");/* WHERE validation=true*/
+	    $req = $bdd->prepare("SELECT * FROM services JOIN descriptions ON descriptions.idService = services.idService WHERE validation=true");/* WHERE validation=true*/
 	    $req->execute();
 	    $data = $req->fetchAll();
 	    return $data;
