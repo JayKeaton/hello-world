@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+date_default_timezone_set('Europe/Paris');
 
 $sous_domaine = $_SERVER['PHP_SELF'];    // Emplacement de ce fichier sur le serveur
 $liste = explode("/", $sous_domaine);
@@ -38,6 +38,9 @@ else{
 		}
 		elseif ($page == "ajoutAdmin"){
     		$path = "controllers/ajoutAdmin.php";
+		}
+    elseif ($page == "descriptionService"){
+    		$path = "controllers/descriptionServiceC.php";
 		}
 		elseif ($page == "profil"){
 		    $path = "../controllers/profil.php";
