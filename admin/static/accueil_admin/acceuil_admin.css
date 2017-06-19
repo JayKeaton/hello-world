@@ -1,3 +1,41 @@
+@media only screen and (max-width: 500px) {
+
+	#placement{
+	display: flex;
+	flex-direction: column-reverse;
+	}
+
+	#actualite{
+	border: 1px black solid;
+	width: 100%;
+	background:rgb(200,200,200);
+	}
+
+	#accueilAdmin{
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	}
+
+}
+
+@media only screen and (min-width: 500px){
+	#actualite{
+	border: 1px black solid;
+	width: 25%;
+	background:rgb(200,200,200);
+	}
+
+	#accueilAdmin{
+	width: 75%;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	}
+}
 
 #placement{
 	display: flex; 
@@ -11,17 +49,11 @@
 }
 
 .imageService{
-	width:100px;
-	height:100px;
+	width:95px;
+	height:95px;
+	border-radius: 20px;
 }
 
-#accueilAdmin{
-	width: 75%;
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-start;
-	align-items: center;
-}
 
 #petitTitre{
 	border: 1px black solid;
@@ -29,11 +61,6 @@
 	text-align: center;
 }
 
-#actualite{
-	border: 1px black solid;
-	width: 25%;
-	background:rgb(200,200,200);
-}
 
 #recherche {
 	display: flex;
@@ -89,13 +116,14 @@
 
 .positionData{
 	display:flex;
+	justify-content: center;
 	border: 1px black solid;
 	border-radius: 20px;
 	width:100%;
 }
 
 .placementData{
-}
+	jusity-content: center;
 
 #page{
 	font-size: 12px;

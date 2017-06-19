@@ -70,16 +70,16 @@ elseif ($page == "servicesMaps"){
 }
 elseif ($page == "ajoutServices"){
     loginRequired($page);
-	
+
 	$path = "controllers/activationContributeur.php";
-	
+
 }
 elseif ($page == "favoris"){
     loginRequired($page);
     $path = "controllers/favoris.php";
 }
 elseif ($page == "modifierServices"){
-	
+
     	$path = "controllers/modifierServices.php";
 }
 elseif ($page == "servicesAffiche"){

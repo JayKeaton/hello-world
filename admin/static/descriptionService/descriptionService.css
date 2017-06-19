@@ -30,11 +30,11 @@ align-items: center;
 }
 #Commentaires{
   margin:6px;
-  border:5px solid red ;
+  border:5px solid #417690 ;
   border-radius: 8px;
 }
 #Commentaire{
-  border:2px solid red ;
+  border:2px solid #417690 ;
   display: flex;
   align-items: center;
   border-radius: 12px;
@@ -57,7 +57,7 @@ td {
   vertical-align: middle;
 }
 #Mail{
-  color: red;
+  color: #417690;
 }
 #Contact{
   margin-left: 15px;

@@ -12,7 +12,7 @@
 
   function noteService($idService){
     global $bdd;
-    $req=$bdd->prepare("SELECT ROUND(AVG(note),2) as note FROM commentaires WHERE idService=:idService");
+    $req=$bdd->prepare("SELECT ROUND(AVG(note),2) as note FROM commentaires WHERE idService=:idService AND censure=0");
     $req->bindParam("idService",$idService);
     $req->execute();
     $note=$req->fetch();
@@ -95,6 +95,24 @@
     $seances=$req->fetchAll();
     return $seances;
   }
+  function lesInscrits($idService){
+    global $bdd;
+    $req=$bdd->prepare("SELECT count(*), inscrits.idSeance FROM inscrits JOIN seances ON inscrits.idSeance=seances.idSeance WHERE idService=:idService GROUP BY seances.idSeance ORDER BY seances.idSeance ");
+    $req->bindParam("idService",$idService);
+    $req->execute();
+    $lesInscrits=$req->fetchAll();
+    return $lesInscrits;
+  }
+
+  function seancesSansInscrits($idService){
+    global $bdd;
+    $req=$bdd->prepare("SELECT * FROM seances WHERE idService=:idService ORDER BY date");
+    $req->bindParam("idService",$idService);
+    $req->execute();
+    $seances=$req->fetchAll();
+    return $seances;
+  }
+
 
  function satisfaction($idService,$seances){
     global $bdd;
@@ -113,15 +131,6 @@
       $satisfaction[$i]=$req->fetch();
     }
     return $satisfaction;
-  }
-
-  function lesInscrits($idService){
-    global $bdd;
-    $req=$bdd->prepare("SELECT count(*), inscrits.idSeance FROM inscrits JOIN seances ON inscrits.idSeance=seances.idSeance WHERE idService=:idService GROUP BY seances.idSeance ORDER BY seances.idSeance ");
-    $req->bindParam("idService",$idService);
-    $req->execute();
-    $lesInscrits=$req->fetch();
-    return $lesInscrits;
   }
 
   function estInscrit($idService,$idUtilisateur){

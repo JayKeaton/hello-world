@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+date_default_timezone_set('Europe/Paris');
 
 $sous_domaine = $_SERVER['PHP_SELF'];    // Emplacement de ce fichier sur le serveur
 $liste = explode("/", $sous_domaine);
@@ -19,6 +19,7 @@ require_once("../models/SQLCo.php");
 require_once("../controllers/functions.php");
 require_once("../models/utilisateur.php");
 require_once("../models/verificationService.php");
+require_once("../models/services.php");
 
 if (empty($_SESSION['idAdministrateur'])){
     include("controllers/login.php");
@@ -37,6 +38,9 @@ else{
 		}
 		elseif ($page == "ajoutAdmin"){
     		$path = "controllers/ajoutAdmin.php";
+		}
+    elseif ($page == "descriptionService"){
+    		$path = "controllers/descriptionServiceC.php";
 		}
 		elseif ($page == "profil"){
 		    $path = "../controllers/profil.php";

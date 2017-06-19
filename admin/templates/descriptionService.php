@@ -13,16 +13,16 @@
         <div id="IconeCategorie"> </br> <img src=<?php
           switch($contact["categorie"]){ /* Rajouter des Cases ici et des images dans Média/Pictogrammes/ pour couvrir plus de catégorie */
             case "logement":
-              echo "media/pictogrammes/logement.png";
+              echo SOUS_DOMAINE_ROOT."media/pictogrammes/logement.png";
               break;
             case "connaissance":
-              echo "media/pictogrammes/connaissance.png";
+              echo SOUS_DOMAINE_ROOT."media/pictogrammes/connaissance.png";
               break;
             case "soin":
-              echo "media/pictogrammes/soin.png";
+              echo SOUS_DOMAINE_ROOT."media/pictogrammes/soin.png";
               break;
             case "nourriture":
-              echo "media/pictogrammes/nourriture.png";
+              echo SOUS_DOMAINE_ROOT."media/pictogrammes/nourriture.png";
               break;
           }
         ?> width="50" height="50"> </div> <!-- Icone du service -->
@@ -152,54 +152,54 @@
               <div id="commentairesTitre">Commentaires</div>
               <form action="" method="post" id="censureCommentaire">
 
-                <?php for ($index=0;$index<$longComment;$index ++){
-                  if($commentaires[$index]["censure"]==0){ ?>
-                    <article id="Commentaire">
 
-                      <aside id="Avatar">
-                        <?php echo date("d/m/Y ", strtotime($commentaires[$index]["date"])); ?> </br>
-                        <img src="<?php echo "media/avatars/".$profil[$index]["avatar"]?>" width="75" height="75"/> <?php /* echo <img src="???"+$commentaires[?] width="50" height="50"> */ ?>
-                        </br> <div id="center"> <?php echo $profil[$index]["pseudo"] ?> </div> <!-- Pseudo de l'utilisateur !-->
-                      </aside>
+                <?php for ($index=0;$index<$longComment;$index ++){ ?>
+                  <article id="Commentaire">
 
-                      <div id="b2">
-                        <article id="TexteComment">
-                          <p>Commentaire:</p> <div id="alinea"> <?php echo $commentaires[$index]["texte"] ?> </div>
-                        </article>
+                    <aside id="Avatar">
+                      <?php echo date("d/m/Y ", strtotime($commentaires[$index]["date"])); ?> </br>
+                      <img src="<?php echo SOUS_DOMAINE_ROOT."media/avatars/".$profil[$index]["avatar"]?>" width="75" height="75"/> <?php /* echo <img src="???"+$commentaires[?] width="50" height="50"> */ ?>
+                      </br> <div id="center"> <?php echo $profil[$index]["pseudo"] ?> </div> <!-- Pseudo de l'utilisateur !-->
+                    </aside>
 
-                        <div id="Note">
-                          <p>Note:
-                            <?php $note=$commentaires[$index]["note"];
-                              $index2=1;
-                              while ($index2<=$note){ ?>
-                                <img src="static/descriptionService/etoileRouge.png" width="30" height="30">
-                                <?php $index2++;
-                              }
-                            if ($note>=((int)$note+0.5)){ ?>
-                              <img src="static/descriptionService/demiEtoileRouge.png" width="15" height="30">
-                            <?php } ?>
-                          </p>
-                        </div>
+                    <div id="b2">
+                      <article id="TexteComment">
+                        <p>Commentaire:</p> <div id="alinea"> <?php echo $commentaires[$index]["texte"] ?> </div>
+                      </article>
 
-                        <?php if($admin){
-                          if ($commentaires[$index]["censure"]==0){
-                            echo '<input type="submit" name="censureCommentaire'.$commentaires[$index]["idCommentaire"].'" value="Masquer le Commentaire"/>';
-                          }
-                          else{
-                            echo '<input type="submit" name="rehabiliterCommentaire'.$commentaires[$index]["idCommentaire"].'" value="Afficher le Commentaire"/>';
-                          }
-                        }?>
+                      <div id="Note">
+                        <p>Note:
+                          <?php $note=$commentaires[$index]["note"];
+                            $index2=1;
+                            while ($index2<=$note){ ?>
+                              <img src="static/descriptionService/etoileBleue.png" width="30" height="30">
+                              <?php $index2++;
+                            }
+                          if ($note>=((int)$note+0.5)){ ?>
+                            <img src="static/descriptionService/demiEtoileBleue.png" width="15" height="30">
+                          <?php } ?>
+                        </p>
                       </div>
-                    </article>
-                  <?php }
-                } ?>
 
+                      <?php if($admin){
+                        if ($commentaires[$index]["censure"]==0){
+                          echo '<input type="submit" name="censureCommentaire'.$commentaires[$index]["idCommentaire"].'" value="Masquer le Commentaire"/>';
+                        }
+                        else{
+                          echo '<input type="submit" name="rehabiliterCommentaire'.$commentaires[$index]["idCommentaire"].'" value="Afficher le Commentaire"/>';
+                        }
+                      }?>
+
+                    </div>
+                  </article>
+                <?php } ?>
               </form>
+
 
               <?php if ($login==1){ ?>
                 <article id="Commentaire">
                   <aside id="Avatar">
-                    <img src=<?php echo "media/avatars/".$profilSession["avatar"]?> width="75" height="75">
+                    <img src=<?php echo SOUS_DOMAINE_ROOT."media/avatars/".$profilSession["avatar"]?> width="75" height="75">
                     </br> <div id="center"> <?php echo $profilSession["pseudo"] ?> </div>
                   </aside>
 
@@ -225,7 +225,20 @@
 
 
             </article>
+            <?php if($admin==1){ ?>
+              <h1>Note du Contributeur:</h1>
+              <article id="NoteContrib">
+                <?php echo $contact["noteDeMAJ"] ?>
+              </article>
+            <?php } ?>
           </article>
+          <?php if($admin==1){ ?>
+            <form action="" method="post" id="formulaireValidationAdmin">
+              <p>Autorisez vous ce service à apparaître dans la liste des services? </p>
+              <input type="submit" value="Valider" name="validerAdmin" id="validationAdmin">
+              <input type="submit" value="Bloquer" name="bloquerAdmin" id="validationAdmin">
+            </form>
+          <?php } ?>
         </div>
         <div id="vide">  </div>
       </section>

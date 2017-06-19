@@ -50,5 +50,6 @@
 <input type="button"  value="Localiser sur Google Map" onclick="TrouverAdresse();" onsubmit="document.getElementById('button').disabled='diabled'"/>
 <input type="submit" value="Afficher la liste des services" onclick="afficheServices();" onclick="TrouverAdresse();" onsubmit="document.getElementById('submit').disabled='diabled'"/>
 <!-- Include Javascript -->
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDT5oEC54mkENpmg_wBxNGEEkBMMl0bOzk&callback=initMap"></script>
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&language=fr"></script>
-<script type="text/javascript" src="static/servicesAffiche/functions.js"></script>
+<script type="text/javascript" src="static/servicesAffiche/functions.js"></script> 
