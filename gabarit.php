@@ -11,7 +11,7 @@
         <!--div id="rouge"></div> <!-- Sert à créer la bande rouge à gauche de l'image -->
         <div id="imageBanniere">
             <a href="<?php echo(SOUS_DOMAINE) ?>">
-                <img style="background-color: white" src="static/headerFooter/LogoSoli.png" width="120" height="80"/>
+                <img style="background-color: white" src="static/headerFooter/LogoSoli.png" width="125" height="100"/>
             </a>
         </div>
         <img src="https://image.flaticon.com/icons/svg/149/149199.svg" id="menuDeroulant" width="40" height="40"/>

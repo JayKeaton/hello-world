@@ -29,7 +29,7 @@
     			
 	    		<select type="categorie" id="categorie" name="categorie" />	    			
 	    			<option name="" value=""<?php if($categorie=="") echo "selected"; ?>>Aucune catégorie sélectionée</option>
-	    			<option name="" value="soins"<?php if($categorie=="soins") echo "selected"; ?>>Soins</option>
+	    			<option name="" value="sante"<?php if($categorie=="sante") echo "selected"; ?>>Santé</option>
 	    			<option name="" value="restauration"<?php if($categorie=="restauration") echo "selected"; ?>>Nourriture</option>
 	    			<option name=""	value="logement"<?php if($categorie=="logement") echo "selected"; ?>>Logement</option>
 	    			<option name=""	value="Aide juridique"<?php if($categorie=="Aide juridique") echo "selected"; ?>>Aide juridique</option>
