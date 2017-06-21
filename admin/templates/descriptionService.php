@@ -10,7 +10,7 @@
       </div>
 
       <section id="Service">
-        <div id="IconeCategorie"> </br> <img src=<?php echo "media/pictogrammes/".$contact["categorie"].".png"  ?> width="50" height="50"> </div> <!-- Icone du service -->
+        <div id="IconeCategorie"> </br> <img src=<?php echo SOUS_DOMAINE_ROOT."media/pictogrammes/".$contact["categorie"].".png"  ?> width="50" height="50"> </div> <!-- Icone du service -->
         <div id="b1">
           <div id="t1"> <?php echo $contact["nom"] ?> </div> <!-- Nom du service !-->
           <article>
