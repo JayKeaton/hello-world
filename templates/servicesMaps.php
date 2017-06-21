@@ -29,6 +29,6 @@
     <script type="text/javascript" src="static/servicesMaps/jquery-ui-1.8.12.custom.min.js"></script>-->
     <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&language=fr"></script>
     <script type="text/javascript" src="static/servicesMaps/functions.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDT5oEC54mkENpmg_wBxNGEEkBMMl0bOzk&callback=initMap"async defer></script>
+    
   </body>
 </html>
