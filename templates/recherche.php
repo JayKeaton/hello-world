@@ -16,7 +16,7 @@
         Adresse :
         <?php $form->echoInput('adresseDeRecherche'); ?>
         <br/><br/><br/><br/>
-        <input type="hidden" name="coords" id="coords" value="false"/>
+        <input type="hidden" name="coords" id="coords" value="<?php echo(empty($coordsUtilisateur) ? 'false' : $coordsUtilisateur); ?>"/>
         <?php $form->submit("Rechercher"); ?>
     </form>
 
@@ -77,7 +77,17 @@
             document.getElementById("labellocalisation").innerHTML = "Services les plus proche de votre position";
         }
 
-        if(navigator.geolocation)
-            navigator.geolocation.getCurrentPosition(maPosition);
+        <?php
+        if (empty($coordsUtilisateur)){
+            ?>
+            if(navigator.geolocation)
+                navigator.geolocation.getCurrentPosition(maPosition);
+            <?php
+        }
+        else{
+            echo("document.getElementById('typeRecherchelocalisation').disabled = false;");
+            echo("document.getElementById('labellocalisation').innerHTML = 'Services les plus proche de votre position';");
+        }
+        ?>
     </script>
 </section>
