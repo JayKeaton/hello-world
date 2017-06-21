@@ -1,16 +1,10 @@
 @media only screen and (max-width: 500px) {
-  #valide{
-    position:absolute;
-    bottom:-150px;
-    left:20;
-  }
+  
   
 }
 
 @media only screen and (min-width: 500px){
-  #placement{
-  display:flex;
-}
+
 }
 
 
@@ -20,21 +14,27 @@ body {
   font-size : 90%;
 }
 form {
-  background-color : #FAFAFA;
   padding:10px;
   width:280px;
 }
 fieldset {
-background-color: #F5F5F5;
 border : 2px solid RED;
 padding:0 20px 20px;
 border-radius:16px;
-
 }
+
 legend {
   color : #DF3F3F;
   font-weight: bold;
 }
+
+#remplissage{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 
 #intro {
   font-family: Verdana;
@@ -45,10 +45,12 @@ legend {
   display : flex;
   flex-direction: column;
   justify content: flex-start;
+  align-items: center;
 }
 
 #droite {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  align-items: center;
 }

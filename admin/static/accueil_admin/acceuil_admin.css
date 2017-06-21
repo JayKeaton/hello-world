@@ -99,6 +99,11 @@
 .rouge{
 	color:red;
 }
+
+.important{
+	Font-Weight: Bold;
+}
+
 .div_servicesData{
 	display: flex;
 	flex-direction: column;
@@ -124,6 +129,7 @@
 
 .placementData{
 	jusity-content: center;
+}	
 
 #page{
 	font-size: 12px;
