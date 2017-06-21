@@ -39,6 +39,9 @@ else{
 		elseif ($page == "ajoutAdmin"){
     		$path = "controllers/ajoutAdmin.php";
 		}
+        elseif ($page == "gererCategories"){
+            $path = "controllers/gererCategories.php";
+        }
     elseif ($page == "descriptionService"){
     		$path = "controllers/descriptionServiceC.php";
 		}
