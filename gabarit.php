@@ -154,8 +154,16 @@
             <li> <a href=<?php echo(SOUS_DOMAINE."?page=enSavoirPlus") ?>> En savoir plus </a> </li>
             <li> <a href=<?php echo(SOUS_DOMAINE."?page=FAQ") ?>> FAQ </a> </li>
         </ul>
+
+        
         <ul id="copyright">
-            <li> ©Error404 </li>
+            <li> ©SoliLink </li>
+            
+            <!--<div id="google_translate_element"></div><script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'fr', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, autoDisplay: false, multilanguagePage: true}, 'google_translate_element');
+}
+				</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script> -->
         </ul>
     </footer>
   </body>
