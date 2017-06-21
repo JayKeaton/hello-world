@@ -85,7 +85,7 @@
 
 
 		<p id="titreRecherche">
-			résultat de la recherche (par default de la plus ancienne a la plus récente)
+			Résultat de la recherche (par default de la plus ancienne a la plus récente):
 		</p>
 
 		<div class="div_servicesData">
@@ -110,7 +110,7 @@
 	    			$contenu='<div class="positionData">'.$image.'<p class="servicesData">  nom du service :'
 					.$data[$j]['nom'].
 	    			'</br> description :'.$data[$j]['texte'].$valide.
-	    			'</br> <a href="'.SOUS_DOMAINE_ROOT.'?page=descriptionService&idService='.$data[$i]['idService'].'">Voir l’annonce</a></p></div>' ;
+	    			'</br> <a href="'.SOUS_DOMAINE.'?page=descriptionService&idService='.$data[$j]['idService'].'">Voir l’annonce</a></p></div>' ;
 
 					echo $contenu;
 

@@ -1,6 +1,6 @@
 <link href="static/signup/style.css" rel="stylesheet" type="text/css">
 <h1 id="title">Veuillez renseigner vos informations pour completer l'inscription</h1>
-<h4 id="titlebis">Chez Error404, nous prenons à coeur la sécurité de vos données, et les données que vous entrez ne peuvent être utilisées que par nous, afin de garantir une meilleure utilisation de nos services.</h4>
+<h4 id="titlebis">Chez SoliLink, nous prenons à coeur la sécurité de vos données, et les données que vous entrez ne peuvent être utilisées que par nous, afin de garantir une meilleure utilisation de nos services.</h4>
 
 <article id="inscription">
     <form method="post" action="" id="formulaireInscription">
@@ -165,9 +165,4 @@
         </div>
     </form>
 </article>
-    
-<div id="google_translate_element"></div><script type="text/javascript">
-function googleTranslateElementInit() {
-  new google.translate.TranslateElement({pageLanguage: 'fr', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, autoDisplay: false, multilanguagePage: true}, 'google_translate_element');
-}
-</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+ 
