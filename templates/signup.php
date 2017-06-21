@@ -1,5 +1,5 @@
 <link href="static/signup/style.css" rel="stylesheet" type="text/css">
-
+<h1 id="title">Veuillez renseigner vos informations pour completer l'inscription</h1>
 <h4 id="titlebis">Chez SoliLink, nous prenons à coeur la sécurité de vos données, et les données que vous entrez ne peuvent être utilisées que par nous, afin de garantir une meilleure utilisation de nos services.</h4>
 
 <article id="inscription">
