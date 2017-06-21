@@ -7,47 +7,26 @@
 		<div id="placement">
 
 		<div id="actualite">
-		<p id="petitTitre"> Dernière annonce non validé </p>
+		<p id="petitTitre"> Dernières annonces non validées </p>
 			<?php
 			$valide2 = null;
 			$taille=count($actuTrier);
-			if($taille>=10){
-			for($i=0; $i<10; $i++){
-					if($actuTrier[$i]['validation']==0){
-						$valide2 = '<a class="rouge"> non validé</a>';
-					}
-					else{
-						$valide2 = '<a class="vert"> validé</a>';
-					}
-     					$contenu2='<p class="actuData"> nom du service :'
+			if($taille!=0){
+				for($i=0; $i<min(10,$taille); $i++){
+     					$contenu2='<p class="actuData"><a class="important">Nom du service :</a></br>'
 						.$actuTrier[$i]['nom'].
-    					'</br> description :'.$actuTrier[$i]['texte'].'</br>'.$valide2.
-    					'</br> <a href="'.SOUS_DOMAINE.'?page=descriptionService&idService='.$actuTrier[$i]['idService'].'">Voir l’annonce</a></p>' ;
+    					'</br><a class="important"> Description : </br></a>'.$actuTrier[$i]['texte'].'</br>
+    					</br> <a href="'.SOUS_DOMAINE.'?page=descriptionService&idService='.$actuTrier[$i]['idService'].'">Voir l’annonce</a></p>' ;
 
 					echo $contenu2;
      			}
      		}
-     		else if($taille==0){
+     		else{
      			$contenu2='<p class="actuData"> Il n y a pas de nouvelle donnée
     					</p>' ;
     			echo $contenu2;
      	
      		}
-     		else {for($i=0; $i<$taille; $i++){
-					if($actuTrier[$i]['validation']==0){
-						$valide2 = '<a class="rouge"> non validé</a>';
-					}
-					else{
-						$valide2 = '<a class="vert"> validé</a>';
-					}
-     					$contenu2='<p class="actuData"> nom du service :'
-						.$actuTrier[$i]['nom'].
-    					'</br> description :'.$actuTrier[$i]['texte'].$valide2.
-    					'</br> <a href="'.SOUS_DOMAINE.'?page=descriptionService&idService='.$actuTrier[$i]['idService'].'">Voir l’annonce</a></p>' ;
-
-					echo $contenu2;
-     				}
-     	}
 
 			?>
 		</div>
@@ -85,7 +64,7 @@
 
 
 		<p id="titreRecherche">
-			résultat de la recherche (par default de la plus ancienne a la plus récente)
+			Résultat de la recherche (par default de la plus ancienne à la plus récente):
 		</p>
 
 		<div class="div_servicesData">
@@ -96,10 +75,10 @@
 				for($j=$i*$messagesParPage;$j<min(count($data),($i+1)*$messagesParPage);$j++){
 					$valide = null;
 					if($data[$j]['validation']==0){
-						$valide = '<a class="rouge"> non validé</a>';
+						$valide = '<a class="rouge"></br> non validé</a>';
 					}
 					else{
-						$valide = '<a class="vert"> validé</a>';
+						$valide = '<a class="vert"></br> validé</a>';
 					}
 					if($data[$j]['adresseImage']==null){
 						$image = '';
@@ -107,10 +86,10 @@
 					else{
 						$image = '<img src="../media/imageService/'.$data[$j]['adresseImage'].'"class="imageService"/>';
 					}
-	    			$contenu='<div class="positionData">'.$image.'<p class="servicesData">  nom du service :'
+	    			$contenu='<div class="positionData">'.$image.'<p class="servicesData"><a class="important">Nom du service :</a></br>'
 					.$data[$j]['nom'].
-	    			'</br> description :'.$data[$j]['texte'].$valide.
-	    			'</br> <a href="'.SOUS_DOMAINE.'?page=descriptionService&idService='.$data[$i]['idService'].'">Voir l’annonce</a></p></div>' ;
+	    			'</br><a class="important"> Description : </br></a>'.$data[$j]['texte'].$valide.
+	    			'</br> <a href="'.SOUS_DOMAINE.'?page=descriptionService&idService='.$data[$j]['idService'].'">Voir l’annonce</a></p></div>' ;
 
 					echo $contenu;
 
