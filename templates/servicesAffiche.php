@@ -22,6 +22,8 @@
                 echo("listeb.push(ligne);");
             }
         ?>
+        var sous_domaine = '<?php echo(SOUS_DOMAINE); ?>';
+        console.log(sous_domaine);
     </script>
     </br>
 

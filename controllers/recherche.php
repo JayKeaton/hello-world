@@ -16,7 +16,11 @@ echo $coords2['status']." ".$coords2['lat']." ".$coords2['lon'];
 
 
 $form = new Formulaire("recherche");
-$listeCategories = array('' => "-----", 'soin' => "Soins", 'nourriture' => "Nourriture", 'logement' => "Logement");
+$categories = recupCategorie($bdd);
+$listeCategories = array('' => "-----");
+foreach($categories as $categorie){
+    $listeCategories[$categorie['code']] = $categorie['traduction'];
+}
 $form->add('select', 'categorie')
     ->affecterValeurs($listeCategories)
     ->required(true);
@@ -39,6 +43,10 @@ $form->add('radio', 'typeRecherche')
 $form->add('text', 'adresseDeRecherche')
     ->required(false);
 
+if (!empty($_POST['coords']) and $_POST['coords'] != false){
+    $coordsUtilisateur = $_POST['coords'];
+}
+
 if($form->isValid()){
     $form->set_values($_POST);
     $data = $form->get_cleaned_values();
@@ -47,6 +55,7 @@ if($form->isValid()){
     }
     elseif ($data['typeRecherche'] == 'localisation' and !empty($_POST['coords']) and $_POST['coords'] != false){
         $coords = $_POST['coords'];
+        $coordsUtilisateur = $coords;
         $listeServices = rechercheServices($data['categorie'], $data['langue'], 'localisation');
         foreach ($listeServices as $key => $service){
             $dist = round(distance($coords, $service['geolocalisation']));

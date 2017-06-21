@@ -14,7 +14,7 @@ function afficheServices(){
 	for (var e in listeb){
 		if(i<tableMax){
     		var ligne = listeb[e];
-			document.getElementById('servicesA').innerHTML+='<tr><td>'+labels[i]+'</td>'+'<td>'+ligne.nom+'</td>'+'<td>'+ligne.adresse+'</td>'+'<td>'+ligne.categorie+'</td>'+'<td>'+ligne.telephone+'</td>'+'<td><a href="/msf/?page=servicesMaps&adresse='+ ligne.adresse +'">GO</a></td></tr>';
+			document.getElementById('servicesA').innerHTML+='<tr><td>'+labels[i]+'</td>'+'<td>'+ligne.nom+'</td>'+'<td>'+ligne.adresse+'</td>'+'<td>'+ligne.categorie+'</td>'+'<td>'+ligne.telephone+'</td>'+'<td><a href="'+sous_domaine+'?page=servicesMaps&adresse='+ ligne.adresse +'">GO</a></td></tr>';
 			i++;
 	}
 		else{
