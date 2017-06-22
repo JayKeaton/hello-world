@@ -1,0 +1,51 @@
+
+
+
+#main{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#main form{
+    Border: 1px black solid;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 30px;
+    padding: 20px;
+}
+
+#main form #selectionCategorie{
+    border-bottom: 1px black solid;
+    padding-bottom: 30px;
+}
+
+#main div{
+    Border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 0;
+}
+
+#main form #delete input{
+    height: 40px;
+    width: 200px;
+    border: none;
+    background-color: red;
+    color: white;
+    font-weight: bold;
+    margin-top: 40px;
+}
+
+
+
+.error{
+    color: red;
+}

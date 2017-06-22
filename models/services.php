@@ -14,7 +14,7 @@
 		
 	}
 	function recupCategorie($bdd){
-		$req = $bdd->prepare("SELECT code,traduction FROM categories WHERE langue='fr'");
+		$req = $bdd->prepare("SELECT idCategorie,code,traduction FROM categories WHERE langue='fr'");
 		$req->execute();
 		 $data = $req->fetchAll();
 		 return $data;
@@ -69,14 +69,10 @@
 	
 	function recupAll($bdd){
 		
-		$req = $bdd->prepare("SELECT adresse, categorie, telephone, nom FROM services");
+		$req = $bdd->prepare("SELECT adresse, categorie, telephone, nom, geolocalisation FROM services WHERE validation='1'");
 	    $req->execute();
 	    $data = $req->fetchAll();
-		if ($data == array())
-	        return false;
-	    else{
-	        return $data;
-        }
+		return $data;
 	}
 
 	function saveGeolocation($idService, $adresse){

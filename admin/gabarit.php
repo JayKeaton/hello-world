@@ -31,6 +31,14 @@
                     </div>
                 </a>
             </li>
+            <li>
+                <a href="<?php echo(SOUS_DOMAINE."?page=gestionCategories") ?>">
+                    <div>
+                        <img src="static/headerFooter/ajoutAdmin.ico" width=21/>
+                        <p>Categories</p>
+                    </div>
+                </a>
+            </li>
         </ul>
     </header>
 

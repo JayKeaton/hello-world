@@ -11,7 +11,7 @@
         <!--div id="rouge"></div> <!-- Sert à créer la bande rouge à gauche de l'image -->
         <div id="imageBanniere">
             <a href="<?php echo(SOUS_DOMAINE) ?>">
-                <img style="background-color: white" src="static/headerFooter/LogoSoli.png" width="125" height="100"/>
+                <img style="background-color: white" src="static/headerFooter/LogoSoli.png" width="125" height="90"/>
             </a>
         </div>
         <img src="https://image.flaticon.com/icons/svg/149/149199.svg" id="menuDeroulant" width="40" height="40"/>
@@ -143,6 +143,8 @@
         </ul>
     </header>
 
+    <div id="google_translate_element"></div>
+
     <div id="main">
       <?php include($path); ?>
     </div>
@@ -154,17 +156,17 @@
             <li> <a href=<?php echo(SOUS_DOMAINE."?page=enSavoirPlus") ?>> En savoir plus </a> </li>
             <li> <a href=<?php echo(SOUS_DOMAINE."?page=FAQ") ?>> FAQ </a> </li>
         </ul>
-
-        
         <ul id="copyright">
             <li> ©SoliLink </li>
-            
-            <!--<div id="google_translate_element"></div><script type="text/javascript">
-function googleTranslateElementInit() {
-  new google.translate.TranslateElement({pageLanguage: 'fr', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, autoDisplay: false, multilanguagePage: true}, 'google_translate_element');
-}
-				</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script> -->
         </ul>
     </footer>
+
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'fr', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, autoDisplay: false, multilanguagePage: true}, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
   </body>
 </html>
