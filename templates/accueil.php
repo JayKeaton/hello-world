@@ -59,7 +59,7 @@
 				<p><a href="<?php echo(SOUS_DOMAINE."?page=descriptionService&idService=".$data[$i]["idService"]) ?>" >
 						<div id="article 2" class="service">
 							
-							<img src="static/accueil/msf_logo _fichiers/maison.jpeg" width=240 class="floatl" title="photo non contractuelle"/> </br>
+							<img src="media/pictogrammes/<?php echo $data[$i]["categorie"]?>.png" width=200 class="floatl" title="Ce service affiche l'image par défaut de sa catégorie"/> </br>
 							<?php echo $data[$i]["categorie"]?><br/>
 							<h3><?php echo $data[$i]["nom"] ?></h3> </br>
 							<?php echo $data[$i]["texte"] ?> </br>
