@@ -20,6 +20,7 @@ require_once("../controllers/functions.php");
 require_once("../models/utilisateur.php");
 require_once("../models/verificationService.php");
 require_once("../models/services.php");
+require_once("../models/categories.php");
 
 if (empty($_SESSION['idAdministrateur'])){
     include("controllers/login.php");
@@ -39,8 +40,8 @@ else{
 		elseif ($page == "ajoutAdmin"){
     		$path = "controllers/ajoutAdmin.php";
 		}
-        elseif ($page == "gererCategories"){
-            $path = "controllers/gererCategories.php";
+        elseif ($page == "gestionCategories"){
+            $path = "controllers/gestionCategories.php";
         }
     elseif ($page == "descriptionService"){
     		$path = "controllers/descriptionServiceC.php";

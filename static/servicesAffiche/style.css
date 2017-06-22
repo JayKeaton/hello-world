@@ -24,5 +24,29 @@ td, th
 	width: 100%;
 	display: flex;
 	justify-content: center;
+}
 
+#main #recherche{
+	width: 500px;
+	border: 1px solid black;
+	border-radius: 10px;
+	margin: 40px;
+}
+#main #recherche form{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 10px;
+}
+#chercher_adresse{
+	border-top: 1px black solid;
+}
+#error_loc{
+	color: red;
+}
+
+#container{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
