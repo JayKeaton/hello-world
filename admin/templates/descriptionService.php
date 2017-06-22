@@ -10,22 +10,7 @@
       </div>
 
       <section id="Service">
-        <div id="IconeCategorie"> </br> <img src=<?php
-          switch($contact["categorie"]){ /* Rajouter des Cases ici et des images dans Média/Pictogrammes/ pour couvrir plus de catégorie */
-            case "logement":
-              echo SOUS_DOMAINE_ROOT."media/pictogrammes/logement.png";
-              break;
-            case "connaissance":
-              echo SOUS_DOMAINE_ROOT."media/pictogrammes/connaissance.png";
-              break;
-            case "soin":
-              echo SOUS_DOMAINE_ROOT."media/pictogrammes/soin.png";
-              break;
-            case "nourriture":
-              echo SOUS_DOMAINE_ROOT."media/pictogrammes/nourriture.png";
-              break;
-          }
-        ?> width="50" height="50"> </div> <!-- Icone du service -->
+        <div id="IconeCategorie"> </br> <img src=<?php echo SOUS_DOMAINE_ROOT."media/pictogrammes/".$contact["categorie"].".png"  ?> width="50" height="50"> </div> <!-- Icone du service -->
         <div id="b1">
           <div id="t1"> <?php echo $contact["nom"] ?> </div> <!-- Nom du service !-->
           <article>

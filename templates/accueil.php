@@ -29,24 +29,29 @@
     			
 	    		<select type="categorie" id="categorie" name="categorie" />	    			
 	    			<option name="" value=""<?php if($categorie=="") echo "selected"; ?>>Aucune catégorie sélectionée</option>
-	    			<option name="" value="soins"<?php if($categorie=="soins") echo "selected"; ?>>soins</option>
-	    			<option name="" value="nourriture"<?php if($categorie=="nourriture") echo "selected"; ?>>Nourriture</option>
-	    			<option name=""	value="logement"<?php if($categorie=="v1") echo "selected"; ?>>Logement</option>
+	    			<option name="" value="sante"<?php if($categorie=="sante") echo "selected"; ?>>Santé</option>
+	    			<option name="" value="restauration"<?php if($categorie=="restauration") echo "selected"; ?>>Nourriture</option>
+	    			<option name=""	value="logement"<?php if($categorie=="logement") echo "selected"; ?>>Logement</option>
 	    			<option name=""	value="Aide juridique"<?php if($categorie=="Aide juridique") echo "selected"; ?>>Aide juridique</option>
 	    			<option name=""	value="Services administratifs"<?php if($categorie=="Services administratifs") echo "selected"; ?>>Services administratifs</option>
 	    			<option name=""	value="Vêtements"<?php if($categorie=="Vêtements") echo "selected"; ?>>Vêtements</option>
 	    		</select>
-	    	
-	    		<a href="<?php echo(SOUS_DOMAINE."?page=recherche")?>" ><input classe="submit" type="button" value="Affiner mes critères de recherche"/></a>
+	    		
     		</div>
+    		<br/>
     		<div class="element">
 	   			Quel lieu?
-	   			<input type="adresse" id="adresse" name="adresse" value="<?php echo((empty($_POST['adresse'])) ? "" : $_POST['adresse']); ?>" placeholder="tapez une adresse" />			   
+	   			<input type="adresse" id="adresse" name="adresse" value="<?php echo((empty($_POST['adresse'])) ? "" : $_POST['adresse']); ?>" placeholder="tapez une adresse" /></input>		   
 	   			<input type="checkbox">Geolocalisation</input>
 	   		</div>
+	   		<br/>
     		<div class="element">
-    			<input class="submit" type="submit" action="" value="Go!"/>
-    		</div><br/>
+    			<input id="submit" class="submit" type="submit" action="" value="GO!"/></input>
+    		</div>
+    		<br/>
+    		<div id="button">
+    		<a href="<?php echo(SOUS_DOMAINE."?page=recherche")?>" ><input  class="button" type="button" value="Affiner mes critères de recherche"/></a>
+			</div>    	
     	</form>
 		<div id="contenu">
 			<?php // print_r($data)?> 
