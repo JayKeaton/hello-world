@@ -13,6 +13,7 @@
 	return $dataDescription;
 
 	}
+	
 	function modifierService($bdd, $nom, $email, $adresse, $telephone,$lien_site, $categorie, $idService){
 
   		$req=$bdd->prepare("UPDATE services SET adresse=:adresse, nom=:nom, email=:email, categorie=:categorie, telephone=:telephone, lien_site=:lien_site  WHERE idService=:idService  ");

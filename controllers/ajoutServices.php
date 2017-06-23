@@ -33,9 +33,9 @@
     
     if ($form_service->isValid()){
     		$data = $form_service->get_cleaned_values();
-    		$texte=($_POST["texte"]);
-			$adresse=($_POST["adresse"]);
-			$categorie=($_POST["categorie"]);
+    		$texte=htmlspecialchars($_POST["texte"]);
+			$adresse=htmlspecialchars($_POST["adresse"]);
+			$categorie=htmlspecialchars($_POST["categorie"]);
 
 			
 
