@@ -9,62 +9,124 @@
 	/*$req=$bdd->prepare("SELECT * FROM descriptions");
 	$rep->execute(array());
 	$descriptions=$req->fetchall();*/
-	$form_modifierService = new Formulaire('login');
-	$form_modifierService->add('email', 'email')
-    ->required(true);
-    
-    $form_modifierService->add('text','telephone')
-    ->required(true);
-    $form_modifierService->add('text','lien_site')
-    ->required(true);
-    
-    $form_modifierService->add('text','nom')
-    ->required(true);
-    $liste=array("fr"=>"Francais","En"=>"Anglais","Ar"=>"Arabe","kl"=>"Klingon");
-    $form_modifierService->add('select','langue')
-    ->affecterValeurs($liste)
-    ->required(true);
-    $categorie=recupCategorie($bdd);
-    $listeCategorie=array();
-    foreach ($categorie as $value) {
-      $listeCategorie[$value["traduction"]]=$value["code"];
-      
-      # code...
+	$dataServicesUtilisateur=recupServicesUtilisateur($_SESSION['idUtilisateur'],$bdd);
+	$n=0;
+    $idService=0;
+    $form_modifierService = new Formulaire('login');
+    $form_idService = new Formulaire('login');
+     foreach ($dataServicesUtilisateur as $value) {
+        $listeService[$value["idService"]]=$value["nom"];
     }
-    $form_modifierService->add('select','categorie')
-    ->affecterValeurs($listeCategorie)
+
+    $form_idService->add('select','idService')
+    ->affecterValeurs($listeService)
+    
+
     ->required(true);
-    $form_modifierService->add('text','codePostal')
-    ->required(true);
-	$idService=1;
-	$idDescription=0;
-	if (!empty($_POST['idService'])){
-		$idService=$_POST['idService'];
+    if ($form_idService->isValid()){
+        $idService = $form_idService->get_cleaned_values();
+        if(empty($idService['idService'])){
+            
+            $form_modifierService->add('email', 'email')
+             ->required(true);
+    
+            $form_modifierService->add('text','telephone')
+             ->required(true);
+            $form_modifierService->add('text','lien_site')
+            ->required(true);
+    
+            $form_modifierService->add('text','nom')
+    
+            ->required(true);
+            $liste=array("fr"=>"Francais","En"=>"Anglais","Ar"=>"Arabe","kl"=>"Klingon");
+            $form_modifierService->add('select','langue')
+            ->affecterValeurs($liste)
+            /*->value($dataDescription[0][2])
+            ->required(true);
+            $listeService=array();
+   
+            $allCategorie=recupCategorie($bdd);
+            $listeCategorie=array();
+            foreach ($allCategorie as $value) {
+                $listeCategorie[$value["traduction"]]=$value["code"];
+            }
+            $form_modifierService->add('select','categorie')
+            ->affecterValeurs($listeCategorie)
+            ->value($dataServicesUtilisateur[6])
+            ->required(true);
+
+    
+            $form_modifierService->add('text','codePostal')
+            ->required(true);
+            
+        }
+        if(!empty($idService['idService'])){
+
+            
+            $form_modifierService->add('email', 'email')
+            ->value($dataServicesUtilisateur[$idService['idService']][8])
+            ->required(true);
+
+    
+            $form_modifierService->add('text','telephone')
+            ->value($dataServicesUtilisateur[$idService['idService']][7])
+            ->required(true);
+            $form_modifierService->add('text','lien_site')
+            ->value($dataServicesUtilisateur[$idService['idService']][9])
+            ->required(true);
+    
+            $form_modifierService->add('text','nom')
+            ->value($dataServicesUtilisateur[$idService['idService']][2])
+    
+            ->required(true);
+            $liste=array("fr"=>"Francais","En"=>"Anglais","Ar"=>"Arabe","kl"=>"Klingon");
+            $form_modifierService->add('select','langue')
+            ->affecterValeurs($liste)
+            /*->value($dataDescription[0][2])*/
+            ->required(true);
+            $listeService=array();
+   
+            $allCategorie=recupCategorie($bdd);
+            $listeCategorie=array();
+            foreach ($allCategorie as $value) {
+
+                $listeCategorie[$value["traduction"]]=$value["code"];
+            
+            }
+            $form_modifierService->add('select','categorie')
+            ->affecterValeurs($listeCategorie)
+            ->value($dataServicesUtilisateur[6])
+            ->required(true);
+
+    
+            $form_modifierService->add('text','codePostal')
+            ->required(true);
+        
+    
 	}
+	/*$idService=1;
+	$idDescription=0;*/
+	
+	
 
 
-	 if ($form_modifierService->isValid()){
-    		$data = $form_service->get_cleaned_values();
-    		$texte=($_POST["texte"]);
-			$adresse=($_POST["adresse"]);
-			$categorie=($_POST["categorie"]);
+	if ($form_modifierService->isValid()){
+    	$data = $form_service->get_cleaned_values();
+    	
+    	$texte=htmlspecialchars($_POST["texte"]);
+		$adresse=htmlspecialchars($_POST["adresse"]);
+		echo "lolcamarche";
+			/*$categorie=($_POST["categorie"]);*/
 		
-		$idService=$_POST["idService"];
-		$idService=modifierService($bdd, $data['nom'], $data['email'], $adresse, $data['telephone'],$data['lien_site'], $data['categorie'], $idService);
+		
+		modifierService($bdd, $data['nom'], $data['email'], $adresse, $data['telephone'],$data['lien_site'], $data['categorie'], $data['idService']);
 		/*saveGeolocation($idService, $adresse);*/
 	}
-
-
-  	 
-
-
 	$idUtilisateur=$_SESSION['idUtilisateur'];
-	$dataServicesUtilisateur=recupServicesUtilisateur($_SESSION['idUtilisateur'],$bdd);
+	
 	$dataDescription=recupDescriptionService($idService,$bdd);
-	$n=0;
-	
-	
-	
+
+}
 
 	/*foreach ($data as $element => $value) {
 
