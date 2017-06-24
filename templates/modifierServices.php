@@ -1,145 +1,116 @@
-<!doctype html>
-<html>
-	<head>
 
-		<meta charset="utf-8">
-		<link rel="stylesheet" href="static/modifierService/modifierService.css"/>
-		<title>Modifier Services</title>
-	</head>
-
-	<body>
-	<h1>Choisissez votre service a modifier</h1>
-
-	<form method="post" action="" >
-		<?php $form_idService->echoInput("idService"); ?>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="static/modifierService/modifierService.css"/>
+    <title>Modifier Services</title>
+</head>
 
 
+<h1>Choisissez votre service a modifier</h1>
 
-		
-		
-		<input type="submit" value="choisissez votre service" id="submit" />
+<form method="post" action="" >
+    <?php
+    $form_idService->echoInput("idService");
+    $form_idService->submit("choisissez votre service");
+    ?>
+</form>
 
+<?php
+if ($afficher) {
+    ?>
 
-	</form>
+    <form method="post" action="" enctype="multipart/form-data">
+        <fieldset>
+            <legend>Contact</legend>
+            <?php $form_modifierService->echoInput('idService'); ?>
+            <?php $form_modifierService->echoInput('form_idService'); ?>
+            <label for="nom">Nom:</label><br/>
+            <?php $form_modifierService->echoInput('nom'); ?><br/>
+            <label for="email">Email:</label><br/>
+            <?php $form_modifierService->echoInput('email'); ?><br/>
+            <label for="adresse">Adresse:</label><br/>
+            <?php $form_modifierService->echoInput('adresse'); ?><br/>
+            <label for="telephone">Telephone:</label><br/>
+            <?php $form_modifierService->echoInput('telephone'); ?><br/>
+            <label for="lien_site">Lien de votre site Internet:</label><br/>
+            <?php $form_modifierService->echoInput('lien_site'); ?>
+        </fieldset>
+        <br/>
 
-	
-	</script>
-		<form method="post" action="" enctype="multipart/form-data">
-		<fieldset>
-	<legend>Contact</legend>
-			<input type="hidden" name="idService" value="<?php echo(empty($idService) ? "" : $idService); ?>" />
-			<label>Nom:</br>
-				<?php $form_modifierService->echoInput('nom'); ?>
-			</label>
-				</br>
-			<label>Email:</br>
-				<?php $form_modifierService->echoInput('email'); ?>
-				<!--<input type="email" id="email" name="email" value="<?php echo($donnees['email']) ?>" placeholder="" required="required" />-->
-			</label>
-				</br>
-			<label>Adresse:
-				<input type="text" id="adresse" name="adresse" value="<?php foreach ($dataServicesUtilisateur as $value) {
-					if($value[0]==$idService){
-						echo($value[5]);
+        <fieldset>
+            <legend>Image :</legend>
+            <div>
+                <img src="<?php echo(empty($data['adresseImage']) ? "media/pictogrammes/".$data['categorie'].".png" : ("media/imageService/" . $data['adresseImage'])); ?>" height="150" width="150"/>
+                <input type="file" name="avatar" id="avatar"/>
+                <?php echo((empty($erreur['avatar']) ? "" : "<p>" . $erreur['avatar'] . "</p><br/>")); ?>
+            </div>
+        </fieldset>
+        <br/>
 
-					}
-				}
-				?>" placeholder="" required="required" />
-			</label></br>
-			<label>Telephone:</br>
-				<?php $form_modifierService->echoInput('telephone'); ?>
--			</label>
-			</br>
-			<label>Lien de votre site Internet:
-			<?php $form_modifierService->echoInput('lien_site'); ?>
-				<!--<input type="text" id="lien_site" name="lien_site" value="<?php echo($donnees['lien_site']) ?>" placeholder="" required="required" />-->
-			</label>
-		
-		</fieldset>
-		</br>
-		<fieldset>
-		<legend>Image :</legend>
-    <div>
-        <img src="<?php echo("media/imageService/".$donnees['adresseImage']); ?>" height="150" width="150" />
-        <input type="file" name="avatar" id="avatar"/>
-        <?php echo((empty($erreur['avatar']) ? "" : "<p>".$erreur['avatar']."</p><br/>")); ?>
-    </div>
-    </fieldset>
-    
+        <fieldset>
+            <legend>Catégorie</legend>
+            <?php $form_modifierService->echoInput("categorie"); ?>
+        </fieldset>
+        <br/>
 
-		
-		
+        <fieldset>
+            <legend>Description</legend>
+            <Label for="traductionsExistantes">Langue</Label><br/>
+            <?php $form_modifierService->echoInput("traductionsExistantes"); ?><br/>
+            <label for="description">Description:</label><br/>
+            <?php $form_modifierService->echoInput("description"); ?>
+            <?php $form_modifierService->submit("Supprimer cette description"); ?>
+        </fieldset>
+        <br/>
 
-
-
-
-
-
-		
-			 <fieldset>
-
-        	<legend>Catégorie</legend>
-            	<?php $form_modifierService->echoInput("categorie"); ?>
-
-        		<!--<textarea id="categorie" name="categorie" value="<?php/* echo((empty($_POST['categorie'])) ? "" : $_POST['categorie']);*/ ?>" placeholder="Entrez votre categorie ici"></textarea>-->
-
-        	</fieldset>
-			</br>
-			<fieldset>
-
-        	<legend>Description</legend>
-			<Label>Langue
-        	<?php $form_modifierService->echoInput("langue"); ?>
-     	</Label>
-			<!--<select name="descriptions" id="descriptions">
-				<?php /*
-					foreach ($dataDescription as $valueDescription) {
-				?>
-			<option valueDescription="
-				<?php echo $valueDescription['idDescription'] ; ?>"
-				 <?php
-					if ($valueDescription['idDescription']==$idDescription){
-						$donnees = $valueDescription;
-						echo("selected='selected'");
-					} ?> 
-			/>
-			<?php 
-				echo($valueDescription['langue']);
-			*/?>-->
-			</br>
-			<label>Description:
-			<textarea id="texte" name="texte"  ><?php 
-			foreach ($dataDescription as $ligneDescription) {
-				if($ligneDescription[2]=='fr'){
-					echo($ligneDescription[1]);
-				}
-			} ?></textarea>
-			</label>
-			</fieldset>
-
-			
-
-			<input type="submit" value="Modifier" id="submit" />
+        <?php $form_modifierService->submit("modifier"); ?>
+    </form>
 
 
-		</form>
+    <form method="post" action="">
+        <fieldset>
+            <legend>Ajouter une description à votre service :</legend>
+            <?php $form_modifierService->echoInput('idService'); ?>
+            <?php $form_modifierService->echoInput('form_idService'); ?>
+            <Label for="langue">Langue:</Label><br/>
+            <?php $form_ajouterDescription->echoInput("langue"); ?><br/>
+            <Label for="nouvelleDescription">description:</Label><br/>
+            <?php $form_ajouterDescription->echoInput("nouvelleDescription"); ?><br/>
+            <?php $form_ajouterDescription->submit("Ajouter"); ?>
+        </fieldset>
+    </form>
 
-		<form method="post" action="" >
+    <?php
+}
+?>
 
 
-		<?php
-		?>
+<?php
+if (!empty($listeDescriptions)) {
+    ?>
+    <script>
+        var listeDescriptions = [];
+        <?php
+        foreach ($listeDescriptions as $description) {
+            echo("listeDescriptions[" . $description['idDescription'] . "] = '" . addslashes($description['texte']) . "';");
+        }
+        ?>
+        document.getElementById('traductionsExistantes').onchange = choixDescription;
 
-
-
-		
-
-	</body>
-	
-
-</html>
-
-
+        function choixDescription(){
+            var idDescription = document.getElementById('traductionsExistantes').value;
+            var description = document.getElementById('description');
+            if (idDescription == 0){
+                description.value = "";
+            }
+            else{
+                description.value = listeDescriptions[idDescription];
+            }
+        }
+    </script>
+    <?php
+}
+?>
 
 
 

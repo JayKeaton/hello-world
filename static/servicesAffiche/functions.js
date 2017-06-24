@@ -111,7 +111,7 @@ function TrouverAdresse() {
 					//icon: url
 		  });
 
-				var contentString = liste[labelIndex].nom +"</br>"+liste[labelIndex].adresse +'</br><a href="/?page=servicesMaps&adresse='+ liste[labelIndex].adresse +'">GO</a>' ;
+				var contentString = liste[labelIndex].nom +"</br>"+liste[labelIndex].adresse +'</br><a href="' + sous_domaine + '?page=servicesMaps&adresse='+ liste[labelIndex].adresse +'">GO</a>' ;
 				var infowindow = new google.maps.InfoWindow({
           content: contentString
         });
@@ -154,7 +154,7 @@ function successCallback(position){
 	document.getElementById("error_loc").style.display = 'none';
 	var coords = position.coords.latitude + "," + position.coords.longitude;
     document.getElementById("coords").value = coords;
-  map.panTo(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
+  //map.panTo(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
   var marker = new google.maps.Marker({
     position: new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
     map: map

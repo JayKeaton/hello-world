@@ -1,5 +1,14 @@
 <?php
 
+	function getService($idService){
+		global $bdd;
+		$req = $bdd->prepare("SELECT * FROM services WHERE idService=:idService");
+		$req->bindParam('idService', $idService);
+		$req->execute();
+		$data = $req->fetch();
+		return $data;
+	}
+
 	function recupAdresse($bdd, $idService){
 		
 		$req = $bdd->prepare("SELECT localisation FROM description WHERE idService=:idService");
@@ -68,7 +77,6 @@
 
 	
 	function recupAll($bdd){
-		
 		$req = $bdd->prepare("SELECT adresse, categorie, telephone, nom, geolocalisation FROM services WHERE validation='1'");
 	    $req->execute();
 	    $data = $req->fetchAll();
