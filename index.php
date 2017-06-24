@@ -108,7 +108,7 @@ $langues = array(
     "UIGHUR" => 'ug',
     "VIETNAMESE" => 'vi'
 );
-define('LANGUAGES', array_flip($langues));
+$LANGUAGES = array_flip($langues);
 
 
 require_once("models/SQLCo.php");
