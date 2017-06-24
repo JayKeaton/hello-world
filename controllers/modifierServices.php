@@ -59,7 +59,7 @@ $form_ajouterDescription->add('hidden', 'form_idService')
     ->value("form_idService")
     ->required(true);
 $form_ajouterDescription->add('select', 'langue')
-    ->affecterValeurs(LANGUAGES)
+    ->affecterValeurs($LANGUAGES)
     ->required(true);
 $form_ajouterDescription->add('textarea', 'nouvelleDescription')
     ->required(true);
@@ -79,7 +79,7 @@ if ($form_idService->isValid()) {
     $listeDescriptions = recupDescriptionService($idService, $bdd);
     $listeLangues = array(0 => "---");
     foreach ($listeDescriptions as $description) {
-        $listeLangues[$description['idDescription']] = LANGUAGES[$description['langue']];
+        $listeLangues[$description['idDescription']] = $LANGUAGES[$description['langue']];
     }
     $form_modifierService->get('traductionsExistantes')
         ->affecterValeurs($listeLangues);
