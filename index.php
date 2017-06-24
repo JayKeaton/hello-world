@@ -167,6 +167,7 @@ elseif ($page == "favoris"){
     $path = "controllers/favoris.php";
 }
 elseif ($page == "modifierServices"){
+        loginRequired($page);
 
     	$path = "controllers/modifierServices.php";
 }
