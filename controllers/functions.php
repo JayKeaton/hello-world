@@ -168,7 +168,7 @@ class Formulaire{
         public function set_values($listeValues){
             $listeInput = $this->listeInput;
             foreach($listeInput as $name => $input){
-                if (in_array($name, array_keys($listeValues))){
+                if (Array_key_exists($name,$listeValues)){
                     $input->value($listeValues[$name]);
                 }
             }
@@ -222,7 +222,7 @@ abstract class Input{
         if ($this->isRequired && empty($_POST[$this->name])) {
             $this->erreur .= "Veuillez remplir ce champ.";
         }
-        if (strlen($_POST[$this->name]) > $this->maxLength){
+        elseif (strlen($_POST[$this->name]) > $this->maxLength){
             $this->erreur .= "Ce champ est limité à ".$this->maxLength." caractères.";
         }
         return ($this->erreur == "");
@@ -250,6 +250,49 @@ class Input_text extends Input{
         $value = $this->value;
         $string = "";
         $string .= "<input type='text' name='".$name."' id='".$id."' value='".$value."'/>";
+        if ($this->erreur != "")
+            $string .= "</br><p class='error'>".$this->erreur."</p>";
+        return $string;
+    }
+}
+/**************************************************************************************/
+class Input_hidden extends Input{
+
+    public function __construct($name){
+        parent::__construct($name);
+    }
+
+    public function isValid(){
+        return parent::isValid();
+    }
+
+    public function __toString(){
+        $name = $this->name;
+        $id = $this->id;
+        $value = $this->value;
+        $string = "";
+        $string .= "<input type='hidden' name='".$name."' id='".$id."' value='".$value."'/>";
+        if ($this->erreur != "")
+            $string .= "</br><p class='error'>".$this->erreur."</p>";
+        return $string;
+    }
+}
+/**************************************************************************************/
+class Input_textarea extends Input{
+
+    public function __construct($name){
+        parent::__construct($name);
+    }
+
+    public function isValid(){
+        return parent::isValid();
+    }
+
+    public function __toString(){
+        $name = $this->name;
+        $id = $this->id;
+        $value = $this->value;
+        $string = "<textarea name='".$name."' id='".$id."'>".$value."</textarea>";
         if ($this->erreur != "")
             $string .= "</br><p class='error'>".$this->erreur."</p>";
         return $string;

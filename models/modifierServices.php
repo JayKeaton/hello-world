@@ -1,11 +1,12 @@
 <?php /*toutes les fonctions pour récupérer*/
 
 	function recupServicesUtilisateur($idUtilisateur,$bdd){
-		$req=$bdd->prepare("SELECT * FROM services WHERE idUtilisateur=:idUtilisateur");
+		$req=$bdd->prepare("SELECT idService,nom FROM services WHERE idUtilisateur=:idUtilisateur");
 		$req->execute(array('idUtilisateur'=>$idUtilisateur));
 		$data=$req->fetchall();
 		return $data;
 	}
+
 	function recupDescriptionService($idService,$bdd){
 		$req=$bdd->prepare("SELECT * FROM descriptions WHERE idService=:idService");
 		$req->execute(array('idService'=>$idService));
@@ -15,14 +16,38 @@
 	}
 	
 	function modifierService($bdd, $nom, $email, $adresse, $telephone,$lien_site, $categorie, $idService){
-
   		$req=$bdd->prepare("UPDATE services SET adresse=:adresse, nom=:nom, email=:email, categorie=:categorie, telephone=:telephone, lien_site=:lien_site  WHERE idService=:idService  ");
   		$result = $req->execute(array("adresse"=>$adresse, "categorie"=>$categorie, "telephone"=>$telephone, "email"=>$email, "lien_site"=>$lien_site, "idService"=>$idService, "nom"=>$nom));
-  		return $idService;
-
-
-
+  		return $result;
   	}
+
+
+  	function modifierDescription($idDescription, $texte){
+	    global $bdd;
+        $req = $bdd->prepare("UPDATE descriptions SET texte=:texte WHERE idDescription=:idDescription");
+        $req->bindParam('texte', $texte);
+        $req->bindParam('idDescription', $idDescription);
+        $req->execute();
+    }
+
+    function ajouterDescription($texte, $langue, $idService){
+  	    global $bdd;
+  	    $req = $bdd->prepare("INSERT INTO descriptions(texte,langue,idService) VALUES(:texte,:langue,:idService)");
+  	    $req->bindParam('texte', $texte);
+  	    $req->bindParam('langue', $langue);
+  	    $req->bindParam('idService', $idService);
+  	    $req->execute();
+    }
+
+
+    function supprimerDescription($idDescription){
+        global $bdd;
+        $req = $bdd->prepare("DELETE FROM descriptions WHERE idDescription=:idDescription");
+        $req->bindParam('idDescription', $idDescription);
+        $req->execute();
+    }
+
+
 	/*function ajouterService($bdd, $email, $adresse, $phone, $website, $categorie,$idContributeur){
 		$req = $bdd->prepare("UPDATE into services (localisation, categorie, telephone, mail, lien_site, idContributeur) values(:adresse, :categorie, :phone, :email, :website, :idContributeur)");
 		$result = $req->execute(array("adresse"=>$adresse, "categorie"=>$categorie, "phone"=>$phone, "email"=>$email, "website"=>$website, "idContributeur"=>$idContributeur));

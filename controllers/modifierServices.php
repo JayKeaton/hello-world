@@ -1,138 +1,119 @@
-<?php 
-	/*on commence par récupérer le service puis on modifie ce service*/
-	/*$_SESSION['idUtilisateur']
-	on fait un while ou on parcourt la base de donnée et a chaque fois qu'on trouve un servicecorrespondant a l'idutilisateur on fait un écho de son service pour pouvoir le modifier après..
-	une requète sql, on récupère tout les truc de l'idutilisateur, on fait une option de select pour chacun d'entre eux ...
-	$req=$bdd->prepare("SELECT * FROM services WHERE idUtilisateur=idUtilisateur");
-	$req->execute(array('idUtilisateur'=>$_SESSION['idUtilisateur']));
-	$data=$req->fetchall();*/
-	/*$req=$bdd->prepare("SELECT * FROM descriptions");
-	$rep->execute(array());
-	$descriptions=$req->fetchall();*/
-	$dataServicesUtilisateur=recupServicesUtilisateur($_SESSION['idUtilisateur'],$bdd);
-	$n=0;
-    $idService=0;
-    $form_modifierService = new Formulaire('login');
-    $form_idService = new Formulaire('login');
-     foreach ($dataServicesUtilisateur as $value) {
-        $listeService[$value["idService"]]=$value["nom"];
-    }
-
-    $form_idService->add('select','idService')
-    ->affecterValeurs($listeService)
-    
-
-    ->required(true);
-    if ($form_idService->isValid()){
-        $idService = $form_idService->get_cleaned_values();
-        if(empty($idService['idService'])){
-            
-            $form_modifierService->add('email', 'email')
-             ->required(true);
-    
-            $form_modifierService->add('text','telephone')
-             ->required(true);
-            $form_modifierService->add('text','lien_site')
-            ->required(true);
-    
-            $form_modifierService->add('text','nom')
-    
-            ->required(true);
-            $liste=array("fr"=>"Francais","En"=>"Anglais","Ar"=>"Arabe","kl"=>"Klingon");
-            $form_modifierService->add('select','langue')
-            ->affecterValeurs($liste)
-            /*->value($dataDescription[0][2])
-            ->required(true);
-            $listeService=array();
-   
-            $allCategorie=recupCategorie($bdd);
-            $listeCategorie=array();
-            foreach ($allCategorie as $value) {
-                $listeCategorie[$value["traduction"]]=$value["code"];
-            }
-            $form_modifierService->add('select','categorie')
-            ->affecterValeurs($listeCategorie)
-            ->value($dataServicesUtilisateur[6])
-            ->required(true);
-
-    
-            $form_modifierService->add('text','codePostal')
-            ->required(true);
-            
-        }
-        if(!empty($idService['idService'])){
-
-            
-            $form_modifierService->add('email', 'email')
-            ->value($dataServicesUtilisateur[$idService['idService']][8])
-            ->required(true);
-
-    
-            $form_modifierService->add('text','telephone')
-            ->value($dataServicesUtilisateur[$idService['idService']][7])
-            ->required(true);
-            $form_modifierService->add('text','lien_site')
-            ->value($dataServicesUtilisateur[$idService['idService']][9])
-            ->required(true);
-    
-            $form_modifierService->add('text','nom')
-            ->value($dataServicesUtilisateur[$idService['idService']][2])
-    
-            ->required(true);
-            $liste=array("fr"=>"Francais","En"=>"Anglais","Ar"=>"Arabe","kl"=>"Klingon");
-            $form_modifierService->add('select','langue')
-            ->affecterValeurs($liste)
-            /*->value($dataDescription[0][2])*/
-            ->required(true);
-            $listeService=array();
-   
-            $allCategorie=recupCategorie($bdd);
-            $listeCategorie=array();
-            foreach ($allCategorie as $value) {
-
-                $listeCategorie[$value["traduction"]]=$value["code"];
-            
-            }
-            $form_modifierService->add('select','categorie')
-            ->affecterValeurs($listeCategorie)
-            ->value($dataServicesUtilisateur[6])
-            ->required(true);
-
-    
-            $form_modifierService->add('text','codePostal')
-            ->required(true);
-        
-    
-	}
-	/*$idService=1;
-	$idDescription=0;*/
-	
-	
+<?php
 
 
-	if ($form_modifierService->isValid()){
-    	$data = $form_service->get_cleaned_values();
-    	
-    	$texte=htmlspecialchars($_POST["texte"]);
-		$adresse=htmlspecialchars($_POST["adresse"]);
-		echo "lolcamarche";
-			/*$categorie=($_POST["categorie"]);*/
-		
-		
-		modifierService($bdd, $data['nom'], $data['email'], $adresse, $data['telephone'],$data['lien_site'], $data['categorie'], $data['idService']);
-		/*saveGeolocation($idService, $adresse);*/
-	}
-	$idUtilisateur=$_SESSION['idUtilisateur'];
-	
-	$dataDescription=recupDescriptionService($idService,$bdd);
+$form_idService = new Formulaire('form_idService');
 
+$services = recupServicesUtilisateur($_SESSION['idUtilisateur'], $bdd);
+$listeServices = array();
+foreach ($services as $value) {
+    $listeServices[$value["idService"]] = $value["nom"];
 }
 
-	/*foreach ($data as $element => $value) {
+$form_idService->add('select','idService')
+    ->affecterValeurs($listeServices)
+    ->required(true);
+$form_idService->set_values($_POST);
 
-		html? il faut modifier
-		# code...
-	}*/
-	include("templates/modifierServices.php");
+
+
+$form_modifierService = new Formulaire('form_modifierService');
+$form_modifierService->add('hidden', 'idService')
+    ->value(0)
+    ->required(true);
+$form_modifierService->add('hidden', 'form_idService')
+    ->value("form_idService")
+    ->required(true);
+$form_modifierService->add('text','nom')
+    ->required(true);
+$form_modifierService->add('email', 'email')
+    ->required(true);
+$form_modifierService->add('textarea', 'adresse')
+    ->required(true);
+$form_modifierService->add('text','telephone')
+    ->required(true);
+$form_modifierService->add('text','lien_site')
+    ->required(true);
+$allCategories=recupCategorie($bdd);
+$listeCategories=array();
+foreach ($allCategories as $value) {
+    $listeCategories[$value["code"]] = $value["traduction"];
+}
+$form_modifierService->add('select','categorie')
+    ->affecterValeurs($listeCategories)
+    ->required(true);
+$form_modifierService->add('select','traductionsExistantes')
+    ->affecterValeurs(array())
+    ->required(false);
+$form_modifierService->add('textarea', 'description')
+    ->required(false);
+$form_modifierService->set_values($_POST);
+
+
+
+
+$form_ajouterDescription = new Formulaire('$form_ajouterDescription');
+$form_ajouterDescription->add('hidden', 'idService')
+    ->value(0)
+    ->required(true);
+$form_ajouterDescription->add('hidden', 'form_idService')
+    ->value("form_idService")
+    ->required(true);
+$form_ajouterDescription->add('select', 'langue')
+    ->affecterValeurs(LANGUAGES)
+    ->required(true);
+$form_ajouterDescription->add('textarea', 'nouvelleDescription')
+    ->required(true);
+
+
+
+
+$afficher = false;
+$data = array();
+
+if ($form_idService->isValid()) {
+    $idService = $form_idService->get_cleaned_values()['idService'];
+    $data = getService($idService);
+    $data['idService'] = $idService;
+    $form_modifierService->set_values($data);
+    $form_ajouterDescription->set_values($data);
+    $listeDescriptions = recupDescriptionService($idService, $bdd);
+    $listeLangues = array(0 => "---");
+    foreach ($listeDescriptions as $description) {
+        $listeLangues[$description['idDescription']] = LANGUAGES[$description['langue']];
+    }
+    $form_modifierService->get('traductionsExistantes')
+        ->affecterValeurs($listeLangues);
+    $afficher = true;
+}
+
+
+if ($form_modifierService->isValid()) {
+    $data = $form_modifierService->get_cleaned_values();
+    if (empty($_POST['form_modifierService'])) {
+        modifierService($bdd, $data['nom'], $data['email'], $data['adresse'], $data['telephone'], $data['lien_site'], $data['categorie'], $data['idService']);
+        saveGeolocation($data['idService'], $data['adresse']);
+        if ($data['traductionsExistantes'] != 0) {
+            modifierDescription($data['traductionsExistantes'], $data['description']);
+        }
+    }
+    else {
+        supprimerDescription($data['traductionsExistantes']);
+    }
+    header("Location: ");
+    exit();
+}
+
+
+if ($form_ajouterDescription->isValid()) {
+    echo("test");
+    $data = $form_ajouterDescription->get_cleaned_values();
+    ajouterDescription($data['nouvelleDescription'],$data['langue'],$data['idService']);
+    header("Location: ");
+    exit();
+}
+
+
+
+include("templates/modifierServices.php");
 ?>
 

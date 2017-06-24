@@ -40,6 +40,7 @@ CREATE TABLE services (
     REFERENCES utilisateurs(idUtilisateur) ON DELETE SET NULL
 );
 
+
 CREATE TABLE seances(
   idSeance INTEGER PRIMARY KEY AUTO_INCREMENT,
   nom TEXT,
