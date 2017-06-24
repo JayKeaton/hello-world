@@ -13,9 +13,8 @@
     
     $form_service->add('text','nom')
     ->required(true);
-    $liste=array("fr"=>"Francais","En"=>"Anglais","Ar"=>"Arabe","kl"=>"Klingon");
     $form_service->add('select','langue')
-    ->affecterValeurs($liste)
+    ->affecterValeurs($LANGUAGES)
     ->required(true);
     $categorie=recupCategorie($bdd);
     $listeCategorie=array();

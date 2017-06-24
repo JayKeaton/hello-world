@@ -69,7 +69,7 @@
                 <legend>Catégorie</legend>
 
                 </br>
-                <Label>Langue :
+                <Label>Catégorie :
                     <?php $form_service->echoInput("categorie"); ?>
                 </label>
 
@@ -83,9 +83,11 @@
                 <legend>Description</legend>
 
                  </br>
-                 <Label>Langue
+                 <Label>Langue:
                     <?php $form_service->echoInput("langue"); ?>
                 </Label>
+                </br>
+                <Label>Description:
                 <textarea id="texte" name="texte" value="<?php echo((empty($_POST['categorie'])) ? "" : $_POST['categorie']); ?>" placeholder="Décrivez ici votre service"></textarea></label>
             </fieldset>
 
