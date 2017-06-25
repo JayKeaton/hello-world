@@ -1,18 +1,7 @@
 <?php
 
 
-
-
-
-/*
-$coords=getXmlCoordsFromAdress("4 rue Joseph Kosma, Acheres");
-$coords2=getXmlCoordsFromAdress("Paris");
-echo $coords['status']." ".$coords['lat']." ".$coords['lon']."</br>";
-echo $coords2['status']." ".$coords2['lat']." ".$coords2['lon'];
-*/
-
-//print_r(triListe($liste, $f));
-
+$geolocaliser = geolocaliserUtilisateur($_SESSION['idUtilisateur']);
 
 
 $form = new Formulaire("recherche");
@@ -24,11 +13,10 @@ foreach($categories as $categorie){
 $form->add('select', 'categorie')
     ->affecterValeurs($listeCategories)
     ->required(true);
-$listeLangues = array('all' => "Toutes les langues", 'fr' => "Francais", 'en' => "Anglais", 'Jérémy' => "Jeremy");
 $liste = listeLangues();
 $listeLangues = array();
 foreach ($liste as $langue) {
-    $listeLangues[$langue['langue']] = $langue['langue'];
+    $listeLangues[$langue['langue']] = $LANGUAGES[$langue['langue']];
 }
 $form->add('select', 'langue')
     ->value('all')

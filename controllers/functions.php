@@ -183,6 +183,7 @@ abstract class Input{
     protected $value;
     protected $id;
     protected $maxLength;
+    protected $placeholder;
 
 
     public function __construct($name) {
@@ -191,6 +192,7 @@ abstract class Input{
         $this->erreur = "";
         $this->isRequired = false;
         $this->value = "";
+        $this->placeholder = "";
         $this->maxLength = 500;
     }
 
@@ -206,6 +208,11 @@ abstract class Input{
 
     public function value($value){
         $this->value = $value;
+        return $this;
+    }
+
+    public function placeholder($placeholder){
+        $this->placeholder = $placeholder;
         return $this;
     }
 
@@ -248,8 +255,9 @@ class Input_text extends Input{
         $name = $this->name;
         $id = $this->id;
         $value = $this->value;
+        $placeholder = $this->placeholder;
         $string = "";
-        $string .= "<input type='text' name='".$name."' id='".$id."' value='".$value."'/>";
+        $string .= "<input type='text' name='".$name."' id='".$id."' value='".$value."' placeholder='".$placeholder."'/>";
         if ($this->erreur != "")
             $string .= "</br><p class='error'>".$this->erreur."</p>";
         return $string;
@@ -292,7 +300,8 @@ class Input_textarea extends Input{
         $name = $this->name;
         $id = $this->id;
         $value = $this->value;
-        $string = "<textarea name='".$name."' id='".$id."'>".$value."</textarea>";
+        $placeholder = $this->placeholder;
+        $string = "<textarea name='".$name."' id='".$id."' placeholder='".$placeholder."'>".$value."</textarea>";
         if ($this->erreur != "")
             $string .= "</br><p class='error'>".$this->erreur."</p>";
         return $string;
@@ -314,8 +323,9 @@ class Input_password extends Input{
         $name = $this->name;
         $id = $this->id;
         $value = $this->value;
+        $placeholder = $this->placeholder;
         $string = "";
-        $string .= "<input type='password' name='".$name."' id='".$id."' value='".$value."'/>";
+        $string .= "<input type='password' name='".$name."' id='".$id."' value='".$value."' placeholder='".$placeholder."'/>";
         if ($this->erreur != "")
             $string .= "</br><p class='error'>".$this->erreur."</p>";
         return $string;
@@ -374,8 +384,9 @@ class Input_email extends Input{
         $name = $this->name;
         $id = $this->id;
         $value = $this->value;
+        $placeholder = $this->placeholder;
         $string = "";
-        $string .= "<input type='email' name='".$name."' id='".$id."' value='".$value."'/>";
+        $string .= "<input type='email' name='".$name."' id='".$id."' value='".$value."' placeholder='".$placeholder."'/>";
         if ($this->erreur != "")
             $string .= "</br><p class='error'>".$this->erreur."</p>";
         return $string;
@@ -397,8 +408,9 @@ class Input_tel extends Input{
         $name = $this->name;
         $id = $this->id;
         $value = $this->value;
+        $placeholder = $this->placeholder;
         $string = "";
-        $string .= "<input type='tel' name='".$name."' id='".$id."' value='".$value."'/>";
+        $string .= "<input type='tel' name='".$name."' id='".$id."' value='".$value."' placeholder='".$placeholder."'/>";
         if ($this->erreur != "")
             $string .= "</br><p class='error'>".$this->erreur."</p>";
         return $string;
