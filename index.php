@@ -193,6 +193,7 @@ elseif ($page == "activationAdmin"){
     $path = "controllers/activationAdmin.php";
 }
 elseif ($page == "gestionSeances"){
+    loginRequired($page);
     $path = "controllers/gestionSeancesC.php";
 }
 elseif ($page == "contact"){

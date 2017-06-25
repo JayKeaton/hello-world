@@ -70,6 +70,7 @@ $form_ajouterDescription->add('textarea', 'nouvelleDescription')
 
 $afficher = false;
 $data = array();
+$idService = 0;
 
 if ($form_idService->isValid()) {
     $idService = $form_idService->get_cleaned_values()['idService'];
