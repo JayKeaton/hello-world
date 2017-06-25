@@ -123,7 +123,7 @@ if (!empty($_GET['page'])){
 if (empty($page)){
     $path = "controllers/accueil.php";
 }
-elseif ($page == "Accueil"){
+elseif ($page == "accueil"){
     $path = "controllers/accueil.php";
 }
 elseif ($page == "recherche"){
@@ -158,9 +158,7 @@ elseif ($page == "servicesMaps"){
 }
 elseif ($page == "ajoutServices"){
     loginRequired($page);
-
 	$path = "controllers/activationContributeur.php";
-
 }
 elseif ($page == "favoris"){
     loginRequired($page);
@@ -179,20 +177,14 @@ elseif ($page == "logout"){
     header("Location: ".SOUS_DOMAINE);
     exit();
 }
-elseif ($page == "tests"){
-    $path = "controllers/tests.php";
-}
 elseif ($page == "descriptionService"){
     $path = "controllers/descriptionServiceC.php";
-}
-elseif ($page == "ajoutAdmin"){
-    loginRequired($page);
-    $path = "controllers/ajoutAdmin.php";
 }
 elseif ($page == "activationAdmin"){
     $path = "controllers/activationAdmin.php";
 }
 elseif ($page == "gestionSeances"){
+    loginRequired($page);
     $path = "controllers/gestionSeancesC.php";
 }
 elseif ($page == "contact"){
@@ -213,11 +205,8 @@ elseif ($page == "FAQ"){
 elseif ($page == "error404"){
     $path = "templates/error404.html";
 }
-elseif($page == "test"){
-    $path = "test.php";
-}
 else{
-    include("templates/".$page.".html");
+    header("Location: ".SOUS_DOMAINE."?page=error404");
 }
 
 include("gabarit.php");

@@ -140,12 +140,13 @@ function TrouverAdresse() {
 }
 
 // Lancement de la construction de la carte google map
-if (navigator.geolocation) {
-    var watchId = navigator.geolocation.watchPosition(successCallback, null, {enableHighAccuracy: true});
+if (geolocaliser) {
+    if (navigator.geolocation) {
+        var watchId = navigator.geolocation.watchPosition(successCallback, null, {enableHighAccuracy: true});
+    }
+    else
+        alert("Votre navigateur ne prend pas en compte la géolocalisation HTML5");
 }
-
-else
-  alert("Votre navigateur ne prend pas en compte la géolocalisation HTML5");
 
 google.maps.event.addDomListener(window, 'load', initialiserCarte);
 

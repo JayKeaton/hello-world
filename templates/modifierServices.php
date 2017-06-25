@@ -17,8 +17,8 @@
 
 <?php
 if ($afficher) {
+    echo("<a href='".SOUS_DOMAINE."?page=gestionSeances&idService=".$idService."'>Gestion des séances de ce service :</a>");
     ?>
-
     <form method="post" action="" enctype="multipart/form-data">
         <fieldset>
             <legend>Contact</legend>

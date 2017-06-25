@@ -1,7 +1,7 @@
 <?php
 
 
-$geolocaliser = geolocaliserUtilisateur($_SESSION['idUtilisateur']);
+$geolocaliser = (empty($_SESSION['idUtilisateur']) or geolocaliserUtilisateur($_SESSION['idUtilisateur']));
 
 
 $form = new Formulaire("recherche");

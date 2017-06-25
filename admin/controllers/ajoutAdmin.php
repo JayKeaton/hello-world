@@ -30,8 +30,7 @@
 					ajouterEmailsAdmin($bdd, $email, $hash);
 					include("templates/validation.html");
 
-					}
-
+                }
 				else{//sinon
 
 					envoyerMail($email, $hash, "" , "", $idUtilisateur, "activationAdminSansInscription");
