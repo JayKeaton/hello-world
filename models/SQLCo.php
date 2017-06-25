@@ -5,17 +5,10 @@
 		
 		
 
-    $hostname="localhost";
-	$username="root";
-	$password="root";
-	$bddname="error404";
-
-    /* 000webhostapp
-	$hostname="localhost";
-	$username="id1784963_error404msf";
+    $hostname="rpicfrtmtjisep.mysql.db";
+	$username="rpicfrtmtjisep";
 	$password="IsepRPIC75";
-	$bddname="id1784963_error404";
-	*/
+	$bddname="rpicfrtmtjisep";
     
 
 

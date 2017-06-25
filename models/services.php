@@ -101,6 +101,7 @@
             $str = "SELECT 
 				services.idService AS idService, 
 				services.nom AS nom, 
+				services.adresse AS adresse,
 				services.adresseImage AS adresseImage, 
 				descriptions.texte AS texte, 
 				descriptions.langue AS langue, 
@@ -113,6 +114,7 @@
             $str = "SELECT 
 				services.idService AS idService, 
 				services.nom AS nom, 
+				services.adresse AS adresse,
 				services.adresseImage AS adresseImage, 
 				descriptions.texte AS texte, 
 				descriptions.langue AS langue, 

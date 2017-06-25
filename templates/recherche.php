@@ -45,6 +45,7 @@
                         ?>
                         <div>
                             <h2><em><?php echo($service['nom']); ?></em></h2>
+                            <a href="<?php echo(SOUS_DOMAINE."?page=servicesMaps&adresse=".$service['adresse']); ?>">Aller la-bas</a>
                             <?php
                             if ($data['typeRecherche'] == "localisation" or $data['typeRecherche'] == "adresse"){
                                 echo("<div class='distance'>");

@@ -178,7 +178,7 @@ INSERT INTO `descriptions`(`texte`, `langue`,`idService`) VALUES ("Le Marché So
 INSERT INTO `services`(idUtilisateur, `nom`,`dateAjout`,`validation`, `adresse`, geolocalisation, `categorie`, `telephone`, `email`, `lien_site`,`noteDeMAJ`) VALUES (2, "Médecins Sans Frontières","2014-04-15-15-30-52",1,"8 Rue Saint-Sabin, 75011 Paris", '48.8550333,2.3722008',"sante","0625523251","0001@0001","http://www.msf.fr/", "Message du contributeur pour l'admin en cas de mise à jour de son service");
 INSERT INTO `descriptions`(`texte`, `langue`,`idService`) VALUES ("Médecins sans frontières est une organisation caritative privée à but humanitaire d'origine française et dont le Bureau international siège à Genève.","fr",7);
 INSERT INTO `commentaires`( `note`, `texte`, `date`, `heure`, `censure`, `idUtilisateur`, `idService`, `idSeance`) VALUES (3.5,"Merci de m'avoir aidé","2017-02-15","16:16:16",0,1,7,7);
-INSERT INTO `commentaires`( `note`, `texte`, `date`, `heure`, `censure`, `idUtilisateur`, `idService`, `idSeance`) VALUES (4.2,"Très satisfaisant","2017-04-16","12:12:12",0,2,7,7);
+INSERT INTO `commentaires`( `note`, `texte`, `date`, `heure`, `censure`, `idUtilisateur`, `idService`, `idSeance`) VALUES (4.5,"Très satisfaisant","2017-04-16","12:12:12",0,2,7,7);
 INSERT INTO `seances`(`nom`, `description`, `date`, `heure`, `capacite`, `idService`) VALUES ("Dr. Nills","Consultation avec le Dr. Nills de 10h à 13h","2017-09-02", "10:30:00", 6,7);
 INSERT INTO `inscrits`(`idUtilisateur`, `idSeance`) VALUES(1,1);
 INSERT INTO `seances`(`nom`, `description`, `date`, `heure`, `capacite`, `idService`) VALUES ("Dr. Tars","Consultation avec le Dr. Tars de 14h à 18h","2017-05-02", "14:00:00", 8,7);

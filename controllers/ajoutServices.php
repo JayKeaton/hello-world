@@ -42,7 +42,7 @@ if ($form_service->isValid()){
 	$data = $form_service->get_cleaned_values();
 
 	$idService = ajouterService($bdd, $data['email'], $data['adresse'], $data['codePostal'], $data['telephone'], $data['lien_site'], $data['categorie'], $_SESSION['idUtilisateur'], $data['nom']);
-  	/*saveGeolocation($idService, $adresse);*/
+  	saveGeolocation($idService, $data['adresse']);
 	$id2 = ajouterDescriptionService($bdd, $data['description'], $data['langue'], $idService);
 
 	require_once("models/image.php");
