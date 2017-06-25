@@ -10,7 +10,7 @@
 
 	$clebdda=recupCle($bdd, $idu);
 
-	if($clebdda == $cle) // On compare nos deux clés	
+	if($clebdda == $cle) // On compare nos deux clés
 		   {
 			  // Si elles correspondent on active le compte !	
 			  echo "</br></br>";
@@ -22,6 +22,9 @@
 
 			  // La requête qui va passer notre champ actif de 0 à 1
 			  activeContributeur($bdd, $idu);
+			  if (!empty($_SESSION['idUtilisateur']) and $_SESSION['droits'] != "admin") {
+                  $_SESSION['droits'] = "contributeur";
+              }
 			  
 
 		   }

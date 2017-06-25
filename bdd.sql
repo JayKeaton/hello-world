@@ -124,6 +124,16 @@ CREATE TABLE inscrits (
     REFERENCES seances(idSeance) ON DELETE SET NULL
 );
 
+
+
+
+
+INSERT INTO `utilisateurs`( `pseudo`, `email`, `mdp`, `avatar`, `nom`, `prenom`, `dateNaissance`, `verification`, `adresse`, `droits`, `telephone`) VALUES ("Camille","camille.durand@essai.com",sha1("essai"),"avatar1.jpg","Durand","Camille","1980-06-12",1,"aucune","utilisateur","0600000000");
+INSERT INTO `utilisateurs`( `pseudo`, `email`, `mdp`, `avatar`, `nom`, `prenom`, `dateNaissance`, `verification`, `adresse`, `droits`, `telephone`) VALUES ("Yasmine","yasmine.abdi@essai.com",sha1("t"),"avatar2.jpg","Abdi","Yasmine","1985-03-11",1,"1 rue Vincent Scotto Paris","contributeur","0611111111");
+INSERT INTO `utilisateurs`( `pseudo`, `email`, `mdp`, `avatar`, `nom`, `prenom`, `dateNaissance`, `verification`, `adresse`, `droits`, `telephone`) VALUES ("test","test@test",sha1("test"),"avatar3.jpg","testN","testP","1992-06-12",1,"test","admin","0645884521");
+
+
+
 INSERT INTO `services`(`nom`,`dateAjout`,`validation`, `adresse`, geolocalisation, `categorie`, `telephone`, `email`, `lien_site`,`noteDeMAJ`,`adresseImage`) VALUES ("Les Restos du Coeur","2014-04-15-15-30-52",1,"37 rue Hermel Paris", '48.8938175,2.3455129',"restauration","0625523251","0003@0003","https://www.restosducoeur.org/", "Message du contributeur pour l'admin en cas de mise à jour de son service","isep.jpg");
 INSERT INTO `services`(`nom`,`dateAjout`,`validation`, `adresse`, geolocalisation, `categorie`, `telephone`, `email`, `lien_site`,`noteDeMAJ`) VALUES ("Amitié Villette ","2014-04-11-15-30-52",1,"3 place de Joinville Paris", '48.8893835,2.3803440', "restauration","0625523251","0004@0004","http://www.solipam.fr/Amitie-Villette-Epicerie-solidaire,118", "Message du contributeur pour l'admin en cas de mise à jour de son service");
 INSERT INTO `services`(`nom`,`dateAjout`,`validation`, `adresse`, geolocalisation, `categorie`, `telephone`, `email`, `lien_site`,`noteDeMAJ`) VALUES ("Corot Entraide","2014-04-15-15-30-52",1,"4 rue Corot Paris", '48.8470476,2.2700980', "restauration","0625523251","0005@0005","http://www.corot-entraide.org/", "Message du contributeur pour l'admin en cas de mise à jour de son service");
@@ -133,9 +143,6 @@ INSERT INTO `services`(`nom`,`dateAjout`,`validation`, `adresse`, geolocalisatio
 INSERT INTO `services`(`nom`,`dateAjout`,`validation`, `adresse`, geolocalisation, `categorie`, `telephone`, `email`, `lien_site`,`noteDeMAJ`) VALUES ("Médecins Sans Frontières","2014-04-15-15-30-52",1,"8 Rue Saint-Sabin, 75011 Paris", '48.8550333,2.3722008',"sante","0625523251","0001@0001","http://www.msf.fr/", "Message du contributeur pour l'admin en cas de mise à jour de son service");
 INSERT INTO `services`(`validation`, `nom`, `adresse`, geolocalisation, `categorie`, `telephone`, `email`, `lien_site`, `idUtilisateur`) VALUES ("1","Mûre","6 rue Saint-Marc Paris", '48.8704176,2.3420539',"restauration","0","exemple@gmail.com","http://www.mure-restaurant.com/","220");
 
-INSERT INTO `utilisateurs`( `pseudo`, `email`, `mdp`, `avatar`, `nom`, `prenom`, `dateNaissance`, `verification`, `adresse`, `droits`, `telephone`) VALUES ("Camille","camille.durand@essai.com",sha1("essai"),"avatar1.jpg","Durand","Camille","1980-06-12",1,"aucune","utilisateur","0600000000");
-INSERT INTO `utilisateurs`( `pseudo`, `email`, `mdp`, `avatar`, `nom`, `prenom`, `dateNaissance`, `verification`, `adresse`, `droits`, `telephone`) VALUES ("Yasmine","yasmine.abdi@essai.com",sha1("t"),"avatar2.jpg","Abdi","Yasmine","1985-03-11",1,"1 rue Vincent Scotto Paris","contributeur","0611111111");
-INSERT INTO `utilisateurs`( `pseudo`, `email`, `mdp`, `avatar`, `nom`, `prenom`, `dateNaissance`, `verification`, `adresse`, `droits`, `telephone`) VALUES ("test","test@test",sha1("test"),"avatar3.jpg","testN","testP","1992-06-12",1,"test","admin","0645884521");
 
 
 

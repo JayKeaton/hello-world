@@ -46,15 +46,17 @@ elseif (!empty($_POST['info'])){
         $pseudo = $_POST['pseudo'];
         $codePostal = $_POST['codePostal'];
         $adresse = $_POST['adresse'];
+
         $jour = $_POST['jour'];
         $mois = $_POST['mois'];
         $annee = $_POST['annee'];
-
         $dateNaissance = $annee . "-" . $mois . "-" . $jour;
-        $result = modifierInfoUtilisateur($idUtilisateur, $prenom, $nom, $pseudo, $codePostal, $adresse, $dateNaissance);
+
+        $geolocalisation = !empty($_POST['geolocalisation']);
+
+        $result = modifierInfoUtilisateur($idUtilisateur, $prenom, $nom, $pseudo, $codePostal, $adresse, $dateNaissance, $geolocalisation);
         header("Location: ");
         exit();
-        /*header("Location: ".SOUS_DOMAINE);*/
     }
 }
 
@@ -63,15 +65,17 @@ elseif (!empty($_POST['info'])){
 
 elseif(!empty($_POST['changerEmail'])){
     $email = $_POST['email'];
-    if ($email != $data['mail']){
+    if ($email != $data['email']){
         $result = changerMail($idUtilisateur, $email);
         if ($result){
             desactive($idUtilisateur);
             $randint=rand(1,10000);
             $cle = date("Ymdhis".$randint);
             include("controllers/mailto.php");
-            envoyerMail($email, $cle, $data['nom'], $data['prenom'], $idUtilisateur);
+            envoyerMail($email, $cle, $data['nom'], $data['prenom'], $idUtilisateur, "activationUtilisateur");
             ajouterCle($bdd, $idUtilisateur, $cle);
+            header("Location: ");
+            exit();
         }
     }
     /*header("Location: ".SOUS_DOMAINE);*/
@@ -86,11 +90,9 @@ elseif(!empty($_POST['changerMdp'])){
     $confirmMdp = sha1($_POST['confirmMdp']);
     if ($ancienMdp != mdpUtilisateur($idUtilisateur)){
         $erreur_ancienMdp = "Ancien mot de passe incorrect.";
-        include("templates/profil.php");
     }
     elseif ($nouveauMdp != $confirmMdp){
         $erreur_confirmMdp = "Confirmation différent du mot de passe.";
-        include("templates/profil.php");
     }
     else{
         changerMdp($idUtilisateur, $nouveauMdp);
