@@ -1,59 +1,149 @@
-html{
-  height: 100%;
-}
+
+
+
 body{
+  position: relative;
   height: 100%;
   margin-top: 0;
+  padding-top: 0;
   font-family:Lucida Grande, Lucida Sans Unicode, Lucida Sans, DejaVu Sans, Verdana," sans-serif";
 }
 
+
+
 header{
-  padding-top: 20px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  background-color: #417690;
+  height: 50px;
 }
-header ul
-{
-  margin-top: 0;
-  padding-left: 220px;
-  background-color:#417690;
-  display:flex;
-  justify-content: flex-start;
-  align-items: center;
-  list-style-type: none;
-  /*height:100%;*/
+header #menuDeroulant{
+  position: absolute;
+  left: 18px;
+  top: 5px;
 }
-header ul li{
-  /*height:100%;*/
-  /*width: 14%;*/
+
+
+@media all and (max-width: 1219px) {
+  header #imageBanniere{
+    top: -20px;
+    left: 50%;
+  }
+
+  header ul {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    left: -999px;
+    top: 45px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    list-style-type: none;
+    background-color: #DCDCDC;
+    Border: 2px black solid;
+    border-radius: 20px;
+    width: 150px;
+  }
+  header #menuDeroulant:hover + ul{
+    left: 8px;
+  }
+  header ul:hover{
+    left: 8px;
+  }
+
+  header ul li {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  header ul .border_bottom{
+    Border-bottom: 1px black solid;
+  }
+
+  header ul li div {
+    width: 100%;
+    padding: 8px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  header ul li div img {
+    margin-right: 10px;
+  }
+
+  header ul li a {
+    width: 100%;
+    text-decoration: none;
+    color: #417690;
+  }
 }
-header ul li:hover{
-  background-image: linear-gradient(#417690 57% , #79aec8);
-  font-weight: bold;
-  /*height: 100%;*/
+
+
+
+@media all and (min-width: 1220px) {
+
+  header #imageBanniere{
+    top: -20px;
+    left: 100px;
+  }
+
+  header #menuDeroulant {
+    visibility: hidden;
+  }
+
+  header ul {
+    padding-left: 229px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    list-style-type: none;
+    height: 50px;
+  }
+
+  header ul li{
+    height: 50px;
+  }
+
+  header ul li:hover {
+    background-image: linear-gradient(#417690 57% , #79aec8);
+    font-weight: bold;
+  }
+
+  header ul li a {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 2px 5px 0 5px;
+    width: 150px;
+    height: 50px;
+  }
+
+  header ul li a div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  header ul li a div p {
+    margin: 0;
+    padding: 0;
+  }
 }
-header ul li a
-{
-  font-size: 100%;
-  color: white;
-  text-decoration:none;
-  display:flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding:5px;
-  height: 40px;
-  width: 150px;
-}
-header ul li a div{
-  /*height:100%;*/
-  display:flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-header ul li a div p{
-  margin: 0;
-  padding: 0;
-}
+
+
+
+
+
+
 header img{
   display:flex;
   justify-content: center;
@@ -61,26 +151,15 @@ header img{
 header #imageBanniere{
   border:2px solid #417690;
   position: absolute;
-  top: 4px;
-  left: 100px;
-
 }
 
 
-
-#rouge{
-  padding-left: 100px;
-  height:100%;
-  margin-top: 16px;
-  padding-top: 54px;
-  background-color: red;
-}
 
 
 #EnTete
 {
-display: flex;
-align-items: center;
+  display: flex;
+  align-items: center;
 }
 #h
 {
@@ -92,14 +171,14 @@ align-items: center;
 
 
 footer a {
-color: black;
-font-family:"Arial Black";
-text-decoration:none;
+  color: black;
+  font-family:"Arial Black";
+  text-decoration:none;
 }
 
 footer a:hover{
-color: rgb(180,0,0);
-font-weight: bold;  
+  color: rgb(180,0,0);
+  font-weight: bold;
 }
 footer
 {
@@ -134,5 +213,7 @@ footer ul li{
 #main{
   margin-bottom: 23px;
 }
-
+.error{
+  color: red;
+}
 

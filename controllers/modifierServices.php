@@ -1,5 +1,6 @@
 <?php
 
+$erreur = array();
 
 $form_idService = new Formulaire('form_idService');
 
@@ -69,6 +70,7 @@ $form_ajouterDescription->add('textarea', 'nouvelleDescription')
 
 $afficher = false;
 $data = array();
+$idService = 0;
 
 if ($form_idService->isValid()) {
     $idService = $form_idService->get_cleaned_values()['idService'];
@@ -89,18 +91,31 @@ if ($form_idService->isValid()) {
 
 if ($form_modifierService->isValid()) {
     $data = $form_modifierService->get_cleaned_values();
-    if (empty($_POST['form_modifierService'])) {
+    if ($_POST['form_modifierService'] == "modifier") {
         modifierService($bdd, $data['nom'], $data['email'], $data['adresse'], $data['telephone'], $data['lien_site'], $data['categorie'], $data['idService']);
         saveGeolocation($data['idService'], $data['adresse']);
         if ($data['traductionsExistantes'] != 0) {
             modifierDescription($data['traductionsExistantes'], $data['description']);
         }
+        if (!empty($_FILES['imageService']['name'])){
+            require_once("models/image.php");
+            $result = traitementUploadImage('imageService', 'media/imageService', $data['idService']);
+            if ($result[0] == false){
+                $erreur['imageService'] = $result[1];
+            }
+            else{
+                $adresseImage=$result[1];
+                ajouterAdresseImage($bdd,$adresseImage,$data['idService']);
+            }
+        }
     }
     else {
         supprimerDescription($data['traductionsExistantes']);
     }
-    header("Location: ");
-    exit();
+    if ($erreur == array()) {
+        header("Location: ");
+        exit();
+    }
 }
 
 

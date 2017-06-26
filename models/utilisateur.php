@@ -21,29 +21,7 @@
 		$req->bindParam('codePostal', $codePostal);
 		$req->bindParam('adresse', $adresse);
 		$req->bindParam('droits', $droits);
-		/*echo($email );
-		echo("</br>");
-		echo(	 $pseudo);
-		echo("</br>");
-		echo(	 $mdp);
-		echo("</br>");
-		echo(	 $prenom);
-		echo("</br>");
-		echo(	 $nom);
-		echo("</br>");
-		echo(	 $telephone);
-		echo("</br>");
-		echo(	 $sexe);
-		echo("</br>");
-		echo(	 $dateNaissance);
-		echo("</br>");
-		echo(	 $codePostal);
-		echo("</br>");
-		echo(	 $adresse);
-		echo("</br>");
-		echo(	 $geolocalisation);*/
 		$req->execute();
-		//echo($req);
 		return $bdd->lastInsertId();
 	}
 
@@ -116,9 +94,23 @@
 	    return $data;
     }
 
-    function modifierInfoUtilisateur($idUtilisateur, $prenom, $nom, $pseudo, $codePostal, $adresse, $dateNaissance){
+    function geolocaliserUtilisateur($idUtilisateur){
         global $bdd;
-        $req = $bdd->prepare("UPDATE utilisateurs SET prenom=:prenom,nom=:nom,pseudo=:pseudo,codePostal=:codePostal,adresse=:adresse,dateNaissance=:dateNaissance WHERE idUtilisateur=:idUtilisateur");
+        $req = $bdd->prepare("SELECT geolocalisation FROM utilisateurs WHERE idUtilisateur=:idUtilisateur");
+        $req->bindParam('idUtilisateur', $idUtilisateur);
+        $req->execute();
+        $data = $req->fetch();
+        if ($data == false or $data['geolocalisation'] == false){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+
+    function modifierInfoUtilisateur($idUtilisateur, $prenom, $nom, $pseudo, $codePostal, $adresse, $dateNaissance, $geolocalisation){
+        global $bdd;
+        $req = $bdd->prepare("UPDATE utilisateurs SET prenom=:prenom,nom=:nom,pseudo=:pseudo,codePostal=:codePostal,adresse=:adresse,dateNaissance=:dateNaissance,geolocalisation=:geolocalisation WHERE idUtilisateur=:idUtilisateur");
         $req->bindParam('prenom', $prenom);
         $req->bindParam('nom', $nom);
         $req->bindParam('pseudo', $pseudo);
@@ -126,14 +118,15 @@
         $req->bindParam('adresse', $adresse);
         $req->bindParam('dateNaissance', $dateNaissance);
         $req->bindParam('idUtilisateur', $idUtilisateur);
+        $req->bindParam('geolocalisation', $geolocalisation);
         $result = $req->execute();
         return $result;
     }
 
-    function changerMail($idUtilisateur, $mail){
+    function changerMail($idUtilisateur, $email){
         global $bdd;
         $req = $bdd->prepare("UPDATE utilisateurs SET email=:email WHERE idUtilisateur=:idUtilisateur");
-        $req->bindParam('mail', $mail);
+        $req->bindParam('email', $email);
         $req->bindParam('idUtilisateur', $idUtilisateur);
         $result = $req->execute();
         return $result;

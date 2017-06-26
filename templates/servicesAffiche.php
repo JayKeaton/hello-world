@@ -48,8 +48,8 @@
                 echo("liste.push(ligne);");
             }
         ?>
-        console.log("test");
         var sous_domaine = '<?php echo(SOUS_DOMAINE); ?>';
+        var geolocaliser = <?php echo($geolocaliser ? "true" : "false"); ?>;
     </script>
     </br>
 

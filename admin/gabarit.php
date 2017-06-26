@@ -11,19 +11,20 @@
         <!--div id="rouge"></div> <!-- Sert à créer la bande rouge à gauche de l'image -->
         <div id="imageBanniere">
             <a href="<?php echo(SOUS_DOMAINE) ?>">
-                <img src="static/headerFooter/msf2.jpeg" width="120" height="80"/>
+                <img style="background-color: white" src="static/headerFooter/LogoSoli.png" width="125" height="90"/>
             </a>
         </div>
+        <img src="https://image.flaticon.com/icons/svg/149/149199.svg" id="menuDeroulant" width="40" height="40"/>
         <ul>
-            <li>
-                <a href="<?php echo(SOUS_DOMAINE."?page=logout") ?>">
+            <li class="border_bottom">
+                <a href="<?php echo(SOUS_DOMAINE) ?>">
                     <div>
-                        <img src="static/headerFooter/logout.png" width=21/>
-                        <p>Logout</p>
+                        <img src="static/headerFooter/home.png" width=20 height=20/>
+                        <p>Accueil</p>
                     </div>
                 </a>
             </li>
-            <li>
+            <li class="border_bottom">
                 <a href="<?php echo(SOUS_DOMAINE."?page=ajoutAdmin") ?>">
                     <div>
                         <img src="static/headerFooter/ajoutAdmin.ico" width=21/>
@@ -34,8 +35,16 @@
             <li>
                 <a href="<?php echo(SOUS_DOMAINE."?page=gestionCategories") ?>">
                     <div>
-                        <img src="static/headerFooter/ajoutAdmin.ico" width=21/>
+                        <img src="static/headerFooter/categories.png" width=21/>
                         <p>Categories</p>
+                    </div>
+                </a>
+            </li>
+            <li class="border_bottom">
+                <a href="<?php echo(SOUS_DOMAINE."?page=logout") ?>">
+                    <div>
+                        <img src="static/headerFooter/logout.png" width=21/>
+                        <p>Logout</p>
                     </div>
                 </a>
             </li>
@@ -45,15 +54,10 @@
     <div id="main">
       <?php include($path); ?>
     </div>
-    
+
     <footer>
-        <ul>
-            <li> <a href="http://hugobriet.000webhostapp.com/?page=accueil"> Plan du Site </a> </li>
-            <li> <a href="http://hugobriet.000webhostapp.com/?page=accueil"> Contact </a> </li>
-            <li> <a href="http://hugobriet.000webhostapp.com/?page=accueil"> En savoir plus </a> </li>
-        </ul>
         <ul id="copyright">
-            <li> ©Error404 </li>
+            <li> ©SoliLink </li>
         </ul>
     </footer>
   </body>

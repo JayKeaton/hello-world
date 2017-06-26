@@ -1,6 +1,6 @@
 <?php
 
-
+    $geolocaliser = (empty($_SESSION['idUtilisateur']) or geolocaliserUtilisateur($_SESSION['idUtilisateur']));
 
 	$listeServices=recupAll($bdd);
     $listePlusProcheServices = array();

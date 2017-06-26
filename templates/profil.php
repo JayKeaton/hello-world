@@ -111,6 +111,10 @@ if ($_SESSION['droits'] == 'admin'){
         <?php echo((empty($erreur['dateNaissance']) ? "" : "<p>".$erreur['dateNaissance']."</p><br/>")); ?>
     </div>
     <div>
+        <h3>Autoriser la geolocalisation ?</h3>
+        <input type="checkbox" name="geolocalisation" id="geolocalisation" <?php echo(($data['geolocalisation']) ? "checked" : ""); ?>/>
+    </div>
+    <div>
         <input type="submit" name="info" value="Valider"/>
     </div>
 </form>

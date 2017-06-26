@@ -3,7 +3,7 @@
 	//if($_SESSION['droits'] == "admin"){
 	
 		include("templates/ajoutAdmin.php");
-		$idUtilisateur=$_SESSION["idUtilisateur"];
+		$idUtilisateur=$_SESSION["idAdministrateur"];
 
 
 		if (!empty($_POST["submit"])){
@@ -20,7 +20,7 @@
 			else{
 
 				$email = htmlspecialchars($_POST["email"]);
-				include("controllers/mailto.php");
+				include("../controllers/mailto.php");
 				$randint = rand(1, 10000);
 				$hash = date("Ymdhis" . $randint);
 
@@ -30,8 +30,7 @@
 					ajouterEmailsAdmin($bdd, $email, $hash);
 					include("templates/validation.html");
 
-					}
-
+                }
 				else{//sinon
 
 					envoyerMail($email, $hash, "" , "", $idUtilisateur, "activationAdminSansInscription");

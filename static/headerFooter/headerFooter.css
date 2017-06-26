@@ -19,13 +19,13 @@ header{
 header #menuDeroulant{
   position: absolute;
   left: 18px;
-  top: 25px;
+  top: 5px;
 }
 
 
-@media all and (max-width: 1099px) {
+@media all and (max-width: 1219px) {
   header #imageBanniere{
-    top: 4px;
+    top: -20px;
     left: 50%;
   }
 
@@ -34,7 +34,7 @@ header #menuDeroulant{
     padding: 0;
     position: absolute;
     left: -999px;
-    top: 60px;
+    top: 45px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -84,7 +84,7 @@ header #menuDeroulant{
 
 
 
-@media all and (min-width: 1100px) {
+@media all and (min-width: 1220px) {
 
   header #imageBanniere{
     top: -20px;
@@ -96,7 +96,7 @@ header #menuDeroulant{
   }
 
   header ul {
-    padding-left: 220px;
+    padding-left: 229px;
     display: flex;
     justify-content: flex-start;
     align-items: center;

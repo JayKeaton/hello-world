@@ -17,8 +17,8 @@
 
 <?php
 if ($afficher) {
+    echo("<a href='".SOUS_DOMAINE."?page=gestionSeances&idService=".$idService."'>Gestion des séances de ce service :</a>");
     ?>
-
     <form method="post" action="" enctype="multipart/form-data">
         <fieldset>
             <legend>Contact</legend>
@@ -41,8 +41,8 @@ if ($afficher) {
             <legend>Image :</legend>
             <div>
                 <img src="<?php echo(empty($data['adresseImage']) ? "media/pictogrammes/".$data['categorie'].".png" : ("media/imageService/" . $data['adresseImage'])); ?>" height="150" width="150"/>
-                <input type="file" name="avatar" id="avatar"/>
-                <?php echo((empty($erreur['avatar']) ? "" : "<p>" . $erreur['avatar'] . "</p><br/>")); ?>
+                <input type="file" name="imageService" id="imageService"/>
+                <?php echo((empty($erreur['imageService']) ? "" : "<p>" . $erreur['imageService'] . "</p><br/>")); ?>
             </div>
         </fieldset>
         <br/>

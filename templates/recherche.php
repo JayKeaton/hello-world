@@ -45,6 +45,7 @@
                         ?>
                         <div>
                             <h2><em><?php echo($service['nom']); ?></em></h2>
+                            <a href="<?php echo(SOUS_DOMAINE."?page=servicesMaps&adresse=".$service['adresse']); ?>">Aller la-bas</a>
                             <?php
                             if ($data['typeRecherche'] == "localisation" or $data['typeRecherche'] == "adresse"){
                                 echo("<div class='distance'>");
@@ -69,25 +70,32 @@
         ?>
 
     </fieldset>
-    <script>
-        function maPosition(position) {
-            var pos = position.coords.latitude + "," + position.coords.longitude;
-            document.getElementById("coords").value = pos;
-            document.getElementById("typeRecherchelocalisation").disabled = false;
-            document.getElementById("labellocalisation").innerHTML = "Services les plus proche de votre position";
-        }
 
-        <?php
-        if (empty($coordsUtilisateur)){
+    <?php
+    if ($geolocaliser) {
+        ?>
+        <script>
+            function maPosition(position) {
+                var pos = position.coords.latitude + "," + position.coords.longitude;
+                document.getElementById("coords").value = pos;
+                document.getElementById("typeRecherchelocalisation").disabled = false;
+                document.getElementById("labellocalisation").innerHTML = "Services les plus proche de votre position";
+            }
+
+            <?php
+            if (empty($coordsUtilisateur)){
             ?>
-            if(navigator.geolocation)
+            if (navigator.geolocation)
                 navigator.geolocation.getCurrentPosition(maPosition);
             <?php
-        }
-        else{
-            echo("document.getElementById('typeRecherchelocalisation').disabled = false;");
-            echo("document.getElementById('labellocalisation').innerHTML = 'Services les plus proche de votre position';");
-        }
-        ?>
-    </script>
+            }
+            else {
+                echo("document.getElementById('typeRecherchelocalisation').disabled = false;");
+                echo("document.getElementById('labellocalisation').innerHTML = 'Services les plus proche de votre position';");
+            }
+            ?>
+        </script>
+        <?php
+    }
+    ?>
 </section>
