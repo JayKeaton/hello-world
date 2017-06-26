@@ -68,7 +68,7 @@
     }*/
 
 		
-			include("templates/validation.html");
+			include("templates/serviceAjout.html");
 		}
 		
 	else {
