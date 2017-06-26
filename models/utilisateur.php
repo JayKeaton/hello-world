@@ -161,7 +161,7 @@
 	function verifMailAdmin($bdd, $email){
 		
 		global $bdd;
-        $req = $bdd->prepare("SELECT email FROM emailsadmin WHERE email=:email");
+        $req = $bdd->prepare("SELECT email FROM emailsAdmin WHERE email=:email");
         $req->bindParam("email", $email);
         $req->execute();
 	    $data = $req->fetch();
@@ -180,7 +180,7 @@
 	function recupCleAdmin($bdd, $email){
 		
 		global $bdd;
-        $req = $bdd->prepare("SELECT cle FROM emailsadmin WHERE email=:email");
+        $req = $bdd->prepare("SELECT cle FROM emailsAdmin WHERE email=:email");
         $req->bindParam("email", $email);
         $req->execute();
 	    $data = $req->fetch();
@@ -190,7 +190,7 @@
 
 	function activeAdmin($bdd, $email){
         $req = $bdd->prepare("UPDATE utilisateurs SET droits = 'admin' WHERE email = :email ");
-        $req->bindParam(':email', $email);
+        $req->bindParam('email', $email);
         $req->execute();
 	}
 
@@ -198,17 +198,17 @@
 		
 		$cle=$hash;
 		
-		$req = $bdd->prepare("INSERT INTO emailsadmin(cle, email) values(:cle, :email)");
-        $req->bindParam(':email', $email);
-		$req->bindParam(':cle', $cle);
+		$req = $bdd->prepare("INSERT INTO emailsAdmin(cle, email) values(:cle, :email)");
+        $req->bindParam('email', $email);
+		$req->bindParam('cle', $cle);
         $req->execute();
 		
 	}
 
 	function enleverEmailsAdmin($bdd, $email){
 		
-		$req = $bdd->prepare("DELETE FROM emailsadmin WHERE email = :email");
-        $req->bindParam(':email', $email);
+		$req = $bdd->prepare("DELETE FROM emailsAdmin WHERE email = :email");
+        $req->bindParam('email', $email);
 
         $req->execute();
 		

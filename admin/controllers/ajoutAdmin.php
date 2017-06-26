@@ -24,11 +24,11 @@
 				$randint = rand(1, 10000);
 				$hash = date("Ymdhis" . $randint);
 
-				if (verifMail($bdd,$_POST["email"])==true && verifMailAdmin($bdd,$_POST["email"])==true){ //si existe
+				if (verifMail($bdd,$_POST["email"])==true){ //si existe
 
 					envoyerMail($email, $hash, "", "", $idUtilisateur, "activationAdminAvecInscription");
 					ajouterEmailsAdmin($bdd, $email, $hash);
-					include("templates/validation.html");
+                    echo "L'email vient d'être ajouté à la base de données, il recevra un mail prochainement.";
 
                 }
 				else{//sinon

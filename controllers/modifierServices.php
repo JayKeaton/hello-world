@@ -120,7 +120,6 @@ if ($form_modifierService->isValid()) {
 
 
 if ($form_ajouterDescription->isValid()) {
-    echo("test");
     $data = $form_ajouterDescription->get_cleaned_values();
     ajouterDescription($data['nouvelleDescription'],$data['langue'],$data['idService']);
     header("Location: ");

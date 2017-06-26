@@ -47,7 +47,7 @@ if ($form_service->isValid()){
 	$result = traitementUploadImage('imageService', "media/imageService", $idService);
 	$adresseImage=$result[1];
 	ajouterAdresseImage($bdd,$adresseImage,$idService);
-	include("templates/serviceAjout.html");
+	include("templates/serviceAjout.php");
 
 }
 else {
