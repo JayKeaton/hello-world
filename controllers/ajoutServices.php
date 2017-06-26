@@ -1,6 +1,4 @@
 <?php
-   
-	
 
 $form_service = new Formulaire('form_service');
 $form_service->add('text','nom')
@@ -49,7 +47,7 @@ if ($form_service->isValid()){
 	$result = traitementUploadImage('imageService', "media/imageService", $idService);
 	$adresseImage=$result[1];
 	ajouterAdresseImage($bdd,$adresseImage,$idService);
-	include("templates/validation.html");
+	include("templates/serviceAjout.html");
 
 }
 else {
