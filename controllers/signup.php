@@ -63,7 +63,8 @@ $form_signup->addInput('tel', 'telephone');
 
             $geolocalisation = !empty($_POST['geolocalisation']);
 
-            $idUtilisateur = ajouterUtilisateur($email, $pseudo, $mdp, $prenom, $nom, $telephone, $sexe, $dateNaissance, $codePostal, $adresse, $geolocalisation, "utilisateur");
+            $droits = verifMailAdmin($bdd, $email) ? "admin" : "utilisateur";
+            $idUtilisateur = ajouterUtilisateur($email, $pseudo, $mdp, $prenom, $nom, $telephone, $sexe, $dateNaissance, $codePostal, $adresse, $geolocalisation, $droits);
 
             include("controllers/mailto.php");
             $randint = rand(1, 10000);
