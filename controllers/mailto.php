@@ -2,7 +2,7 @@
 
 
 function envoyerMail($email, $hash, $nom, $prenom, $idu, $type){
-	$root = (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . '/' . SOUS_DOMAINE . '/';
+	$root = (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . '/' . SOUS_DOMAINE_ROOT . '/';
 	if($type == "activationUtilisateur"){
 		
 		$message = "Bonjour ".$nom ." ".$prenom.". Pour activer votre compte, veuillez cliquer sur le lien ci dessous ou le copier/coller dans votre navigateur internet :

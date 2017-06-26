@@ -17,6 +17,7 @@ $url = "http://".$_SERVER['HTTP_HOST'];
 
 define('URL_SITE', $url);
 define('SOUS_DOMAINE', $sous_domaine);
+define('SOUS_DOMAINE_ROOT', $sous_domaine);
 
 $langues = array(
     "AFRIKAANS" => 'af',

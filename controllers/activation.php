@@ -15,7 +15,7 @@ if($clebdd == $cle) // On compare nos deux clés
 		  echo "</br></br>";
 
           echo "<h1>Félicitation ! Votre compte a bien été activé !</h1>";
-		   echo "<a href='".$root."'> Retour à l'accueil</a>";
+		   echo "<a href='".SOUS_DOMAINE_ROOT."'> Retour à l'accueil</a>";
  
           // La requête qui va passer notre champ actif de 0 à 1
           active($bdd, $idu);
